@@ -13,4 +13,7 @@ describe('SetupScreen', () => {
     expect(screen.getByText(/No se detectaron archivos JSON/i)).toBeInTheDocument();
   });
 
+    render(<SetupScreen questions={[]} selectedDomains={[]} setSelectedDomains={vi.fn()} selectedDifficulties={['easy']} setSelectedDifficulties={vi.fn()} skipAnswered={false} setSkipAnswered={vi.fn()} showAtEnd={false} setShowAtEnd={vi.fn()} count={10} setCount={vi.fn()} availableCount={0} onStart={vi.fn()} />);
+    expect(screen.queryByText(/No hay preguntas/i)).toBeNull();
+  });
 });

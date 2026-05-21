@@ -29,6 +29,7 @@ export default function App() {
   if (!session) {
     return <div className='min-h-screen py-8'>
       <SetupScreen questions={loaded.questions} selectedDomains={domains} setSelectedDomains={setDomains} selectedDifficulties={difficulties} setSelectedDifficulties={setDifficulties} skipAnswered={skipAnswered} setSkipAnswered={setSkipAnswered} showAtEnd={showAtEnd} setShowAtEnd={setShowAtEnd} count={count} setCount={setCount} availableCount={filtered.length} message={message ?? sourceWarning} filesLoaded={loaded.filesLoaded} onStart={() => {
+      <SetupScreen questions={loaded.questions} selectedDomains={domains} setSelectedDomains={setDomains} selectedDifficulties={difficulties} setSelectedDifficulties={setDifficulties} skipAnswered={skipAnswered} setSkipAnswered={setSkipAnswered} showAtEnd={showAtEnd} setShowAtEnd={setShowAtEnd} count={count} setCount={setCount} availableCount={filtered.length} message={message} filesLoaded={loaded.filesLoaded} onStart={() => {
         if (filtered.length === 0) return setMessage('No hay preguntas disponibles con los filtros seleccionados.');
         if (count > filtered.length) return setMessage(`Solo hay ${filtered.length} preguntas disponibles.`);
         const picked = shuffleArray(filtered).slice(0, count).map((q) => ({ ...q, shuffledOptions: shuffleArray(q.options) }));
