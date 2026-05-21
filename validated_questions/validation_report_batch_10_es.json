@@ -1,0 +1,53 @@
+{
+  "batch_id": "10",
+  "report_type": "validation_report",
+  "verdict": "APPROVED_WITH_CORRECTIONS",
+  "summary": "El Batch 10 se completó corrigiendo el término de la licencia temporal y reemplazando seis ítems con ángulos duplicados por preguntas nuevas y sustentables. El batch completado ahora es adecuado para conservarse con el banco de preguntas aprobado.",
+  "corrected_items": [
+    {
+      "question_id": "B10-Q010",
+      "issue": "El término de la licencia temporal estaba incorrectamente indicado como 90 días.",
+      "resolution": "Corregido a 180 días conforme al Código de Seguros de Texas §4001.155."
+    },
+    {
+      "question_id": "B10-Q002",
+      "issue": "Casi duplicado de un ángulo previo sobre el plazo para cambio de dirección del agente.",
+      "resolution": "Reemplazado con el deber de aviso mensual por condena por delito grave conforme a §4001.252."
+    },
+    {
+      "question_id": "B10-Q006",
+      "issue": "Casi duplicado de un ángulo previo sobre el plazo de 60 días para la Evidencia de Cobertura de una HMO.",
+      "resolution": "Reemplazado con la regla del derecho de la HMO para cambiar de PCP conforme a §843.203."
+    },
+    {
+      "question_id": "B10-Q009",
+      "issue": "Casi duplicado de un ángulo previo sobre la cláusula Facility of Payment.",
+      "resolution": "Reemplazado con la disposición de cambio de beneficiario en una póliza de salud."
+    },
+    {
+      "question_id": "B10-Q020",
+      "issue": "Casi duplicado de un ángulo previo sobre el plazo de Notice of Claim.",
+      "resolution": "Reemplazado con la disposición de Legal Actions conforme a §1201.217."
+    },
+    {
+      "question_id": "B10-Q023",
+      "issue": "Casi duplicado de un ángulo previo sobre difamación.",
+      "resolution": "Reemplazado con la práctica prohibida de tying por parte de una institución depositaria conforme a §556.051."
+    },
+    {
+      "question_id": "B10-Q024",
+      "issue": "Casi duplicado de un ángulo previo sobre desastre común / supervivencia del beneficiario.",
+      "resolution": "Reemplazado con distribución de beneficiarios per capita."
+    }
+  ],
+  "flagged_duplicate_angle_items": [],
+  "supportable_items_noted": [
+    "B10-Q005 excepción de artículo promocional de $25 o menos",
+    "B10-Q017 autoridad para emitir una orden emergency cease and desist",
+    "B10-Q025 período de gracia de tres meses bajo ACA para inscritos del Marketplace que reciben APTC",
+    "B10-Q003 concepto de boot en un intercambio 1035",
+    "B10-Q008 regla de Medicare como pagador secundario para empleadores grandes"
+  ],
+  "schema_status": "complete",
+  "next_step": "El Batch 10 puede conservarse como un batch validado completado."
+}

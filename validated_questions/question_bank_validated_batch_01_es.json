@@ -1,0 +1,1345 @@
+{
+  "batch_id": "01_validated",
+  "version": "1.0.0",
+  "generated_date": "2026-03-23",
+  "generated_by": "claude",
+  "question_count": 25,
+  "difficulty_distribution": {
+    "easy": 5,
+    "medium": 14,
+    "hard": 6
+  },
+  "questions": [
+    {
+      "question_id": "B01-Q001",
+      "rule_ids": [
+        "RC-PROV-001"
+      ],
+      "domain": "Disposiciones de la póliza",
+      "subdomain": "Período de revisión gratuita (free look)",
+      "difficulty": "easy",
+      "format": "direct_rule",
+      "stem": "Un agente entrega una nueva póliza de seguro de vida al asegurado el 1 de marzo. La asegurada lee la póliza y decide que la cobertura no satisface sus necesidades. Según la ley de Texas, ¿cuál es el último día en que la asegurada puede devolver la póliza para recibir un reembolso completo de la prima?",
+      "options": [
+        {
+          "label": "A",
+          "text": "10 de marzo"
+        },
+        {
+          "label": "B",
+          "text": "11 de marzo"
+        },
+        {
+          "label": "C",
+          "text": "31 de marzo"
+        },
+        {
+          "label": "D",
+          "text": "1 de abril"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Texas establece un período de revisión gratuita (free look) de 10 días que comienza en la fecha en que se entrega la póliza. Si la entrega fue el 1 de marzo, la asegurada tiene hasta el 11 de marzo (10 días completos después de la entrega) para devolver la póliza y recibir un reembolso completo de la prima.",
+      "wrong_explanations": {
+        "A": "El 10 de marzo es solo 9 días después de la entrega. El período de revisión gratuita es de 10 días, no de 9.",
+        "C": "El 31 de marzo representa un período de 30 días, lo cual confunde el período de revisión gratuita con el período de gracia para el pago de la prima.",
+        "D": "El 1 de abril representa 31 días, que corresponde al período de gracia para el pago de la prima en un seguro de vida, no al período de revisión gratuita."
+      },
+      "trap_type": "TP002",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-23",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-23",
+          "agent": "claude",
+          "note": "Pasó la validación sin cambios"
+        }
+      ]
+    },
+    {
+      "question_id": "B01-Q002",
+      "rule_ids": [
+        "RC-REPL-001",
+        "RC-REPL-002"
+      ],
+      "domain": "Deberes del agente",
+      "subdomain": "Reemplazo",
+      "difficulty": "medium",
+      "format": "application_scenario",
+      "stem": "Un agente con licencia se reúne con un cliente que tiene una póliza existente de vida entera y desea comprar una nueva póliza de vida universal de otra aseguradora. El cliente tiene la intención de rescatar la póliza existente. Según el Capítulo 1114 del Código de Seguros de Texas, ¿cuál de las siguientes acciones está OBLIGADO a realizar el agente?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Explicar verbalmente las diferencias entre las dos pólizas y documentar la conversación en el expediente del cliente"
+        },
+        {
+          "label": "B",
+          "text": "Presentar y leer al solicitante un aviso de reemplazo aprobado por el comisionado a más tardar al momento de tomar la solicitud, firmado tanto por el solicitante como por el agente"
+        },
+        {
+          "label": "C",
+          "text": "Contactar a la aseguradora existente para negociar mejores términos antes de procesar el reemplazo"
+        },
+        {
+          "label": "D",
+          "text": "Aconsejar al cliente que conserve la póliza existente porque el reemplazo siempre produce una pérdida financiera"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Según TIC §1114.051, cuando un solicitante declara que existen pólizas vigentes, el agente debe presentar y leer al solicitante un aviso de reemplazo en un formulario adoptado o aprobado por el comisionado, a más tardar al momento de tomar la solicitud. El aviso debe ser firmado tanto por el solicitante como por el agente, certificando que el aviso fue leído en voz alta o que el solicitante rechazó que se le leyera en voz alta. El agente también debe dejar el aviso con el solicitante.",
+      "wrong_explanations": {
+        "A": "Una explicación verbal por sí sola no cumple con el requisito legal. TIC §1114.051 exige un aviso de reemplazo escrito y aprobado por el comisionado que debe ser presentado, leído y firmado. Las notas en el expediente no sustituyen el aviso formal.",
+        "C": "El agente no tiene el deber legal de contactar a la aseguradora existente ni de negociar conservación. La obligación del agente es proporcionar al solicitante y a la aseguradora reemplazante el aviso de reemplazo requerido y la declaración firmada.",
+        "D": "El reemplazo no siempre produce una pérdida financiera, y el agente no está obligado a desalentarlo. El deber del agente es asegurarse de que el solicitante reciba el aviso de reemplazo adecuado para que pueda tomar una decisión informada."
+      },
+      "trap_type": "TP001",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-23",
+          "agent": "claude"
+        },
+        {
+          "status": "under_review",
+          "date": "2026-03-23",
+          "agent": "chatgpt_validator"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-23",
+          "agent": "claude",
+          "note": "Corregida para coincidir con el lenguaje legal de TIC §1114.051"
+        }
+      ]
+    },
+    {
+      "question_id": "B01-Q003",
+      "rule_ids": [
+        "RC-HMO-001",
+        "RC-HMO-002"
+      ],
+      "domain": "Seguro de salud",
+      "subdomain": "HMO",
+      "difficulty": "medium",
+      "format": "application_scenario",
+      "stem": "María está inscrita en un plan HMO de Texas. Ella tiene dolor recurrente en la rodilla y quiere consultar a un especialista ortopédico. ¿Qué debe hacer PRIMERO María bajo un plan HMO estándar?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Programar una cita directamente con cualquier especialista ortopédico dentro de la red"
+        },
+        {
+          "label": "B",
+          "text": "Obtener una referencia de su médico de atención primaria"
+        },
+        {
+          "label": "C",
+          "text": "Presentar una solicitud de autorización previa al departamento de reclamaciones del HMO"
+        },
+        {
+          "label": "D",
+          "text": "Visitar a un especialista fuera de la red y presentar una reclamación de reembolso"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Los planes HMO operan bajo un modelo de control de acceso (gatekeeper). La afiliada inscrita primero debe consultar a su médico de atención primaria asignado, quien evalúa la condición y proporciona una referencia a un especialista dentro de la red del HMO si es médicamente necesario.",
+      "wrong_explanations": {
+        "A": "Esto describe el funcionamiento de un PPO, no de un HMO. En un HMO, los miembros no pueden acudir por cuenta propia a especialistas sin obtener primero una referencia del PCP.",
+        "C": "La autorización previa puede ser requerida para ciertos procedimientos, pero el paso de control de acceso (referencia del PCP) viene primero en un HMO antes de cualquier visita al especialista o solicitud de autorización.",
+        "D": "Los planes HMO generalmente no cubren servicios fuera de la red excepto en emergencias. Visitar a un especialista fuera de la red sin autorización probablemente resultaría en que la afiliada asuma el costo completo."
+      },
+      "trap_type": "TP003",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-23",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-23",
+          "agent": "claude",
+          "note": "Pasó la validación sin cambios"
+        }
+      ]
+    },
+    {
+      "question_id": "B01-Q004",
+      "rule_ids": [
+        "RC-LIFE-001",
+        "RC-LIFE-002"
+      ],
+      "domain": "Seguro de vida",
+      "subdomain": "Seguro temporal vs. seguro de vida entera",
+      "difficulty": "easy",
+      "format": "distinction",
+      "stem": "Una clienta de 28 años con una familia joven y un presupuesto ajustado quiere una cobertura que proteja a sus dependientes durante los próximos 20 años mientras sus hijos están creciendo. ¿Qué tipo de póliza se ajusta MEJOR a esta necesidad?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Seguro de vida temporal nivelado a 20 años"
+        },
+        {
+          "label": "B",
+          "text": "Seguro de vida entera"
+        },
+        {
+          "label": "C",
+          "text": "Seguro de vida entera de prima única"
+        },
+        {
+          "label": "D",
+          "text": "Seguro de vida universal variable"
+        }
+      ],
+      "correct_answer": "A",
+      "correct_explanation": "Una póliza temporal nivelada a 20 años proporciona un beneficio por fallecimiento durante el período específico de necesidad al costo de prima más bajo. Se ajusta exactamente a la necesidad temporal de protección de la clienta y a su limitación de presupuesto.",
+      "wrong_explanations": {
+        "B": "El seguro de vida entera proporciona cobertura permanente y acumula valor en efectivo, pero su prima es significativamente más alta. Dado el presupuesto ajustado y una necesidad definida de 20 años, el seguro temporal es la mejor opción.",
+        "C": "El seguro de vida entera de prima única requiere un pago grande en una sola suma, lo cual contradice el requisito de presupuesto ajustado. Está diseñado para transferencia de patrimonio, no para protección temporal asequible.",
+        "D": "El seguro de vida universal variable conlleva riesgo de inversión, tiene costos más altos y es más complejo. No se alinea con una necesidad sencilla de protección temporal con presupuesto limitado."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-23",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-23",
+          "agent": "claude",
+          "note": "Pasó la validación sin cambios"
+        }
+      ]
+    },
+    {
+      "question_id": "B01-Q005",
+      "rule_ids": [
+        "RC-UTP-001",
+        "RC-UTP-002"
+      ],
+      "domain": "Prácticas comerciales desleales",
+      "subdomain": "Twisting",
+      "difficulty": "medium",
+      "format": "application_scenario",
+      "stem": "Un agente le dice a una titular de póliza que su aseguradora actual es financieramente inestable y probablemente no podrá pagar reclamaciones, aunque la aseguradora tiene una calificación A de fortaleza financiera. El agente insta a la clienta a rescatar la póliza y comprar una nueva a través de su agencia. Esta conducta se describe MEJOR como:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Reemplazo"
+        },
+        {
+          "label": "B",
+          "text": "Twisting"
+        },
+        {
+          "label": "C",
+          "text": "Rebating"
+        },
+        {
+          "label": "D",
+          "text": "Conservación"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "El twisting ocurre cuando un agente usa una declaración falsa o engañosa, o una comparación incompleta, para inducir a un titular de póliza a dejar caducar, rescatar o reemplazar una póliza existente. Afirmar falsamente que la aseguradora actual es financieramente inestable para presionar un cambio es una violación clásica de twisting.",
+      "wrong_explanations": {
+        "A": "Reemplazo es un término neutral que describe la compra de una nueva póliza en relación con el rescate de una póliza existente. Se convierte en twisting cuando se usa una declaración falsa o engañosa para inducir el reemplazo.",
+        "C": "Rebating implica ofrecer algo de valor (dinero, regalos, descuentos de prima no incluidos en el contrato) como incentivo para comprar un seguro. Aquí no se describe tal incentivo.",
+        "D": "La conservación es la práctica de persuadir a un titular de póliza para que mantenga una póliza existente. Esto es lo opuesto a lo que está haciendo el agente."
+      },
+      "trap_type": "TP001",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-23",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-23",
+          "agent": "claude",
+          "note": "Pasó la validación sin cambios"
+        }
+      ]
+    },
+    {
+      "question_id": "B01-Q006",
+      "rule_ids": [
+        "RC-PROV-002"
+      ],
+      "domain": "Disposiciones de la póliza",
+      "subdomain": "Período de gracia",
+      "difficulty": "easy",
+      "format": "direct_rule",
+      "stem": "La prima anual de una póliza de seguro de vida vencía el 1 de febrero, pero no ha sido pagada. Bajo la disposición estándar de período de gracia, ¿hasta qué fecha permanecerá vigente la póliza?",
+      "options": [
+        {
+          "label": "A",
+          "text": "10 de febrero"
+        },
+        {
+          "label": "B",
+          "text": "28 de febrero"
+        },
+        {
+          "label": "C",
+          "text": "3 de marzo"
+        },
+        {
+          "label": "D",
+          "text": "4 de marzo"
+        }
+      ],
+      "correct_answer": "D",
+      "correct_explanation": "Las pólizas de seguro de vida proporcionan un período de gracia de 31 días después de la fecha de vencimiento de la prima. Con una fecha de vencimiento del 1 de febrero, el titular de la póliza tiene hasta el 4 de marzo (31 días después) para pagar la prima vencida mientras la póliza permanece vigente.",
+      "wrong_explanations": {
+        "A": "El 10 de febrero es solo 9 días después de la fecha de vencimiento. Esto confunde el período de gracia con el período de revisión gratuita.",
+        "B": "El 28 de febrero son solo 27 días, lo cual no cumple con el requisito del período de gracia de 31 días.",
+        "C": "El 3 de marzo es 30 días después de la fecha de vencimiento. El período de gracia en seguro de vida es de 31 días, no de 30."
+      },
+      "trap_type": "TP002",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-23",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-23",
+          "agent": "claude",
+          "note": "Pasó la validación sin cambios"
+        }
+      ]
+    },
+    {
+      "question_id": "B01-Q007",
+      "rule_ids": [
+        "RC-LIFE-003",
+        "RC-LIFE-004"
+      ],
+      "domain": "Seguro de vida",
+      "subdomain": "Vida universal vs. vida variable",
+      "difficulty": "medium",
+      "format": "distinction",
+      "stem": "Un posible comprador pregunta sobre una póliza que permite pagos de prima flexibles y acredita intereses a una tasa declarada por la aseguradora, pero nunca por debajo de un mínimo garantizado. ¿Qué producto está describiendo el agente?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Seguro de vida variable"
+        },
+        {
+          "label": "B",
+          "text": "Seguro de vida universal variable"
+        },
+        {
+          "label": "C",
+          "text": "Seguro de vida universal"
+        },
+        {
+          "label": "D",
+          "text": "Seguro de vida universal indexado"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "La vida universal presenta primas flexibles y un valor en efectivo que gana intereses a una tasa actual declarada por la aseguradora, con un piso mínimo garantizado. La aseguradora, no el titular de la póliza, asume el riesgo de inversión en la cuenta general.",
+      "wrong_explanations": {
+        "A": "La vida variable tiene primas programadas fijas e invierte el valor en efectivo en cuentas separadas elegidas por el titular de la póliza. El riesgo de inversión recae en el titular de la póliza y no existe una tasa mínima de interés garantizada.",
+        "B": "La vida universal variable combina primas flexibles con opciones de inversión en cuentas separadas. Debido a que el titular de la póliza dirige las inversiones, el valor en efectivo puede fluctuar por debajo de un piso garantizado, a diferencia del escenario descrito.",
+        "D": "La vida universal indexada acredita intereses con base en el desempeño de un índice externo (como el S&P 500), no en una tasa declarada por la aseguradora. Aunque puede tener un piso, el mecanismo de acreditación difiere de una tasa actual declarada."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-23",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-23",
+          "agent": "claude",
+          "note": "Pasó la validación sin cambios"
+        }
+      ]
+    },
+    {
+      "question_id": "B01-Q008",
+      "rule_ids": [
+        "RC-UTP-003"
+      ],
+      "domain": "Prácticas comerciales desleales",
+      "subdomain": "Rebating",
+      "difficulty": "medium",
+      "format": "exception_trigger",
+      "stem": "Todas las siguientes acciones realizadas por un agente de seguros constituirían rebating, EXCEPTO:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Ofrecer a un cliente una tarjeta de regalo por valor de $200 por comprar una nueva anualidad"
+        },
+        {
+          "label": "B",
+          "text": "Devolver parte de la comisión al asegurado como un descuento de prima no indicado en la póliza"
+        },
+        {
+          "label": "C",
+          "text": "Proporcionar un análisis gratuito de comparación de pólizas a un cliente potencial"
+        },
+        {
+          "label": "D",
+          "text": "Pagar las vacaciones de un cliente como recompensa por renovar una póliza de seguro de vida"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "Proporcionar un análisis gratuito de comparación de pólizas es un servicio profesional estándar, no un incentivo de valor fuera del contrato. Rebating implica ofrecer dinero, regalos u otra contraprestación valiosa no especificada en la póliza como incentivo para comprar o renovar un seguro.",
+      "wrong_explanations": {
+        "A": "Ofrecer una tarjeta de regalo de $200 como incentivo para comprar una anualidad es una violación clásica de rebating. La tarjeta de regalo es una contraprestación valiosa no indicada en el contrato.",
+        "B": "Devolver comisión al asegurado como un descuento de prima no reflejado en la póliza es un rebate ilegal. Solo se permiten dividendos y descuentos indicados en el contrato.",
+        "D": "Pagar las vacaciones de un cliente como recompensa por renovar una póliza es un incentivo de valor significativo fuera del contrato, lo cual constituye rebating."
+      },
+      "trap_type": "TP004",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-23",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-23",
+          "agent": "claude",
+          "note": "Pasó la validación sin cambios"
+        }
+      ]
+    },
+    {
+      "question_id": "B01-Q009",
+      "rule_ids": [
+        "RC-GRP-001",
+        "RC-GRP-002"
+      ],
+      "domain": "Seguro de vida",
+      "subdomain": "Seguro de vida grupal",
+      "difficulty": "hard",
+      "format": "distinction",
+      "stem": "Un empleado cubierto bajo un plan de seguro de vida temporal grupal patrocinado por el empleador termina su empleo. Bajo el privilegio de conversión grupal, ¿cuál de las siguientes afirmaciones es VERDADERA?",
+      "options": [
+        {
+          "label": "A",
+          "text": "El empleado puede convertir a una póliza temporal individual por el mismo monto nominal sin evidencia de asegurabilidad dentro de 31 días"
+        },
+        {
+          "label": "B",
+          "text": "El empleado puede convertir a una póliza individual de vida entera por un monto nominal igual o menor sin evidencia de asegurabilidad dentro de 31 días"
+        },
+        {
+          "label": "C",
+          "text": "El empleado debe presentar una nueva solicitud con suscripción médica completa dentro de 60 días después de la terminación"
+        },
+        {
+          "label": "D",
+          "text": "El empleado pierde toda la cobertura inmediatamente al terminar el empleo sin opción de conversión"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "El privilegio de conversión grupal permite que un empleado que termina su empleo convierta la cobertura grupal a una póliza individual de vida entera (no temporal) por el mismo monto nominal o uno menor, sin evidencia de asegurabilidad, siempre que la conversión se solicite dentro de 31 días después de la terminación.",
+      "wrong_explanations": {
+        "A": "La conversión bajo pólizas grupales es a una póliza individual de vida entera (permanente), no a una póliza temporal. Esta es una distinción clave que se evalúa en el examen.",
+        "C": "El privilegio de conversión existe precisamente para que el empleado no tenga que proporcionar evidencia de asegurabilidad. No se requiere suscripción médica, y el plazo es de 31 días, no de 60.",
+        "D": "Las pólizas grupales incluyen un privilegio de conversión como disposición estándar. La cobertura no desaparece simplemente al terminar el empleo. El empleado tiene 31 días para ejercer el derecho de conversión."
+      },
+      "trap_type": "TP005",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-23",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-23",
+          "agent": "claude",
+          "note": "Pasó la validación sin cambios"
+        }
+      ]
+    },
+    {
+      "question_id": "B01-Q010",
+      "rule_ids": [
+        "RC-MEDSUP-001",
+        "RC-MEDSUP-002"
+      ],
+      "domain": "Seguro de salud",
+      "subdomain": "Suplemento de Medicare",
+      "difficulty": "hard",
+      "format": "distinction",
+      "stem": "Un cliente de 67 años inscrito en Original Medicare está comparando una póliza de Suplemento de Medicare (Medigap) con un plan Medicare Advantage. ¿Cuál afirmación sobre las pólizas de Suplemento de Medicare es CORRECTA?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Los planes de Suplemento de Medicare usan redes de proveedores y requieren referencias a especialistas"
+        },
+        {
+          "label": "B",
+          "text": "Los planes de Suplemento de Medicare están estandarizados, lo que significa que cada letra de plan (A a N) ofrece los mismos beneficios sin importar qué aseguradora emita la póliza"
+        },
+        {
+          "label": "C",
+          "text": "Los planes de Suplemento de Medicare reemplazan Original Medicare y proporcionan todos los beneficios directamente"
+        },
+        {
+          "label": "D",
+          "text": "Las primas de Suplemento de Medicare son fijadas por CMS y son idénticas entre todas las compañías de seguros"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Los planes de Suplemento de Medicare (Medigap) están estandarizados a nivel federal. Cada letra de plan (A, B, C, D, F, G, K, L, M, N) proporciona los mismos beneficios básicos sin importar qué aseguradora lo emita. El asegurado puede consultar a cualquier proveedor que acepte Medicare. Solo las primas varían según la aseguradora.",
+      "wrong_explanations": {
+        "A": "Las pólizas de Suplemento de Medicare no usan redes de proveedores ni requieren referencias. Eso describe los planes Medicare Advantage (Parte C), que pueden usar estructuras de red HMO o PPO.",
+        "C": "Las pólizas de Suplemento de Medicare no reemplazan Original Medicare. Lo complementan cubriendo algunos de los costos de bolsillo (deducibles, copagos, coseguro) que Original Medicare no paga.",
+        "D": "Aunque los beneficios de cada letra de plan están estandarizados, las primas son establecidas individualmente por cada aseguradora y pueden variar significativamente. CMS no fija las primas de Medigap."
+      },
+      "trap_type": "TP006",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-23",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-23",
+          "agent": "claude",
+          "note": "Pasó la validación sin cambios"
+        }
+      ]
+    },
+    {
+      "question_id": "B01-Q011",
+      "rule_ids": [
+        "RC-PROV-003"
+      ],
+      "domain": "Disposiciones de la póliza",
+      "subdomain": "Incontestabilidad",
+      "difficulty": "medium",
+      "format": "application_scenario",
+      "stem": "Una póliza de seguro de vida fue emitida el 15 de enero de 2024. El asegurado hizo una declaración falsa material en la solicitud sobre una condición cardíaca preexistente. La aseguradora descubre la declaración falsa el 1 de marzo de 2026. ¿Puede la aseguradora anular la póliza?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Sí, porque una declaración falsa en una solicitud siempre anula la póliza"
+        },
+        {
+          "label": "B",
+          "text": "Sí, porque la aseguradora descubrió la declaración falsa durante la vigencia de la póliza"
+        },
+        {
+          "label": "C",
+          "text": "No, porque el período de incontestabilidad de 2 años ha pasado y la aseguradora ya no puede impugnar la póliza por declaración falsa"
+        },
+        {
+          "label": "D",
+          "text": "No, porque una declaración falsa material debe descubrirse dentro de los 12 meses posteriores a la emisión"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "La cláusula de incontestabilidad establece que, después de que una póliza de seguro de vida ha estado vigente durante dos años durante la vida del asegurado, la aseguradora no puede impugnar la póliza con base en una declaración falsa material en la solicitud. La póliza fue emitida el 15 de enero de 2024. Para el 1 de marzo de 2026, han transcurrido más de dos años, por lo que la póliza es incontestable.",
+      "wrong_explanations": {
+        "A": "Una declaración falsa no siempre anula una póliza. Después de que vence el período de incontestabilidad, la aseguradora pierde el derecho de impugnar la cobertura con base en declaraciones incorrectas en la solicitud.",
+        "B": "El momento del descubrimiento por sí solo no es el factor determinante. Lo importante es si el período de incontestabilidad ha vencido. Una vez que han pasado dos años con la póliza vigente durante la vida del asegurado, se extingue el derecho de la aseguradora a impugnar.",
+        "D": "No existe una regla de descubrimiento de 12 meses para declaraciones falsas. El período estándar de incontestabilidad en seguro de vida es de dos años, no de uno."
+      },
+      "trap_type": "TP002",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-23",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-23",
+          "agent": "claude",
+          "note": "Pasó la validación sin cambios"
+        }
+      ]
+    },
+    {
+      "question_id": "B01-Q012",
+      "rule_ids": [
+        "RC-HMO-003"
+      ],
+      "domain": "Seguro de salud",
+      "subdomain": "HMO",
+      "difficulty": "medium",
+      "format": "application_scenario",
+      "stem": "Una afiliada de un HMO está de vacaciones fuera del estado cuando experimenta dolor severo en el pecho y es admitida en la sala de emergencias más cercana, que no pertenece a la red de su HMO. ¿Cómo manejará el HMO esta reclamación?",
+      "options": [
+        {
+          "label": "A",
+          "text": "El HMO negará la reclamación porque todos los servicios deben obtenerse de proveedores de la red"
+        },
+        {
+          "label": "B",
+          "text": "El HMO debe cubrir los servicios de emergencia porque la atención de emergencia está cubierta independientemente del estatus de red"
+        },
+        {
+          "label": "C",
+          "text": "El HMO cubrirá solo el 50% de la factura de la sala de emergencias como penalidad por estar fuera de la red"
+        },
+        {
+          "label": "D",
+          "text": "La afiliada debe transferirse a un hospital dentro de la red dentro de 24 horas o la reclamación será negada"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Los planes HMO están obligados a cubrir servicios médicos de emergencia independientemente de si el proveedor está dentro o fuera de la red. Una verdadera emergencia médica (como dolor severo en el pecho) activa la cobertura en el centro de emergencia sin autorización previa ni restricción de red.",
+      "wrong_explanations": {
+        "A": "Aunque los HMO generalmente restringen la cobertura a proveedores de la red, los servicios de emergencia son la excepción. Negar una reclamación de emergencia genuina basándose únicamente en el estatus de red violaría los requisitos regulatorios.",
+        "C": "Los servicios de emergencia en una verdadera emergencia no están sujetos a penalidades fuera de la red de la misma manera que los servicios electivos. El plan debe cubrir la emergencia al nivel normal de beneficios.",
+        "D": "No existe un requisito general de transferencia dentro de 24 horas. Una vez estabilizada, la atención de seguimiento puede necesitar regresar a la red, pero el tratamiento inicial de emergencia está cubierto independientemente."
+      },
+      "trap_type": "TP003",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-23",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-23",
+          "agent": "claude",
+          "note": "Pasó la validación sin cambios"
+        }
+      ]
+    },
+    {
+      "question_id": "B01-Q013",
+      "rule_ids": [
+        "RC-UW-001"
+      ],
+      "domain": "Suscripción y entrega",
+      "subdomain": "Interés asegurable",
+      "difficulty": "medium",
+      "format": "application_scenario",
+      "stem": "Una socia comercial solicita una póliza de seguro de vida sobre la vida de su copropietario, nombrándose a sí misma como beneficiaria. El copropietario consiente la solicitud. ¿Existe interés asegurable?",
+      "options": [
+        {
+          "label": "A",
+          "text": "No, porque el interés asegurable solo existe entre cónyuges y familiares de sangre"
+        },
+        {
+          "label": "B",
+          "text": "No, porque la beneficiaria y el asegurado no son la misma persona"
+        },
+        {
+          "label": "C",
+          "text": "Sí, porque una socia comercial tiene un interés asegurable en la vida de un copropietario cuya muerte causaría una pérdida financiera al negocio"
+        },
+        {
+          "label": "D",
+          "text": "Sí, pero solo si el monto nominal de la póliza no excede el valor del negocio"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "El interés asegurable existe cuando el solicitante sufriría una pérdida financiera por la muerte del asegurado. Un socio comercial tiene un interés asegurable en un copropietario porque la muerte del copropietario podría perjudicar financieramente al negocio. El interés asegurable se requiere al momento de la solicitud, y se otorgó consentimiento.",
+      "wrong_explanations": {
+        "A": "El interés asegurable se extiende más allá de las relaciones familiares. Socios comerciales, empleados clave, acreedores y otros con un interés financiero en la vida continua del asegurado califican.",
+        "B": "El beneficiario y el asegurado no tienen que ser la misma persona. La propiedad por terceros es común en arreglos de seguros empresariales siempre que exista interés asegurable al momento de la solicitud.",
+        "D": "Aunque el monto nominal debe guardar una relación razonable con el interés financiero, no existe un requisito legal rígido de que el beneficio por fallecimiento coincida exactamente con el valor del negocio. El requisito clave es que exista interés asegurable al inicio."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-23",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-23",
+          "agent": "claude",
+          "note": "Pasó la validación sin cambios"
+        }
+      ]
+    },
+    {
+      "question_id": "B01-Q014",
+      "rule_ids": [
+        "RC-PROV-004"
+      ],
+      "domain": "Disposiciones de la póliza",
+      "subdomain": "Opciones de no caducidad",
+      "difficulty": "hard",
+      "format": "application_scenario",
+      "stem": "Un titular de una póliza de vida entera deja de pagar primas después de 15 años y no elige una opción de no caducidad. Bajo la disposición estándar de no caducidad, ¿qué opción aplicará automáticamente la aseguradora?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Seguro temporal extendido por el monto nominal de la póliza"
+        },
+        {
+          "label": "B",
+          "text": "Seguro de vida entera reducido pagado"
+        },
+        {
+          "label": "C",
+          "text": "Rescate en efectivo de toda la póliza"
+        },
+        {
+          "label": "D",
+          "text": "Préstamo automático de prima del valor en efectivo"
+        }
+      ],
+      "correct_answer": "A",
+      "correct_explanation": "Cuando el titular de una póliza de vida entera deja de pagar primas y no elige activamente una opción de no caducidad, la opción automática (por defecto) de no caducidad es el seguro temporal extendido. La aseguradora usa el valor en efectivo existente para comprar seguro temporal por el monto nominal original, que dura tanto tiempo como el valor en efectivo pueda sostenerlo.",
+      "wrong_explanations": {
+        "B": "El seguro reducido pagado es una opción de no caducidad disponible, pero no es la opción automática por defecto. El titular de la póliza debe elegirla afirmativamente.",
+        "C": "El rescate en efectivo termina la póliza y paga el valor en efectivo. Esta es una opción electiva, no la opción automática por defecto cuando no se hace una elección.",
+        "D": "Un préstamo automático de prima es una disposición separada de la póliza que usa el valor en efectivo para pagar la prima vencida. Es distinto de la opción de no caducidad por defecto y debe ser elegido o incluido en la póliza como un rider."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-23",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-23",
+          "agent": "claude",
+          "note": "Pasó la validación sin cambios"
+        }
+      ]
+    },
+    {
+      "question_id": "B01-Q015",
+      "rule_ids": [
+        "RC-UTP-004"
+      ],
+      "domain": "Prácticas comerciales desleales",
+      "subdomain": "Mezcla indebida de fondos",
+      "difficulty": "medium",
+      "format": "application_scenario",
+      "stem": "Un agente cobra a un cliente un cheque de prima de $3,000 pagadero personalmente al agente. El agente deposita el cheque en su cuenta corriente personal y emite un cheque personal a la aseguradora la semana siguiente. ¿Qué violación ha ocurrido?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Rebating"
+        },
+        {
+          "label": "B",
+          "text": "Declaración falsa o engañosa"
+        },
+        {
+          "label": "C",
+          "text": "Mezcla indebida de fondos"
+        },
+        {
+          "label": "D",
+          "text": "Difamación"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "La mezcla indebida de fondos ocurre cuando un agente mezcla fondos del cliente o de la aseguradora con fondos personales. Depositar el pago de prima de un cliente en una cuenta personal es una violación clásica de mezcla indebida de fondos, independientemente de que el agente finalmente envíe los fondos a la aseguradora.",
+      "wrong_explanations": {
+        "A": "Rebating implica proporcionar un incentivo de valor no indicado en la póliza para fomentar la compra de seguro. Aquí no se ofrece ningún incentivo.",
+        "B": "La declaración falsa o engañosa implica hacer afirmaciones falsas o engañosas sobre una póliza o aseguradora. El agente no está haciendo declaraciones falsas; está manejando indebidamente fondos del cliente.",
+        "D": "La difamación implica hacer declaraciones falsas que dañan la reputación de otra aseguradora o agente. El manejo de fondos no es un asunto de difamación."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-23",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-23",
+          "agent": "claude",
+          "note": "Pasó la validación sin cambios"
+        }
+      ]
+    },
+    {
+      "question_id": "B01-Q016",
+      "rule_ids": [
+        "RC-LTC-001"
+      ],
+      "domain": "Seguro de salud",
+      "subdomain": "Cuidado a largo plazo",
+      "difficulty": "medium",
+      "format": "direct_rule",
+      "stem": "Según la ley de Texas, ¿cuál de las siguientes es una disposición requerida en una póliza de seguro de cuidado a largo plazo?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Un período de eliminación de 90 días sin excepciones"
+        },
+        {
+          "label": "B",
+          "text": "Cobertura solo para cuidado de enfermería especializada"
+        },
+        {
+          "label": "C",
+          "text": "Una opción de beneficio de no caducidad o un beneficio contingente al caducar la póliza"
+        },
+        {
+          "label": "D",
+          "text": "Duración ilimitada de beneficios de por vida"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "Las regulaciones de Texas requieren que las pólizas de cuidado a largo plazo ofrezcan una opción de beneficio de no caducidad o un beneficio contingente al caducar la póliza. Esta protección al consumidor asegura que el titular de la póliza conserve algún valor incluso si la póliza caduca después de pagos significativos de prima.",
+      "wrong_explanations": {
+        "A": "Las pólizas LTC pueden ofrecer varias opciones de período de eliminación (30, 60, 90 días, etc.), pero un período de 90 días no es obligatorio universalmente. El período de eliminación normalmente lo selecciona el titular de la póliza.",
+        "B": "Las pólizas LTC cubren una variedad de niveles de cuidado, incluyendo cuidado custodial, vivienda asistida, cuidado de salud en el hogar y cuidado diurno para adultos, no solo enfermería especializada.",
+        "D": "La duración ilimitada de beneficios es una característica opcional, no un requisito regulatorio. Muchas pólizas LTC tienen un período máximo de beneficios (por ejemplo, 3 o 5 años)."
+      },
+      "trap_type": null,
+      "source_confidence": "medium",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-23",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-23",
+          "agent": "claude",
+          "note": "Pasó la validación sin cambios"
+        }
+      ]
+    },
+    {
+      "question_id": "B01-Q017",
+      "rule_ids": [
+        "RC-REPL-001",
+        "RC-REPL-003"
+      ],
+      "domain": "Deberes del agente",
+      "subdomain": "Reemplazo",
+      "difficulty": "hard",
+      "format": "application_scenario",
+      "stem": "Durante una reunión con un cliente, una prospecto menciona que ya tiene una póliza temporal de vida, pero quiere explorar la compra de una póliza de vida entera. Ella no ha decidido si conservar la póliza anterior o rescatarla. ¿En qué momento se aplican los deberes del agente sobre el aviso de reemplazo bajo TIC §1114.051?",
+      "options": [
+        {
+          "label": "A",
+          "text": "En el momento en que el agente se entera por primera vez de que la prospecto tiene alguna póliza existente"
+        },
+        {
+          "label": "B",
+          "text": "Cuando la solicitante declara en la declaración firmada de la solicitud que existen pólizas vigentes y la transacción implica reemplazar una de esas pólizas"
+        },
+        {
+          "label": "C",
+          "text": "Cuando la solicitud de la nueva póliza se presenta a la aseguradora"
+        },
+        {
+          "label": "D",
+          "text": "Cuando se entrega la nueva póliza y la póliza anterior ha sido rescatada"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Según TIC §1114.051, todo agente que inicie una solicitud debe primero presentar una declaración firmada (firmada tanto por el solicitante como por el agente) sobre si el solicitante tiene pólizas vigentes. Si el solicitante declara que existen pólizas vigentes y la transacción constituye un reemplazo, el agente debe presentar y leer el aviso de reemplazo aprobado por el comisionado a más tardar al momento de tomar la solicitud. El deber se activa por la divulgación firmada del solicitante sobre cobertura existente en relación con una transacción de reemplazo, no por el conocimiento informal del agente.",
+      "wrong_explanations": {
+        "A": "El conocimiento informal del agente sobre cobertura existente no activa, por sí solo, el deber de aviso de reemplazo. El mecanismo legal es la declaración firmada presentada con la solicitud o como parte de ella. Si el cliente solo está explorando opciones y no se está tomando una solicitud, el requisito del aviso de reemplazo aún no se ha activado.",
+        "C": "Para cuando la solicitud se presenta a la aseguradora, el aviso de reemplazo ya debería haber sido presentado y leído al solicitante. La ley exige el aviso a más tardar al momento de tomar la solicitud, no al presentarla a la aseguradora.",
+        "D": "Esperar hasta la entrega y el rescate sería demasiado tarde. El aviso debe proporcionarse a más tardar al momento en que se toma la solicitud, mucho antes de que se emita la nueva póliza o se rescate la anterior."
+      },
+      "trap_type": "TP001",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-23",
+          "agent": "claude"
+        },
+        {
+          "status": "under_review",
+          "date": "2026-03-23",
+          "agent": "chatgpt_validator"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-23",
+          "agent": "claude",
+          "note": "Corregida para reflejar la estructura legal de dos pasos de §1114.051(a) declaración firmada + (c) aviso de reemplazo"
+        }
+      ]
+    },
+    {
+      "question_id": "B01-Q018",
+      "rule_ids": [
+        "RC-HEALTH-001"
+      ],
+      "domain": "Seguro de salud",
+      "subdomain": "PPO",
+      "difficulty": "medium",
+      "format": "distinction",
+      "stem": "Un miembro de un plan PPO necesita consultar a un dermatólogo. Bajo un arreglo PPO típico, ¿qué debe hacer el miembro?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Obtener una referencia de un médico de atención primaria antes de la visita al especialista"
+        },
+        {
+          "label": "B",
+          "text": "Elegir cualquier dermatólogo, pero el miembro pagará menos si el proveedor está dentro de la red"
+        },
+        {
+          "label": "C",
+          "text": "Visitar solo dermatólogos dentro de la red PPO; las visitas fuera de la red nunca están cubiertas"
+        },
+        {
+          "label": "D",
+          "text": "Presentar un formulario de autorización previa a la aseguradora al menos 14 días antes de la cita"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Los planes PPO permiten que los miembros consulten a cualquier proveedor sin referencia. Los miembros reciben el nivel más alto de beneficios cuando usan proveedores dentro de la red, pero los proveedores fuera de la red también están cubiertos a un nivel de beneficios reducido. No se requiere control de acceso ni referencia.",
+      "wrong_explanations": {
+        "A": "Esto describe el funcionamiento de un HMO. Los PPO no requieren una referencia del PCP para consultar a un especialista.",
+        "C": "Los planes PPO sí cubren visitas fuera de la red, aunque con un costo mayor para el miembro. A diferencia de los HMO, los PPO no restringen la cobertura exclusivamente a proveedores de la red.",
+        "D": "Aunque algunos procedimientos pueden requerir autorización previa bajo cualquier tipo de plan, no existe un requisito estándar de autorización previa de 14 días para visitas rutinarias a especialistas bajo un PPO."
+      },
+      "trap_type": "TP003",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-23",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-23",
+          "agent": "claude",
+          "note": "Pasó la validación sin cambios"
+        }
+      ]
+    },
+    {
+      "question_id": "B01-Q019",
+      "rule_ids": [
+        "RC-UW-002"
+      ],
+      "domain": "Suscripción y entrega",
+      "subdomain": "Divulgaciones bajo HIPAA",
+      "difficulty": "medium",
+      "format": "direct_rule",
+      "stem": "Cuando una persona se inscribe en un plan de seguro de salud, HIPAA requiere que la aseguradora:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Comparta la información médica del inscrito con el empleador del inscrito cuando este la solicite"
+        },
+        {
+          "label": "B",
+          "text": "Proporcione al inscrito un Aviso de Prácticas de Privacidad que explique cómo puede usarse y divulgarse la información de salud protegida"
+        },
+        {
+          "label": "C",
+          "text": "Destruya todos los registros médicos dentro de 30 días después de la decisión de inscripción"
+        },
+        {
+          "label": "D",
+          "text": "Obtenga el consentimiento escrito del inscrito antes de divulgar información médica a cualquier agencia gubernamental, incluidos los reguladores"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Bajo 45 CFR §164.520, los planes de salud deben proporcionar un Aviso de Prácticas de Privacidad a los nuevos inscritos al momento de la inscripción. El aviso explica cómo el plan puede usar y divulgar información de salud protegida (PHI), describe los derechos de privacidad de la persona e identifica cómo se pueden presentar quejas. El plan también debe enviar un recordatorio al menos una vez cada tres años de que el aviso está disponible a solicitud.",
+      "wrong_explanations": {
+        "A": "HIPAA restringe la divulgación de PHI. Compartir la información médica de un inscrito con un empleador sin la autorización adecuada sería una violación de HIPAA, no un requisito.",
+        "C": "HIPAA no exige la destrucción de registros dentro de 30 días. Las políticas de privacidad, procedimientos y documentación relacionada deben conservarse por al menos seis años bajo los requisitos de retención de registros de HIPAA.",
+        "D": "HIPAA permite ciertas divulgaciones a agencias gubernamentales para salud pública, cumplimiento de la ley y supervisión regulatoria sin consentimiento individual. El consentimiento escrito del inscrito no se requiere en todos los escenarios de divulgación gubernamental."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-23",
+          "agent": "claude"
+        },
+        {
+          "status": "under_review",
+          "date": "2026-03-23",
+          "agent": "chatgpt_validator"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-23",
+          "agent": "claude",
+          "note": "Se corrigió el enunciado de 'durante el proceso de solicitud' a 'cuando una persona se inscribe' conforme a 45 CFR §164.520(c)(1)"
+        }
+      ]
+    },
+    {
+      "question_id": "B01-Q020",
+      "rule_ids": [
+        "RC-LIFE-005"
+      ],
+      "domain": "Seguro de vida",
+      "subdomain": "Anualidades",
+      "difficulty": "easy",
+      "format": "direct_rule",
+      "stem": "¿Cuál de las siguientes opciones describe MEJOR el propósito principal de una anualidad?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Proporcionar un beneficio por fallecimiento a beneficiarios nombrados"
+        },
+        {
+          "label": "B",
+          "text": "Proporcionar una liquidación sistemática de una suma de dinero durante un período de tiempo, típicamente como ingreso de jubilación"
+        },
+        {
+          "label": "C",
+          "text": "Proteger al asegurado contra las consecuencias financieras de una discapacidad"
+        },
+        {
+          "label": "D",
+          "text": "Crear ahorros libres de impuestos para los gastos educativos de un hijo"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "El propósito principal de una anualidad es proporcionar pagos periódicos de ingreso, típicamente durante la jubilación. Una anualidad liquida sistemáticamente una suma acumulada a lo largo del tiempo, protegiendo al beneficiario de la anualidad contra el riesgo de sobrevivir a sus ahorros (riesgo de longevidad).",
+      "wrong_explanations": {
+        "A": "Proporcionar un beneficio por fallecimiento es el propósito principal del seguro de vida, no de las anualidades. Aunque algunas anualidades incluyen características de beneficio por fallecimiento, el propósito central es la distribución de ingresos.",
+        "C": "La protección contra la pérdida de ingresos por discapacidad es el propósito del seguro de ingresos por discapacidad, no de una anualidad.",
+        "D": "Los ahorros para educación generalmente se manejan mediante planes 529 o cuentas Coverdell. Las anualidades no están diseñadas como vehículos de ahorro educativo y conllevan penalidades fiscales por retiro anticipado."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-23",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-23",
+          "agent": "claude",
+          "note": "Pasó la validación sin cambios"
+        }
+      ]
+    },
+    {
+      "question_id": "B01-Q021",
+      "rule_ids": [
+        "RC-MEDSUP-003"
+      ],
+      "domain": "Seguro de salud",
+      "subdomain": "Suplemento de Medicare",
+      "difficulty": "hard",
+      "format": "application_scenario",
+      "stem": "Una persona de 65 años se inscribe en Medicare Parte B y solicita una póliza Medigap durante su período de inscripción abierta de 6 meses. Tuvo cobertura de salud grupal del empleador de forma continua durante los 10 años anteriores. ¿Cuál de las siguientes afirmaciones es VERDADERA con respecto a su inscripción en Medigap?",
+      "options": [
+        {
+          "label": "A",
+          "text": "La aseguradora puede negar su solicitud con base en su historial de salud durante el período de inscripción abierta"
+        },
+        {
+          "label": "B",
+          "text": "La aseguradora debe aceptar su solicitud y no puede imponer un período de espera por condición preexistente porque ella tiene más de 6 meses de cobertura acreditable previa"
+        },
+        {
+          "label": "C",
+          "text": "La aseguradora debe aceptar su solicitud, pero puede imponer hasta un período de espera de 12 meses por condición preexistente sin importar la cobertura previa"
+        },
+        {
+          "label": "D",
+          "text": "La aseguradora puede cobrarle una prima más alta con base en condiciones de salud preexistentes durante la inscripción abierta"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Durante el período de inscripción abierta de 6 meses de Medigap (que comienza el mes en que la persona tiene 65 años o más y está inscrita en Parte B), las aseguradoras no pueden negar cobertura ni cobrar primas más altas con base en el estado de salud. La ley federal permite que las aseguradoras impongan hasta un período de espera de 6 meses por condiciones preexistentes, pero este período debe reducirse mes por mes por cualquier cobertura acreditable previa. Debido a que esta solicitante tuvo 10 años continuos de cobertura grupal del empleador, su cobertura acreditable supera los 6 meses, por lo que la aseguradora no puede imponer ningún período de espera.",
+      "wrong_explanations": {
+        "A": "Durante el período de inscripción abierta de Medigap, las aseguradoras no pueden negar a un solicitante con base en su historial de salud. Se aplica emisión garantizada: cualquier plan Medigap vendido en el estado debe ofrecerse independientemente de la condición médica.",
+        "C": "El período máximo de espera por condición preexistente bajo la ley federal es de 6 meses, no de 12 meses. Además, el período de espera se reduce por cobertura acreditable previa. Con 10 años de cobertura continua del empleador, esta solicitante no enfrentaría ningún período de espera.",
+        "D": "Durante el período de inscripción abierta, las aseguradoras no pueden usar el estado de salud para aumentar primas. La solicitante tiene derecho a la misma tarifa ofrecida a otros inscritos de la misma edad y perfil, sin recargo basado en salud."
+      },
+      "trap_type": "TP006",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-23",
+          "agent": "claude"
+        },
+        {
+          "status": "under_review",
+          "date": "2026-03-23",
+          "agent": "chatgpt_validator"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-23",
+          "agent": "claude",
+          "note": "Reescrita para evaluar el matiz correcto: emisión garantizada + compensación por cobertura acreditable del período de espera por condición preexistente conforme a 42 U.S.C. §1395ss"
+        }
+      ]
+    },
+    {
+      "question_id": "B01-Q022",
+      "rule_ids": [
+        "RC-PROV-005"
+      ],
+      "domain": "Disposiciones de la póliza",
+      "subdomain": "Designaciones de beneficiarios",
+      "difficulty": "medium",
+      "format": "application_scenario",
+      "stem": "Un titular de póliza nombra a su esposa como beneficiaria primaria y a sus dos hijos adultos como beneficiarios contingentes en partes iguales. La esposa fallece antes que el asegurado. El asegurado muere sin cambiar la designación de beneficiarios. ¿Quién recibe el beneficio por fallecimiento?",
+      "options": [
+        {
+          "label": "A",
+          "text": "La sucesión del asegurado"
+        },
+        {
+          "label": "B",
+          "text": "Los dos hijos, cada uno recibiendo el 50% como beneficiarios contingentes"
+        },
+        {
+          "label": "C",
+          "text": "La sucesión de la esposa, porque ella era la beneficiaria primaria nombrada"
+        },
+        {
+          "label": "D",
+          "text": "La aseguradora retiene los fondos hasta que un tribunal determine el destinatario legítimo"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Cuando el beneficiario primario fallece antes que el asegurado, el beneficio por fallecimiento pasa a los beneficiarios contingentes (secundarios). Los dos hijos adultos, nombrados como beneficiarios contingentes en partes iguales, reciben cada uno el 50% del beneficio por fallecimiento.",
+      "wrong_explanations": {
+        "A": "El beneficio por fallecimiento va a la sucesión solo si no hay beneficiarios sobrevivientes (primarios o contingentes). Aquí, ambos beneficiarios contingentes están vivos.",
+        "C": "La sucesión de un beneficiario primario fallecido no hereda automáticamente el beneficio por fallecimiento. Los fondos pasan a los beneficiarios contingentes, no a la sucesión del beneficiario primario fallecido.",
+        "D": "La aseguradora no retiene los fondos. La designación de beneficiarios de la póliza rige la distribución. Los beneficiarios contingentes reciben los fondos cuando el beneficiario primario ha fallecido."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-23",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-23",
+          "agent": "claude",
+          "note": "Pasó la validación sin cambios"
+        }
+      ]
+    },
+    {
+      "question_id": "B01-Q023",
+      "rule_ids": [
+        "RC-UTP-005"
+      ],
+      "domain": "Prácticas comerciales desleales",
+      "subdomain": "Declaración falsa o engañosa",
+      "difficulty": "medium",
+      "format": "application_scenario",
+      "stem": "Un agente le dice a un cliente potencial que los dividendos de una póliza de vida entera están garantizados y se pagarán todos los años. En realidad, los dividendos de póliza nunca están garantizados. Esta declaración es un ejemplo de:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Twisting"
+        },
+        {
+          "label": "B",
+          "text": "Declaración falsa o engañosa"
+        },
+        {
+          "label": "C",
+          "text": "Rebating"
+        },
+        {
+          "label": "D",
+          "text": "Negocio controlado"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "La declaración falsa o engañosa ocurre cuando un agente hace una afirmación falsa o engañosa sobre los términos, beneficios o características de una póliza de seguro. Decir que los dividendos están garantizados cuando no lo están es una declaración falsa directa sobre las características de la póliza.",
+      "wrong_explanations": {
+        "A": "Twisting implica usar una declaración falsa o engañosa específicamente para inducir a un titular de póliza a reemplazar una póliza existente. Este escenario involucra a un nuevo prospecto, no una situación de reemplazo.",
+        "C": "Rebating implica ofrecer una contraprestación valiosa no incluida en el contrato como incentivo. El agente no está ofreciendo ningún regalo o descuento; está haciendo una declaración falsa sobre el producto.",
+        "D": "Negocio controlado se refiere a que un agente venda principalmente a sí mismo, familiares o asociados cercanos para ganar comisiones. No tiene relación con declaraciones falsas sobre características de la póliza."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-23",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-23",
+          "agent": "claude",
+          "note": "Pasó la validación sin cambios"
+        }
+      ]
+    },
+    {
+      "question_id": "B01-Q024",
+      "rule_ids": [
+        "RC-LIFE-006"
+      ],
+      "domain": "Seguro de vida",
+      "subdomain": "Opciones de liquidación",
+      "difficulty": "easy",
+      "format": "direct_rule",
+      "stem": "Un beneficiario de seguro de vida quiere recibir el beneficio por fallecimiento en pagos mensuales iguales durante un número fijo de años. ¿Qué opción de liquidación debe seleccionar el beneficiario?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Opción de ingreso vitalicio"
+        },
+        {
+          "label": "B",
+          "text": "Opción de período fijo (pagos a plazos por un período fijo)"
+        },
+        {
+          "label": "C",
+          "text": "Opción de solo intereses"
+        },
+        {
+          "label": "D",
+          "text": "Opción de suma global"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "La opción de liquidación de período fijo (pagos a plazos por un período fijo) paga cuotas iguales durante un número de años elegido hasta que los fondos y los intereses se agoten. Esto coincide con la solicitud del beneficiario de recibir pagos mensuales iguales durante un tiempo definido.",
+      "wrong_explanations": {
+        "A": "La opción de ingreso vitalicio paga cuotas durante toda la vida del beneficiario, no durante un número determinado de años. La duración de los pagos depende de cuánto viva el beneficiario, no de un período fijo.",
+        "C": "La opción de solo intereses deja el principal con la aseguradora y paga solo los intereses generados. El principal no se distribuye en cuotas bajo esta opción.",
+        "D": "La opción de suma global paga todo el beneficio por fallecimiento de una vez, no como cuotas mensuales durante un período de años."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-23",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-23",
+          "agent": "claude",
+          "note": "Pasó la validación sin cambios"
+        }
+      ]
+    },
+    {
+      "question_id": "B01-Q025",
+      "rule_ids": [
+        "RC-HMO-004",
+        "RC-TXSTAT-001"
+      ],
+      "domain": "Estatutos de Texas",
+      "subdomain": "Regulación de HMO",
+      "difficulty": "hard",
+      "format": "application_scenario",
+      "stem": "Un HMO de Texas debe proporcionar a cada afiliado un documento de evidencia de cobertura. Todo lo siguiente debe incluirse en este documento, EXCEPTO:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Una descripción de los servicios de salud y beneficios cubiertos bajo el plan"
+        },
+        {
+          "label": "B",
+          "text": "Los procedimientos para obtener servicios cubiertos, incluyendo cualquier requisito de referencia o autorización"
+        },
+        {
+          "label": "C",
+          "text": "Una garantía de que la prima mensual del afiliado nunca aumentará durante el período del contrato"
+        },
+        {
+          "label": "D",
+          "text": "Los procedimientos de quejas y apelaciones disponibles para los afiliados"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "La evidencia de cobertura debe describir los servicios cubiertos, los procedimientos para acceder a la atención y los procesos de quejas o apelaciones. Sin embargo, los HMO no están obligados a garantizar que las primas nunca aumentarán. Las primas están sujetas a aprobación regulatoria y pueden cambiar al renovar.",
+      "wrong_explanations": {
+        "A": "Una descripción de los servicios cubiertos es un elemento fundamental requerido en el documento de evidencia de cobertura.",
+        "B": "Los procedimientos para obtener servicios, incluyendo procesos de referencia y autorización, deben divulgarse para que los miembros entiendan cómo acceder a la atención dentro de la estructura del HMO.",
+        "D": "Los procedimientos de quejas y apelaciones son un componente requerido de la evidencia de cobertura, asegurando que los afiliados sepan cómo impugnar decisiones adversas."
+      },
+      "trap_type": "TP004",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-23",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-23",
+          "agent": "claude",
+          "note": "Pasó la validación sin cambios"
+        }
+      ]
+    }
+  ],
+  "validated_date": "2026-03-23",
+  "validation_notes": "Las 25 preguntas fueron validadas. Q002, Q017, Q019 y Q021 fueron corregidas conforme a la revisión legal previa. Consulte validation_report_batch_01.json para más detalles."
+}

@@ -1,0 +1,1300 @@
+{
+  "batch_id": "09",
+  "version": "1.0.0",
+  "generated_date": "2026-03-24",
+  "generated_by": "gemini",
+  "question_count": 25,
+  "difficulty_distribution": {
+    "easy": 5,
+    "medium": 14,
+    "hard": 6
+  },
+  "questions": [
+    {
+      "question_id": "B09-Q001",
+      "rule_ids": [
+        "RC-LIFE-025"
+      ],
+      "domain": "Cláusulas, endosos, opciones y exclusiones de la póliza",
+      "subdomain": "Cláusulas estándar de seguro de vida",
+      "difficulty": "easy",
+      "format": "concept_application",
+      "stem": "Un dueño de negocio cede su póliza de seguro de vida a un banco como garantía para un préstamo comercial. Una vez que el préstamo se paga por completo, la cesión se levanta y el titular de la póliza recupera todos sus derechos. Este tipo de cesión se conoce como:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Cesión absoluta"
+        },
+        {
+          "label": "B",
+          "text": "Cesión colateral"
+        },
+        {
+          "label": "C",
+          "text": "Cesión irrevocable"
+        },
+        {
+          "label": "D",
+          "text": "Cesión viática"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Una cesión colateral es una transferencia temporal de una parte de los derechos de propiedad a un acreedor como garantía de una deuda. Una vez que la deuda se paga, los derechos cedidos regresan al titular de la póliza.",
+      "wrong_explanations": {
+        "A": "La cesión absoluta es la transferencia completa y permanente de todos los derechos de propiedad a otra parte.",
+        "C": "Irrevocable usualmente se aplica a designaciones de beneficiarios, no a la terminología estándar para cesiones temporales por préstamos.",
+        "D": "Una cesión viática implica vender una póliza a un tercero cuando el asegurado tiene una enfermedad terminal, lo cual es una forma de cesión absoluta."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T22:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B09-Q002",
+      "rule_ids": [
+        "RC-LIFE-025"
+      ],
+      "domain": "Cláusulas, endosos, opciones y exclusiones de la póliza",
+      "subdomain": "Beneficiarios",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Una póliza de seguro de vida nombra al hijo de 12 años del asegurado como único beneficiario. El asegurado muere inesperadamente y la aseguradora recibe prueba de que la tía del niño pagó personalmente los gastos funerarios. Antes de que se nombre formalmente a un tutor, ¿qué cláusula permite a la aseguradora pagar esos gastos directamente a la tía en lugar de pagar todos los beneficios al menor?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Cláusula de desastre común"
+        },
+        {
+          "label": "B",
+          "text": "Cláusula de facilidad de pago"
+        },
+        {
+          "label": "C",
+          "text": "Cláusula spendthrift (protección contra acreedores)"
+        },
+        {
+          "label": "D",
+          "text": "Cláusula de incontestabilidad"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "La cláusula de facilidad de pago permite a la aseguradora, a su opción, pagar una parte de los beneficios a un familiar u otra persona que parezca tener derecho equitativo porque incurrió en gastos, como los costos médicos finales o funerarios del asegurado. Esto es especialmente útil cuando el beneficiario nombrado es menor de edad o no está en posición de recibir los beneficios directamente.",
+      "wrong_explanations": {
+        "A": "La cláusula de desastre común aborda el orden de fallecimiento cuando el asegurado y el beneficiario mueren en el mismo evento.",
+        "C": "Una cláusula spendthrift protege los beneficios contra los acreedores del beneficiario; no autoriza el pago a alguien que pagó gastos del asegurado.",
+        "D": "La cláusula de incontestabilidad limita la capacidad de la aseguradora de anular una póliza después de que ha estado vigente por el período requerido."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T22:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt",
+          "note": "Se reemplazó la pregunta con ángulo duplicado sobre cláusula spendthrift por un ángulo nuevo de facilidad de pago."
+        }
+      ]
+    },
+    {
+      "question_id": "B09-Q003",
+      "rule_ids": [
+        "RC-LIFE-007"
+      ],
+      "domain": "Tipos de pólizas",
+      "subdomain": "Vida conjunta y de supervivencia",
+      "difficulty": "medium",
+      "format": "concept_application",
+      "stem": "¿Qué tipo de póliza de seguro de vida asegura dos o más vidas, pero específicamente paga el beneficio por fallecimiento solo al morir el último asegurado sobreviviente, lo que la convierte en una herramienta ideal para financiar impuestos sucesorios?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Vida conjunta (primer fallecimiento)"
+        },
+        {
+          "label": "B",
+          "text": "Vida de supervivencia (segundo fallecimiento)"
+        },
+        {
+          "label": "C",
+          "text": "Póliza de ingreso familiar"
+        },
+        {
+          "label": "D",
+          "text": "Vida universal variable"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "El seguro de vida de supervivencia (también conocido como seguro de vida de segundo fallecimiento) cubre dos vidas, pero no paga el beneficio por fallecimiento hasta que muere el segundo asegurado. Se usa con frecuencia en planificación patrimonial para proporcionar liquidez para pagar impuestos sucesorios que normalmente vencen después de que ambos cónyuges han fallecido.",
+      "wrong_explanations": {
+        "A": "La vida conjunta paga el beneficio por fallecimiento al morir el PRIMER asegurado, no el último.",
+        "C": "Una póliza de ingreso familiar combina vida entera con término decreciente para proporcionar ingreso mensual si muere el sostén económico.",
+        "D": "La vida universal variable es una póliza permanente con subcuentas de inversión, pero típicamente asegura solo una vida salvo que se agregue un endoso específico."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T22:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B09-Q004",
+      "rule_ids": [
+        "RC-UTP-001"
+      ],
+      "domain": "Estatutos del estado de Texas comunes a todas las líneas",
+      "subdomain": "Prácticas comerciales desleales",
+      "difficulty": "hard",
+      "format": "direct_rule",
+      "stem": "Según las leyes de Texas sobre pago oportuno de reclamaciones, una vez que una aseguradora completa su investigación y notifica formalmente por escrito al reclamante que la reclamación será pagada, la aseguradora debe pagar efectivamente la reclamación a más tardar:",
+      "options": [
+        {
+          "label": "A",
+          "text": "El quinto día hábil después de realizada la notificación."
+        },
+        {
+          "label": "B",
+          "text": "El día calendario 15 después de realizada la notificación."
+        },
+        {
+          "label": "C",
+          "text": "El día calendario 30 después de realizada la notificación."
+        },
+        {
+          "label": "D",
+          "text": "El día hábil 60 después de realizada la notificación."
+        }
+      ],
+      "correct_answer": "A",
+      "correct_explanation": "De acuerdo con el Código de Seguros de Texas § 542.057, si una aseguradora notifica a un reclamante que pagará una reclamación o parte de una reclamación, la aseguradora debe pagar la reclamación a más tardar el quinto día hábil después de la fecha en que se realiza la notificación.",
+      "wrong_explanations": {
+        "B": "15 días es el plazo para que la aseguradora acuse recibo inicialmente de la reclamación y solicite los formularios necesarios, no el plazo para emitir el cheque después de la aprobación.",
+        "C": "30 días es el plazo que tiene una aseguradora para aceptar o rechazar una reclamación después de recibir todos los elementos solicitados (o el plazo para reclamaciones limpias electrónicas de HMO).",
+        "D": "60 días generalmente es irrelevante para el pago oportuno de una reclamación limpia y aprobada en Texas."
+      },
+      "trap_type": "TP004-Timeline_Trap",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T22:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B09-Q005",
+      "rule_ids": [
+        "RC-LIC-008"
+      ],
+      "domain": "Estatutos del estado de Texas comunes a todas las líneas",
+      "subdomain": "Requisitos de licencia",
+      "difficulty": "medium",
+      "format": "direct_rule",
+      "stem": "Los agentes de seguros de Texas deben completar educación continua (CE) para renovar sus licencias. ¿Durante cuánto tiempo debe un agente conservar los registros y certificados de finalización de sus cursos de CE después de la fecha de finalización del curso?",
+      "options": [
+        {
+          "label": "A",
+          "text": "1 año"
+        },
+        {
+          "label": "B",
+          "text": "2 años"
+        },
+        {
+          "label": "C",
+          "text": "4 años"
+        },
+        {
+          "label": "D",
+          "text": "Indefinidamente"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "Las regulaciones del Texas Department of Insurance (28 TAC § 19.1011) requieren que los titulares de licencia conserven los registros de finalización de cursos de educación continua por un período de 4 años desde la fecha de finalización.",
+      "wrong_explanations": {
+        "A": "1 año es demasiado corto y no cubre ni siquiera un ciclo completo de renovación de licencia.",
+        "B": "2 años es la duración del período de renovación de la licencia, pero los registros de CE deben conservarse por dos ciclos completos (4 años) para fines de auditoría.",
+        "D": "La ley no exige conservar registros indefinidamente; 4 años es el mandato reglamentario."
+      },
+      "trap_type": "TP004-Timeline_Trap",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T22:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B09-Q006",
+      "rule_ids": [
+        "RC-HLTH-015"
+      ],
+      "domain": "Tipos de pólizas",
+      "subdomain": "Muerte accidental y desmembramiento (AD&D)",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Un asegurado tiene una póliza independiente de muerte accidental y desmembramiento (AD&D) con una suma principal de $100,000. Si el asegurado pierde la vista de un ojo debido a un accidente cubierto, ¿cuánto pagará típicamente la póliza?",
+      "options": [
+        {
+          "label": "A",
+          "text": "$0, porque la vista debe perderse en ambos ojos para activar los beneficios."
+        },
+        {
+          "label": "B",
+          "text": "$50,000, que es la suma capital."
+        },
+        {
+          "label": "C",
+          "text": "$100,000, porque cualquier desmembramiento activa la suma principal completa."
+        },
+        {
+          "label": "D",
+          "text": "$100,000, pero pagados en cuotas mensuales durante un año."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "En una póliza AD&D, la suma principal se paga por muerte accidental o por la pérdida de dos partes principales (por ejemplo, dos extremidades o la vista de ambos ojos). La suma capital, que normalmente es el 50% de la suma principal, se paga por la pérdida accidental de una extremidad o de la vista de un ojo. Por lo tanto, el asegurado recibiría $50,000.",
+      "wrong_explanations": {
+        "A": "La pérdida de la vista de un ojo es un evento de desmembramiento cubierto que activa el beneficio de suma capital.",
+        "C": "La suma principal completa ($100,000) se reserva para muerte o doble desmembramiento (pérdida de dos extremidades/ojos).",
+        "D": "Los beneficios de AD&D normalmente se pagan en suma global, no en cuotas, y el monto por un solo ojo sería $50,000."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T22:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B09-Q007",
+      "domain": "Impuestos, jubilación y otros conceptos de seguros",
+      "rule_ids": [
+        "RC-TAX-001"
+      ],
+      "subdomain": "Planes de salud con ventajas fiscales",
+      "difficulty": "easy",
+      "format": "concept_application",
+      "stem": "¿Cuál de las siguientes cuentas de atención médica con ventajas fiscales es financiada por el empleado mediante deducciones de nómina antes de impuestos, pero generalmente está sujeta a una regla estricta de “úselo o piérdalo” al final del año del plan?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Health Savings Account (HSA)"
+        },
+        {
+          "label": "B",
+          "text": "Flexible Spending Account (FSA)"
+        },
+        {
+          "label": "C",
+          "text": "Health Reimbursement Arrangement (HRA)"
+        },
+        {
+          "label": "D",
+          "text": "Medical Savings Account (MSA)"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Una Flexible Spending Account (FSA) es financiada por el empleado con dólares antes de impuestos para gastos médicos. Sin embargo, las FSA están sujetas a una regla de “úselo o piérdalo”, lo que significa que los fondos no gastados al final del año (o período de gracia) normalmente se pierden y regresan al empleador.",
+      "wrong_explanations": {
+        "A": "Los fondos de una HSA se transfieren de un año a otro indefinidamente y pertenecen permanentemente al empleado.",
+        "C": "Las HRA son financiadas exclusivamente por el empleador, no por el empleado, y el empleador decide si los fondos se transfieren.",
+        "D": "Las MSA fueron las predecesoras de las HSA (diseñadas para pequeñas empresas/trabajadores por cuenta propia) y no tenían una regla estricta de úselo o piérdalo."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T22:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B09-Q008",
+      "rule_ids": [
+        "RC-LIC-001"
+      ],
+      "domain": "Estatutos del estado de Texas comunes a todas las líneas",
+      "subdomain": "Autorización de aseguradoras",
+      "difficulty": "medium",
+      "format": "definition_scenario",
+      "stem": "Una compañía de seguros no tiene un Certificado de Autoridad del Texas Department of Insurance, pero aun así intenta realizar negocios de seguros directamente con consumidores de Texas. En la terminología regulatoria de Texas, esa compañía está actuando como:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Una aseguradora doméstica"
+        },
+        {
+          "label": "B",
+          "text": "Una aseguradora extranjera"
+        },
+        {
+          "label": "C",
+          "text": "Una aseguradora alienígena"
+        },
+        {
+          "label": "D",
+          "text": "Una aseguradora no autorizada"
+        }
+      ],
+      "correct_answer": "D",
+      "correct_explanation": "Una aseguradora que no tiene un Certificado de Autoridad en Texas es una aseguradora no autorizada. Términos como doméstica, extranjera y alienígena describen dónde está organizada una aseguradora, mientras que autorizada versus no autorizada describe si la aseguradora tiene licencia para realizar negocios de seguros en el estado.",
+      "wrong_explanations": {
+        "A": "Doméstica describe a una aseguradora organizada bajo la ley de Texas; no responde si la compañía tiene licencia.",
+        "B": "Extranjera describe a una aseguradora organizada bajo las leyes de otro estado de EE. UU.; una aseguradora extranjera aún puede estar autorizada si tiene un certificado de Texas.",
+        "C": "Alienígena describe a una aseguradora organizada bajo las leyes de otro país; una aseguradora alienígena también puede estar autorizada o no autorizada."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T22:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt",
+          "note": "Se reemplazó el ángulo duplicado de clasificación de aseguradora por un ángulo de aseguradora no autorizada."
+        }
+      ]
+    },
+    {
+      "question_id": "B09-Q009",
+      "rule_ids": [
+        "RC-UTP-005"
+      ],
+      "domain": "Estatutos del estado de Texas comunes a todas las líneas",
+      "subdomain": "Fraude",
+      "difficulty": "hard",
+      "format": "scenario",
+      "stem": "Un agente de seguros sospecha que un titular de póliza cometió un acto fraudulento de seguros al simular un accidente falso. Según el Código de Seguros de Texas, el agente debe reportar este presunto fraude al Texas Department of Insurance (o a una agencia autorizada de aplicación de la ley) a más tardar cuántos días después de que surge la sospecha?",
+      "options": [
+        {
+          "label": "A",
+          "text": "10 días"
+        },
+        {
+          "label": "B",
+          "text": "15 días"
+        },
+        {
+          "label": "C",
+          "text": "30 días"
+        },
+        {
+          "label": "D",
+          "text": "60 días"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "Según el Código de Seguros de Texas § 701.051, una persona que determina o sospecha razonablemente que se ha cometido o está por cometerse un acto fraudulento de seguros debe reportar la información por escrito a la unidad de fraude de seguros del TDI o a una agencia autorizada de aplicación de la ley a más tardar el día 30 después de hacer la determinación.",
+      "wrong_explanations": {
+        "A": "10 días es el período estándar de free look, no el plazo para reportar fraude.",
+        "B": "15 días es el requisito de pago oportuno para acusar recibo de una reclamación.",
+        "D": "60 días excede el mandato legal para reportar sospecha de fraude de seguros."
+      },
+      "trap_type": "TP004-Timeline_Trap",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T22:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B09-Q010",
+      "rule_ids": [
+        "RC-LIFE-025"
+      ],
+      "domain": "Cláusulas, endosos, opciones y exclusiones de la póliza",
+      "subdomain": "Opciones de liquidación",
+      "difficulty": "medium",
+      "format": "concept_application",
+      "stem": "Un beneficiario elige la opción de liquidación solo con intereses bajo una póliza de seguro de vida. ¿Cuál de las siguientes opciones describe mejor cómo se manejan los beneficios por fallecimiento bajo esta opción?",
+      "options": [
+        {
+          "label": "A",
+          "text": "La aseguradora paga solo los intereses generados sobre los beneficios en intervalos establecidos, mientras conserva el principal hasta una fecha posterior."
+        },
+        {
+          "label": "B",
+          "text": "La aseguradora paga inmediatamente el beneficio por fallecimiento completo en una suma global y envía cheques adicionales de intereses cada año."
+        },
+        {
+          "label": "C",
+          "text": "La aseguradora paga una cantidad garantizada de principal más intereses cada mes hasta que se agote el fondo."
+        },
+        {
+          "label": "D",
+          "text": "La aseguradora convierte los beneficios en una anualidad vitalicia que continúa solo durante la vida del beneficiario."
+        }
+      ],
+      "correct_answer": "A",
+      "correct_explanation": "Bajo la opción de liquidación solo con intereses, la aseguradora conserva el principal de los beneficios por fallecimiento y paga al beneficiario solo los intereses generados sobre esos fondos en intervalos establecidos. El principal permanece con la aseguradora hasta que se retire posteriormente o se pague bajo otro arreglo.",
+      "wrong_explanations": {
+        "B": "Un pago en suma global termina el arreglo de liquidación; no quedaría principal con la aseguradora para generar pagos continuos solo de intereses.",
+        "C": "Esto describe una opción de liquidación de cantidad fija, no solo intereses.",
+        "D": "Esto describe una opción de liquidación de ingreso vitalicio, no solo intereses."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T22:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt",
+          "note": "Se reemplazó el ángulo duplicado de APL por un ángulo nuevo de liquidación solo con intereses."
+        }
+      ]
+    },
+    {
+      "question_id": "B09-Q011",
+      "rule_ids": [
+        "RC-HMO-001"
+      ],
+      "domain": "Tipos de pólizas",
+      "subdomain": "Organización de proveedores exclusivos (EPO)",
+      "difficulty": "easy",
+      "format": "concept_application",
+      "stem": "¿Qué afirmación describe mejor cómo un plan de Organización de Proveedores Exclusivos (EPO) típicamente maneja la atención médica no de emergencia obtenida fuera de la red de proveedores del plan?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Generalmente no proporciona beneficio para atención no de emergencia fuera de la red."
+        },
+        {
+          "label": "B",
+          "text": "Paga beneficios reducidos fuera de la red después de cumplir un deducible más alto."
+        },
+        {
+          "label": "C",
+          "text": "Permite elegir cualquier proveedor siempre que el miembro obtenga primero una referencia."
+        },
+        {
+          "label": "D",
+          "text": "Paga todas las reclamaciones no de emergencia fuera de la red a la tarifa dentro de la red."
+        }
+      ],
+      "correct_answer": "A",
+      "correct_explanation": "Una EPO generalmente exige que los miembros usen los proveedores de la red del plan para atención no de emergencia. A diferencia de un PPO o POS, una EPO típicamente no ofrece beneficios reducidos para servicios rutinarios fuera de la red; si la atención no es de emergencia y está fuera de la red, usualmente no hay cobertura.",
+      "wrong_explanations": {
+        "B": "Los beneficios reducidos fuera de la red son característicos de los planes PPO y POS, no de una estructura típica de EPO.",
+        "C": "Las referencias están más asociadas con modelos tipo HMO con gatekeeper y no crean cobertura fuera de la red en una EPO estándar.",
+        "D": "Una EPO generalmente no paga atención rutinaria fuera de la red a la tarifa dentro de la red."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T22:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt",
+          "note": "Se reemplazó el ángulo duplicado de POS por un ángulo nuevo de EPO."
+        }
+      ]
+    },
+    {
+      "question_id": "B09-Q012",
+      "rule_ids": [
+        "RC-COMM-001"
+      ],
+      "domain": "Estatutos del estado de Texas comunes a todas las líneas",
+      "subdomain": "Comisionado de Seguros",
+      "difficulty": "medium",
+      "format": "direct_rule",
+      "stem": "El principal funcionario ejecutivo y administrativo del Texas Department of Insurance es el Comisionado de Seguros. ¿Cómo obtiene el Comisionado este cargo y por cuánto tiempo es el período?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Elegido por los votantes de Texas por un período de 4 años."
+        },
+        {
+          "label": "B",
+          "text": "Nombrado por el Gobernador de Texas por un período de 2 años."
+        },
+        {
+          "label": "C",
+          "text": "Nombrado por la legislatura estatal por un período de 4 años."
+        },
+        {
+          "label": "D",
+          "text": "Contratado por la National Association of Insurance Commissioners (NAIC) por un período indefinido."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Según el Código de Seguros de Texas § 31.022, el Comisionado de Seguros es nombrado por el Gobernador (con el consejo y consentimiento del senado) y sirve un período de 2 años que termina el 1 de febrero de cada año impar.",
+      "wrong_explanations": {
+        "A": "El Comisionado es nombrado, no elegido por el público.",
+        "C": "El nombramiento lo hace el Gobernador, no la legislatura, y el período es de 2 años, no de 4.",
+        "D": "La NAIC es un organismo asesor y de establecimiento de estándares; no contrata reguladores estatales."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T22:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B09-Q013",
+      "rule_ids": [
+        "RC-LIFE-025"
+      ],
+      "domain": "Cláusulas, endosos, opciones y exclusiones de la póliza",
+      "subdomain": "Beneficiarios",
+      "difficulty": "hard",
+      "format": "scenario",
+      "stem": "Un viudo nombra a sus tres hijos adultos como beneficiarios de su póliza de seguro de vida “por estirpes” (per stirpes). Un hijo muere antes que el asegurado, dejando dos hijos propios. Cuando el asegurado muere posteriormente, ¿cómo se distribuirá ordinariamente el beneficio por fallecimiento bajo una designación per stirpes?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Los dos hijos sobrevivientes dividen todo el beneficio por fallecimiento en partes iguales, y los descendientes del hijo fallecido no reciben nada."
+        },
+        {
+          "label": "B",
+          "text": "El beneficio por fallecimiento se paga completamente al patrimonio del hijo que murió primero."
+        },
+        {
+          "label": "C",
+          "text": "Cada hijo sobreviviente recibe un tercio, y el tercio del hijo fallecido pasa en partes iguales a los descendientes de ese hijo."
+        },
+        {
+          "label": "D",
+          "text": "Todos los cuatro nietos e hijos comparten los beneficios en partes iguales per cápita."
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "Una designación per stirpes significa que cada rama de la familia recibe la parte que habría recibido el beneficiario fallecido. Aquí, cada uno de los tres hijos del asegurado representa una rama. Los dos hijos vivos reciben un tercio cada uno, y el tercio del hijo fallecido pasa a los descendientes de ese hijo en partes iguales.",
+      "wrong_explanations": {
+        "A": "Ese resultado sería más consistente con no tener tratamiento contingente para la línea del beneficiario fallecido, no con una designación per stirpes.",
+        "B": "Una designación per stirpes pasa la parte hacia abajo por la línea del beneficiario fallecido en lugar de pagarla por defecto al patrimonio del beneficiario fallecido.",
+        "D": "Compartir en partes iguales entre todos los descendientes sin importar la rama sería un concepto per cápita, no per stirpes."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T22:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt",
+          "note": "Se reemplazó el ángulo duplicado de desastre común por un ángulo nuevo de beneficiario per stirpes."
+        }
+      ]
+    },
+    {
+      "question_id": "B09-Q014",
+      "rule_ids": [
+        "RC-UW-001"
+      ],
+      "domain": "Completar la solicitud, suscripción y entrega de la póliza",
+      "subdomain": "Procedimientos de solicitud",
+      "difficulty": "medium",
+      "format": "definition_scenario",
+      "stem": "Una esposa solicita una póliza de seguro de vida sobre la vida de su esposo. Ella pagará las primas y conservará todos los derechos de propiedad. Este arreglo, donde el solicitante/titular y el asegurado son dos personas distintas, se conoce como:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Un acuerdo viático"
+        },
+        {
+          "label": "B",
+          "text": "Propiedad de terceros"
+        },
+        {
+          "label": "C",
+          "text": "Una cesión colateral"
+        },
+        {
+          "label": "D",
+          "text": "Interés fiduciario"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "La propiedad de terceros ocurre cuando una póliza de seguro de vida es propiedad de alguien distinto al asegurado (por ejemplo, un cónyuge que posee una póliza sobre su pareja, o una empresa que posee una póliza sobre un ejecutivo clave). El titular tercero debe tener interés asegurable en el asegurado al momento de la solicitud.",
+      "wrong_explanations": {
+        "A": "Un acuerdo viático es la venta de una póliza existente por parte de un asegurado terminalmente enfermo a un tercero.",
+        "C": "La cesión colateral es usar una póliza como garantía para un préstamo.",
+        "D": "El interés fiduciario se refiere a la responsabilidad de confianza financiera de un agente que maneja dinero, no a la estructura de propiedad de una póliza."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T22:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B09-Q015",
+      "rule_ids": [
+        "RC-MED-001"
+      ],
+      "domain": "Tipos de pólizas",
+      "subdomain": "Medicare Parte A",
+      "difficulty": "hard",
+      "format": "direct_rule",
+      "stem": "Bajo Medicare Original Parte A, ¿cuántos días de atención en un centro de enfermería especializada (Skilled Nursing Facility, SNF) están cubiertos completamente (sin copago del paciente) por período de beneficio, después de una hospitalización que califique?",
+      "options": [
+        {
+          "label": "A",
+          "text": "0 días (hay copago desde el día 1)"
+        },
+        {
+          "label": "B",
+          "text": "20 días"
+        },
+        {
+          "label": "C",
+          "text": "60 días"
+        },
+        {
+          "label": "D",
+          "text": "100 días"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Medicare Parte A cubre hasta 100 días de atención en un centro de enfermería especializada (SNF) por período de beneficio. Sin embargo, solo los primeros 20 días están cubiertos por completo (100% pagados por Medicare). Los días 21 al 100 requieren un copago diario sustancial del paciente.",
+      "wrong_explanations": {
+        "A": "Medicare paga el 100% del costo durante los primeros 20 días; inicialmente no hay copago.",
+        "C": "60 días se refiere a la duración completamente cubierta para hospitalizaciones de paciente interno bajo Parte A, no a atención en SNF.",
+        "D": "100 días es la duración máxima de cobertura en SNF por período de beneficio, pero solo los primeros 20 se pagan completamente sin copago."
+      },
+      "trap_type": "TP006-Math_Distractor",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T22:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B09-Q016",
+      "rule_ids": [
+        "RC-TAX-002"
+      ],
+      "domain": "Impuestos, jubilación y otros conceptos de seguros",
+      "subdomain": "Tributación de anualidades",
+      "difficulty": "medium",
+      "format": "concept_application",
+      "stem": "Una persona compra una anualidad diferida no calificada con $50,000 de ahorros después de impuestos. Años después, la cuenta ha crecido a $75,000. Antes de la fecha de inicio de la anualidad, el titular retira $10,000 para pagar reparaciones en su casa. ¿Cómo se trata este retiro de $10,000 para efectos fiscales?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Es completamente libre de impuestos porque se considera una devolución de principal (FIFO)."
+        },
+        {
+          "label": "B",
+          "text": "Es totalmente gravable como ingreso ordinario porque los retiros se tratan como Last-In, First-Out (LIFO)."
+        },
+        {
+          "label": "C",
+          "text": "Se grava proporcionalmente según la razón de exclusión."
+        },
+        {
+          "label": "D",
+          "text": "Se grava a la tasa más baja de ganancias de capital a largo plazo."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Para anualidades no calificadas, los retiros parciales realizados antes de la fase de anualización (durante el período de acumulación) se gravan bajo Last-In, First-Out (LIFO). Esto significa que el IRS considera que todos los fondos retirados provienen primero de los intereses/ganancias gravables. Como la cuenta tiene $25,000 de ganancia, el retiro completo de $10,000 es gravable como ingreso ordinario.",
+      "wrong_explanations": {
+        "A": "La tributación FIFO (principal primero) aplica a retiros de seguros de vida estándar, pero las anualidades usan LIFO.",
+        "C": "La razón de exclusión solo aplica a pagos fijos de anualización (flujo de ingreso mensual), no a retiros aleatorios en suma global durante la fase de acumulación.",
+        "D": "Las ganancias de anualidades siempre se gravan como ingreso ordinario, nunca como ganancias de capital."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T22:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B09-Q017",
+      "rule_ids": [
+        "RC-LIC-001"
+      ],
+      "domain": "Estatutos del estado de Texas comunes a todas las líneas",
+      "subdomain": "Autorización de aseguradoras",
+      "difficulty": "easy",
+      "format": "direct_rule",
+      "stem": "Antes de que una compañía de seguros pueda realizar legalmente negocios de seguros en Texas, primero debe obtener cuál de los siguientes documentos del Comisionado de Seguros?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Un Certificado de Autoridad"
+        },
+        {
+          "label": "B",
+          "text": "Una carta de buena reputación"
+        },
+        {
+          "label": "C",
+          "text": "Un binder de cobertura"
+        },
+        {
+          "label": "D",
+          "text": "Un nombramiento de agente"
+        }
+      ],
+      "correct_answer": "A",
+      "correct_explanation": "Una aseguradora debe recibir un Certificado de Autoridad del Texas Department of Insurance para realizar legalmente negocios de seguros en el estado. Una aseguradora con este certificado se conoce como compañía “autorizada” o “admitida”.",
+      "wrong_explanations": {
+        "B": "Una carta de buena reputación es un término comercial genérico, no la licencia regulatoria específica requerida para aseguradoras.",
+        "C": "Un binder es un contrato temporal de seguro emitido por un agente a un asegurado, no una licencia para operar.",
+        "D": "Un nombramiento es el documento que autoriza a un agente individual a vender para una compañía específica."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T22:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B09-Q018",
+      "rule_ids": [
+        "RC-UTP-001"
+      ],
+      "domain": "Estatutos del estado de Texas comunes a todas las líneas",
+      "subdomain": "Prácticas comerciales desleales",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Varias compañías de seguros en Texas se confabulan y se niegan a emitir cobertura de responsabilidad civil general para una empresa local de construcción específica, con la intención de sacarla del negocio. Según las leyes de Texas sobre prácticas comerciales desleales, esta acción colectiva es un ejemplo ilegal de:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Reembolso ilegal (rebating)"
+        },
+        {
+          "label": "B",
+          "text": "Difamación"
+        },
+        {
+          "label": "C",
+          "text": "Boicot, coerción o intimidación"
+        },
+        {
+          "label": "D",
+          "text": "Twisting"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "Celebrar un acuerdo para cometer un acto de boicot, coerción o intimidación que resulte en una restricción irrazonable o monopolio en el negocio de seguros está estrictamente prohibido como práctica comercial desleal.",
+      "wrong_explanations": {
+        "A": "Rebating es ofrecer algo de valor que no está en el contrato para inducir una venta.",
+        "B": "La difamación implica publicar declaraciones falsas sobre la condición financiera de una aseguradora.",
+        "D": "Twisting es hacer declaraciones falsas para inducir a un titular de póliza a dejar vencer una póliza y comprar una nueva."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T22:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B09-Q019",
+      "rule_ids": [
+        "RC-LIC-009"
+      ],
+      "domain": "Estatutos del estado de Texas comunes a todas las líneas",
+      "subdomain": "Agent Responsibilities and Maintenance",
+      "difficulty": "hard",
+      "format": "direct_rule",
+      "stem": "Si una compañía de seguros termina el nombramiento de un agente por causa justificada (por ejemplo, al descubrir que el agente participó en actividades fraudulentas), la aseguradora debe notificar formalmente al Texas Department of Insurance dentro de cuántos días de la terminación?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Inmediatamente"
+        },
+        {
+          "label": "B",
+          "text": "15 días"
+        },
+        {
+          "label": "C",
+          "text": "30 días"
+        },
+        {
+          "label": "D",
+          "text": "90 días"
+        }
+      ],
+      "correct_answer": "A",
+      "correct_explanation": "Según el Código de Seguros de Texas § 4001.206, cuando un nombramiento se termina por causa justificada, la aseguradora o el agente debe presentar inmediatamente ante el departamento una declaración de los hechos relacionados con la terminación y la fecha y causa de la terminación.",
+      "wrong_explanations": {
+        "A": "Este es el estándar legal para terminaciones por causa justificada.",
+        "B": "15 días es el plazo para el acuse de recibo oportuno de reclamaciones, no para avisos de terminación de nombramientos.",
+        "D": "90 días es demasiado tiempo y viola el límite legal de 30 días.",
+        "C": "Treinta días es el plazo de reporte para ciertos avisos de nombramiento y nombramientos adicionales, pero las terminaciones por causa deben presentarse inmediatamente."
+      },
+      "trap_type": "TP004-Timeline_Trap",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T22:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt",
+          "note": "Se corrigió el plazo de presentación en Texas para terminación por causa, de 30 días a inmediato bajo §4001.206."
+        }
+      ]
+    },
+    {
+      "question_id": "B09-Q020",
+      "rule_ids": [
+        "RC-LIFE-025"
+      ],
+      "domain": "Cláusulas, endosos, opciones y exclusiones de la póliza",
+      "subdomain": "Opciones de dividendos",
+      "difficulty": "medium",
+      "format": "concept_application",
+      "stem": "El titular de una póliza de vida entera participante selecciona la opción de dividendos de “Acumular con interés”. ¿Cuál de las siguientes describe el tratamiento fiscal correcto de esta opción?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Tanto el dividendo como los intereses generados están libres de impuestos."
+        },
+        {
+          "label": "B",
+          "text": "Tanto el dividendo como los intereses generados son gravables como ingreso ordinario."
+        },
+        {
+          "label": "C",
+          "text": "El dividendo está libre de impuestos, pero los intereses generados son gravables como ingreso ordinario en el año en que se acreditan."
+        },
+        {
+          "label": "D",
+          "text": "Los intereses están libres de impuestos, pero el dividendo en sí es gravable como ganancia de capital."
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "Los dividendos de una póliza se consideran una devolución de prima cobrada en exceso y, por lo tanto, generalmente están libres de impuesto sobre la renta. Sin embargo, si los dividendos se dejan con la aseguradora para “acumular con interés”, los intereses generados sobre esos dividendos se consideran crecimiento de inversión y son gravables como ingreso ordinario en el año en que se acreditan.",
+      "wrong_explanations": {
+        "A": "La porción de intereses está sujeta a impuestos.",
+        "B": "El dividendo base en sí no es gravable.",
+        "D": "Los dividendos están libres de impuestos, y los intereses son ingreso ordinario (no ganancias de capital)."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T22:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B09-Q021",
+      "rule_ids": [
+        "RC-HLTH-012"
+      ],
+      "domain": "Cláusulas, endosos, opciones y exclusiones de la póliza",
+      "subdomain": "Standard Health Provisions",
+      "difficulty": "easy",
+      "format": "direct_rule",
+      "stem": "En una nueva póliza individual de ingresos por discapacidad, el “período probatorio” es un período único inmediatamente posterior a la fecha de vigencia de la póliza. Durante este período específico, ¿cuál de las siguientes afirmaciones es verdadera?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Se pagan beneficios por lesiones accidentales, pero no por enfermedad."
+        },
+        {
+          "label": "B",
+          "text": "Se pagan beneficios por enfermedad, pero no por lesiones accidentales."
+        },
+        {
+          "label": "C",
+          "text": "No se pagan beneficios ni por enfermedad ni por lesiones accidentales."
+        },
+        {
+          "label": "D",
+          "text": "El titular de la póliza puede devolver la póliza para recibir un reembolso completo de la prima."
+        }
+      ],
+      "correct_answer": "A",
+      "correct_explanation": "El período probatorio (normalmente de 15 a 30 días después de la emisión de la póliza) está diseñado para proteger a la aseguradora contra la selección adversa. Durante este tiempo, las discapacidades causadas por enfermedad no están cubiertas. Sin embargo, la cobertura por lesiones accidentales comienza inmediatamente en la fecha de vigencia de la póliza.",
+      "wrong_explanations": {
+        "B": "Esto está al revés; la enfermedad se excluye, los accidentes están cubiertos.",
+        "C": "Los accidentes están cubiertos inmediatamente porque no pueden anticiparse (a diferencia de una enfermedad que alguien podría sentir venir).",
+        "D": "El derecho a devolver la póliza para un reembolso es el período free look, no el período probatorio."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T22:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B09-Q022",
+      "rule_ids": [
+        "RC-BUS-001"
+      ],
+      "domain": "Impuestos, jubilación y otros conceptos de seguros",
+      "subdomain": "Usos empresariales del seguro",
+      "difficulty": "medium",
+      "format": "concept_application",
+      "stem": "Una compañía de software compra una póliza de seguro de vida de Persona Clave sobre su desarrollador principal. La compañía es la titular, pagadora de primas y beneficiaria. ¿Cómo se tratan las primas y el beneficio por fallecimiento para efectos fiscales?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Las primas son deducibles de impuestos para la compañía; el beneficio por fallecimiento es gravable."
+        },
+        {
+          "label": "B",
+          "text": "Las primas no son deducibles de impuestos para la compañía; el beneficio por fallecimiento se recibe libre de impuestos."
+        },
+        {
+          "label": "C",
+          "text": "Las primas son deducibles de impuestos para la compañía; el beneficio por fallecimiento se recibe libre de impuestos."
+        },
+        {
+          "label": "D",
+          "text": "Las primas se consideran ingreso gravable para el desarrollador; el beneficio por fallecimiento está libre de impuestos para la compañía."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "En un seguro de vida de Persona Clave, la empresa no puede deducir los pagos de prima como gasto comercial. Como las primas se pagan con dólares después de impuestos, el beneficio por fallecimiento resultante se paga a la empresa completamente libre de impuesto sobre la renta.",
+      "wrong_explanations": {
+        "A": "Si las primas fueran deducibles, el beneficio por fallecimiento sería gravable. El IRS no permite tanto una deducción como una recepción libre de impuestos.",
+        "C": "La empresa no puede deducir las primas.",
+        "D": "El desarrollador no es dueño de la póliza y no recibe beneficio directo, por lo que las primas no son ingreso gravable para el desarrollador (a diferencia de un plan Executive Bonus)."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T22:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B09-Q023",
+      "rule_ids": [
+        "RC-HMO-001"
+      ],
+      "domain": "Estatutos del estado de Texas relacionados con vida, salud y HMO",
+      "subdomain": "Regulaciones de HMO en Texas",
+      "difficulty": "medium",
+      "format": "direct_rule",
+      "stem": "Antes de que una Health Maintenance Organization (HMO) pueda recibir un Certificado de Autoridad para operar en Texas, debe demostrar al Comisionado que tiene:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Una red de proveedores participantes capaz de proporcionar servicios integrales de atención médica a los afiliados."
+        },
+        {
+          "label": "B",
+          "text": "Un mínimo de 100,000 suscriptores preinscritos."
+        },
+        {
+          "label": "C",
+          "text": "Eliminado todos los requisitos de médico de atención primaria como gatekeeper."
+        },
+        {
+          "label": "D",
+          "text": "Aceptado pagar todas las reclamaciones estrictamente bajo una base de pago por servicio."
+        }
+      ],
+      "correct_answer": "A",
+      "correct_explanation": "Para obtener un Certificado de Autoridad en Texas, una HMO debe probar que es operacionalmente viable. Esto incluye demostrar que ha establecido una red suficiente de médicos e instalaciones (una red de proveedores) capaz de entregar servicios básicos e integrales de atención médica a sus posibles afiliados.",
+      "wrong_explanations": {
+        "B": "No existe un requisito legal de tener 100,000 suscriptores preinscritos antes de la autorización.",
+        "C": "Las HMO dependen fundamentalmente de médicos de atención primaria como gatekeepers; eliminarlos es una característica de PPO, no un requisito para una licencia de HMO.",
+        "D": "Las HMO típicamente usan capitación (una tarifa fija por miembro por mes) en lugar de pago por servicio para compensar a médicos de atención primaria."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T22:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B09-Q024",
+      "rule_ids": [
+        "RC-GRP-002"
+      ],
+      "domain": "Estatutos del estado de Texas relacionados con vida, salud y HMO",
+      "subdomain": "Cláusulas de pólizas de salud de Texas",
+      "difficulty": "hard",
+      "format": "scenario",
+      "stem": "Un empleado trabaja para una compañía de Texas con 500 empleados. El empleado es sorprendido robando fondos de la compañía y es despedido por “mala conducta grave” (gross misconduct). Con respecto al seguro de salud grupal del empleado, ¿cómo afecta esta razón específica de terminación sus derechos bajo COBRA federal?",
+      "options": [
+        {
+          "label": "A",
+          "text": "El empleado todavía tiene derecho a 18 meses de continuación bajo COBRA."
+        },
+        {
+          "label": "B",
+          "text": "Los derechos de COBRA del empleado se pierden por completo debido a la mala conducta grave."
+        },
+        {
+          "label": "C",
+          "text": "El período de continuación de COBRA del empleado se reduce de 18 meses a 9 meses."
+        },
+        {
+          "label": "D",
+          "text": "El empleado debe pagar el 150% de la prima en lugar del 102% estándar."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Bajo las regulaciones federales de COBRA, la terminación del empleo es un evento calificativo estándar que activa 18 meses de cobertura de continuación. Sin embargo, la única excepción explícita es la terminación por “mala conducta grave” (gross misconduct). Si un empleado es despedido por gross misconduct, el empleador está legalmente autorizado a negar por completo los derechos de continuación bajo COBRA.",
+      "wrong_explanations": {
+        "A": "La mala conducta grave elimina el derecho a la continuación estándar bajo COBRA.",
+        "C": "COBRA no se reduce a 9 meses; se niega por completo. (9 meses es el límite estándar de continuación estatal de Texas).",
+        "D": "El máximo de prima es 102% (o 150% durante una extensión por discapacidad), pero en un caso de mala conducta grave, la cobertura no se ofrece en absoluto."
+      },
+      "trap_type": "TP001-Absolute_Terms",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T22:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B09-Q025",
+      "rule_ids": [
+        "RC-LIFE-030"
+      ],
+      "domain": "Tipos de pólizas",
+      "subdomain": "Acuerdos viáticos",
+      "difficulty": "medium",
+      "format": "definition_scenario",
+      "stem": "Un asegurado es diagnosticado con una enfermedad terminal y tiene una expectativa de vida de menos de dos años. Al necesitar fondos para atención médica, el asegurado vende su póliza de seguro de vida a una compañía tercera por el 70% de su valor nominal. El tercero se convierte en el nuevo titular y beneficiario. Esta transacción se llama:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Life Settlement"
+        },
+        {
+          "label": "B",
+          "text": "Acuerdo viático"
+        },
+        {
+          "label": "C",
+          "text": "Beneficio por fallecimiento acelerado"
+        },
+        {
+          "label": "D",
+          "text": "Intercambio 1035"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Un acuerdo viático implica que un asegurado con enfermedad terminal (viator) vende su póliza de seguro de vida existente a un tercero (proveedor de acuerdos viáticos) por una suma global inmediata menor que el beneficio por fallecimiento. El proveedor asume el pago de primas y cobra el beneficio por fallecimiento completo cuando el asegurado muere.",
+      "wrong_explanations": {
+        "A": "Un Life Settlement es similar, pero involucra a un asegurado que generalmente está sano (usualmente una persona mayor) que simplemente ya no quiere o necesita la póliza.",
+        "C": "Un beneficio por fallecimiento acelerado es un endoso que permite al asegurado acceder a una parte de su propio beneficio por fallecimiento directamente de la compañía de seguros, sin vender la póliza a un tercero.",
+        "D": "Un intercambio 1035 es una transferencia libre de impuestos de fondos de un contrato de seguro/anualidad a otro, no una venta."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T22:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    }
+  ],
+  "validation_summary": {
+    "verdict": "APPROVED_WITH_CORRECTIONS",
+    "notes": "Cinco elementos con ángulos duplicados fueron reemplazados por ángulos nuevos y respaldados, y se conservó la corrección legal previa de B09-Q019."
+  }
+}

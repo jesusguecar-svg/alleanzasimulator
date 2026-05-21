@@ -1,0 +1,1294 @@
+{
+  "batch_id": "07",
+  "version": "1.0.0",
+  "generated_date": "2026-03-24",
+  "generated_by": "gemini",
+  "question_count": 25,
+  "difficulty_distribution": {
+    "easy": 5,
+    "medium": 14,
+    "hard": 6
+  },
+  "questions": [
+    {
+      "question_id": "B07-Q001",
+      "rule_ids": [
+        "RC-HLTH-008"
+      ],
+      "domain": "Cláusulas, disposiciones, opciones y exclusiones de pólizas",
+      "subdomain": "Disposiciones estándar de salud",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Un asegurado presenta una solicitud de reinstalación y la prima vencida de una póliza individual de seguro de salud caducada. La aseguradora emite un recibo condicional, pero nunca notifica formalmente al asegurado por escrito si la solicitud fue aprobada o denegada. Bajo las disposiciones estándar de las pólizas de salud, ¿cuándo se reinstala automáticamente la póliza?",
+      "options": [
+        {
+          "label": "A",
+          "text": "El día 15 después de la fecha del recibo condicional"
+        },
+        {
+          "label": "B",
+          "text": "El día 30 después de la fecha del recibo condicional"
+        },
+        {
+          "label": "C",
+          "text": "El día 45 después de la fecha del recibo condicional"
+        },
+        {
+          "label": "D",
+          "text": "La póliza no puede reinstalarse sin aprobación formal por escrito de la aseguradora"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "Bajo la disposición obligatoria de Reinstalación en el seguro individual de salud, si la aseguradora exige una solicitud de reinstalación y emite un recibo condicional, la póliza se reinstala automáticamente el día 45 siguiente a la fecha del recibo, salvo que la aseguradora notifique al asegurado por escrito la denegación antes de esa fecha.",
+      "wrong_explanations": {
+        "A": "15 días es demasiado corto y no corresponde con la disposición uniforme de reinstalación.",
+        "B": "30 días es un plazo común en seguros (por ejemplo, períodos de gracia), pero la disposición de reinstalación automática es específicamente de 45 días.",
+        "D": "La disposición uniforme está diseñada para proteger al asegurado de demoras irrazonables de la aseguradora al imponer la reinstalación automática si no se emite una denegación dentro de 45 días."
+      },
+      "trap_type": "TP004-Timeline_Trap",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T18:30:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B07-Q002",
+      "rule_ids": [
+        "RC-BUS-001"
+      ],
+      "domain": "Impuestos, jubilación y otros conceptos de seguros",
+      "subdomain": "Usos comerciales del seguro",
+      "difficulty": "medium",
+      "format": "concept_application",
+      "stem": "Una corporación establece un plan de Executive Bonus para recompensar a su vicepresidente. La corporación compra una póliza de seguro de vida entera en la que el vicepresidente es el titular de la póliza y el asegurado, y la corporación paga las primas. ¿Cómo se tratan estos pagos de prima para efectos fiscales?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Son deducibles de impuestos para la corporación y libres de impuestos para el vicepresidente."
+        },
+        {
+          "label": "B",
+          "text": "Son deducibles de impuestos para la corporación y tributables como ingreso ordinario para el vicepresidente."
+        },
+        {
+          "label": "C",
+          "text": "No son deducibles de impuestos para la corporación, pero son libres de impuestos para el vicepresidente."
+        },
+        {
+          "label": "D",
+          "text": "No son deducibles de impuestos para la corporación, pero el beneficio por muerte es tributable para los herederos del vicepresidente."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "En un plan de Executive Bonus, la empresa paga la prima de una póliza de seguro de vida propiedad del ejecutivo. El IRS trata estos pagos de prima como compensación adicional para el ejecutivo. Por lo tanto, la corporación puede deducir las primas como gasto comercial, y el ejecutivo debe declarar los montos de la prima como ingreso ordinario tributable.",
+      "wrong_explanations": {
+        "A": "Las primas se consideran salario/compensación adicional, por lo que el ejecutivo no puede recibirlas libres de impuestos.",
+        "C": "La corporación puede deducir las primas porque se clasifican como compensación del empleado.",
+        "D": "Las primas son deducibles de impuestos para la empresa, y el beneficio por muerte resultante pagado a los beneficiarios del ejecutivo generalmente será libre de impuesto sobre la renta."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T18:30:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B07-Q003",
+      "rule_ids": [
+        "RC-LIFE-020"
+      ],
+      "domain": "Cláusulas, disposiciones, opciones y exclusiones de pólizas",
+      "subdomain": "Disposiciones estándar de vida",
+      "difficulty": "hard",
+      "format": "scenario",
+      "stem": "Cinco años después de emitir una póliza de seguro de vida entera, la aseguradora descubre durante la investigación de una reclamación por muerte que el asegurado declaró una edad 10 años menor en la solicitud para obtener una prima más baja. Aunque el período de incontestabilidad de 2 años ya venció hace mucho tiempo, ¿cómo manejará la aseguradora la reclamación?",
+      "options": [
+        {
+          "label": "A",
+          "text": "La aseguradora denegará la reclamación por completo porque la declaración incorrecta de edad constituye fraude intencional."
+        },
+        {
+          "label": "B",
+          "text": "La aseguradora debe pagar el monto nominal original completo porque el período de incontestabilidad ya pasó."
+        },
+        {
+          "label": "C",
+          "text": "La aseguradora pagará un beneficio por muerte reducido igual al monto que la prima realmente pagada habría comprado a la edad correcta."
+        },
+        {
+          "label": "D",
+          "text": "La aseguradora reembolsará las primas pagadas más intereses, pero denegará el beneficio por muerte."
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "La disposición de Declaración Incorrecta de Edad o Sexo opera independientemente de la cláusula de incontestabilidad. Si se descubre una declaración incorrecta de edad o sexo en cualquier momento, incluso décadas después de emitida la póliza, la aseguradora ajusta el beneficio por muerte al monto que la prima pagada habría comprado a la edad correcta. La póliza no se anula.",
+      "wrong_explanations": {
+        "A": "La declaración incorrecta de edad no anula la póliza; solo activa un ajuste equitativo de los beneficios.",
+        "B": "La cláusula de incontestabilidad expresamente no aplica a declaraciones incorrectas de edad o sexo. La aseguradora siempre puede ajustar el beneficio por discrepancias de edad.",
+        "D": "La aseguradora está obligada a pagar el beneficio por muerte ajustado, no simplemente a reembolsar las primas."
+      },
+      "trap_type": "TP008-Fraud_Exception_Misdirection",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T18:30:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B07-Q004",
+      "rule_ids": [
+        "RC-TAX-001"
+      ],
+      "domain": "Impuestos, jubilación y otros conceptos de seguros",
+      "subdomain": "Tributación del seguro de vida",
+      "difficulty": "medium",
+      "format": "direct_rule",
+      "stem": "Bajo la Sección 1035 del Código de Rentas Internas, ¿cuál de los siguientes intercambios de pólizas está estrictamente prohibido de recibir tratamiento libre de impuestos?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Intercambiar una póliza permanente de seguro de vida por una anualidad diferida."
+        },
+        {
+          "label": "B",
+          "text": "Intercambiar una anualidad diferida por una nueva póliza permanente de seguro de vida."
+        },
+        {
+          "label": "C",
+          "text": "Intercambiar una anualidad diferida por otra anualidad diferida."
+        },
+        {
+          "label": "D",
+          "text": "Intercambiar una póliza permanente de seguro de vida por una póliza dotal (endowment)."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "La Sección 1035 permite intercambios libres de impuestos para evitar que los titulares de pólizas sean gravados cuando simplemente actualizan o cambian contratos. Sin embargo, el IRS no permite que una persona intercambie una anualidad (que es totalmente tributable al retirarse) por una póliza de seguro de vida (que ofrece beneficios por muerte libres de impuestos), porque esto sería una vía para evitar la tributación sobre las ganancias de la anualidad.",
+      "wrong_explanations": {
+        "A": "Intercambiar seguro de vida por una anualidad está permitido bajo la Sección 1035.",
+        "C": "Intercambiar una anualidad por otra anualidad es un intercambio 1035 estándar y permitido.",
+        "D": "Intercambiar seguro de vida por una póliza dotal (endowment) está permitido bajo la Sección 1035."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T18:30:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B07-Q005",
+      "rule_ids": [
+        "RC-HMO-001"
+      ],
+      "domain": "Estatutos estatales de Texas relacionados con vida, salud y HMO",
+      "subdomain": "Regulaciones de HMO en Texas",
+      "difficulty": "hard",
+      "format": "scenario",
+      "stem": "Un médico de atención primaria (PCP) deja la red de una Health Maintenance Organization (HMO) de Texas por razones distintas a daño inminente o fraude. Si un afiliado está siendo tratado actualmente por este PCP por una enfermedad potencialmente mortal, la ley de Texas exige que la HMO permita al afiliado continuar recibiendo atención de este médico al nivel de beneficios dentro de la red por hasta:",
+      "options": [
+        {
+          "label": "A",
+          "text": "30 días después de la fecha de terminación del proveedor."
+        },
+        {
+          "label": "B",
+          "text": "60 días después de la fecha de terminación del proveedor."
+        },
+        {
+          "label": "C",
+          "text": "90 días después de la fecha de terminación del proveedor."
+        },
+        {
+          "label": "D",
+          "text": "180 días después de la fecha de terminación del proveedor."
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "Bajo las leyes de continuidad de atención en managed care de Texas, si se termina el contrato de un médico (no por causa), la HMO debe permitir que un afiliado con una circunstancia especial, como una enfermedad potencialmente mortal, una condición aguda, o estar después de la semana 24 de embarazo, continúe recibiendo atención de ese médico a tarifas dentro de la red por hasta 90 días.",
+      "wrong_explanations": {
+        "A": "30 días es el período estándar de aviso para cancelaciones por falta de pago de prima, no para continuidad de atención.",
+        "B": "60 días es el plazo para entregar un documento de Evidencia de Cobertura.",
+        "D": "180 días excede el mandato legal; la protección está limitada a 90 días para permitir una transición segura a un nuevo médico."
+      },
+      "trap_type": "TP004-Timeline_Trap",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T18:30:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B07-Q006",
+      "rule_ids": [
+        "RC-LIC-008"
+      ],
+      "domain": "Estatutos estatales de Texas comunes a todas las líneas",
+      "subdomain": "Requisitos de licencia",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Un agente ya está licenciado y designado con una aseguradora en Texas y luego recibe una designación adicional de otra aseguradora. Bajo la ley de Texas, ¿para cuándo deben el agente y la aseguradora notificar al departamento sobre esa designación adicional?",
+      "options": [
+        {
+          "label": "A",
+          "text": "10 días"
+        },
+        {
+          "label": "B",
+          "text": "15 días"
+        },
+        {
+          "label": "C",
+          "text": "30 días"
+        },
+        {
+          "label": "D",
+          "text": "No se pueden presentar solicitudes antes de que una designación se haya registrado oficialmente."
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "El Código de Seguros de Texas §4001.202 establece que, para una designación adicional que autoriza a un agente a actuar para una o más aseguradoras adicionales, el agente y la aseguradora deben notificar al departamento a más tardar el día 30 después de la fecha efectiva de la designación.",
+      "wrong_explanations": {
+        "A": "10 días no es el plazo legal para reportar una designación adicional.",
+        "B": "15 días no es el plazo legal para reportar una designación adicional.",
+        "D": "Texas permite múltiples designaciones, pero las designaciones adicionales aun así deben reportarse al departamento dentro del período requerido de 30 días."
+      },
+      "trap_type": "TP004-Timeline_Trap",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T18:30:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt",
+          "note": "Reframed to track Texas Insurance Code §4001.202 additional-appointment notice rule."
+        }
+      ]
+    },
+    {
+      "question_id": "B07-Q007",
+      "rule_ids": [
+        "RC-LIFE-007"
+      ],
+      "domain": "Tipos de pólizas",
+      "subdomain": "Vida universal",
+      "difficulty": "easy",
+      "format": "concept_application",
+      "stem": "¿Qué tipo de póliza permanente de seguro de vida se caracteriza por su estructura desglosada (unbundled), que permite al titular de la póliza ajustar flexiblemente tanto los montos de pago de prima como el beneficio por muerte (sujeto a asegurabilidad)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Vida entera tradicional"
+        },
+        {
+          "label": "B",
+          "text": "Vida entera variable"
+        },
+        {
+          "label": "C",
+          "text": "Vida universal"
+        },
+        {
+          "label": "D",
+          "text": "Vida temporal decreciente"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "El seguro de vida universal (a veces llamado vida ajustable de prima flexible) permite al titular de la póliza ajustar los pagos de prima y el monto nominal del beneficio por muerte. El cargo de mortalidad, los cargos por gastos y el interés acreditado están desglosados y claramente visibles para el titular.",
+      "wrong_explanations": {
+        "A": "La vida entera tradicional tiene una prima fija y un beneficio por muerte fijo que no pueden ajustarse flexiblemente.",
+        "B": "La vida entera variable tiene una prima fija, aunque el valor en efectivo fluctúa con el desempeño del mercado.",
+        "D": "La vida temporal decreciente es una póliza temporal con un monto nominal decreciente y sin componente de valor en efectivo."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T18:30:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B07-Q008",
+      "rule_ids": [
+        "RC-HLTH-008"
+      ],
+      "domain": "Cláusulas, disposiciones, opciones y exclusiones de pólizas",
+      "subdomain": "Disposiciones estándar de salud",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Un asegurado tiene una póliza individual de ingresos por discapacidad que contiene la disposición opcional estándar de 'Cambio de Ocupación'. Si el asegurado deja su trabajo de escritorio por una ocupación significativamente más peligrosa en construcción y luego presenta una reclamación, ¿cómo responderá la aseguradora?",
+      "options": [
+        {
+          "label": "A",
+          "text": "La aseguradora denegará la reclamación por completo porque el cambio de ocupación anuló la póliza."
+        },
+        {
+          "label": "B",
+          "text": "La aseguradora pagará el monto original del beneficio, pero cobrará retroactivamente al asegurado las primas más altas."
+        },
+        {
+          "label": "C",
+          "text": "La aseguradora pagará beneficios reducidos equivalentes a lo que la prima original habría comprado para la ocupación más peligrosa."
+        },
+        {
+          "label": "D",
+          "text": "La aseguradora pagará el beneficio original completo porque la póliza ya fue emitida y estaba en vigor."
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "Bajo la disposición de Cambio de Ocupación, si un asegurado cambia a un trabajo más peligroso, la aseguradora ajustará automáticamente los beneficios hacia abajo. El nuevo monto de beneficio será lo que las primas pagadas habrían comprado a las tarifas correspondientes a la ocupación más peligrosa.",
+      "wrong_explanations": {
+        "A": "Un cambio de ocupación no anula la póliza; solo activa un ajuste de beneficio o prima.",
+        "B": "La aseguradora no emite facturas retroactivas; ajusta el monto del beneficio pagadero para que coincida con la prima existente.",
+        "D": "Si la póliza contiene esta disposición específica, la aseguradora tiene derecho legal a reducir los beneficios para reflejar el aumento del riesgo."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T18:30:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B07-Q009",
+      "rule_ids": [
+        "RC-GRP-002"
+      ],
+      "domain": "Estatutos estatales de Texas relacionados con vida, salud y HMO",
+      "subdomain": "Disposiciones de pólizas de salud de Texas",
+      "difficulty": "hard",
+      "format": "direct_rule",
+      "stem": "Bajo la ley de Texas, los planes de beneficios de salud grupales totalmente asegurados deben proporcionar cobertura para un recién nacido desde el momento del nacimiento. ¿Cuál de los siguientes es un mandato legal específico respecto a esta cobertura del recién nacido?",
+      "options": [
+        {
+          "label": "A",
+          "text": "El plan debe eximir todos los deducibles y coseguros estándar durante los primeros 31 días del recién nacido."
+        },
+        {
+          "label": "B",
+          "text": "El plan debe cubrir el tratamiento de defectos y anomalías congénitas sin ningún período de espera ni exclusión."
+        },
+        {
+          "label": "C",
+          "text": "El recién nacido queda automáticamente cubierto durante el primer año, independientemente de si los padres notifican a la aseguradora."
+        },
+        {
+          "label": "D",
+          "text": "La cobertura se limita únicamente a atención rutinaria de nursery e inmunizaciones durante los primeros 14 días."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "La ley de Texas exige estrictamente que la cobertura del recién nacido comience en el momento del nacimiento y debe incluir expresamente cobertura por enfermedad, lesión y el tratamiento de defectos y anomalías congénitas. Estas condiciones no pueden excluirse ni someterse a períodos de espera.",
+      "wrong_explanations": {
+        "A": "Los deducibles y coseguros estándar aún aplican a la atención del recién nacido; no se eximen.",
+        "C": "La cobertura automática solo dura por un período inicial (típicamente 31 días). Los padres deben notificar a la aseguradora y pagar cualquier prima requerida para continuar la cobertura más allá de ese punto.",
+        "D": "La cobertura es integral e incluye lesión y enfermedad (incluyendo defectos congénitos), no solo atención rutinaria de nursery."
+      },
+      "trap_type": "TP002-Distractor_Misdirection",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T18:30:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B07-Q010",
+      "rule_ids": [
+        "RC-HLTH-012"
+      ],
+      "domain": "Cláusulas, disposiciones, opciones y exclusiones de pólizas",
+      "subdomain": "Disposiciones estándar de salud",
+      "difficulty": "medium",
+      "format": "concept_application",
+      "stem": "Una póliza individual de seguro de salud se emite con un período probatorio de 15 días. ¿Cuál es el propósito principal de este período específico?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Establecer el tiempo que el asegurado debe esperar después de que comienza una discapacidad antes de recibir pagos de beneficios."
+        },
+        {
+          "label": "B",
+          "text": "Proteger a la aseguradora contra la selección adversa al excluir cobertura para enfermedades que se manifiestan poco después de la emisión de la póliza."
+        },
+        {
+          "label": "C",
+          "text": "Permitir al asegurado tiempo para revisar la póliza y devolverla para recibir un reembolso completo de la prima."
+        },
+        {
+          "label": "D",
+          "text": "Definir el plazo durante el cual la aseguradora puede impugnar la validez del contrato por fraude."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "El período probatorio es un período de espera único (a menudo de 15 o 30 días) inmediatamente después de la fecha efectiva de la póliza. Durante este tiempo, las enfermedades no están cubiertas, aunque las lesiones accidentales sí están cubiertas de inmediato. Esto protege a la aseguradora de solicitantes que compran cobertura porque sienten que una enfermedad está por comenzar (selección adversa).",
+      "wrong_explanations": {
+        "A": "Esto describe el Período de Eliminación, que se activa después de que ocurre una pérdida cubierta.",
+        "C": "Esto describe el período de Free-Look, una característica de protección al consumidor.",
+        "D": "Esto describe la disposición de Límite de Tiempo sobre Ciertas Defensas (o Incontestabilidad), que típicamente es de 2 años."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T18:30:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B07-Q011",
+      "rule_ids": [
+        "RC-UW-001"
+      ],
+      "domain": "Completar la solicitud, suscripción y entrega de la póliza",
+      "subdomain": "Proceso de suscripción",
+      "difficulty": "easy",
+      "format": "definition_scenario",
+      "stem": "Durante el proceso de suscripción de una póliza de seguro de vida, una aseguradora revisa el Medical Information Bureau (MIB). ¿Cuál es la función principal del MIB?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Proporcionar a las aseguradoras acceso a los registros completos de facturación hospitalaria y médica de un solicitante."
+        },
+        {
+          "label": "B",
+          "text": "Asignar un puntaje de crédito obligatorio usado para determinar las tarifas de primas de seguro de vida."
+        },
+        {
+          "label": "C",
+          "text": "Servir como una cámara de compensación de información médica codificada presentada por aseguradoras miembros para ayudar a detectar fraude y omisiones en las solicitudes."
+        },
+        {
+          "label": "D",
+          "text": "Realizar exámenes físicos independientes de los solicitantes en nombre de la compañía de seguros."
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "El Medical Information Bureau (MIB) es una asociación comercial sin fines de lucro que mantiene información médica confidencial y codificada sobre personas que han solicitado previamente seguro de vida o salud. Ayuda a los suscriptores a detectar inconsistencias, omisiones y posible fraude al comparar solicitudes actuales con reportes anteriores.",
+      "wrong_explanations": {
+        "A": "El MIB no tiene acceso a registros hospitalarios completos; se basa en códigos reportados por aseguradoras miembros a partir de solicitudes previas.",
+        "B": "El MIB no emite puntajes de crédito. Los datos financieros normalmente se obtienen a través de una agencia de informes del consumidor.",
+        "D": "El MIB no realiza exámenes físicos. Los exámenes los realizan profesionales paramédicos contratados directamente por la aseguradora."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T18:30:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B07-Q012",
+      "rule_ids": [
+        "RC-LIFE-025"
+      ],
+      "domain": "Cláusulas, disposiciones, opciones y exclusiones de pólizas",
+      "subdomain": "Opciones de liquidación",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Un beneficiario de seguro de vida elige una opción de liquidación que garantiza un ingreso específico durante el tiempo que viva. Sin embargo, la opción establece que si el beneficiario muere antes de que el principal se agote por completo, todos los pagos se detienen y el saldo restante se pierde a favor de la aseguradora. ¿Qué opción seleccionó?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Ingreso de por vida con período cierto"
+        },
+        {
+          "label": "B",
+          "text": "Opción de monto fijo"
+        },
+        {
+          "label": "C",
+          "text": "Opción de ingreso de vida pura"
+        },
+        {
+          "label": "D",
+          "text": "Opción de solo intereses"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "La opción de Ingreso de Vida Pura (Straight Life Income o Pure Life) paga el monto mensual más alto porque garantiza ingresos durante toda la vida del beneficiario, pero no ofrece garantías más allá de eso. Si el beneficiario muere poco después de que comiencen los pagos, la aseguradora conserva el principal restante.",
+      "wrong_explanations": {
+        "A": "Ingreso de por vida con período cierto garantiza pagos de por vida, pero también promete que, si el beneficiario muere temprano, los pagos continuarán a un beneficiario secundario durante el resto del período 'cierto'.",
+        "B": "La opción de monto fijo agota el principal pagando una cantidad fija en dólares hasta que el dinero se acaba; no se basa en una contingencia de vida.",
+        "D": "La opción de solo intereses mantiene intacto el principal mientras paga únicamente los intereses generados."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T18:30:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B07-Q013",
+      "rule_ids": [
+        "RC-TAX-004"
+      ],
+      "domain": "Impuestos, jubilación y otros conceptos de seguros",
+      "subdomain": "Beneficios del Seguro Social",
+      "difficulty": "hard",
+      "format": "direct_rule",
+      "stem": "En el contexto de los beneficios de sobreviviente del Seguro Social, el 'Blackout Period' se define como el período durante el cual no se pagan beneficios de sobreviviente al cónyuge sobreviviente. ¿Cuándo comienza y termina típicamente este período específico?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Comienza inmediatamente al morir el trabajador y termina 6 meses después."
+        },
+        {
+          "label": "B",
+          "text": "Comienza cuando el hijo menor cumple 16 años y termina cuando el cónyuge sobreviviente cumple 60 años."
+        },
+        {
+          "label": "C",
+          "text": "Comienza cuando el cónyuge sobreviviente cumple 50 años y termina a la edad plena de jubilación (65 o 67 años)."
+        },
+        {
+          "label": "D",
+          "text": "Comienza cuando el hijo menor cumple 18 años y termina cuando el cónyuge sobreviviente cumple 65 años."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Bajo las reglas del Seguro Social, un cónyuge sobreviviente que cuida hijos dependientes recibe beneficios hasta que el hijo menor cumple 16 años. Después de eso, el cónyuge entra en el 'Blackout Period', durante el cual no recibe beneficios de sobreviviente hasta que califica para beneficios de jubilación de viudo(a), que pueden comenzar tan temprano como a los 60 años.",
+      "wrong_explanations": {
+        "A": "No existe un blackout automático de 6 meses después de la muerte de un trabajador; los dependientes elegibles comienzan a recibir beneficios casi inmediatamente.",
+        "C": "La edad 50 es relevante solo si el cónyuge sobreviviente está discapacitado, pero no define la ventana estándar del blackout.",
+        "D": "El corte para el beneficio del padre/madre es cuando el hijo cumple 16 años, no 18 (aunque el beneficio propio del hijo continúa hasta los 18), y los beneficios del cónyuge pueden reanudarse a los 60, no a los 65."
+      },
+      "trap_type": "TP004-Timeline_Trap",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T18:30:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B07-Q014",
+      "rule_ids": [
+        "RC-UTP-001"
+      ],
+      "domain": "Estatutos estatales de Texas comunes a todas las líneas",
+      "subdomain": "Prácticas comerciales desleales",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Un oficial de préstamos le dice a un solicitante hipotecario que su préstamo solo será aprobado si compra una póliza de seguro de vida de crédito directamente de la agencia de seguros afiliada al banco. Bajo la ley de seguros de Texas, esta práctica ilegal de venta atada es una forma de:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Rebate"
+        },
+        {
+          "label": "B",
+          "text": "Difamación"
+        },
+        {
+          "label": "C",
+          "text": "Coacción"
+        },
+        {
+          "label": "D",
+          "text": "Twisting"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "La coacción ocurre cuando una persona aplica fuerza física o mental, o una amenaza de daño económico, para obligar a otra a entrar en una transacción. Exigir que un prestatario compre seguro exclusivamente de un prestamista específico o su afiliado como condición para recibir un préstamo es una venta atada coercitiva ilegal.",
+      "wrong_explanations": {
+        "A": "Rebate es ofrecer un incentivo financiero o regalo no especificado en el contrato para persuadir a alguien a comprar una póliza.",
+        "B": "Difamación es publicar información falsa y maliciosamente crítica sobre la condición financiera de una aseguradora.",
+        "D": "Twisting es hacer declaraciones falsas para inducir a un titular de póliza a dejar caducar una póliza actual y comprar una nueva."
+      },
+      "trap_type": "TP002-Distractor_Misdirection",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T18:30:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B07-Q015",
+      "rule_ids": [
+        "RC-COMM-004"
+      ],
+      "domain": "Estatutos estatales de Texas comunes a todas las líneas",
+      "subdomain": "Comisionado de Seguros",
+      "difficulty": "easy",
+      "format": "direct_rule",
+      "stem": "Sujeto a excepciones legales, ¿con qué frecuencia mínima debe el Texas Department of Insurance examinar a una compañía aseguradora?",
+      "options": [
+        {
+          "label": "A",
+          "text": "1 año"
+        },
+        {
+          "label": "B",
+          "text": "2 años"
+        },
+        {
+          "label": "C",
+          "text": "3 años"
+        },
+        {
+          "label": "D",
+          "text": "5 años"
+        }
+      ],
+      "correct_answer": "D",
+      "correct_explanation": "El Código de Seguros §401.052 establece que, sujeto a excepciones legales y reglas para compañías más nuevas, el departamento debe examinar a una compañía aseguradora no menos frecuentemente que una vez cada cinco años.",
+      "wrong_explanations": {
+        "A": "Se requieren estados anuales, pero los exámenes completos no son obligatorios cada año.",
+        "B": "Dos años no es la frecuencia mínima legal en §401.052.",
+        "C": "Tres años es más frecuente que el mínimo legal; el código establece un límite máximo de cinco años.",
+        "D": "Cinco años es la frecuencia mínima de examen establecida en §401.052, sujeto a excepciones."
+      },
+      "trap_type": "TP004-Timeline_Trap",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T18:30:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt",
+          "note": "Tightened wording to match Insurance Code §401.052 carrier examination frequency."
+        }
+      ]
+    },
+    {
+      "question_id": "B07-Q016",
+      "rule_ids": [
+        "RC-GRP-002"
+      ],
+      "domain": "Estatutos estatales de Texas relacionados con vida, salud y HMO",
+      "subdomain": "Disposiciones de pólizas de salud de Texas",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Una pareja casada tiene seguro de salud grupal a través de sus respectivos empleadores, y ambos planes cubren a sus hijos dependientes. Según la regla estándar de Coordinación de Beneficios (COB) llamada 'Birthday Rule', ¿qué plan paga primero las reclamaciones médicas de los hijos?",
+      "options": [
+        {
+          "label": "A",
+          "text": "El plan del padre o madre que sea mayor."
+        },
+        {
+          "label": "B",
+          "text": "El plan del padre o madre cuyo cumpleaños cae primero en el año calendario."
+        },
+        {
+          "label": "C",
+          "text": "El plan del padre o madre que haya estado empleado por más tiempo."
+        },
+        {
+          "label": "D",
+          "text": "El plan que tenga el deducible anual más bajo."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Bajo la regla estándar de Coordinación de Beneficios (COB) llamada Birthday Rule, cuando un hijo está cubierto por los planes grupales de ambos padres, el plan primario es el del padre o madre cuyo cumpleaños (mes y día) cae primero en el año calendario. Se ignora el año de nacimiento.",
+      "wrong_explanations": {
+        "A": "La edad del padre o madre (año de nacimiento) es completamente irrelevante bajo la Birthday Rule.",
+        "C": "La duración del empleo no determina la cobertura primaria de los dependientes.",
+        "D": "La riqueza de beneficios (como deducibles) no dicta qué plan es primario; la regla es estrictamente cronológica por mes y día."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T18:30:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B07-Q017",
+      "rule_ids": [
+        "RC-MED-003"
+      ],
+      "domain": "Estatutos estatales de Texas relacionados con vida, salud y HMO",
+      "subdomain": "Reglas de Medicare Supplement en Texas",
+      "difficulty": "hard",
+      "format": "direct_rule",
+      "stem": "Para desalentar que los agentes reemplacen indebidamente pólizas de Medicare Supplement (Medigap), las regulaciones de Texas limitan estrictamente la compensación de los agentes. Las comisiones de venta del primer año para una póliza Medigap no pueden exceder qué porcentaje de la comisión pagada por renovar la póliza en el segundo año?",
+      "options": [
+        {
+          "label": "A",
+          "text": "100%"
+        },
+        {
+          "label": "B",
+          "text": "150%"
+        },
+        {
+          "label": "C",
+          "text": "200%"
+        },
+        {
+          "label": "D",
+          "text": "300%"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "El Código de Seguros de Texas limita la compensación que un agente puede recibir por vender una póliza Medicare Supplement. La comisión o compensación del primer año no puede exceder el 200% de la comisión pagada por vender o dar servicio a la póliza en el segundo año.",
+      "wrong_explanations": {
+        "A": "Aunque algunas compañías eligen pagar comisiones niveladas (100%), el límite legal máximo para el primer año es más alto.",
+        "B": "150% es incorrecto; el estatuto establece específicamente el límite en 200%.",
+        "D": "300% excede el límite legal diseñado para frenar tácticas agresivas de venta y 'churning' de pólizas para personas mayores."
+      },
+      "trap_type": "TP006-Math_Distractor",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T18:30:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B07-Q018",
+      "rule_ids": [
+        "RC-LIFE-015"
+      ],
+      "domain": "Tipos de pólizas",
+      "subdomain": "Anualidades",
+      "difficulty": "medium",
+      "format": "concept_application",
+      "stem": "Una persona que busca proteger sus fondos de jubilación contra caídas del mercado, mientras aún participa en el crecimiento del mercado, compra una Equity-Indexed Annuity (EIA). ¿Cómo logra una EIA este equilibrio?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Invirtiendo la prima directamente en fondos mutuos, pero absorbiendo cualquier pérdida superior al 10%."
+        },
+        {
+          "label": "B",
+          "text": "Garantizando un piso mínimo de tasa de interés para proteger el principal, mientras acredita interés adicional basado en el desempeño de un índice bursátil designado."
+        },
+        {
+          "label": "C",
+          "text": "Trasladando automáticamente todos los fondos a bonos cada vez que el índice bursátil cae durante tres meses consecutivos."
+        },
+        {
+          "label": "D",
+          "text": "Permitiendo que el rentista seleccione personalmente las acciones individuales en las que se invierten sus fondos, asegurando que controle el riesgo."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Las Equity-Indexed Annuities son anualidades fijas que proporcionan una tasa de interés mínima garantizada (el piso) que evita la pérdida del principal durante caídas del mercado. Cuando el mercado se desempeña bien, acreditan interés según una fórmula vinculada a un índice bursátil externo (como el S&P 500).",
+      "wrong_explanations": {
+        "A": "Las EIA no invierten directamente en fondos mutuos; eso es una característica de las Anualidades Variables.",
+        "C": "Las EIA no negocian activamente ni mueven fondos entre bonos y acciones según el desempeño mensual.",
+        "D": "Permitir que el rentista escoja acciones individuales o subcuentas es una característica de las Anualidades Variables, no de las EIA."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T18:30:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B07-Q019",
+      "rule_ids": [
+        "RC-HLTH-015"
+      ],
+      "domain": "Tipos de pólizas",
+      "subdomain": "Seguro de gastos médicos",
+      "difficulty": "easy",
+      "format": "definition_scenario",
+      "stem": "Un asegurado tiene una póliza básica de gastos médicos y una póliza suplementaria de Major Medical. Después de que la póliza básica agota sus límites, el asegurado debe pagar una cantidad específica de bolsillo antes de que la póliza suplementaria comience a pagar. ¿Cómo se llama este deducible específico?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Un deducible fijo"
+        },
+        {
+          "label": "B",
+          "text": "Un deducible de corredor"
+        },
+        {
+          "label": "C",
+          "text": "Un deducible integrado"
+        },
+        {
+          "label": "D",
+          "text": "Un deducible máximo de gastos de bolsillo"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Un deducible de corredor aplica a planes suplementarios de Major Medical. Funciona como un 'corredor' que cubre la brecha entre el agotamiento de los beneficios del plan básico de gastos médicos y el inicio de la cobertura suplementaria de Major Medical.",
+      "wrong_explanations": {
+        "A": "Un deducible fijo es una cantidad fija en dólares aplicada al inicio de una reclamación, típica de planes de Major Medical integrales.",
+        "C": "Un deducible integrado significa que el monto pagado por el plan básico cuenta para satisfacer el deducible de Major Medical.",
+        "D": "Máximo de gastos de bolsillo se refiere al límite stop-loss, no al deducible puente entre planes básicos y suplementarios."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T18:30:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B07-Q020",
+      "rule_ids": [
+        "RC-LIFE-020"
+      ],
+      "domain": "Cláusulas, disposiciones, opciones y exclusiones de pólizas",
+      "subdomain": "Disposiciones estándar de vida",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Una póliza de seguro de vida entera incluye una disposición de Préstamo Automático de Prima y tiene suficiente valor en efectivo cuando el titular de la póliza olvida pagar la prima anual. ¿Qué hará la aseguradora si el titular no toma ninguna acción antes de que venza el período de gracia?",
+      "options": [
+        {
+          "label": "A",
+          "text": "La póliza caducará inmediatamente porque la prima no se pagó en efectivo."
+        },
+        {
+          "label": "B",
+          "text": "La aseguradora pagará automáticamente la prima vencida mediante un préstamo de póliza contra el valor en efectivo."
+        },
+        {
+          "label": "C",
+          "text": "La aseguradora convertirá la póliza a seguro reducido pagado sin aviso."
+        },
+        {
+          "label": "D",
+          "text": "La aseguradora cancelará la póliza y enviará el valor en efectivo al titular de la póliza."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Bajo una disposición de Préstamo Automático de Prima, si la póliza tiene suficiente valor en efectivo y la prima no se paga al final del período de gracia, la aseguradora adelanta automáticamente la prima como un préstamo de póliza. Esto mantiene la póliza en vigor, con intereses cargados sobre el saldo del préstamo.",
+      "wrong_explanations": {
+        "A": "Si la póliza incluye una disposición de préstamo automático de prima y tiene suficiente valor en efectivo, la póliza no caduca inmediatamente al final del período de gracia.",
+        "C": "El seguro reducido pagado es una opción de no caducidad seleccionada por el titular de la póliza; no es lo que hace la disposición de préstamo automático de prima.",
+        "D": "El valor en efectivo no se paga automáticamente bajo una disposición de préstamo automático de prima; en cambio, respalda un préstamo de póliza para mantener activa la póliza."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T18:30:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt",
+          "note": "Replaced duplicate-angle grace-period death scenario with automatic premium loan angle."
+        }
+      ]
+    },
+    {
+      "question_id": "B07-Q021",
+      "rule_ids": [
+        "RC-BUS-001"
+      ],
+      "domain": "Impuestos, jubilación y otros conceptos de seguros",
+      "subdomain": "Usos comerciales del seguro",
+      "difficulty": "hard",
+      "format": "calculation_scenario",
+      "stem": "Una firma especializada de consultoría es propiedad de 5 socios iguales. Deciden establecer un Cross-Purchase Buy-Sell Agreement para asegurar la continuidad del negocio si uno de los socios muere. ¿Cuántas pólizas separadas de seguro de vida deben comprarse en total para financiar completamente este acuerdo?",
+      "options": [
+        {
+          "label": "A",
+          "text": "5 pólizas"
+        },
+        {
+          "label": "B",
+          "text": "10 pólizas"
+        },
+        {
+          "label": "C",
+          "text": "20 pólizas"
+        },
+        {
+          "label": "D",
+          "text": "25 pólizas"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "En un Cross-Purchase Buy-Sell Agreement, cada socio debe comprar una póliza sobre cada uno de los otros socios. La fórmula para determinar el número total de pólizas requeridas es N x (N - 1), donde N es el número de socios. Con 5 socios: 5 x (5 - 1) = 5 x 4 = 20 pólizas.",
+      "wrong_explanations": {
+        "A": "Se requerirían 5 pólizas bajo un plan de Entity Purchase, donde la empresa misma compra una póliza sobre cada socio.",
+        "B": "10 es un número arbitrario y no se ajusta a la fórmula de Cross-Purchase.",
+        "D": "25 sería N x N, lo cual incluye que cada socio compre una póliza sobre sí mismo, lo que contradice el propósito del acuerdo."
+      },
+      "trap_type": "TP006-Math_Distractor",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T18:30:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B07-Q022",
+      "rule_ids": [
+        "RC-PROV-001"
+      ],
+      "domain": "Estatutos estatales de Texas relacionados con vida, salud y HMO",
+      "subdomain": "Disposiciones de pólizas de salud de Texas",
+      "difficulty": "medium",
+      "format": "direct_rule",
+      "stem": "Para ser comercializado y vendido como una póliza de seguro de Long-Term Care (LTC) en Texas, el contrato debe proporcionar cobertura para servicios médicamente necesarios de diagnóstico, prevención, terapia o cuidado personal por un período mínimo consecutivo de:",
+      "options": [
+        {
+          "label": "A",
+          "text": "3 meses"
+        },
+        {
+          "label": "B",
+          "text": "6 meses"
+        },
+        {
+          "label": "C",
+          "text": "12 meses"
+        },
+        {
+          "label": "D",
+          "text": "36 meses"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "El Código de Seguros de Texas define el seguro de Long-Term Care como una póliza individual o grupal que se anuncia o diseña para proporcionar cobertura por no menos de 12 meses consecutivos para personas cubiertas que requieren cuidado prolongado.",
+      "wrong_explanations": {
+        "A": "3 meses es insuficiente; las pólizas médicas de corto plazo o beneficios de recuperación de Medicare podrían cubrir duraciones cortas, pero el verdadero LTC debe cubrir al menos 12 meses.",
+        "B": "6 meses es incorrecto; el mínimo legal es de 12 meses.",
+        "D": "Aunque algunas pólizas proporcionan 36 meses de cobertura, el umbral mínimo requerido por la ley de Texas para llamarse póliza de LTC es de 12 meses."
+      },
+      "trap_type": "TP004-Timeline_Trap",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T18:30:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B07-Q023",
+      "rule_ids": [
+        "RC-TAX-001"
+      ],
+      "domain": "Impuestos, jubilación y otros conceptos de seguros",
+      "subdomain": "Tributación del seguro de vida",
+      "difficulty": "medium",
+      "format": "concept_application",
+      "stem": "Un beneficiario elige dejar un beneficio por muerte de seguro de vida en depósito con la aseguradora bajo una opción de liquidación de solo intereses. ¿Cómo se tratan generalmente, para efectos del impuesto federal sobre la renta, los montos periódicos recibidos por el beneficiario?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Tanto el beneficio por muerte principal como los pagos de intereses son completamente libres de impuesto sobre la renta."
+        },
+        {
+          "label": "B",
+          "text": "El principal permanece libre de impuesto sobre la renta, pero los pagos de intereses son tributables como ingreso ordinario."
+        },
+        {
+          "label": "C",
+          "text": "Toda la serie de pagos se grava como ganancias de capital."
+        },
+        {
+          "label": "D",
+          "text": "Toda la serie de pagos es tributable como ingreso ordinario porque el beneficiario no tomó una suma global."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "El principal del beneficio por muerte de un seguro de vida generalmente se recibe libre de impuesto sobre la renta. Sin embargo, cuando el beneficiario deja los fondos en depósito y recibe pagos de solo intereses, la porción de intereses es tributable como ingreso ordinario.",
+      "wrong_explanations": {
+        "A": "Solo el principal del beneficio por muerte generalmente está libre de impuesto sobre la renta; los intereses generados después de la muerte son tributables.",
+        "C": "Los intereses no se gravan como ganancia de capital; generalmente se gravan como ingreso ordinario.",
+        "D": "El principal del beneficio por muerte no se vuelve tributable simplemente porque el beneficiario elige una opción de intereses; solo la porción de intereses es tributable."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T18:30:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt",
+          "note": "Replaced duplicate-angle MEC loan taxation item with fresh interest-only settlement tax treatment angle."
+        }
+      ]
+    },
+    {
+      "question_id": "B07-Q024",
+      "rule_ids": [
+        "RC-UW-003"
+      ],
+      "domain": "Completar la solicitud, suscripción y entrega de la póliza",
+      "subdomain": "Proceso de suscripción",
+      "difficulty": "medium",
+      "format": "direct_rule",
+      "stem": "Bajo la ley federal Fair Credit Reporting Act (FCRA), si una compañía de seguros deniega una solicitud con base en información obtenida de un informe investigativo del consumidor, la aseguradora está legalmente obligada a:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Proporcionar al solicitante una copia gratuita del informe completo dentro de 3 días."
+        },
+        {
+          "label": "B",
+          "text": "Proporcionar al solicitante el nombre y la dirección de la agencia de informes del consumidor que suministró el informe."
+        },
+        {
+          "label": "C",
+          "text": "Destruir todos los registros de la solicitud para proteger la privacidad del consumidor."
+        },
+        {
+          "label": "D",
+          "text": "Ofrecer al solicitante una alternativa de póliza de alto riesgo antes de emitir una denegación formal."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Si se toma una acción adversa (como una denegación) con base en un informe del consumidor, la Fair Credit Reporting Act exige que el usuario del informe (la aseguradora) proporcione al solicitante el nombre, la dirección y el número de teléfono de la agencia de informes que suministró la información, para que el consumidor pueda verificar o disputar los hallazgos.",
+      "wrong_explanations": {
+        "A": "La aseguradora no proporciona la copia del informe; el consumidor debe solicitar la copia directamente a la agencia de informes.",
+        "C": "Las aseguradoras deben conservar registros para demostrar cumplimiento y justificar decisiones de suscripción; no los destruyen.",
+        "D": "La FCRA regula privacidad y divulgación, no decisiones de suscripción. Las aseguradoras no están obligadas a ofrecer pólizas alternativas."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T18:30:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B07-Q025",
+      "rule_ids": [
+        "RC-LIC-005"
+      ],
+      "domain": "Estatutos estatales de Texas comunes a todas las líneas",
+      "subdomain": "Requisitos de licencia",
+      "difficulty": "easy",
+      "format": "direct_rule",
+      "stem": "Si el Comisionado de Seguros de Texas revoca la licencia de un agente por una violación del Código de Seguros, ¿cuánto tiempo debe esperar típicamente esa persona antes de ser elegible para solicitar una nueva licencia de seguros?",
+      "options": [
+        {
+          "label": "A",
+          "text": "1 año"
+        },
+        {
+          "label": "B",
+          "text": "2 años"
+        },
+        {
+          "label": "C",
+          "text": "3 años"
+        },
+        {
+          "label": "D",
+          "text": "5 años"
+        }
+      ],
+      "correct_answer": "D",
+      "correct_explanation": "Bajo el Código de Seguros de Texas §4005.105, una persona cuya licencia es revocada o cuya solicitud es denegada por causa no puede solicitar otra licencia de seguros por un período de 5 años.",
+      "wrong_explanations": {
+        "A": "1 año es incorrecto; esto aplica a ciertas otras sanciones administrativas, no a períodos de espera por revocación.",
+        "B": "2 años es el término estándar de renovación de una licencia válida, no el período de sanción.",
+        "C": "3 años es incorrecto; el período de espera legal específico es de 5 años."
+      },
+      "trap_type": "TP004-Timeline_Trap",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T18:30:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T00:00:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    }
+  ]
+}

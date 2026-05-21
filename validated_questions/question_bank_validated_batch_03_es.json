@@ -1,0 +1,1297 @@
+{
+  "batch_id": "03",
+  "version": "1.0.1",
+  "generated_date": "2026-03-24",
+  "generated_by": "claude",
+  "question_count": 25,
+  "difficulty_distribution": {
+    "easy": 5,
+    "medium": 14,
+    "hard": 6
+  },
+  "questions": [
+    {
+      "question_id": "B03-Q001",
+      "rule_ids": [
+        "RC-PROV-011"
+      ],
+      "domain": "Policy Provisions",
+      "subdomain": "Suicide Clause",
+      "difficulty": "medium",
+      "format": "application_scenario",
+      "stem": "Una póliza de seguro de vida fue emitida el 1 de junio de 2024. El asegurado muere por suicidio el 15 de marzo de 2025. La póliza contiene una exclusión estándar por suicidio de 2 años. ¿Qué pagará la aseguradora?",
+      "options": [
+        {
+          "label": "A",
+          "text": "El monto total nominal, porque el suicidio siempre está cubierto bajo un seguro de vida"
+        },
+        {
+          "label": "B",
+          "text": "Nada, porque el suicidio anula la póliza por completo y nunca se paga ningún beneficio"
+        },
+        {
+          "label": "C",
+          "text": "La devolución de las primas pagadas, porque la muerte ocurrió dentro del período de exclusión por suicidio"
+        },
+        {
+          "label": "D",
+          "text": "La mitad del monto nominal como acuerdo de compromiso"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "La cláusula estándar de suicidio establece que si el asegurado muere por suicidio dentro de los dos años desde la fecha de emisión de la póliza, la responsabilidad de la aseguradora se limita a devolver las primas pagadas. La póliza fue emitida el 1 de junio de 2024, y la muerte ocurrió el 15 de marzo de 2025, lo cual está dentro del período de exclusión de 2 años. Después de que vence el período de exclusión, el suicidio está cubierto como cualquier otra causa de muerte.",
+      "wrong_explanations": {
+        "A": "El suicidio no siempre está cubierto. Durante el período de exclusión (normalmente los primeros dos años), la obligación de la aseguradora se limita a devolver las primas pagadas. La cobertura por suicidio aplica solamente después de que haya transcurrido el período de exclusión.",
+        "B": "La cláusula de suicidio no anula la póliza por completo ni niega todo pago. Limita la responsabilidad de la aseguradora a devolver las primas pagadas durante el período de exclusión. El beneficiario aún recibe el reembolso de la prima.",
+        "D": "No existe una disposición de compromiso por medio beneficio en la cláusula de suicidio. La aseguradora devuelve las primas pagadas, no una fracción del monto nominal."
+      },
+      "trap_type": "TP002",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B03-Q002",
+      "rule_ids": [
+        "RC-PROV-012"
+      ],
+      "domain": "Policy Provisions",
+      "subdomain": "Reinstatement",
+      "difficulty": "medium",
+      "format": "application_scenario",
+      "stem": "El titular de una póliza de vida entera dejó de pagar las primas y la póliza caducó hace 8 meses. El titular de la póliza ahora quiere rehabilitar la póliza. Bajo la disposición estándar de rehabilitación, ¿cuál de los siguientes requisitos es MÁS PROBABLE que exija la aseguradora?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Una nueva solicitud con suscripción completa a la edad actual, como si la póliza nunca hubiera existido"
+        },
+        {
+          "label": "B",
+          "text": "Evidencia de asegurabilidad satisfactoria para la aseguradora y el pago de todas las primas vencidas con intereses, siempre que la póliza no haya sido rescatada y cualquier seguro automático de no caducidad permanezca en vigor"
+        },
+        {
+          "label": "C",
+          "text": "Solamente el pago de la prima del mes actual, sin evidencia de asegurabilidad"
+        },
+        {
+          "label": "D",
+          "text": "La rehabilitación no está permitida una vez que una póliza de seguro de vida ha caducado por más de 30 días"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Para una póliza de vida estándar sujeta a las reglas de no caducidad de Texas, la rehabilitación se permite dentro de los tres años posteriores al incumplimiento si la póliza no ha sido rescatada, si cualquier otro seguro comprado con el valor de la póliza permanece en vigor, si la aseguradora recibe evidencia de asegurabilidad satisfactoria para la aseguradora, y si se pagan las primas atrasadas con intereses. Esto restaura el contrato original en lugar de emitir una póliza completamente nueva.",
+      "wrong_explanations": {
+        "A": "La rehabilitación restaura la póliza original en lugar de exigir que se emita una póliza completamente nueva a la edad actual. La aseguradora puede exigir evidencia de asegurabilidad actual, pero el contrato que se revive es la póliza original.",
+        "C": "El pago de una sola prima actual no es suficiente. La aseguradora generalmente exige todas las primas vencidas con intereses y evidencia satisfactoria de asegurabilidad antes de rehabilitar una póliza de vida caducada.",
+        "D": "Las pólizas de vida de Texas sujetas a la disposición estándar de rehabilitación permiten rehabilitación mucho más allá de 30 días. El período estándar es de tres años después del incumplimiento, siempre que se cumplan las demás condiciones legales."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt",
+          "notes": "Regla de rehabilitación alineada con la disposición de póliza de vida de Texas: ventana de tres años; se eliminó el requisito no respaldado sobre préstamos de póliza y la redacción de 3 a 5 años."
+        }
+      ]
+    },
+    {
+      "question_id": "B03-Q003",
+      "rule_ids": [
+        "RC-LIFE-013"
+      ],
+      "domain": "Life Insurance",
+      "subdomain": "Dividend Options",
+      "difficulty": "easy",
+      "format": "direct_rule",
+      "stem": "El titular de una póliza participante de seguro de vida entera recibe un dividendo anual de la póliza. ¿Cuál de los siguientes es una opción estándar de dividendos?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Usar el dividendo para comprar seguro temporal de un año (opción de adiciones pagadas)"
+        },
+        {
+          "label": "B",
+          "text": "Aplicar el dividendo para aumentar la tasa de interés garantizada de la póliza"
+        },
+        {
+          "label": "C",
+          "text": "Usar el dividendo para reducir el beneficio por muerte de la póliza"
+        },
+        {
+          "label": "D",
+          "text": "Usar el dividendo para comprar seguro adicional de vida entera totalmente pagado"
+        }
+      ],
+      "correct_answer": "D",
+      "correct_explanation": "Una opción estándar de dividendos permite que el titular de la póliza use los dividendos para comprar pequeñas cantidades adicionales de seguro de vida entera totalmente pagado. Esto aumenta el beneficio total por muerte y el valor en efectivo sin suscripción adicional. Otras opciones estándar incluyen recibir los dividendos en efectivo, aplicarlos para reducir primas, dejarlos en depósito con intereses, o comprar adiciones de seguro temporal de un año.",
+      "wrong_explanations": {
+        "A": "Usar dividendos para comprar seguro temporal de un año se conoce como la quinta opción de dividendos o la opción de seguro temporal de un año, no como la opción de adiciones pagadas. La descripción en esta respuesta etiqueta incorrectamente el nombre de la opción. La opción de adiciones pagadas compra cobertura permanente de vida entera, no seguro temporal de un año.",
+        "B": "Los dividendos no pueden usarse para cambiar la tasa de interés garantizada establecida en la póliza. La tasa garantizada es una disposición contractual fijada al emitirse la póliza y no puede ajustarse por elección de dividendos.",
+        "C": "Los dividendos están diseñados para beneficiar al titular de la póliza, no para reducir el beneficio por muerte. Ninguna opción estándar de dividendos resulta en un beneficio por muerte menor."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B03-Q004",
+      "rule_ids": [
+        "RC-TXSTAT-005"
+      ],
+      "domain": "Texas Statutes",
+      "subdomain": "Agent Authority",
+      "difficulty": "medium",
+      "format": "distinction",
+      "stem": "Un agente de seguros le dice a un posible cliente que una póliza cubre una condición específica, aunque el lenguaje de la póliza claramente la excluye y la aseguradora nunca autorizó al agente a hacer esa promesa. Si el cliente confía en la declaración del agente y compra la póliza, la representación no autorizada del agente puede obligar a la aseguradora bajo qué tipo de autoridad?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Autoridad expresa"
+        },
+        {
+          "label": "B",
+          "text": "Autoridad implícita"
+        },
+        {
+          "label": "C",
+          "text": "Autoridad aparente"
+        },
+        {
+          "label": "D",
+          "text": "Ninguna autoridad; la aseguradora nunca queda obligada por declaraciones no autorizadas del agente"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "La autoridad aparente surge cuando las acciones o la conducta de la aseguradora llevan a una persona razonable a creer que el agente tiene autoridad para actuar en nombre de la aseguradora. Aunque la aseguradora no autorizó expresa ni implícitamente la promesa específica, si el cliente confió razonablemente en la posición del agente como representante de la aseguradora, la aseguradora puede quedar obligada por la declaración del agente bajo principios de autoridad aparente.",
+      "wrong_explanations": {
+        "A": "La autoridad expresa es la autoridad específicamente otorgada por la aseguradora al agente, normalmente mediante el contrato de agencia. Como la aseguradora nunca autorizó esta promesa específica, la autoridad expresa no aplica aquí.",
+        "B": "La autoridad implícita cubre actos razonablemente necesarios para llevar a cabo funciones expresamente otorgadas (como cobrar primas cuando se está autorizado para entregar pólizas). Hacer promesas de cobertura que contradicen la póliza va más allá de la autoridad implícita.",
+        "D": "Las aseguradoras pueden quedar obligadas por declaraciones no autorizadas del agente cuando existe autoridad aparente. La ley de agencia protege a terceros que confían razonablemente en la autoridad percibida del agente, incluso cuando la aseguradora no autorizó el acto específico."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B03-Q005",
+      "rule_ids": [
+        "RC-UW-005"
+      ],
+      "domain": "Underwriting and Delivery",
+      "subdomain": "Conditional Receipt",
+      "difficulty": "medium",
+      "format": "application_scenario",
+      "stem": "Un solicitante de una póliza de seguro de vida paga la prima inicial al momento de la solicitud y recibe un recibo condicional. Luego se determina que el solicitante es asegurable según lo solicitado. Bajo el recibo condicional, ¿cuándo comienza la cobertura?",
+      "options": [
+        {
+          "label": "A",
+          "text": "En la fecha en que la póliza se entrega al solicitante"
+        },
+        {
+          "label": "B",
+          "text": "En la fecha en que la aseguradora emite la póliza"
+        },
+        {
+          "label": "C",
+          "text": "En la fecha de la solicitud o en la fecha del examen médico, la que sea posterior, siempre que se determine que el solicitante es asegurable según lo solicitado"
+        },
+        {
+          "label": "D",
+          "text": "Treinta días después de presentar la solicitud, independientemente del resultado de la suscripción"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "Un recibo condicional establece que si el solicitante paga la prima inicial al momento de la solicitud y se determina que es asegurable según lo solicitado, la cobertura es efectiva retroactivamente a la fecha de la solicitud o a la fecha del examen médico, la que sea posterior. Esto protege al solicitante durante el período de suscripción. Si el solicitante no es asegurable según lo solicitado, la prima se devuelve y no existió cobertura.",
+      "wrong_explanations": {
+        "A": "Bajo un recibo condicional, la cobertura no espera hasta la entrega de la póliza. La fecha efectiva retroactiva es la ventaja clave del recibo condicional frente a simplemente esperar la entrega.",
+        "B": "La fecha de emisión de la póliza no es la fecha determinante bajo un recibo condicional. La cobertura se retrotrae a la fecha de la solicitud o del examen médico, no a la fecha administrativa de emisión.",
+        "D": "El recibo condicional no proporciona cobertura automática después de 30 días independientemente de la asegurabilidad. La condición es que el solicitante debe ser considerado asegurable según lo solicitado. Si no, no existió cobertura."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B03-Q006",
+      "rule_ids": [
+        "RC-HMO-005"
+      ],
+      "domain": "Health Insurance",
+      "subdomain": "HMO Utilization Review",
+      "difficulty": "medium",
+      "format": "direct_rule",
+      "stem": "Una HMO de Texas realiza revisión de utilización para evaluar la necesidad médica de tratamientos propuestos. Bajo la ley de Texas, ¿quién debe tomar la determinación final de que un servicio solicitado no es médicamente necesario?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Un examinador de reclamaciones sin capacitación médica"
+        },
+        {
+          "label": "B",
+          "text": "Un médico con licencia"
+        },
+        {
+          "label": "C",
+          "text": "El empleador del afiliado"
+        },
+        {
+          "label": "D",
+          "text": "El comisionado del Texas Department of Insurance personalmente"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "La ley de Texas exige que las determinaciones adversas relacionadas con la necesidad médica en la revisión de utilización sean hechas por, o bajo la supervisión de, un médico con licencia. Un procesador de reclamaciones que no sea médico puede manejar una revisión administrativa inicial, pero la decisión final de negar un servicio por necesidad médica debe involucrar revisión a nivel médico.",
+      "wrong_explanations": {
+        "A": "Un examinador de reclamaciones sin capacitación médica puede realizar una revisión administrativa inicial, pero no puede tomar la determinación final de necesidad médica. Esa decisión requiere juicio clínico a nivel médico bajo la ley de Texas.",
+        "C": "El empleador del afiliado no tiene ningún rol en la revisión de utilización ni en las determinaciones de necesidad médica. Esas decisiones se toman dentro del proceso de revisión clínica de la HMO.",
+        "D": "El comisionado de TDI supervisa el cumplimiento regulatorio, pero no toma personalmente determinaciones individuales de necesidad médica para afiliados de una HMO. Esa es la función de los revisores médicos de la HMO."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B03-Q007",
+      "rule_ids": [
+        "RC-UTP-007"
+      ],
+      "domain": "Unfair Trade Practices",
+      "subdomain": "Defamation",
+      "difficulty": "easy",
+      "format": "application_scenario",
+      "stem": "Un agente le dice a un posible cliente que una aseguradora competidora está enfrentando bancarrota y no pagará reclamaciones, sabiendo que esta declaración es completamente falsa. Esta conducta se describe MEJOR como:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Twisting"
+        },
+        {
+          "label": "B",
+          "text": "Difamación de una aseguradora"
+        },
+        {
+          "label": "C",
+          "text": "Rebating"
+        },
+        {
+          "label": "D",
+          "text": "Negocio controlado"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "La difamación en seguros ocurre cuando una persona hace declaraciones falsas, despectivas o maliciosas sobre la condición financiera de una aseguradora con la intención de perjudicar a esa aseguradora o influir en una decisión de compra. Hacer deliberadamente una declaración falsa sobre la estabilidad financiera de un competidor encaja precisamente con esta definición.",
+      "wrong_explanations": {
+        "A": "Twisting implica usar tergiversación para inducir a un titular de póliza a reemplazar una póliza existente. Este escenario no involucra el reemplazo de una póliza existente; involucra desacreditar a una aseguradora competidora frente a un posible nuevo cliente.",
+        "C": "Rebating implica ofrecer incentivos de valor no establecidos en la póliza para fomentar una compra. En este escenario no se ofrece ningún incentivo monetario o material.",
+        "D": "Negocio controlado se refiere a un agente que escribe seguros principalmente sobre su propia vida, sus familiares o asociados cercanos. Ese concepto no está relacionado con declaraciones falsas sobre un competidor."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B03-Q008",
+      "rule_ids": [
+        "RC-GRP-005"
+      ],
+      "domain": "Health Insurance",
+      "subdomain": "Group Health Eligibility",
+      "difficulty": "medium",
+      "format": "application_scenario",
+      "stem": "Un pequeño empleador ofrece seguro de salud grupal que incluye un período probatorio de 90 días para nuevos empleados. Un empleado recién contratado necesita atención médica durante los primeros 60 días de empleo. ¿Cuál es el estado de cobertura del empleado?",
+      "options": [
+        {
+          "label": "A",
+          "text": "El empleado está cubierto inmediatamente al ser contratado porque los planes grupales no pueden imponer períodos probatorios"
+        },
+        {
+          "label": "B",
+          "text": "El empleado aún no es elegible para el plan grupal porque no ha cumplido el período probatorio de 90 días"
+        },
+        {
+          "label": "C",
+          "text": "El empleado está cubierto pero debe pagar el triple de la prima estándar durante el período probatorio"
+        },
+        {
+          "label": "D",
+          "text": "El empleado está cubierto solamente para servicios de emergencia durante el período probatorio"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Un período probatorio (también llamado período de espera o período de espera de elegibilidad) es el tiempo que un nuevo empleado debe esperar antes de ser elegible para beneficios de salud grupales. Durante este período, el empleado no está cubierto bajo el plan grupal. El empleado tendría que depender de otra cobertura (seguro individual, COBRA de un empleador anterior, cobertura del Marketplace, etc.) hasta que termine el período probatorio y comience la cobertura grupal.",
+      "wrong_explanations": {
+        "A": "Los planes de salud grupales pueden imponer períodos probatorios para nuevos empleados, sujetos a límites aplicables. Bajo la ACA, el período máximo de espera para planes de salud grupales es de 90 días. El período de 90 días del empleador está dentro de este límite.",
+        "C": "No existe una disposición de cobertura con prima triple durante un período probatorio. El empleado simplemente no es elegible para beneficios grupales hasta cumplir el período probatorio.",
+        "D": "El plan grupal no proporciona cobertura parcial o solo de emergencia durante el período probatorio. El empleado aún no es miembro cubierto del plan."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B03-Q009",
+      "rule_ids": [
+        "RC-PROV-013"
+      ],
+      "domain": "Policy Provisions",
+      "subdomain": "Spendthrift Clause",
+      "difficulty": "hard",
+      "format": "application_scenario",
+      "stem": "Un titular de una póliza de seguro de vida incluye una cláusula de protección contra acreedores (spendthrift clause) en la póliza. Después de la muerte del asegurado, un acreedor del beneficiario intenta embargar los beneficios por muerte antes de que sean pagados. Bajo la cláusula spendthrift, ¿cuál es el resultado?",
+      "options": [
+        {
+          "label": "A",
+          "text": "El acreedor puede embargar el beneficio total por muerte porque los ingresos de seguro de vida siempre están sujetos a reclamaciones de acreedores"
+        },
+        {
+          "label": "B",
+          "text": "Los ingresos del beneficio por muerte están protegidos de los acreedores del beneficiario mientras estén retenidos por la aseguradora, pero una vez pagados al beneficiario, la protección generalmente cesa"
+        },
+        {
+          "label": "C",
+          "text": "El acreedor puede embargar el 50% del beneficio por muerte y el 50% restante está protegido"
+        },
+        {
+          "label": "D",
+          "text": "La cláusula spendthrift protege permanentemente todo el beneficio por muerte contra todos los acreedores incluso después del pago al beneficiario"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Una cláusula spendthrift protege los ingresos de la póliza contra los acreedores del beneficiario mientras los ingresos estén retenidos por la aseguradora (por ejemplo, bajo una opción de liquidación). Una vez que los ingresos son pagados al beneficiario y pasan a formar parte de los activos generales del beneficiario, la protección bajo la cláusula spendthrift generalmente cesa, y los fondos pueden quedar sujetos a reclamaciones de acreedores como cualquier otro activo personal.",
+      "wrong_explanations": {
+        "A": "Los ingresos de seguro de vida retenidos por la aseguradora bajo una disposición spendthrift no están sujetos a embargo por acreedores del beneficiario. La cláusula spendthrift existe específicamente para proporcionar esta protección.",
+        "C": "No existe una disposición estándar de división 50/50. La cláusula spendthrift protege el monto completo mientras esté retenido por la aseguradora. La protección es completa mientras está vigente, no parcial.",
+        "D": "La cláusula spendthrift no proporciona protección permanente de por vida contra todos los acreedores después del pago. Una vez que los ingresos se distribuyen al beneficiario y se mezclan con activos personales, la protección bajo la cláusula generalmente termina."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B03-Q010",
+      "rule_ids": [
+        "RC-TXSTAT-006"
+      ],
+      "domain": "Texas Statutes",
+      "subdomain": "Texas Life and Health Guaranty Association",
+      "difficulty": "hard",
+      "format": "direct_rule",
+      "stem": "Si una compañía de seguros de vida y salud autorizada para hacer negocios en Texas se vuelve insolvente, la Texas Life and Health Insurance Guaranty Association proporciona protección a los titulares de pólizas. ¿Cuál de los siguientes describe MEJOR el propósito de la Asociación de Garantía?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Evitar que cualquier compañía de seguros en Texas llegue a ser insolvente"
+        },
+        {
+          "label": "B",
+          "text": "Continuar la cobertura o pagar reclamaciones cubiertas hasta los límites legales para titulares de pólizas cubiertos, principalmente residentes de Texas y en casos limitados ciertos no residentes, de la aseguradora insolvente"
+        },
+        {
+          "label": "C",
+          "text": "Reembolsar todas las primas alguna vez pagadas por cualquier titular de póliza de la aseguradora insolvente"
+        },
+        {
+          "label": "D",
+          "text": "Garantizar que cada aseguradora en Texas genere ganancias cada año"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "La Texas Life and Health Insurance Guaranty Association es una red de seguridad legal que existe para pagar beneficios y continuar cobertura, sujeta a límites legales, para personas cubiertas cuando una aseguradora miembro se deteriora financieramente o se vuelve insolvente. La protección está dirigida principalmente a residentes de Texas y, en circunstancias limitadas descritas por la ley, también a ciertos no residentes. No previene la insolvencia ni garantiza rentabilidad.",
+      "wrong_explanations": {
+        "A": "La Asociación de Garantía no previene la insolvencia. Responde después de que ocurre la insolvencia protegiendo a los titulares de pólizas hasta los límites legales. La regulación de solvencia y la supervisión financiera son funciones separadas realizadas por TDI.",
+        "C": "La Asociación no reembolsa todas las primas alguna vez pagadas. Su función es continuar cobertura o pagar reclamaciones cubiertas hasta los límites legales por persona, no compensar a los titulares de pólizas por cada dólar de prima.",
+        "D": "La Asociación no tiene ningún rol en garantizar la rentabilidad de las aseguradoras. Su única función es proteger a los titulares de pólizas cuando una aseguradora miembro se vuelve insolvente."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt",
+          "notes": "Se aclaró el alcance de personas cubiertas para la asociación de garantía de Texas."
+        }
+      ]
+    },
+    {
+      "question_id": "B03-Q011",
+      "rule_ids": [
+        "RC-HEALTH-008"
+      ],
+      "domain": "Health Insurance",
+      "subdomain": "Subrogation",
+      "difficulty": "medium",
+      "format": "application_scenario",
+      "stem": "Un asegurado resulta lesionado en un accidente automovilístico causado por otro conductor. La aseguradora de salud del asegurado paga $30,000 en reclamaciones médicas. Luego el asegurado recupera $50,000 de la aseguradora de responsabilidad civil del conductor culpable. Bajo la disposición de subrogación en la póliza de salud, ¿a qué tiene derecho la aseguradora de salud?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Recuperar los $30,000 que pagó de la recuperación de terceros del asegurado"
+        },
+        {
+          "label": "B",
+          "text": "Cobrar los $50,000 completos de la aseguradora del conductor culpable"
+        },
+        {
+          "label": "C",
+          "text": "Nada, porque las aseguradoras de salud no tienen derecho a recuperar de acuerdos con terceros"
+        },
+        {
+          "label": "D",
+          "text": "Cancelar retroactivamente la póliza de salud del asegurado porque un tercero fue responsable"
+        }
+      ],
+      "correct_answer": "A",
+      "correct_explanation": "La subrogación permite que la aseguradora de salud recupere el monto que pagó en reclamaciones de la recuperación del asegurado contra el tercero responsable. Como la aseguradora de salud pagó $30,000, tiene derecho a recuperar ese monto del acuerdo de $50,000 del asegurado. Esto evita que el asegurado reciba una doble recuperación por los mismos gastos médicos.",
+      "wrong_explanations": {
+        "B": "El derecho de subrogación de la aseguradora de salud se limita al monto que realmente pagó ($30,000), no al monto total de la recuperación del asegurado. El asegurado conserva el remanente.",
+        "C": "Muchas pólizas de seguro de salud incluyen disposiciones de subrogación que otorgan explícitamente a la aseguradora el derecho de recuperar pagos de reclamaciones de recuperaciones de terceros. Esta es una disposición contractual estándar.",
+        "D": "La existencia de un tercero responsable no le da a la aseguradora bases para cancelar retroactivamente la póliza. La subrogación permite recuperar reclamaciones pagadas, no cancelar cobertura."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B03-Q012",
+      "rule_ids": [
+        "RC-LIFE-014"
+      ],
+      "domain": "Life Insurance",
+      "subdomain": "Modified Endowment Contract",
+      "difficulty": "hard",
+      "format": "application_scenario",
+      "stem": "El titular de una póliza compra una póliza de vida entera y paga primas sustancialmente por encima del límite de la prueba de 7 pagos durante los primeros tres años. La póliza se clasifica como un contrato de dotación modificado (MEC). ¿Cómo afecta el estatus de MEC a las distribuciones de la póliza?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Las distribuciones siempre se reciben completamente libres de impuestos sin importar cuánto se haya contribuido"
+        },
+        {
+          "label": "B",
+          "text": "Las distribuciones se gravan bajo el método último en entrar, primero en salir (LIFO), lo que significa que las ganancias salen primero y se gravan como ingreso ordinario, y puede aplicar una penalidad del 10% si el titular de la póliza es menor de 59 años y medio"
+        },
+        {
+          "label": "C",
+          "text": "La póliza pierde su beneficio por muerte y funciona solamente como una cuenta de inversión"
+        },
+        {
+          "label": "D",
+          "text": "El estatus de MEC no tiene efecto en la tributación; todos los seguros de vida se gravan de manera idéntica"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Cuando una póliza de seguro de vida se clasifica como MEC (por no pasar la prueba de 7 pagos), las distribuciones (incluidos préstamos y retiros) se gravan bajo el método LIFO: se considera que las ganancias salen primero y se gravan como ingreso ordinario. Además, aplica una penalidad fiscal del 10% sobre la porción gravable de las distribuciones si el titular de la póliza es menor de 59 años y medio. El beneficio por muerte sigue estando libre de impuesto sobre la renta para el beneficiario, pero el tratamiento fiscal de los beneficios en vida cambia significativamente.",
+      "wrong_explanations": {
+        "A": "Las distribuciones de un MEC no están libres de impuestos. El tratamiento LIFO significa que las ganancias acumuladas se gravan primero como ingreso ordinario. Solo las pólizas que no son MEC disfrutan tratamiento primero en entrar, primero en salir (FIFO), donde la base sale primero.",
+        "C": "El estatus de MEC no elimina el beneficio por muerte. La póliza sigue siendo un contrato de seguro de vida con beneficio por muerte. El cambio está en cómo se gravan los préstamos y retiros durante la vida del titular de la póliza.",
+        "D": "El estatus de MEC tiene un efecto significativo en la tributación. Las pólizas que no son MEC permiten préstamos y retiros bajo FIFO (la base sale primero, generalmente libre de impuestos hasta la base). Los MEC usan LIFO, haciendo que las distribuciones sean gravables y potencialmente sujetas a penalidad."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B03-Q013",
+      "rule_ids": [
+        "RC-PROV-014"
+      ],
+      "domain": "Policy Provisions",
+      "subdomain": "Time Limit on Certain Defenses",
+      "difficulty": "medium",
+      "format": "application_scenario",
+      "stem": "Una póliza individual de seguro de salud ha estado en vigor durante cuatro años. La aseguradora descubre que el asegurado hizo una tergiversación material pero no fraudulenta en la solicitud respecto a una condición preexistente. ¿Puede la aseguradora usar esta tergiversación para negar una reclamación?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Sí, porque las aseguradoras de salud pueden negar reclamaciones basadas en tergiversaciones de la solicitud en cualquier momento"
+        },
+        {
+          "label": "B",
+          "text": "Sí, pero solo si la tergiversación fue fraudulenta"
+        },
+        {
+          "label": "C",
+          "text": "No, porque la disposición de límite de tiempo sobre ciertas defensas (normalmente dos o tres años) ha vencido, y la aseguradora ya no puede usar la tergiversación para negar una reclamación no fraudulenta"
+        },
+        {
+          "label": "D",
+          "text": "No, porque la tergiversación nunca es base para negar una reclamación de seguro de salud"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "La disposición de límite de tiempo sobre ciertas defensas en seguro de salud establece que después de que la póliza ha estado en vigor durante el período indicado (comúnmente dos o tres años), la aseguradora no puede usar una tergiversación material pero no fraudulenta en la solicitud para negar una reclamación o anular la póliza. Como esta póliza ha estado en vigor durante cuatro años, ese límite de tiempo ha vencido.",
+      "wrong_explanations": {
+        "A": "Las aseguradoras no tienen una ventana ilimitada para negar reclamaciones basadas en tergiversaciones de la solicitud. El límite de tiempo sobre ciertas defensas restringe este derecho después de que la póliza ha estado en vigor durante el período indicado.",
+        "B": "El fraude puede tratarse de manera diferente a una tergiversación material pero no fraudulenta. Esta pregunta expresa que la tergiversación fue no fraudulenta, por lo que la disposición de límite de tiempo impide que la aseguradora la use después de que el período indicado haya pasado.",
+        "D": "La tergiversación es una base válida para negar reclamaciones durante el período antes de que venza el límite de tiempo sobre ciertas defensas. No es que la tergiversación nunca sea relevante; más bien, la ventana de la aseguradora para usarla es limitada."
+      },
+      "trap_type": "TP002",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt",
+          "notes": "Se resolvió la ambigüedad especificando que la tergiversación fue no fraudulenta."
+        }
+      ]
+    },
+    {
+      "question_id": "B03-Q014",
+      "rule_ids": [
+        "RC-UTP-008"
+      ],
+      "domain": "Unfair Trade Practices",
+      "subdomain": "Unfair Claims Settlement",
+      "difficulty": "medium",
+      "format": "exception_trigger",
+      "stem": "Bajo las reglas de prácticas injustas de liquidación de reclamaciones de Texas, todas las siguientes son prácticas prohibidas para una aseguradora EXCEPTO:",
+      "options": [
+        {
+          "label": "A",
+          "text": "No reconocer ni actuar prontamente sobre comunicaciones relacionadas con reclamaciones"
+        },
+        {
+          "label": "B",
+          "text": "Exigir que un asegurado presente una prueba de pérdida debidamente documentada antes de pagar una reclamación"
+        },
+        {
+          "label": "C",
+          "text": "Condicionar liquidaciones de reclamaciones a que el asegurado acepte menos del monto debido bajo la póliza"
+        },
+        {
+          "label": "D",
+          "text": "Negar reclamaciones sin realizar una investigación razonable"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Exigir una prueba de pérdida debidamente documentada es una práctica legítima y estándar de manejo de reclamaciones, no un acto prohibido. Las aseguradoras tienen derecho a solicitar documentación para verificar la reclamación antes de realizar el pago. Las otras tres opciones describen prácticas que violan las leyes de Texas sobre prácticas injustas de liquidación de reclamaciones.",
+      "wrong_explanations": {
+        "A": "No reconocer ni actuar prontamente sobre comunicaciones de reclamaciones es una práctica injusta de reclamaciones prohibida. La ley de Texas exige que las aseguradoras respondan a las reclamaciones de manera oportuna.",
+        "C": "Condicionar el pago a que el asegurado acepte una cantidad reducida es una práctica prohibida, a veces llamada lowballing. La aseguradora debe pagar lo que se debe bajo los términos de la póliza.",
+        "D": "Negar reclamaciones sin una investigación razonable está prohibido. La aseguradora debe investigar las reclamaciones antes de tomar una determinación de cobertura."
+      },
+      "trap_type": "TP004",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B03-Q015",
+      "rule_ids": [
+        "RC-LIFE-015"
+      ],
+      "domain": "Life Insurance",
+      "subdomain": "Modes of Premium Payment",
+      "difficulty": "easy",
+      "format": "direct_rule",
+      "stem": "El titular de una póliza de seguro de vida entera puede elegir pagar primas anualmente, semestralmente, trimestralmente o mensualmente. Si el titular de la póliza cambia de pagos anuales a pagos mensuales, ¿cuál es el efecto típico sobre el costo total anual de la prima?",
+      "options": [
+        {
+          "label": "A",
+          "text": "El costo anual total disminuye por la conveniencia de pagos más pequeños"
+        },
+        {
+          "label": "B",
+          "text": "El costo anual total aumenta porque la aseguradora agrega un cargo de servicio o factor de recargo por frecuencia a los modos de pago más frecuentes"
+        },
+        {
+          "label": "C",
+          "text": "El costo anual total permanece exactamente igual sin importar la frecuencia de pago"
+        },
+        {
+          "label": "D",
+          "text": "La aseguradora reembolsa una porción de la prima cuando el titular de la póliza cambia a pagos mensuales"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Cuando un titular de póliza selecciona un modo de pago más frecuente (mensual en lugar de anual), la aseguradora normalmente agrega un cargo de servicio o factor de recargo por frecuencia. Esto significa que la suma de 12 pagos mensuales excederá la prima anual única. El modo anual es la forma menos costosa de pagar porque la aseguradora tiene uso de la prima completa desde el inicio del año.",
+      "wrong_explanations": {
+        "A": "Los pagos más frecuentes no reducen el costo. Aumentan el costo total anual debido a los gastos administrativos adicionales de la aseguradora y la pérdida de ingreso de inversión por no recibir la prima anual completa por adelantado.",
+        "C": "El costo total anual no permanece igual. El recargo por frecuencia significa que el titular de la póliza paga más en conjunto cuando elige pago mensual en lugar de anual. Solo el monto de cada pago es menor.",
+        "D": "La aseguradora no reembolsa una porción de la prima por cambiar al modo mensual. En todo caso, el costo agregado aumenta debido al factor de recargo."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B03-Q016",
+      "rule_ids": [
+        "RC-HEALTH-009",
+        "RC-TXSTAT-009"
+      ],
+      "domain": "Health Insurance",
+      "subdomain": "Pre-Existing Condition Waiting Period",
+      "difficulty": "medium",
+      "format": "application_scenario",
+      "stem": "Un consumidor de Texas compra una póliza suplementaria de Medicare durante el período de inscripción abierta de Medicare supplement del consumidor. El consumidor recibió tratamiento por diabetes 4 meses antes de la fecha efectiva de la póliza y no tiene cobertura acreditable previa. Suponiendo que la aseguradora impone el período de espera máximo permitido por la ley, ¿cuándo comenzarán a cubrirse las reclamaciones relacionadas con la diabetes?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Inmediatamente en la fecha efectiva de la póliza porque nunca se permite un período de espera durante la inscripción abierta"
+        },
+        {
+          "label": "B",
+          "text": "Después de un período de espera de hasta 6 meses desde la fecha efectiva de la póliza"
+        },
+        {
+          "label": "C",
+          "text": "Después de un período de exclusión de 12 meses desde la fecha efectiva de la póliza"
+        },
+        {
+          "label": "D",
+          "text": "Nunca, porque las condiciones preexistentes pueden excluirse permanentemente"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "En la inscripción abierta de Medicare supplement en Texas, la compañía debe vender la póliza, pero puede imponer un período de espera de hasta seis meses antes de cubrir condiciones preexistentes, a menos que la cobertura acreditable previa elimine o reduzca ese período de espera. Como el consumidor recibió tratamiento dentro de los seis meses anteriores y no tiene cobertura acreditable previa, el período de espera máximo permitido por la ley es de hasta seis meses.",
+      "wrong_explanations": {
+        "A": "Durante la inscripción abierta de Medicare supplement en Texas aplica emisión garantizada, pero aún puede imponerse en algunos casos un período de espera de hasta seis meses para condiciones preexistentes. La inscripción abierta no elimina automáticamente todo período de espera.",
+        "C": "Una exclusión de 12 meses por condición preexistente no es la regla para la inscripción abierta de Medicare supplement en Texas. El período máximo de espera es de hasta seis meses, no 12 meses.",
+        "D": "Las condiciones preexistentes no pueden excluirse permanentemente en este contexto. El asunto es un período de espera temporal, no una negación permanente de cobertura."
+      },
+      "trap_type": "TP002",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt",
+          "notes": "Se reescribió el punto desactualizado sobre exclusión de condiciones preexistentes en salud individual a la regla actual de período de espera de Medicare supplement en Texas."
+        }
+      ]
+    },
+    {
+      "question_id": "B03-Q017",
+      "rule_ids": [
+        "RC-PROV-015"
+      ],
+      "domain": "Policy Provisions",
+      "subdomain": "Common Disaster Clause",
+      "difficulty": "medium",
+      "format": "application_scenario",
+      "stem": "La titular de una póliza de seguro de vida nombra a su esposo como beneficiario primario. Tanto la asegurada como el esposo mueren en el mismo accidente automovilístico, y no se puede determinar quién murió primero. La póliza contiene una cláusula de desastre común que exige que el beneficiario sobreviva a la asegurada por 30 días. ¿Qué ocurre con el beneficio por muerte?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Los ingresos se pagan al patrimonio del esposo porque él era el beneficiario primario nombrado"
+        },
+        {
+          "label": "B",
+          "text": "Los ingresos se pagan como si el beneficiario primario hubiera fallecido antes que la asegurada, pasando al beneficiario contingente o al patrimonio de la asegurada"
+        },
+        {
+          "label": "C",
+          "text": "La aseguradora retiene permanentemente el beneficio por muerte"
+        },
+        {
+          "label": "D",
+          "text": "Los ingresos se dividen por igual entre el patrimonio de la asegurada y el patrimonio del beneficiario"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "La cláusula de desastre común (también llamada cláusula de supervivencia) exige que el beneficiario sobreviva al asegurado por un período específico (aquí, 30 días). Si el beneficiario no sobrevive ese período, los ingresos se distribuyen como si el beneficiario primario hubiera fallecido antes que el asegurado. Si se nombró un beneficiario contingente y está vivo, esa persona recibe los ingresos. De lo contrario, los ingresos van al patrimonio del asegurado.",
+      "wrong_explanations": {
+        "A": "La cláusula de desastre común evita este resultado. Como el esposo no sobrevivió a la asegurada por 30 días, se le trata como si hubiera fallecido antes que la asegurada. Los ingresos no van al patrimonio del esposo.",
+        "C": "La aseguradora no retiene beneficios por muerte. Los ingresos deben pagarse conforme a la jerarquía de beneficiarios de la póliza. La cláusula de desastre común simplemente redirige el pago alejándolo de un beneficiario que no sobrevivió el período requerido.",
+        "D": "No existe una disposición estándar que divida los ingresos entre patrimonios en un desastre común. La cláusula de supervivencia dirige todos los ingresos al siguiente beneficiario en la jerarquía."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B03-Q018",
+      "rule_ids": [
+        "RC-TXSTAT-007"
+      ],
+      "domain": "Texas Statutes",
+      "subdomain": "Insurer Classification",
+      "difficulty": "easy",
+      "format": "distinction",
+      "stem": "Una compañía de seguros está constituida en Ohio pero tiene un certificado de autoridad para vender seguros en Texas. En Texas, esta compañía se clasifica como:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Aseguradora doméstica"
+        },
+        {
+          "label": "B",
+          "text": "Aseguradora extranjera"
+        },
+        {
+          "label": "C",
+          "text": "Aseguradora alienígena"
+        },
+        {
+          "label": "D",
+          "text": "Aseguradora de líneas excedentes"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Una aseguradora constituida en otro estado de EE. UU. (Ohio) pero autorizada para hacer negocios en Texas se clasifica como aseguradora extranjera desde la perspectiva de Texas. Una aseguradora doméstica es una constituida en Texas. Una aseguradora alienígena es una constituida en otro país. Estas clasificaciones se basan en el estado de domicilio de la aseguradora en relación con el estado regulador.",
+      "wrong_explanations": {
+        "A": "Una aseguradora doméstica es una constituida en el estado donde se está clasificando. Como esta aseguradora está constituida en Ohio, no es una aseguradora doméstica de Texas.",
+        "C": "Una aseguradora alienígena es una constituida en un país distinto de Estados Unidos. Una compañía constituida en Ohio es una compañía estadounidense y por lo tanto es extranjera, no alienígena, desde la perspectiva de Texas.",
+        "D": "Una aseguradora de líneas excedentes es una que suscribe cobertura para riesgos que las aseguradoras admitidas (autorizadas) no están dispuestas a cubrir. La clasificación como extranjera, doméstica o alienígena se basa en el domicilio, no en el estatus de líneas excedentes."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B03-Q019",
+      "rule_ids": [
+        "RC-HEALTH-010"
+      ],
+      "domain": "Health Insurance",
+      "subdomain": "Managed Care: POS Plan",
+      "difficulty": "medium",
+      "format": "distinction",
+      "stem": "Un plan punto de servicio (POS) combina características de cuáles dos modelos de atención administrada?",
+      "options": [
+        {
+          "label": "A",
+          "text": "HMO y PPO"
+        },
+        {
+          "label": "B",
+          "text": "Indemnización y Workers' Compensation"
+        },
+        {
+          "label": "C",
+          "text": "Medicare Advantage y Medigap"
+        },
+        {
+          "label": "D",
+          "text": "COBRA y seguro de cuidado a largo plazo"
+        }
+      ],
+      "correct_answer": "A",
+      "correct_explanation": "Un plan punto de servicio (POS) combina características de una HMO y una PPO. Como una HMO, el plan POS asigna un médico de atención primaria y fomenta el uso de una red de proveedores. Como una PPO, permite que el miembro reciba atención fuera de la red a un costo de bolsillo más alto. El miembro elige en el punto de servicio si usará atención dentro de la red (similar a HMO) o fuera de la red (similar a PPO).",
+      "wrong_explanations": {
+        "B": "El seguro de indemnización y Workers' Compensation son productos fundamentalmente diferentes y no son modelos de atención administrada. Un plan POS no combina estos.",
+        "C": "Medicare Advantage y Medigap son productos relacionados con Medicare, no los componentes básicos de un plan POS. Aunque Medicare Advantage puede usar estructuras de atención administrada, el concepto POS se define por su naturaleza híbrida HMO/PPO.",
+        "D": "COBRA es una ley de continuación de cobertura, y el seguro de cuidado a largo plazo es una línea de producto separada. Ninguno es un modelo de atención administrada que contribuya al diseño POS."
+      },
+      "trap_type": "TP003",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B03-Q020",
+      "rule_ids": [
+        "RC-LIFE-016"
+      ],
+      "domain": "Life Insurance",
+      "subdomain": "Contract Law: Adhesion",
+      "difficulty": "easy",
+      "format": "direct_rule",
+      "stem": "Los contratos de seguro se consideran contratos de adhesión porque:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Tanto la aseguradora como el solicitante negocian cada término del contrato por igual"
+        },
+        {
+          "label": "B",
+          "text": "La aseguradora redacta el contrato y el solicitante debe aceptarlo o rechazarlo tal como está escrito, sin negociar términos individuales"
+        },
+        {
+          "label": "C",
+          "text": "El contrato debe estar físicamente adjunto a la solicitud para ser válido"
+        },
+        {
+          "label": "D",
+          "text": "El contrato se adhiere automáticamente a las leyes de todos los estados del país"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Un contrato de adhesión es uno preparado completamente por una parte (la aseguradora) y ofrecido a la otra parte (el solicitante) bajo la modalidad de aceptarlo o dejarlo. El solicitante no tiene oportunidad de negociar disposiciones individuales. Debido a esta posición desigual de negociación, los tribunales interpretan cualquier ambigüedad en el lenguaje del contrato a favor del asegurado (la parte adherente).",
+      "wrong_explanations": {
+        "A": "La negociación igualitaria describe un contrato comercial entre partes independientes, no un contrato de adhesión. Los contratos de seguro no se negocian individualmente entre la aseguradora y cada solicitante.",
+        "C": "El término 'adhesión' no se refiere a una unión física. Se refiere al concepto legal de que una parte se adhiere (acepta) a los términos redactados completamente por la otra parte.",
+        "D": "La adhesión no tiene nada que ver con aplicabilidad multiestatal. Los contratos de seguro se rigen por la ley del estado donde el contrato se emite o entrega, no por la de todos los estados."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B03-Q021",
+      "rule_ids": [
+        "RC-HMO-006"
+      ],
+      "domain": "Health Insurance",
+      "subdomain": "HMO Complaint and Appeal",
+      "difficulty": "medium",
+      "format": "application_scenario",
+      "stem": "A un afiliado de una HMO de Texas se le niega la solicitud de un procedimiento médico específico por no ser médicamente necesario. El afiliado no está de acuerdo con la determinación. Bajo la ley de Texas, ¿cuál es el primer paso del afiliado para impugnar la negación?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Presentar una demanda directamente en un tribunal estatal de distrito"
+        },
+        {
+          "label": "B",
+          "text": "Presentar una queja ante la Federal Trade Commission"
+        },
+        {
+          "label": "C",
+          "text": "Presentar una apelación interna mediante el proceso de quejas y apelaciones de la HMO"
+        },
+        {
+          "label": "D",
+          "text": "Cancelar la inscripción en la HMO y cambiarse inmediatamente a un plan de indemnización"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "La ley de Texas exige que las HMO mantengan procedimientos internos de quejas y apelaciones. Cuando un afiliado no está de acuerdo con una negación de cobertura, el primer paso es usar el proceso interno de apelación de la HMO. Si la apelación interna no resuelve la disputa, el afiliado puede entonces buscar revisión externa mediante una organización de revisión independiente (IRO) o presentar una queja ante el Texas Department of Insurance.",
+      "wrong_explanations": {
+        "A": "Presentar una demanda generalmente no es el primer paso. El afiliado debe agotar primero el proceso interno de apelación de la HMO. La ley de Texas contempla apelaciones internas seguidas de revisión externa independiente antes del litigio.",
+        "B": "La Federal Trade Commission no maneja disputas individuales de necesidad médica de HMO. La regulación de seguros en Texas corresponde al Texas Department of Insurance, y la apelación interna de la HMO es el paso inicial.",
+        "D": "Cancelar la inscripción no resuelve la disputa de cobertura. El afiliado tiene derecho a impugnar la negación mediante el proceso interno de la HMO y, si es necesario, mediante revisión externa."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B03-Q022",
+      "rule_ids": [
+        "RC-HEALTH-011"
+      ],
+      "domain": "Health Insurance",
+      "subdomain": "Proof of Loss",
+      "difficulty": "medium",
+      "format": "direct_rule",
+      "stem": "Bajo una póliza estándar individual de seguro de salud, ¿dentro de cuántos días de una pérdida cubierta debe el asegurado presentar prueba escrita de pérdida a la aseguradora?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Dentro de 10 días de la pérdida"
+        },
+        {
+          "label": "B",
+          "text": "Dentro de 20 días de la pérdida"
+        },
+        {
+          "label": "C",
+          "text": "Dentro de 90 días de la pérdida, pero no después de un año (excepto en ausencia de capacidad legal)"
+        },
+        {
+          "label": "D",
+          "text": "No hay límite de tiempo para presentar prueba de pérdida"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "La disposición estándar de prueba de pérdida en pólizas individuales de seguro de salud exige que el asegurado presente prueba escrita de pérdida dentro de 90 días desde la fecha de la pérdida. Sin embargo, la reclamación no queda impedida si la prueba se presenta hasta un año después de la fecha límite, salvo que el asegurado careciera de capacidad legal. Este estándar forma parte de las Disposiciones Uniformes de Pólizas Individuales de Accidentes y Enfermedad.",
+      "wrong_explanations": {
+        "A": "Diez días es el requisito típico de aviso de reclamación (notificación de que ocurrió una pérdida), no la fecha límite de prueba de pérdida. La prueba de pérdida (la documentación detallada) debe presentarse dentro de 90 días.",
+        "B": "Veinte días es el período estándar dentro del cual la aseguradora debe proporcionar formularios de prueba de pérdida después de recibir el aviso de reclamación. La fecha límite del asegurado para presentar la prueba completada es de 90 días desde la pérdida.",
+        "D": "Sí existe un límite de tiempo. El estándar es 90 días, con una extensión máxima de un año excepto en casos de incapacidad legal. La presentación indefinida no está permitida bajo la disposición estándar."
+      },
+      "trap_type": "TP002",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B03-Q023",
+      "rule_ids": [
+        "RC-LIFE-017"
+      ],
+      "domain": "Life Insurance",
+      "subdomain": "Backdating",
+      "difficulty": "hard",
+      "format": "application_scenario",
+      "stem": "Una solicitante de 36 años pide que su nueva póliza de vida entera sea fechada retroactivamente por cuatro meses para obtener una prima más baja basada en su edad en esa fecha anterior. La aseguradora acepta. ¿Qué limitación aplica normalmente al fechamiento retroactivo?",
+      "options": [
+        {
+          "label": "A",
+          "text": "El fechamiento retroactivo está prohibido bajo todas las circunstancias"
+        },
+        {
+          "label": "B",
+          "text": "El fechamiento retroactivo está permitido, pero generalmente limitado a no más de 6 meses, y la solicitante debe pagar las primas por el período retroactivo"
+        },
+        {
+          "label": "C",
+          "text": "El fechamiento retroactivo está permitido hasta por 3 años si la solicitante puede probar que estuvo en buena salud durante todo el período"
+        },
+        {
+          "label": "D",
+          "text": "El fechamiento retroactivo está permitido solo para pólizas de vida temporal, no para vida entera"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Fechar retroactivamente una póliza de seguro de vida para obtener una prima más baja basada en una edad de emisión más joven generalmente está permitido, pero la mayoría de los estados (incluido Texas) limitan el retroceso a no más de 6 meses. La solicitante debe pagar las primas de todo el período retroactivo, lo que significa que la póliza se trata como si hubiera sido emitida en la fecha anterior. Esta práctica beneficia al solicitante mediante una prima más baja basada en la edad.",
+      "wrong_explanations": {
+        "A": "El fechamiento retroactivo no está prohibido. Es una práctica reconocida en la industria que beneficia a los solicitantes al conservar una edad de emisión más joven. La práctica está regulada, no prohibida.",
+        "C": "Una ventana de retroactividad de 3 años sería excesiva y no es estándar. El límite regulatorio típico es de 6 meses. Un fechamiento retroactivo más largo crearía una brecha irrazonable entre la fecha de la póliza y la fecha real de emisión.",
+        "D": "El fechamiento retroactivo no está limitado a pólizas temporales. Puede aplicarse a cualquier tipo de póliza de seguro de vida donde una edad de emisión más joven resulte en una prima más baja, incluida vida entera."
+      },
+      "trap_type": "TP002",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B03-Q024",
+      "rule_ids": [
+        "RC-UTP-009"
+      ],
+      "domain": "Unfair Trade Practices",
+      "subdomain": "Churning",
+      "difficulty": "hard",
+      "format": "application_scenario",
+      "stem": "Un agente contacta a un titular existente de una póliza de vida entera cada dos años y la convence de rescatar el valor en efectivo de su póliza actual y usarlo para comprar una nueva póliza de vida entera de la misma aseguradora. Cada vez, la titular incurre en nuevos cargos de venta y comienza un nuevo período de cargos por rescate, mientras el agente gana una nueva comisión de primer año. Este patrón repetido se describe MEJOR como:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Conservación"
+        },
+        {
+          "label": "B",
+          "text": "Churning"
+        },
+        {
+          "label": "C",
+          "text": "Rebating"
+        },
+        {
+          "label": "D",
+          "text": "Una estrategia legítima de rebalanceo de cartera"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Churning ocurre cuando un agente reemplaza o intercambia repetidamente las pólizas de seguro de un cliente principalmente para generar nuevas comisiones, sin beneficio genuino para el titular de la póliza. Cada reemplazo reinicia cargos por rescate y le cuesta valor en efectivo al titular. El patrón de rescates y recompras repetidas con la misma aseguradora, impulsado por el interés de comisión del agente en lugar del beneficio del cliente, es la señal característica de churning.",
+      "wrong_explanations": {
+        "A": "La conservación es lo opuesto a esta conducta. Conservación significa animar a un titular de póliza a mantener una póliza existente en lugar de reemplazarla. Este agente está induciendo activamente reemplazos.",
+        "C": "Rebating implica ofrecer incentivos de valor no especificados en la póliza para fomentar una compra. La mala conducta aquí es el reemplazo repetido e innecesario por comisiones, no ofrecer incentivos prohibidos.",
+        "D": "Rescatar y recomprar repetidamente pólizas de vida entera de la misma aseguradora con nuevos cargos de venta y períodos de cargos por rescate no constituye planificación financiera legítima. Beneficia al agente a expensas del titular de la póliza."
+      },
+      "trap_type": "TP001",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B03-Q025",
+      "rule_ids": [
+        "RC-HMO-007",
+        "RC-TXSTAT-008"
+      ],
+      "domain": "Texas Statutes",
+      "subdomain": "HMO Independent Review",
+      "difficulty": "hard",
+      "format": "application_scenario",
+      "stem": "Un afiliado de una HMO de Texas ha agotado el proceso interno de apelación de la HMO y se ha confirmado la negación de cobertura para un procedimiento médico recomendado. Bajo la ley de Texas, ¿cuál es el siguiente paso del afiliado?",
+      "options": [
+        {
+          "label": "A",
+          "text": "El afiliado no tiene ningún recurso adicional y debe aceptar la negación"
+        },
+        {
+          "label": "B",
+          "text": "El afiliado puede solicitar una revisión independiente por una organización de revisión independiente (IRO) asignada por TDI, la cual realizará una evaluación de novo de la determinación de necesidad médica"
+        },
+        {
+          "label": "C",
+          "text": "El afiliado debe reiniciar la apelación interna desde el principio con la misma HMO"
+        },
+        {
+          "label": "D",
+          "text": "El afiliado solo puede apelar si el procedimiento negado cuesta más de $10,000"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "La ley de Texas establece que después de que una persona cubierta agota la apelación interna de la HMO, la persona puede solicitar una revisión independiente mediante una organización de revisión independiente (IRO). TDI asigna la IRO, la cual realiza una evaluación nueva (de novo) sobre si el servicio negado es médicamente necesario. La determinación de la IRO es vinculante para la HMO. Este proceso de revisión externa es una protección clave para consumidores en la regulación de atención administrada de Texas.",
+      "wrong_explanations": {
+        "A": "La ley de Texas proporciona revisión externa como recurso adicional después de agotar la apelación interna. El afiliado no se queda sin opciones después del proceso interno de la HMO.",
+        "C": "Reiniciar la apelación interna con la misma HMO no constituiría una revisión significativa. La ley de Texas proporciona revisión externa e independiente por una organización que no tiene afiliación con la HMO.",
+        "D": "No existe un umbral de $10,000 para solicitar revisión independiente. El derecho a revisión externa aplica a personas cubiertas que han agotado las apelaciones internas, independientemente del monto en dólares del procedimiento negado."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "claude"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    }
+  ],
+  "validated_date": "2026-03-24",
+  "validated_by": "chatgpt"
+}

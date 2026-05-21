@@ -1,0 +1,73 @@
+{
+  "batch_id": "02",
+  "source_file": "question_bank_raw_batch_02_patched.json",
+  "validated_file": "question_bank_validated_batch_02.json",
+  "validation_date": "2026-03-23",
+  "validated_by": "chatgpt",
+  "decision": "APPROVED_WITH_CORRECTIONS",
+  "schema_check": {
+    "status": "pass",
+    "notes": [
+      "Las 25 preguntas incluyen los campos de lote aprobados que se usaron en el lote validado 01.",
+      "Las opciones están representadas como un arreglo de objetos {label,text}, consistente con el contrato actual del repositorio/aplicación.",
+      "No se encontraron campos obligatorios faltantes a nivel superior ni por pregunta."
+    ]
+  },
+  "rule_support_check": {
+    "status": "pass_with_corrections",
+    "notes": [
+      "El archivo cargado todavía contenía versiones previas a la corrección de Q004, Q017 y Q023, aunque el resumen textual indicaba que esas ediciones ya se habían aplicado.",
+      "Esos tres elementos fueron corregidos durante la validación usando fuentes oficiales actuales.",
+      "El distractor corregido de Q024 basado en religión fue confirmado como sustentable bajo el Código de Seguros de Texas §544.002."
+    ]
+  },
+  "duplicate_check": {
+    "status": "limited_pass",
+    "notes": [
+      "No se encontraron duplicados materiales dentro del lote.",
+      "La revisión de duplicados entre lotes fue limitada porque el banco validado completo no fue suministrado en este turno de validación."
+    ]
+  },
+  "flags": [
+    {
+      "question_id": "B02-Q004",
+      "flag_type": "unsupported_rule_statement",
+      "severity": "medium",
+      "issue": "El archivo cargado todavía indicaba que la licencia de agente residente de Texas requiere educación previa a la licencia.",
+      "resolution": "Se corrigieron el texto de la respuesta y las explicaciones para seguir los pasos actuales de TDI para agentes residentes: aprobar el examen antes de aplicar, completar las huellas digitales y aplicar a través de Sircon/NIPR.",
+      "status": "resolved"
+    },
+    {
+      "question_id": "B02-Q017",
+      "flag_type": "factual_error",
+      "severity": "high",
+      "issue": "El archivo cargado todavía usaba 2 horas de ética en lugar del requisito actual de 3 horas de ética.",
+      "resolution": "Se corrigieron la opción B y las explicaciones relacionadas a 24 horas, incluyendo 3 horas de ética.",
+      "status": "resolved"
+    },
+    {
+      "question_id": "B02-Q023",
+      "flag_type": "overstatement",
+      "severity": "medium",
+      "issue": "El archivo cargado todavía trataba la conversión después de COBRA como incondicional.",
+      "resolution": "Se hizo que el enunciado, el texto de la respuesta y la explicación quedaran condicionados a que el plan grupal realmente ofrezca un privilegio de conversión.",
+      "status": "resolved"
+    },
+    {
+      "question_id": "B02-Q024",
+      "flag_type": "support_check",
+      "severity": "low",
+      "issue": "El distractor corregido de categoría protegida requería confirmación contra el Código de Seguros de Texas §544.002.",
+      "resolution": "Se confirmó como sustentable; no se requiere ningún cambio adicional.",
+      "status": "resolved"
+    }
+  ],
+  "disposition_summary": {
+    "approved_total": 25,
+    "corrected_during_validation": 4,
+    "validated_without_change": 21,
+    "flagged_unresolved": 0,
+    "rejected": 0
+  },
+  "next_step": "Seguro para incorporar en data/questions_validated/ después de guardar tanto el lote validado como este reporte."
+}

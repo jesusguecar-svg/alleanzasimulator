@@ -1,0 +1,51 @@
+{
+  "batch_id": "06",
+  "validator": "chatgpt",
+  "validated_at": "2026-03-25T00:25:00Z",
+  "batch_verdict": "APPROVED_WITH_CORRECTIONS",
+  "summary": "El archivo completo del lote 06 incorpora nuevos ítems de reemplazo para las siete preguntas que anteriormente fueron marcadas por solapamientos de ángulo duplicado. Con esos reemplazos integrados en la base validada, el lote ahora es adecuado para conservarse como un único archivo completo de contenido aprobado para uso posterior.",
+  "hard_corrections": [
+    {
+      "question_id": "B06-Q003",
+      "issue": "El monto anterior de la penalidad administrativa por una orden de cese y desistimiento fue corregido en la validación previa antes de que se ensamblara este archivo completo."
+    }
+  ],
+  "replacement_items_merged": [
+    "B06-Q008",
+    "B06-Q012",
+    "B06-Q014",
+    "B06-Q015",
+    "B06-Q017",
+    "B06-Q018",
+    "B06-Q022"
+  ],
+  "validated_items": [
+    "B06-Q001",
+    "B06-Q002",
+    "B06-Q003",
+    "B06-Q004",
+    "B06-Q005",
+    "B06-Q006",
+    "B06-Q007",
+    "B06-Q008",
+    "B06-Q009",
+    "B06-Q010",
+    "B06-Q011",
+    "B06-Q012",
+    "B06-Q013",
+    "B06-Q014",
+    "B06-Q015",
+    "B06-Q016",
+    "B06-Q017",
+    "B06-Q018",
+    "B06-Q019",
+    "B06-Q020",
+    "B06-Q021",
+    "B06-Q022",
+    "B06-Q023",
+    "B06-Q024",
+    "B06-Q025"
+  ],
+  "not_ready_for_repo_ingestion": [],
+  "recommended_next_step": "Use question_bank_validated_batch_06_complete.json como el artefacto conservado del lote 06 y coloque este reporte correspondiente junto a ese archivo cuando suba los lotes aprobados en una sola pasada."
+}

@@ -1,0 +1,54 @@
+{
+  "batch_id": "05",
+  "validation_date": "2026-03-24",
+  "validator": "ChatGPT",
+  "source_file": "question_bank_raw_batch_05.json",
+  "verdict": "APPROVED_WITH_CORRECTIONS",
+  "summary": {
+    "total_questions_reviewed": 25,
+    "validated_without_change": 21,
+    "corrected": 4,
+    "flagged_but_retained": 1,
+    "rejected": 0
+  },
+  "corrections": [
+    {
+      "question_id": "B05-Q008",
+      "severity": "moderate",
+      "issue": "La restricción de la licencia temporal fue presentada de manera demasiado amplia como 'negocio controlado'.",
+      "action": "Se reescribieron el enunciado, el texto de la opción correcta y las explicaciones para ajustarse más de cerca al Código de Seguros de Texas §4001.157.",
+      "result": "retained_with_correction"
+    },
+    {
+      "question_id": "B05-Q020",
+      "severity": "moderate",
+      "issue": "El enunciado hacía referencia a una póliza 'familiar individual', mientras que la autoridad revisada sobre cobertura para recién nacidos en Texas estaba vinculada a estatutos de planes de empleador.",
+      "action": "Se reformuló el ítem como un plan de beneficios de salud para pequeños empleadores en Texas, manteniendo la respuesta de 31 días.",
+      "result": "retained_with_correction"
+    },
+    {
+      "question_id": "B05-Q025",
+      "severity": "minor",
+      "issue": "La etiqueta del dominio era inconsistente con un ítem de discriminación injusta común a todas las líneas.",
+      "action": "Se normalizó la etiqueta del dominio.",
+      "result": "retained_with_correction"
+    }
+  ],
+  "flags": [
+    {
+      "question_id": "B05-Q001",
+      "severity": "low",
+      "issue": "Concepto casi duplicado con el ítem de reducción del período de espera de Medigap del lote validado 04.",
+      "note": "Se retuvo porque el lote todavía necesita cobertura de Medigap y este ítem sigue siendo legalmente sustentable, pero los lotes futuros deben evitar repetir el mismo ángulo de reducción mes por mes."
+    }
+  ],
+  "schema_issues": [],
+  "cross_batch_notes": [
+    {
+      "question_id": "B05-Q001",
+      "related_prior_item": "B04-Q006",
+      "relationship": "mismo concepto central de reducción del período de espera de Medigap",
+      "disposition": "retained_with_caution"
+    }
+  ]
+}

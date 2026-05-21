@@ -1,0 +1,91 @@
+{
+  "validation_report": {
+    "batch_id": "01",
+    "validation_date": "2026-03-23",
+    "validator": "claude_self_review_with_upstream_flags",
+    "upstream_flags_source": "chatgpt_validator",
+    "total_questions": 25,
+    "disposition_summary": {
+      "validated_no_changes": 19,
+      "validated_with_edits": 4,
+      "flagged_for_further_review": 0,
+      "rejected": 0,
+      "deferred": 2
+    },
+    "schema_notes": [
+      {
+        "issue": "El campo options utiliza un arreglo de objetos {label, text}",
+        "resolution": "Aceptable. El esquema permite el formato de arreglo de objetos. No se necesita ningún cambio. Documentar en schemas.json que se permiten tanto el formato de objeto con claves como el formato de arreglo label-text.",
+        "severity": "info"
+      },
+      {
+        "issue": "trap_type es null en 11 preguntas",
+        "resolution": "Aceptable. Null significa que no se aplicó ningún patrón de trampa deliberado. El esquema debe permitir null | string para trap_type.",
+        "severity": "info"
+      }
+    ],
+    "flagged_items": [
+      {
+        "question_id": "B01-Q002",
+        "flag_type": "legal_accuracy",
+        "severity": "medium",
+        "source": "TIC §1114.051(a)(c)(d)",
+        "issue": "La respuesta original B describía el deber como proporcionar una 'comparación escrita de las pólizas existente y propuesta, y un aviso de reemplazo firmado'. El deber estatutario real bajo §1114.051 es: (1) presentar una declaración firmada con la solicitud sobre si existen pólizas vigentes, y (2) si la respuesta es sí, presentar y leer al solicitante un aviso de reemplazo aprobado por el comisionado a más tardar al momento de tomar la solicitud. No existe un deber del agente de hacer una 'comparación escrita'; el deber es entregar el aviso de reemplazo en la forma aprobada por el comisionado.",
+        "action": "Se reescribió la respuesta B, la correct_explanation y la wrong_explanation de A para que coincidan con el lenguaje estatutario. Se ajustó el stem para enfocarlo en el requisito del aviso.",
+        "post_edit_status": "validated"
+      },
+      {
+        "question_id": "B01-Q017",
+        "flag_type": "legal_accuracy",
+        "severity": "medium",
+        "source": "TIC §1114.051(a)(b)(c)",
+        "issue": "La pregunta original preguntaba cuándo se 'activan' los deberes de divulgación sobre reemplazo. La respuesta era ampliamente correcta (transacción que involucra caducidad, rescate o reducción), pero la explicación se desviaba hacia un lenguaje impreciso. Se ajustó para coincidir con el estatuto: el agente siempre debe presentar la declaración firmada sobre pólizas existentes (§1114.051(a)). Los deberes del aviso de reemplazo se activan únicamente cuando el solicitante declara que existen pólizas vigentes Y la transacción involucra un reemplazo.",
+        "action": "Se reescribieron la correct_explanation y la wrong_explanation A para reflejar la estructura estatutaria de dos pasos. Se ajustó el stem para mayor claridad.",
+        "post_edit_status": "validated"
+      },
+      {
+        "question_id": "B01-Q019",
+        "flag_type": "timing_ambiguity",
+        "severity": "low",
+        "source": "45 CFR §164.520(c)(1); HHS.gov guidance",
+        "issue": "El stem original decía 'durante el proceso de solicitud'. Bajo HIPAA, los planes de salud deben proporcionar el Notice of Privacy Practices al momento de la inscripción (no al momento de la solicitud). Los proveedores de atención médica deben proporcionarlo en la primera prestación de servicio. La redacción del stem creaba una discrepancia de tiempo.",
+        "action": "Se cambió el stem de 'durante el proceso de solicitud' a 'cuando una persona se inscribe en una póliza individual de seguro de salud'. Se ajustó la correct_explanation para especificar que el detonante es la inscripción.",
+        "post_edit_status": "validated"
+      },
+      {
+        "question_id": "B01-Q021",
+        "flag_type": "legal_overstatement",
+        "severity": "high",
+        "source": "42 U.S.C. §1395ss; Medicare.gov; KFF analysis; NCOA",
+        "issue": "La respuesta original B afirmaba que la aseguradora 'no puede imponer exclusiones por condiciones preexistentes' durante la inscripción abierta de Medigap. Esto es legalmente incorrecto. La ley federal permite a las aseguradoras imponer un período de espera por condiciones preexistentes de hasta 6 meses incluso durante la inscripción abierta si el solicitante no tuvo cobertura acreditable previa por 6 meses o más. El período de espera se reduce mes por mes según la cobertura acreditable. Solo los solicitantes con 6 meses o más de cobertura acreditable continua no enfrentan período de espera.",
+        "action": "Se reescribió completamente Q021. El nuevo stem evalúa el matiz correcto: emisión garantizada (no puede negar ni cobrar más por motivos de salud) es VERDADERO, pero todavía puede aplicar un período de espera por condición preexistente. Se reescribieron todas las opciones y explicaciones para reflejar la regla federal real.",
+        "post_edit_status": "validated"
+      }
+    ],
+    "items_validated_without_changes": [
+      "B01-Q001",
+      "B01-Q003",
+      "B01-Q004",
+      "B01-Q005",
+      "B01-Q006",
+      "B01-Q007",
+      "B01-Q008",
+      "B01-Q009",
+      "B01-Q010",
+      "B01-Q011",
+      "B01-Q012",
+      "B01-Q013",
+      "B01-Q014",
+      "B01-Q015",
+      "B01-Q016",
+      "B01-Q018",
+      "B01-Q020",
+      "B01-Q022",
+      "B01-Q023",
+      "B01-Q024",
+      "B01-Q025"
+    ],
+    "deferred_items": [],
+    "batch_verdict": "APROBADO — las 25 preguntas pasan la validación después de ediciones específicas a Q002, Q017, Q019 y Q021. El lote puede pasar a question_bank_validated_batch_01.json."
+  }
+}

@@ -1,0 +1,1292 @@
+{
+  "batch_id": "04",
+  "version": "1.0.0",
+  "generated_date": "2026-03-24",
+  "generated_by": "gemini",
+  "question_count": 25,
+  "difficulty_distribution": {
+    "easy": 5,
+    "medium": 14,
+    "hard": 6
+  },
+  "questions": [
+    {
+      "question_id": "B04-Q001",
+      "rule_ids": [
+        "RC-HMO-002"
+      ],
+      "domain": "Estatutos del Estado de Texas relacionados con vida, salud y HMO",
+      "subdomain": "Regulaciones de HMO en Texas",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Una afiliada de una Health Maintenance Organization (HMO) de Texas decide visitar a una dermatóloga fuera de la red por una condición de la piel que no es una emergencia, sin obtener una referencia de su médico de atención primaria (PCP). ¿Cómo manejará la HMO la reclamación por esta visita?",
+      "options": [
+        {
+          "label": "A",
+          "text": "La HMO pagará el 100% de la reclamación porque dermatología es un beneficio esencial de salud requerido."
+        },
+        {
+          "label": "B",
+          "text": "La HMO pagará un porcentaje reducido fuera de la red de la reclamación."
+        },
+        {
+          "label": "C",
+          "text": "La HMO denegará la reclamación y la afiliada será totalmente responsable del costo."
+        },
+        {
+          "label": "D",
+          "text": "La HMO dejará la reclamación pendiente hasta que la afiliada obtenga una referencia retroactiva de su PCP."
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "Para atención que no es de emergencia en una HMO, la estructura de médico de atención primaria como filtro (gatekeeper) / referencia controla el acceso a la atención de especialistas. Si la afiliada evita ese requisito y obtiene atención fuera de la red que no es de emergencia sin autorización, la reclamación generalmente se deniega y la afiliada asume el costo.",
+      "wrong_explanations": {
+        "A": "Aunque una categoría de servicio esté cubierta, una HMO aún puede exigir procedimientos de referencia o autorización para atención de especialistas que no sea de emergencia.",
+        "B": "Eso es más típico de una PPO. Una HMO generalmente no paga una parte reducida fuera de la red por atención especializada no urgente y no autorizada.",
+        "D": "Las reglas de HMO en Texas generalmente no exigen referencias retroactivas para rescatar atención no urgente y no autorizada después de que el servicio ya fue prestado."
+      },
+      "trap_type": "TP001-Absolute_Terms",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "gemini"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B04-Q002",
+      "rule_ids": [
+        "RC-TAX-001"
+      ],
+      "domain": "Impuestos, jubilación y otros conceptos de seguros",
+      "subdomain": "Tributación del seguro de salud",
+      "difficulty": "hard",
+      "format": "calculation_scenario",
+      "stem": "Un empleador ofrece una póliza grupal de ingresos por discapacidad a sus empleados. El empleador paga el 60% de la prima, y el empleado paga el 40% restante con dólares después de impuestos. Si el empleado queda discapacitado y recibe un beneficio mensual de $5,000, ¿qué porción de este beneficio mensual está sujeta al impuesto federal sobre la renta?",
+      "options": [
+        {
+          "label": "A",
+          "text": "$0"
+        },
+        {
+          "label": "B",
+          "text": "$2,000"
+        },
+        {
+          "label": "C",
+          "text": "$3,000"
+        },
+        {
+          "label": "D",
+          "text": "$5,000"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "Los beneficios de ingresos por discapacidad son tributables en proporción a la prima pagada con dólares antes de impuestos o por el empleador. Debido a que el empleador pagó el 60% de la prima, el 60% del beneficio es tributable. El sesenta por ciento de $5,000 es $3,000.",
+      "wrong_explanations": {
+        "A": "Eso sería cierto solo si el empleado hubiera pagado el 100% de la prima con dólares después de impuestos.",
+        "B": "$2,000 es la porción atribuible a la contribución de prima del empleado con dólares después de impuestos, la cual generalmente se recibe libre de impuestos.",
+        "D": "Eso sería cierto solo si el empleador hubiera pagado el 100% de la prima."
+      },
+      "trap_type": "TP006-Math_Distractor",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "gemini"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B04-Q003",
+      "rule_ids": [
+        "RC-UTP-001"
+      ],
+      "domain": "Estatutos del Estado de Texas comunes a todas las líneas",
+      "subdomain": "Prácticas comerciales desleales",
+      "difficulty": "easy",
+      "format": "definition_scenario",
+      "stem": "Un agente de seguros ofrece dos boletos gratis de temporada para un equipo deportivo profesional local a un cliente prospecto, con la condición de que el cliente compre una póliza grande de seguro de vida entera. Bajo la ley de seguros de Texas, esta práctica se considera:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Twisting"
+        },
+        {
+          "label": "B",
+          "text": "Coerción"
+        },
+        {
+          "label": "C",
+          "text": "Rebating"
+        },
+        {
+          "label": "D",
+          "text": "Un servicio de valor agregado"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "Rebating consiste en ofrecer algo de valor que no está indicado en el contrato de seguro como incentivo para comprar seguro. Los boletos de temporada ofrecidos solo si el prospecto compra la póliza son un problema clásico de rebate / incentivo.",
+      "wrong_explanations": {
+        "A": "Twisting implica una tergiversación usada para inducir el reemplazo o la caducidad de una póliza, no regalos o boletos como incentivos.",
+        "B": "La coerción implica presión o intimidación, no ofrecer un regalo.",
+        "D": "Llamar al artículo un 'servicio de valor agregado' no lo hace legal cuando funciona como un incentivo no indicado en el contrato."
+      },
+      "trap_type": "TP002-Distractor_Misdirection",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "gemini"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B04-Q004",
+      "rule_ids": [
+        "RC-LIFE-015"
+      ],
+      "domain": "Tipos de pólizas",
+      "subdomain": "Anualidades",
+      "difficulty": "medium",
+      "format": "concept_application",
+      "stem": "Una persona de 60 años hereda $100,000 y decide comprar una anualidad inmediata de prima única (Single Premium Immediate Annuity, SPIA). ¿Cuándo comenzará típicamente el primer pago de esta anualidad?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Dentro de los 12 meses desde la fecha de compra"
+        },
+        {
+          "label": "B",
+          "text": "Exactamente un año después de la fecha de compra"
+        },
+        {
+          "label": "C",
+          "text": "Cuando el annuitant cumpla 65 años"
+        },
+        {
+          "label": "D",
+          "text": "En cualquier momento determinado por el annuitant, sin restricción"
+        }
+      ],
+      "correct_answer": "A",
+      "correct_explanation": "Una anualidad inmediata está diseñada para comenzar pagos a más tardar un año después de la compra. En la práctica, los pagos suelen comenzar mucho antes, como un mes después de la compra, pero la regla definitoria es que comienzan dentro de los 12 meses.",
+      "wrong_explanations": {
+        "B": "El primer pago no tiene que comenzar exactamente un año después; la línea definitoria es dentro de 12 meses.",
+        "C": "Esperar hasta los 65 años haría que el producto funcione como una anualidad diferida, no como una anualidad inmediata.",
+        "D": "Las anualidades inmediatas no permiten una demora abierta y sin restricciones en el inicio de los pagos."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "gemini"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B04-Q005",
+      "rule_ids": [
+        "RC-GUAR-001"
+      ],
+      "domain": "Estatutos del Estado de Texas comunes a todas las líneas",
+      "subdomain": "Asociación de Garantía",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Durante una presentación de ventas, un agente le asegura a un cliente indeciso que, aunque la compañía de seguros se vuelva insolvente, la póliza está completamente protegida por la Texas Life and Health Insurance Guaranty Association. Bajo la ley de Texas, esta declaración está:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Permitida, siempre que el agente también entregue la divulgación oficial al momento de la entrega."
+        },
+        {
+          "label": "B",
+          "text": "Permitida, porque describe con precisión un estatuto de protección al consumidor."
+        },
+        {
+          "label": "C",
+          "text": "Prohibida, porque la Asociación de Garantía no cubre pólizas de vida o salud."
+        },
+        {
+          "label": "D",
+          "text": "Prohibida, porque los agentes no pueden usar la existencia de la Asociación de Garantía como incentivo para vender seguros."
+        }
+      ],
+      "correct_answer": "D",
+      "correct_explanation": "La ley de Texas prohíbe usar la existencia de la Asociación de Garantía como incentivo de venta o mecanismo de solicitación. Aunque exista cierta protección, los agentes no pueden usar esa protección como argumento para inducir una compra.",
+      "wrong_explanations": {
+        "A": "Entregar una divulgación no autoriza al agente a usar la protección de la asociación de garantía como incentivo de venta.",
+        "B": "El hecho de que exista un estatuto no hace legal usarlo como incentivo de venta cuando el estatuto prohíbe ese uso.",
+        "C": "El problema no es la falta de cobertura; el problema es el uso prohibido de la existencia de la asociación en ventas."
+      },
+      "trap_type": "TP005-Ethical_Trap",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "gemini"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B04-Q006",
+      "rule_ids": [
+        "RC-MED-002"
+      ],
+      "domain": "Estatutos del Estado de Texas relacionados con vida, salud y HMO",
+      "subdomain": "Reglas de Texas para Medicare Supplement",
+      "difficulty": "hard",
+      "format": "calculation_scenario",
+      "stem": "Una residente de Texas de 66 años solicita una póliza Medicare Supplement (Medigap) durante su período de inscripción abierta. Ella tuvo 4 meses de cobertura grupal de salud continua y acreditable inmediatamente antes de solicitar. Bajo la ley federal y estatal, ¿cuál es el período máximo de espera por condición preexistente que la aseguradora puede imponer en su póliza Medigap?",
+      "options": [
+        {
+          "label": "A",
+          "text": "0 meses"
+        },
+        {
+          "label": "B",
+          "text": "2 meses"
+        },
+        {
+          "label": "C",
+          "text": "4 meses"
+        },
+        {
+          "label": "D",
+          "text": "6 meses"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Un emisor de Medigap puede imponer hasta un período de espera de 6 meses por condiciones preexistentes en ciertos casos, pero el período de espera debe reducirse mes por mes por la cobertura acreditable previa. Cuatro meses de cobertura acreditable reducen el período máximo de espera de 6 meses a 2 meses.",
+      "wrong_explanations": {
+        "A": "Un período de espera de cero meses aplicaría solo si la solicitante tuviera al menos 6 meses de cobertura acreditable previa que califique para este propósito.",
+        "C": "Cuatro meses es la cantidad de cobertura acreditable, no el período de espera restante.",
+        "D": "Seis meses es el máximo sin reducción para una solicitante sin cobertura acreditable que califique."
+      },
+      "trap_type": "TP006-Math_Distractor",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "gemini"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B04-Q007",
+      "rule_ids": [
+        "RC-UW-003"
+      ],
+      "domain": "Completar la solicitud, suscripción y entrega de la póliza",
+      "subdomain": "Recibos (condicional vs. vinculante)",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Un solicitante completa una solicitud de seguro de vida, paga la prima inicial y recibe un recibo condicional el 1 de junio. Un examen médico requerido se completa el 5 de junio. El 10 de junio, antes de que la aseguradora apruebe la póliza, el solicitante muere en un accidente. Durante la revisión de la reclamación, la aseguradora determina que el solicitante cumplía con todos los estándares de suscripción al 5 de junio. ¿Qué acción tomará la aseguradora?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Denegar la reclamación y reembolsar la prima, porque la póliza nunca fue emitida oficialmente."
+        },
+        {
+          "label": "B",
+          "text": "Pagar el beneficio completo por fallecimiento, porque la cobertura entró en vigor en la fecha del examen médico."
+        },
+        {
+          "label": "C",
+          "text": "Pagar solo una parte del beneficio por fallecimiento, porque el solicitante murió durante el período de suscripción."
+        },
+        {
+          "label": "D",
+          "text": "Denegar la reclamación, porque los recibos condicionales no cubren muerte accidental."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Bajo el enfoque estándar de examen sobre un recibo condicional, la cobertura temporal puede entrar en vigor en la fecha posterior entre la fecha de solicitud o la fecha del examen médico requerido, siempre que el solicitante resulte asegurable bajo los estándares de suscripción de la aseguradora. Debido a que se determina que el solicitante era asegurable al 5 de junio, la cobertura se trata como vigente antes de la muerte del 10 de junio.",
+      "wrong_explanations": {
+        "A": "Un recibo condicional existe precisamente para crear posible cobertura provisional antes de la emisión formal de la póliza, sujeta a sus condiciones.",
+        "C": "El beneficio por fallecimiento no se prorratea simplemente porque la muerte ocurrió durante la suscripción.",
+        "D": "Un recibo condicional no está limitado a muerte accidental o no accidental. Si se cumplen las condiciones del recibo y el solicitante es considerado asegurable, la cobertura completa puede entrar en vigor antes de la emisión formal de la póliza."
+      },
+      "trap_type": "TP004-Timeline_Trap",
+      "source_confidence": "medium",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "gemini"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B04-Q008",
+      "rule_ids": [
+        "RC-HLTH-008"
+      ],
+      "domain": "Endosos, disposiciones, opciones y exclusiones de la póliza",
+      "subdomain": "Disposiciones estándar de salud",
+      "difficulty": "medium",
+      "format": "concept_application",
+      "stem": "Bajo la Uniform Individual Accident and Sickness Policy Provisions Law, ¿cuántos días tiene típicamente un asegurado para proporcionar un Notice of Claim por escrito a la aseguradora después de que ocurre una pérdida cubierta?",
+      "options": [
+        {
+          "label": "A",
+          "text": "15 días"
+        },
+        {
+          "label": "B",
+          "text": "20 días"
+        },
+        {
+          "label": "C",
+          "text": "60 días"
+        },
+        {
+          "label": "D",
+          "text": "90 días"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "La disposición estándar de Notice of Claim generalmente requiere aviso por escrito dentro de los 20 días después de una pérdida cubierta, o tan pronto como sea razonablemente posible después de eso.",
+      "wrong_explanations": {
+        "A": "15 días se asocia con la obligación de la aseguradora de proporcionar formularios de reclamación después de recibir el aviso, no con el plazo de aviso del asegurado.",
+        "C": "60 días se asocia con conceptos de demanda / acción legal, no con el plazo inicial de notice of claim.",
+        "D": "90 días se asocia con proof of loss, no con notice of claim."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "gemini"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B04-Q009",
+      "rule_ids": [
+        "RC-LIC-005"
+      ],
+      "domain": "Estatutos del Estado de Texas comunes a todas las líneas",
+      "subdomain": "Requisitos de licencia",
+      "difficulty": "easy",
+      "format": "direct_rule",
+      "stem": "El Comisionado de Seguros de Texas puede emitir una licencia temporal de agente a un solicitante que está siendo considerado para nombramiento por una aseguradora. ¿Cuál es la duración máxima de esta licencia temporal?",
+      "options": [
+        {
+          "label": "A",
+          "text": "30 días"
+        },
+        {
+          "label": "B",
+          "text": "90 días"
+        },
+        {
+          "label": "C",
+          "text": "180 días"
+        },
+        {
+          "label": "D",
+          "text": "1 año"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "Bajo la Sección 4001.155 del Código de Seguros de Texas, una licencia temporal es válida por 180 días después de su emisión.",
+      "wrong_explanations": {
+        "A": "30 días es demasiado corto. Texas establece el término de la licencia temporal en 180 días.",
+        "B": "90 días es una suposición común, pero la ley de Texas actualmente permite un término de 180 días.",
+        "D": "Un año excede el término estatutario de la licencia temporal."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "gemini"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B04-Q010",
+      "rule_ids": [
+        "RC-BUS-001"
+      ],
+      "domain": "Impuestos, jubilación y otros conceptos de seguros",
+      "subdomain": "Usos comerciales del seguro",
+      "difficulty": "medium",
+      "format": "concept_application",
+      "stem": "Una startup tecnológica compra una póliza de seguro de vida Key Person sobre su desarrollador principal de software para protegerse contra el impacto financiero de la muerte prematura de ese empleado. En este arreglo, ¿quién suele ocupar los roles de titular de la póliza, pagador de la prima y beneficiario?",
+      "options": [
+        {
+          "label": "A",
+          "text": "El desarrollador es el titular y pagador; la startup es la beneficiaria."
+        },
+        {
+          "label": "B",
+          "text": "La startup es titular, pagadora y beneficiaria."
+        },
+        {
+          "label": "C",
+          "text": "La startup es titular y pagadora; la familia del desarrollador es la beneficiaria."
+        },
+        {
+          "label": "D",
+          "text": "El desarrollador es el titular; la startup es la pagadora y beneficiaria."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "En un arreglo clásico de key-person, la empresa es dueña de la póliza, paga las primas y es la beneficiaria porque la póliza está destinada a indemnizar a la empresa por la pérdida de un empleado clave.",
+      "wrong_explanations": {
+        "A": "El empleado usualmente no es el titular ni el pagador de primas en un arreglo de key-person.",
+        "C": "Si la familia fuera la beneficiaria, la estructura no sería la configuración usual de key-person.",
+        "D": "La empresa, no el empleado, generalmente es la titular de la póliza en un arreglo de key-person."
+      },
+      "trap_type": "TP007-Role_Reversal",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "gemini"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B04-Q011",
+      "rule_ids": [
+        "RC-GRP-002"
+      ],
+      "domain": "Estatutos del Estado de Texas relacionados con vida, salud y HMO",
+      "subdomain": "Disposiciones de pólizas de salud en Texas",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Un empleado trabaja para una pequeña firma de diseño gráfico en Texas que tiene 12 empleados de tiempo completo. El empleado es despedido y pierde cobertura bajo el plan grupal de salud totalmente asegurado del empleador. Debido a que el empleador es demasiado pequeño para estar sujeto a las leyes federales de COBRA, el empleado solicita Texas State Continuation. ¿Cuál es la duración máxima durante la cual el empleado puede continuar la cobertura grupal de salud bajo la ley de Texas?",
+      "options": [
+        {
+          "label": "A",
+          "text": "6 meses"
+        },
+        {
+          "label": "B",
+          "text": "9 meses"
+        },
+        {
+          "label": "C",
+          "text": "18 meses"
+        },
+        {
+          "label": "D",
+          "text": "36 meses"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Para un plan grupal de salud totalmente asegurado en Texas que no está sujeto a COBRA federal, la continuación estatal puede proporcionar hasta 9 meses de cobertura continuada después de la elección, suponiendo que se cumplan las condiciones de elegibilidad.",
+      "wrong_explanations": {
+        "A": "Seis meses es demasiado corto para la continuación estatal estándar de Texas cuando COBRA no aplica.",
+        "C": "18 meses es el período federal estándar de COBRA para muchos eventos calificantes, no el mini-COBRA de Texas para un plan de pequeño empleador que no está sujeto a COBRA.",
+        "D": "36 meses aplica a ciertos eventos calificantes de COBRA federal, no a la continuación estatal estándar de Texas para este escenario."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "gemini"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B04-Q012",
+      "rule_ids": [
+        "RC-LIFE-020"
+      ],
+      "domain": "Endosos, disposiciones, opciones y exclusiones de la póliza",
+      "subdomain": "Disposiciones estándar de vida",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Tres años después de emitir una póliza de seguro de vida, una aseguradora descubre que el asegurado mintió intencionalmente sobre una condición cardíaca severa en la solicitud original. Luego el asegurado muere de un ataque cardíaco. ¿Cómo responderá la aseguradora a la reclamación bajo la cláusula de incontestabilidad?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Denegar la reclamación y reembolsar todas las primas porque la mentira fue fraude intencional."
+        },
+        {
+          "label": "B",
+          "text": "Denegar la reclamación pero retener las primas porque el asegurado cometió fraude."
+        },
+        {
+          "label": "C",
+          "text": "Pagar el beneficio completo por fallecimiento porque el período de incontestabilidad ha expirado."
+        },
+        {
+          "label": "D",
+          "text": "Pagar un beneficio por fallecimiento reducido igual a lo que la prima habría comprado si se hubiera conocido la verdad."
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "Una vez que el período estándar de incontestabilidad de seguro de vida ha expirado, la aseguradora generalmente no puede denegar la reclamación con base en tergiversaciones en la solicitud, salvo por falta de pago de prima. A los tres años, la póliza está más allá del período ordinario de contestabilidad.",
+      "wrong_explanations": {
+        "A": "Después de que expira el período de incontestabilidad de la póliza de vida, la aseguradora generalmente no puede denegar la reclamación con base en la tergiversación de la solicitud.",
+        "B": "Retener primas mientras se deniega la reclamación es inconsistente con el efecto usual del período de incontestabilidad expirado.",
+        "D": "Ese ajuste se asocia con declaración incorrecta de edad o sexo, no con el tratamiento ordinario de una impugnación prohibida basada en una tergiversación de salud después del período de incontestabilidad."
+      },
+      "trap_type": "TP008-Fraud_Exception_Misdirection",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "gemini"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B04-Q013",
+      "rule_ids": [
+        "RC-COMM-004"
+      ],
+      "domain": "Estatutos del Estado de Texas comunes a todas las líneas",
+      "subdomain": "Comisionado de Seguros",
+      "difficulty": "hard",
+      "format": "direct_rule",
+      "stem": "El Comisionado de Seguros de Texas emite una orden final de cese y desistimiento contra un agente por participar en prácticas comerciales engañosas bajo el Capítulo 541 del Código de Seguros de Texas. ¿Cuál es la multa administrativa máxima por cada violación de esa orden de cese y desistimiento?",
+      "options": [
+        {
+          "label": "A",
+          "text": "$1,000"
+        },
+        {
+          "label": "B",
+          "text": "$5,000"
+        },
+        {
+          "label": "C",
+          "text": "$10,000"
+        },
+        {
+          "label": "D",
+          "text": "$25,000"
+        }
+      ],
+      "correct_answer": "A",
+      "correct_explanation": "La Sección 541.110 del Código de Seguros de Texas establece que una persona que viola una orden de cese y desistimiento del Capítulo 541 está sujeta a una multa administrativa que no puede exceder $1,000 por cada violación, con un límite agregado separado de $5,000 para todas las violaciones.",
+      "wrong_explanations": {
+        "A": "$1,000 es correcto porque la Sección 541.110 limita la multa administrativa a $1,000 por cada violación.",
+        "B": "$5,000 es el límite agregado para todas las violaciones, no la cantidad por violación.",
+        "C": "$10,000 no es el límite administrativo por violación del Capítulo 541 por violar una orden de cese y desistimiento de prácticas comerciales engañosas.",
+        "D": "$25,000 exagera la multa administrativa disponible bajo la Sección 541.110 para este tipo de violación de cese y desistimiento."
+      },
+      "trap_type": "TP006-Math_Distractor",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "gemini"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B04-Q014",
+      "rule_ids": [
+        "RC-HLTH-012"
+      ],
+      "domain": "Tipos de pólizas",
+      "subdomain": "Seguro de ingresos por discapacidad",
+      "difficulty": "medium",
+      "format": "concept_application",
+      "stem": "Al diseñar una póliza individual de seguro de ingresos por discapacidad, ¿cómo se relaciona la duración del período de eliminación con el costo de la prima de la póliza?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Un período de eliminación más largo resulta en una prima más alta."
+        },
+        {
+          "label": "B",
+          "text": "Un período de eliminación más largo resulta en una prima más baja."
+        },
+        {
+          "label": "C",
+          "text": "El período de eliminación afecta solo la duración del beneficio, no la prima."
+        },
+        {
+          "label": "D",
+          "text": "Un período de eliminación más corto reduce la prima porque la aseguradora paga menos reclamaciones de corto plazo."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "El período de eliminación funciona como un deducible de tiempo. Si el asegurado acepta esperar más antes de que comiencen los beneficios, la aseguradora asume menos riesgo de corto plazo, por lo que la prima es más baja.",
+      "wrong_explanations": {
+        "A": "La relación es inversa, no directa. Un período de eliminación más largo reduce la prima.",
+        "C": "El período de eliminación es un factor importante de precio; no afecta solo la duración del beneficio.",
+        "D": "Un período de eliminación más corto generalmente aumenta, no reduce, la prima porque la aseguradora podría tener que comenzar a pagar antes."
+      },
+      "trap_type": "TP009-Inverse_Relationship",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "gemini"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B04-Q015",
+      "rule_ids": [
+        "RC-TAX-004"
+      ],
+      "domain": "Impuestos, jubilación y otros conceptos de seguros",
+      "subdomain": "Planes de jubilación calificados vs. no calificados",
+      "difficulty": "easy",
+      "format": "direct_rule",
+      "stem": "Para evitar la multa general del IRS del 10% por distribuciones prematuras de un plan de jubilación calificado o una IRA tradicional, una persona generalmente debe esperar hasta qué edad para retirar fondos?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Edad 55"
+        },
+        {
+          "label": "B",
+          "text": "Edad 59 1/2"
+        },
+        {
+          "label": "C",
+          "text": "Edad 62"
+        },
+        {
+          "label": "D",
+          "text": "Edad 65"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "El umbral general de edad para evitar la multa del 10% por distribución prematura es la edad 59 1/2, salvo que aplique una excepción específica.",
+      "wrong_explanations": {
+        "A": "La edad 55 es relevante para una excepción específica por separación del servicio, no para la regla general.",
+        "C": "La edad 62 se asocia con Social Security, no con el umbral general de multa para planes calificados.",
+        "D": "La edad 65 es un marcador común de jubilación, pero no es el umbral general de multa fiscal."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "gemini"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B04-Q016",
+      "rule_ids": [
+        "RC-UTP-005"
+      ],
+      "domain": "Estatutos del Estado de Texas comunes a todas las líneas",
+      "subdomain": "Prácticas comerciales desleales",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Un agente frustrado por perder negocios frente a un competidor imprime y distribuye un folleto que afirma que la compañía de seguros competidora es insolvente y niega rutinariamente reclamaciones legítimas, aunque el agente sabe que esas declaraciones son falsas. Bajo la ley de Texas, esta práctica comercial desleal se describe MEJOR como:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Publicidad falsa"
+        },
+        {
+          "label": "B",
+          "text": "Difamación"
+        },
+        {
+          "label": "C",
+          "text": "Twisting"
+        },
+        {
+          "label": "D",
+          "text": "Boicot, coerción e intimidación"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "La difamación en seguros incluye hacer, publicar o circular declaraciones falsas y despectivas sobre la condición financiera de una aseguradora que están calculadas para perjudicar a esa aseguradora o a personas dedicadas al negocio de seguros.",
+      "wrong_explanations": {
+        "A": "La publicidad falsa usualmente se refiere a declaraciones engañosas sobre el propio producto o póliza; este escenario se centra en declaraciones falsas y despectivas sobre la condición financiera de un competidor.",
+        "C": "Twisting implica tergiversaciones usadas para inducir a un titular de póliza a reemplazar cobertura existente, no desprestigio público general de una aseguradora.",
+        "D": "Boicot, coerción e intimidación implican presión concertada o amenazas, no la publicación de folletos falsos sobre la condición financiera de una aseguradora."
+      },
+      "trap_type": "TP002-Distractor_Misdirection",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "gemini"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B04-Q017",
+      "rule_ids": [
+        "RC-LIFE-025"
+      ],
+      "domain": "Endosos, disposiciones, opciones y exclusiones de la póliza",
+      "subdomain": "Opciones de no caducidad",
+      "difficulty": "hard",
+      "format": "concept_application",
+      "stem": "Un titular de póliza ya no puede pagar las primas de una póliza de vida entera y quiere una opción de no caducidad que mantenga exactamente el mismo monto nominal de beneficio por fallecimiento, aunque la cobertura eventualmente pueda expirar. ¿Qué opción encaja con ese objetivo?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Opción de valor de rescate en efectivo"
+        },
+        {
+          "label": "B",
+          "text": "Opción de vida reducida pagada"
+        },
+        {
+          "label": "C",
+          "text": "Opción de término extendido"
+        },
+        {
+          "label": "D",
+          "text": "Opción de dividendo de término de un año"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "El seguro de término extendido usa el valor en efectivo de la póliza para comprar cobertura temporal con el mismo monto nominal original durante el tiempo que el valor en efectivo pueda sostenerla.",
+      "wrong_explanations": {
+        "A": "El rescate en efectivo termina la póliza a cambio del valor en efectivo, por lo que no se mantiene ningún beneficio por fallecimiento.",
+        "B": "La vida reducida pagada mantiene la cobertura vigente de forma permanente, pero con un monto nominal reducido.",
+        "D": "Una opción de dividendo de término de un año es una elección de dividendos, no la opción estándar de no caducidad usada cuando el titular deja de pagar primas."
+      },
+      "trap_type": "TP010-Superlative_Trap",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "gemini"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B04-Q018",
+      "rule_ids": [
+        "RC-HLTH-015"
+      ],
+      "domain": "Tipos de pólizas",
+      "subdomain": "Seguro de gastos médicos",
+      "difficulty": "medium",
+      "format": "concept_application",
+      "stem": "En una póliza de seguro de gastos médicos mayores, ¿cuál es la función principal del límite stop-loss (disposición de máximo de gastos de bolsillo)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Limita el beneficio máximo de por vida que la aseguradora pagará."
+        },
+        {
+          "label": "B",
+          "text": "Requiere que la aseguradora pague el 100% de los gastos cubiertos una vez que los costos de bolsillo del asegurado alcancen una cantidad especificada."
+        },
+        {
+          "label": "C",
+          "text": "Impide que el asegurado presente reclamaciones adicionales por el resto del año."
+        },
+        {
+          "label": "D",
+          "text": "Determina el deducible inicial que el asegurado debe pagar antes de que comience el coseguro."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "El límite stop-loss protege al asegurado de gastos de bolsillo catastróficos. Una vez que los deducibles y coseguro cubiertos del asegurado alcanzan el umbral establecido, la aseguradora típicamente paga el 100% de los gastos cubiertos adicionales por el resto del período.",
+      "wrong_explanations": {
+        "A": "Eso describe un máximo de por vida o un límite de pago del plan, no el límite de gastos de bolsillo del asegurado.",
+        "C": "La disposición stop-loss no bloquea reclamaciones futuras; mejora la cobertura después de que se alcanza el umbral.",
+        "D": "El deducible es una parte del costo compartido, pero el límite stop-loss es el límite general de la obligación cubierta de gastos de bolsillo del asegurado."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "gemini"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B04-Q019",
+      "rule_ids": [
+        "RC-ACA-001"
+      ],
+      "domain": "Estatutos del Estado de Texas relacionados con vida, salud y HMO",
+      "subdomain": "Affordable Care Act (implementaciones estatales)",
+      "difficulty": "easy",
+      "format": "direct_rule",
+      "stem": "Bajo la Affordable Care Act, los planes de salud que ofrecen cobertura para hijos dependientes generalmente deben permitir que los hijos adultos permanezcan en la póliza de un padre hasta qué edad, independientemente de su estado civil o de estudiante?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Edad 21"
+        },
+        {
+          "label": "B",
+          "text": "Edad 23"
+        },
+        {
+          "label": "C",
+          "text": "Edad 25"
+        },
+        {
+          "label": "D",
+          "text": "Edad 26"
+        }
+      ],
+      "correct_answer": "D",
+      "correct_explanation": "La regla de cobertura de dependientes de la ACA generalmente permite que los hijos adultos elegibles permanezcan en el plan de un padre hasta los 26 años, independientemente de su estado civil o de estudiante.",
+      "wrong_explanations": {
+        "A": "La edad 21 es demasiado baja bajo la regla de cobertura de dependientes de la ACA.",
+        "B": "La edad 23 no es el límite de cobertura de dependientes de la ACA.",
+        "C": "La edad 25 está cerca, pero sigue siendo incorrecta; el límite general es la edad 26."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "gemini"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B04-Q020",
+      "rule_ids": [
+        "RC-LIC-008"
+      ],
+      "domain": "Estatutos del Estado de Texas comunes a todas las líneas",
+      "subdomain": "Responsabilidades y mantenimiento del agente",
+      "difficulty": "medium",
+      "format": "direct_rule",
+      "stem": "Un agente de seguros licenciado en Texas muda su residencia principal y oficina al otro lado de la ciudad. Bajo la ley de Texas, ¿dentro de cuántos días debe el agente notificar al Texas Department of Insurance del cambio de dirección postal?",
+      "options": [
+        {
+          "label": "A",
+          "text": "10 días"
+        },
+        {
+          "label": "B",
+          "text": "20 días"
+        },
+        {
+          "label": "C",
+          "text": "30 días"
+        },
+        {
+          "label": "D",
+          "text": "60 días"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "La Sección 4001.252 del Código de Seguros de Texas requiere que un agente individual notifique al departamento mensualmente sobre un cambio de dirección postal, y el proceso actual de cambio de dirección de TDI refleja una ventana de reporte de 30 días para cambios de dirección.",
+      "wrong_explanations": {
+        "A": "10 días se asocia con otras obligaciones de reporte, no con la expectativa regular de reporte de cambio de dirección para agentes.",
+        "B": "20 días es un distractor común de plazos de seguros, pero no la ventana actual de reporte de cambio de dirección en Texas.",
+        "D": "60 días es más largo que la expectativa mensual / de 30 días reflejada en la guía actual de Texas."
+      },
+      "trap_type": "TP004-Timeline_Trap",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "gemini"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B04-Q021",
+      "rule_ids": [
+        "RC-HMO-003"
+      ],
+      "domain": "Estatutos del Estado de Texas relacionados con vida, salud y HMO",
+      "subdomain": "Regulaciones de HMO en Texas",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Un afiliado de una HMO de Texas está viajando fuera del estado y sufre un ataque de asma severo y potencialmente mortal. Lo llevan de urgencia a la sala de emergencia del hospital fuera de la red más cercano. Bajo las regulaciones de HMO de Texas, ¿cómo debe manejar la HMO esta reclamación?",
+      "options": [
+        {
+          "label": "A",
+          "text": "La HMO debe cubrir la atención de emergencia, pero solo si el afiliado obtuvo autorización previa de su PCP antes de que llegara la ambulancia."
+        },
+        {
+          "label": "B",
+          "text": "La HMO debe cubrir los servicios de emergencia sin exigir autorización previa ni referencia."
+        },
+        {
+          "label": "C",
+          "text": "La HMO denegará la reclamación porque las HMO prohíben estrictamente cualquier atención fuera de la red, sin importar la situación."
+        },
+        {
+          "label": "D",
+          "text": "La HMO cubrirá la atención solo si el hospital fuera de la red acepta el tarifario estándar dentro de la red de la HMO."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Las reglas de atención de emergencia de HMO en Texas requieren cobertura de servicios de emergencia reales sin autorización previa ni referencia. Para atención de emergencia fuera de la red, la HMO aún tiene obligaciones de pago bajo la ley de Texas.",
+      "wrong_explanations": {
+        "A": "No se requiere autorización previa para atención de emergencia real.",
+        "C": "Las HMO no pueden denegar una reclamación de emergencia real solo porque el paciente usó una instalación de emergencia fuera de la red.",
+        "D": "La cobertura no depende de que el proveedor acepte un tarifario dentro de la red; la ley de Texas impone obligaciones de pago de atención de emergencia incluso para atención de emergencia no perteneciente a la red."
+      },
+      "trap_type": "TP001-Absolute_Terms",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "gemini"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B04-Q022",
+      "rule_ids": [
+        "RC-BUS-002"
+      ],
+      "domain": "Impuestos, jubilación y otros conceptos de seguros",
+      "subdomain": "Usos comerciales del seguro",
+      "difficulty": "hard",
+      "format": "concept_application",
+      "stem": "Una dentista compra una póliza de discapacidad Business Overhead Expense (BOE) para asegurar que la renta de su clínica y los salarios de sus empleados se paguen si ella queda discapacitada. ¿Cómo se tratan las primas y beneficios de esta póliza BOE para fines fiscales?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Las primas son deducibles de impuestos; los beneficios se reciben libres de impuestos."
+        },
+        {
+          "label": "B",
+          "text": "Las primas no son deducibles de impuestos; los beneficios se reciben libres de impuestos."
+        },
+        {
+          "label": "C",
+          "text": "Las primas son deducibles de impuestos; los beneficios son tributables como ingreso para el negocio."
+        },
+        {
+          "label": "D",
+          "text": "Las primas no son deducibles de impuestos; los beneficios son tributables como ingreso para el negocio."
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "Las primas de business overhead expense generalmente se tratan como un gasto comercial deducible. Debido a esa deducción, los beneficios pagados para cubrir gastos generales del negocio generalmente son tributables para el negocio cuando se reciben.",
+      "wrong_explanations": {
+        "A": "Si las primas se deducen, los beneficios generalmente no se reciben libres de impuestos.",
+        "B": "Esa respuesta se equivoca en ambos lados para el tratamiento fiscal usual de BOE.",
+        "D": "El tratamiento estándar de examen para BOE es primas deducibles con beneficios tributables, no primas no deducibles."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "gemini"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B04-Q023",
+      "rule_ids": [
+        "RC-MED-003"
+      ],
+      "domain": "Estatutos del Estado de Texas relacionados con vida, salud y HMO",
+      "subdomain": "Reglas de Texas para Medicare Supplement",
+      "difficulty": "hard",
+      "format": "direct_rule",
+      "stem": "Un residente de Texas compra una póliza Medicare Supplement (Medigap). Bajo las regulaciones estatales, ¿cuál es el período obligatorio de free-look durante el cual el asegurado puede devolver la póliza para un reembolso completo de todas las primas pagadas?",
+      "options": [
+        {
+          "label": "A",
+          "text": "10 días"
+        },
+        {
+          "label": "B",
+          "text": "15 días"
+        },
+        {
+          "label": "C",
+          "text": "20 días"
+        },
+        {
+          "label": "D",
+          "text": "30 días"
+        }
+      ],
+      "correct_answer": "D",
+      "correct_explanation": "Las reglas de Texas para Medicare Supplement requieren un período free-look de 30 días durante el cual el titular de la póliza puede devolver la póliza para un reembolso completo de la prima.",
+      "wrong_explanations": {
+        "A": "10 días es un período free-look común en otros contextos, pero no para pólizas Medigap de Texas.",
+        "B": "15 días es demasiado corto para el requisito free-look de Medigap en Texas.",
+        "C": "20 días no es el período free-look de Medigap en Texas."
+      },
+      "trap_type": "TP004-Timeline_Trap",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "gemini"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B04-Q024",
+      "rule_ids": [
+        "RC-LIFE-016"
+      ],
+      "domain": "Tipos de pólizas",
+      "subdomain": "Anualidades",
+      "difficulty": "easy",
+      "format": "definition_scenario",
+      "stem": "Una persona está haciendo pagos mensuales de prima en una anualidad diferida para acumular un fondo de jubilación. En el contexto de las anualidades, este período de tiempo durante el cual se pagan fondos y el interés crece con impuestos diferidos se conoce como el:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Período de anualización"
+        },
+        {
+          "label": "B",
+          "text": "Período de acumulación"
+        },
+        {
+          "label": "C",
+          "text": "Período de liquidación"
+        },
+        {
+          "label": "D",
+          "text": "Período de gracia"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "El período de acumulación es la fase de pago / crecimiento de una anualidad diferida, durante la cual se pagan primas y los valores crecen con impuestos diferidos.",
+      "wrong_explanations": {
+        "A": "La anualización es la fase de pago, no la fase de construcción mediante primas.",
+        "C": "La liquidación se usa para el lado de pago / agotamiento, no para el lado de acumulación.",
+        "D": "Período de gracia se refiere al plazo de prima tardía en una póliza, no a la fase de crecimiento de una anualidad."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "gemini"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B04-Q025",
+      "rule_ids": [
+        "RC-LIC-009"
+      ],
+      "domain": "Estatutos del Estado de Texas comunes a todas las líneas",
+      "subdomain": "Responsabilidades y mantenimiento del agente",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Un agente de seguro de vida de Texas cobra cheques de prima inicial de clientes. En vez de depositarlos en una cuenta fiduciaria separada, el agente deposita los cheques en su cuenta corriente personal para cubrir sus propias facturas del fin de semana, con la intención de enviar el dinero a la aseguradora el lunes. Esta práctica ilegal es una violación del deber fiduciario conocida como:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Rebating"
+        },
+        {
+          "label": "B",
+          "text": "Commingling"
+        },
+        {
+          "label": "C",
+          "text": "Twisting"
+        },
+        {
+          "label": "D",
+          "text": "Redlining"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Commingling es la mezcla indebida de fondos de primas de clientes con fondos personales o comerciales del agente. Las primas cobradas en una capacidad fiduciaria deben mantenerse separadas y manejarse como fondos fiduciarios.",
+      "wrong_explanations": {
+        "A": "Rebating implica incentivos no autorizados para comprar seguro, no el mal manejo de fondos de prima de clientes.",
+        "C": "Twisting implica una tergiversación usada para inducir el reemplazo de cobertura existente.",
+        "D": "Redlining implica negativa o restricción discriminatoria de cobertura con base en geografía o patrones de suscripción prohibidos similares."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "date": "2026-03-24",
+          "agent": "gemini"
+        },
+        {
+          "status": "validated",
+          "date": "2026-03-24",
+          "agent": "chatgpt"
+        }
+      ]
+    }
+  ],
+  "validated_date": "2026-03-24",
+  "validated_by": "chatgpt"
+}

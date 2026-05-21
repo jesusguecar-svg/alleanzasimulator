@@ -1,0 +1,1305 @@
+{
+  "batch_id": "05",
+  "version": "1.0.0",
+  "generated_date": "2026-03-24",
+  "generated_by": "gemini",
+  "question_count": 25,
+  "difficulty_distribution": {
+    "easy": 5,
+    "medium": 14,
+    "hard": 6
+  },
+  "questions": [
+    {
+      "question_id": "B05-Q001",
+      "rule_ids": [
+        "RC-MED-002"
+      ],
+      "domain": "Estatutos de Texas relacionados con vida, salud y HMO",
+      "subdomain": "Reglas de Texas sobre Medicare Supplement",
+      "difficulty": "hard",
+      "format": "calculation_scenario",
+      "stem": "Una residente de Texas de 65 años se inscribe en una póliza Medicare Supplement (Medigap). Ella tuvo 3 meses de cobertura grupal de salud acreditable continua inmediatamente antes de inscribirse. ¿Cuál es el período máximo de espera por condiciones preexistentes que la aseguradora puede aplicar legalmente a su nueva póliza Medigap?",
+      "options": [
+        {
+          "label": "A",
+          "text": "0 meses"
+        },
+        {
+          "label": "B",
+          "text": "3 meses"
+        },
+        {
+          "label": "C",
+          "text": "6 meses"
+        },
+        {
+          "label": "D",
+          "text": "9 meses"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Por lo general, las aseguradoras pueden imponer un período máximo de espera por condiciones preexistentes de 6 meses en una nueva póliza Medigap. Sin embargo, las leyes federales y estatales exigen que este período de 6 meses se reduzca mes por mes por la cobertura acreditable continua previa del solicitante. Como la solicitante tuvo 3 meses de cobertura acreditable, el período máximo de espera se reduce a 3 meses (máximo de 6 meses menos 3 meses acreditables = 3 meses).",
+      "wrong_explanations": {
+        "A": "Un período de espera de cero meses solo aplica si la solicitante tuvo 6 meses o más de cobertura acreditable continua.",
+        "C": "6 meses es el período máximo estándar de espera para una persona sin cobertura acreditable previa. Debe reducirse por su cobertura previa.",
+        "D": "9 meses excede el período máximo permitido de espera por condiciones preexistentes para Medicare Supplements."
+      },
+      "trap_type": "TP006-Math_Distractor",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T15:34:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T16:30:00Z",
+          "actor": "ChatGPT"
+        }
+      ]
+    },
+    {
+      "question_id": "B05-Q002",
+      "rule_ids": [
+        "RC-HLTH-008"
+      ],
+      "domain": "Cláusulas adicionales, disposiciones, opciones y exclusiones de la póliza",
+      "subdomain": "Disposiciones estándar de salud",
+      "difficulty": "medium",
+      "format": "concept_application",
+      "stem": "Bajo las disposiciones obligatorias de la Uniform Individual Accident and Sickness Policy Provisions Law, ¿cuántos días tiene normalmente el asegurado para presentar a la aseguradora una “Prueba de pérdida” formal por escrito después de que ocurre una pérdida cubierta?",
+      "options": [
+        {
+          "label": "A",
+          "text": "15 días"
+        },
+        {
+          "label": "B",
+          "text": "20 días"
+        },
+        {
+          "label": "C",
+          "text": "60 días"
+        },
+        {
+          "label": "D",
+          "text": "90 días"
+        }
+      ],
+      "correct_answer": "D",
+      "correct_explanation": "La disposición estándar de Prueba de pérdida exige que el asegurado presente a la aseguradora la prueba formal por escrito dentro de los 90 días de la pérdida, o tan pronto como sea razonablemente posible (pero sin exceder un año, salvo que el asegurado esté legalmente incapacitado).",
+      "wrong_explanations": {
+        "A": "15 días es el plazo que tiene la aseguradora para proporcionar formularios de reclamación al asegurado después de recibir un Aviso de reclamación.",
+        "B": "20 días es el plazo que tiene el asegurado para proporcionar el “Aviso de reclamación” inicial a la aseguradora, no la Prueba de pérdida final.",
+        "C": "60 días es el período de espera que el asegurado debe observar después de presentar la Prueba de pérdida antes de poder iniciar una demanda contra la aseguradora."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T15:34:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T16:30:00Z",
+          "actor": "ChatGPT"
+        }
+      ]
+    },
+    {
+      "question_id": "B05-Q003",
+      "rule_ids": [
+        "RC-UW-003"
+      ],
+      "domain": "Completar la solicitud, suscripción y entrega de la póliza",
+      "subdomain": "Recibos (condicional vs. vinculante)",
+      "difficulty": "hard",
+      "format": "scenario",
+      "stem": "Un solicitante completa una solicitud de seguro de vida, paga la prima inicial y recibe un recibo condicional. La aseguradora exige un examen médico como parte del proceso de suscripción. Al día siguiente, antes de realizarse el examen médico requerido, el solicitante muere en un accidente automovilístico. ¿Cómo manejará la aseguradora la reclamación?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Pagará el beneficio completo por fallecimiento, porque se pagó la prima y se emitió el recibo."
+        },
+        {
+          "label": "B",
+          "text": "Pagará el beneficio por fallecimiento, pero deducirá de los beneficios el costo del examen médico no realizado."
+        },
+        {
+          "label": "C",
+          "text": "Negará la reclamación y devolverá la prima, porque el examen médico requerido no se completó."
+        },
+        {
+          "label": "D",
+          "text": "Negará la reclamación, porque los recibos condicionales nunca cubren muerte accidental antes de la entrega de la póliza."
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "Un recibo condicional hace que la cobertura sea efectiva en la fecha de la solicitud O en la fecha del examen médico requerido, la que ocurra después, siempre que el solicitante sea asegurable a tarifas estándar. Como el solicitante murió antes de realizarse el examen médico requerido, la condición para la cobertura nunca se cumplió. La aseguradora negará la reclamación y devolverá la prima.",
+      "wrong_explanations": {
+        "A": "Pagar la prima es solo una condición; completar los exámenes médicos requeridos es otra. La cobertura no comienza hasta que se cumplan todos los requisitos.",
+        "B": "Las aseguradoras no pagan reclamaciones con deducciones por requisitos de suscripción no cumplidos. Si los requisitos no se cumplen, no hay cobertura.",
+        "D": "Los recibos condicionales sí pueden cubrir muerte accidental, siempre que el solicitante haya cumplido todas las condiciones (incluido el examen médico) y se determine que es asegurable."
+      },
+      "trap_type": "TP004-Timeline_Trap",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T15:34:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T16:30:00Z",
+          "actor": "ChatGPT"
+        }
+      ]
+    },
+    {
+      "question_id": "B05-Q004",
+      "rule_ids": [
+        "RC-BUS-001",
+        "RC-UW-001"
+      ],
+      "domain": "Completar la solicitud, suscripción y entrega de la póliza",
+      "subdomain": "Procedimientos de solicitud",
+      "difficulty": "easy",
+      "format": "concept_application",
+      "stem": "Una corporación compra una póliza de seguro de vida Key Person sobre su principal ejecutivo. La corporación es la solicitante, titular de la póliza, pagadora de la prima y beneficiaria. ¿Quién debe firmar la solicitud para dar consentimiento a la emisión de esta póliza?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Solo un funcionario autorizado de la corporación"
+        },
+        {
+          "label": "B",
+          "text": "Solo la Key Person (el ejecutivo)"
+        },
+        {
+          "label": "C",
+          "text": "Tanto un funcionario autorizado de la corporación como la Key Person"
+        },
+        {
+          "label": "D",
+          "text": "La junta directiva de la corporación y el agente"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "En cualquier transacción de seguro de vida que involucre titularidad por un tercero, tanto el solicitante/titular (un funcionario autorizado de la corporación) como el asegurado propuesto (la Key Person) deben firmar la solicitud. El asegurado debe firmar para dar consentimiento escrito a ser asegurado.",
+      "wrong_explanations": {
+        "A": "La corporación no puede contratar legalmente una póliza de seguro de vida sobre un empleado sin el consentimiento escrito y la firma del empleado.",
+        "B": "El ejecutivo debe firmar como asegurado, pero la corporación también debe firmar como solicitante y titular de la póliza.",
+        "D": "Aunque el agente firma la solicitud, la firma crítica que falta en esta opción es el consentimiento del asegurado propuesto."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T15:34:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T16:30:00Z",
+          "actor": "ChatGPT"
+        }
+      ]
+    },
+    {
+      "question_id": "B05-Q005",
+      "rule_ids": [
+        "RC-TAX-001"
+      ],
+      "domain": "Impuestos, jubilación y otros conceptos de seguros",
+      "subdomain": "Tributación del seguro de salud",
+      "difficulty": "medium",
+      "format": "concept_application",
+      "stem": "Una arquitecta que trabaja por cuenta propia compra una póliza individual de Disability Income y paga las primas con sus ahorros personales después de impuestos. ¿Cómo se tratan las primas y los beneficios para fines del impuesto federal sobre la renta?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Las primas son deducibles de impuestos; los beneficios son tributables como ingreso."
+        },
+        {
+          "label": "B",
+          "text": "Las primas no son deducibles de impuestos; los beneficios se reciben libres de impuestos."
+        },
+        {
+          "label": "C",
+          "text": "Las primas son deducibles de impuestos; los beneficios se reciben libres de impuestos."
+        },
+        {
+          "label": "D",
+          "text": "Las primas no son deducibles de impuestos; los beneficios son tributables como ingreso."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Para una póliza de ingresos por discapacidad de propiedad individual donde el asegurado paga las primas con dólares después de impuestos, las primas no son deducibles de impuestos. En consecuencia, si el asegurado queda discapacitado, los beneficios por discapacidad se reciben 100% libres de impuestos.",
+      "wrong_explanations": {
+        "A": "Esto describe el tratamiento fiscal del seguro grupal de ingresos por discapacidad cuando el empleador paga las primas.",
+        "C": "El IRS no permite que una persona deduzca las primas y además reciba los beneficios libres de impuestos.",
+        "D": "Como las primas se pagaron con dólares después de impuestos, los beneficios no se gravan nuevamente."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T15:34:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T16:30:00Z",
+          "actor": "ChatGPT"
+        }
+      ]
+    },
+    {
+      "question_id": "B05-Q006",
+      "rule_ids": [
+        "RC-GRP-002"
+      ],
+      "domain": "Estatutos de Texas relacionados con vida, salud y HMO",
+      "subdomain": "Disposiciones de pólizas de salud en Texas",
+      "difficulty": "hard",
+      "format": "direct_rule",
+      "stem": "Bajo las leyes de Texas State Continuation, los empleados elegibles que son terminados de un plan de salud de grupo pequeño pueden continuar su cobertura hasta por 9 meses. Para ser elegible para esta continuación estatal, ¿por cuánto tiempo debe haber estado el empleado cubierto continuamente bajo el plan grupal antes de la terminación?",
+      "options": [
+        {
+          "label": "A",
+          "text": "1 mes"
+        },
+        {
+          "label": "B",
+          "text": "3 meses consecutivos"
+        },
+        {
+          "label": "C",
+          "text": "6 meses consecutivos"
+        },
+        {
+          "label": "D",
+          "text": "12 meses consecutivos"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Para calificar para Texas State Continuation de seguro de salud grupal, el empleado debe haber estado cubierto continuamente bajo el plan grupal durante al menos 3 meses consecutivos inmediatamente antes de la terminación de su empleo o la reducción de horas que causó la pérdida de cobertura.",
+      "wrong_explanations": {
+        "A": "1 mes de cobertura es insuficiente para activar derechos de continuación estatal en Texas.",
+        "C": "6 meses no es el requisito; la ley exige solo 3 meses consecutivos.",
+        "D": "Aunque los empleados a menudo tienen un período de espera para ingresar a un plan, el requisito específico de cobertura continua para calificar para continuación en Texas es de 3 meses, no de un año completo."
+      },
+      "trap_type": "TP004-Timeline_Trap",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T15:34:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T16:30:00Z",
+          "actor": "ChatGPT"
+        }
+      ]
+    },
+    {
+      "question_id": "B05-Q007",
+      "rule_ids": [
+        "RC-GUAR-001"
+      ],
+      "domain": "Estatutos de Texas comunes a todas las líneas",
+      "subdomain": "Asociación de Garantía",
+      "difficulty": "medium",
+      "format": "direct_rule",
+      "stem": "Si una compañía de seguro de vida que opera en Texas queda financieramente deteriorada o insolvente, la Texas Life and Health Insurance Guaranty Association proporciona protección al consumidor. ¿Cuál es el monto máximo de protección por beneficio por fallecimiento de seguro de vida que la Asociación proporciona para una sola persona?",
+      "options": [
+        {
+          "label": "A",
+          "text": "$100,000"
+        },
+        {
+          "label": "B",
+          "text": "$300,000"
+        },
+        {
+          "label": "C",
+          "text": "$500,000"
+        },
+        {
+          "label": "D",
+          "text": "Una cantidad ilimitada hasta el valor nominal de la póliza"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Bajo la ley de Texas, la Life and Health Insurance Guaranty Association limita su responsabilidad por beneficios por fallecimiento de seguro de vida a $300,000 por persona, independientemente de cuántas pólizas tuviera el asegurado con la compañía insolvente.",
+      "wrong_explanations": {
+        "A": "$100,000 es el límite para valores netos de rescate en efectivo y valores netos de retiro en efectivo de seguro de vida, no para el beneficio por fallecimiento.",
+        "C": "$500,000 es el límite para beneficios de seguro básico hospitalario, médico y quirúrgico o planes de gastos médicos mayores.",
+        "D": "La Guaranty Association actúa como una red de seguridad con límites estatutarios estrictos; no garantiza valores nominales ilimitados."
+      },
+      "trap_type": "TP006-Math_Distractor",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T15:34:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T16:30:00Z",
+          "actor": "ChatGPT"
+        }
+      ]
+    },
+    {
+      "question_id": "B05-Q008",
+      "rule_ids": [
+        "RC-LIC-005"
+      ],
+      "domain": "Estatutos de Texas comunes a todas las líneas",
+      "subdomain": "Requisitos de licencia",
+      "difficulty": "medium",
+      "format": "direct_rule",
+      "stem": "Bajo la ley de Texas, una licencia temporal de agente está destinada principalmente a fines de entrenamiento. Un titular de licencia temporal no puede obtener comisiones sobre ventas realizadas a cuál de los siguientes grupos?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Residentes de otros estados que viajan a Texas para trabajar"
+        },
+        {
+          "label": "B",
+          "text": "El titular de la licencia temporal, ciertos familiares, el empleador del titular de la licencia temporal, los empleados del empleador, o personas con una relación familiar, laboral o comercial con el titular de la licencia temporal"
+        },
+        {
+          "label": "C",
+          "text": "Pequeñas empresas con menos de 50 empleados"
+        },
+        {
+          "label": "D",
+          "text": "Personas que previamente han sido rechazadas para cobertura"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "El Texas Insurance Code §4001.157 prohíbe que un titular de licencia temporal obtenga comisiones sobre ventas realizadas a personas con una relación familiar, laboral o comercial con el titular de la licencia temporal, y de manera más específica prohíbe comisiones sobre contratos que cubran al titular de la licencia temporal, ciertos parientes, el empleador del titular de la licencia temporal durante los últimos seis meses, o los empleados del empleador.",
+      "wrong_explanations": {
+        "A": "La ley de Texas no señala específicamente a viajeros diarios ni a no residentes en este punto; la restricción se basa en relaciones familiares, laborales o comerciales.",
+        "C": "Un titular de licencia temporal puede vender seguros a pequeñas empresas si la venta no cae dentro de las restricciones prohibidas de comisión por relación familiar, laboral o comercial.",
+        "D": "Los rechazos previos son asuntos de suscripción, no la restricción específica de comisión impuesta a titulares de licencia temporal."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T15:34:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "corrected",
+          "timestamp": "2026-03-24T16:30:00Z",
+          "actor": "ChatGPT"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T16:30:00Z",
+          "actor": "ChatGPT"
+        }
+      ]
+    },
+    {
+      "question_id": "B05-Q009",
+      "rule_ids": [
+        "RC-BUS-002"
+      ],
+      "domain": "Impuestos, jubilación y otros conceptos de seguros",
+      "subdomain": "Usos empresariales del seguro",
+      "difficulty": "medium",
+      "format": "concept_application",
+      "stem": "Un dueño de pequeña empresa compra una póliza de discapacidad Business Overhead Expense (BOE) para mantener el negocio funcionando si sufre una lesión incapacitante. ¿Cuál de los siguientes gastos NO estaría cubierto por los beneficios de la póliza BOE?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Facturas de servicios públicos e impuestos a la propiedad"
+        },
+        {
+          "label": "B",
+          "text": "Salarios de empleados e impuestos de nómina"
+        },
+        {
+          "label": "C",
+          "text": "El salario personal del dueño del negocio"
+        },
+        {
+          "label": "D",
+          "text": "Renta del local comercial"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "El seguro Business Overhead Expense (BOE) está diseñado para pagar los gastos operativos continuos y rutinarios de un negocio si el dueño queda discapacitado. Cubre renta, servicios públicos y salarios de empleados. Específicamente NO cubre el salario personal, ingreso o ganancia del dueño discapacitado.",
+      "wrong_explanations": {
+        "A": "Los servicios públicos y los impuestos a la propiedad son gastos fijos estándar de operación cubiertos por una póliza BOE.",
+        "B": "Los salarios de empleados (excluyendo al dueño discapacitado) son gastos continuos críticos cubiertos por BOE.",
+        "D": "La renta del local comercial es un ejemplo clásico de gasto operativo cubierto por una póliza BOE."
+      },
+      "trap_type": "TP007-Role_Reversal",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T15:34:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T16:30:00Z",
+          "actor": "ChatGPT"
+        }
+      ]
+    },
+    {
+      "question_id": "B05-Q010",
+      "rule_ids": [
+        "RC-BUS-001"
+      ],
+      "domain": "Impuestos, jubilación y otros conceptos de seguros",
+      "subdomain": "Usos empresariales del seguro",
+      "difficulty": "easy",
+      "format": "definition_scenario",
+      "stem": "Dos socios iguales son dueños de un restaurante exitoso. Quieren asegurarse de que, si uno de los socios muere, el socio sobreviviente tenga los fondos para comprar a los herederos la parte del socio fallecido en el negocio. Para lograr esto, cada socio compra una póliza de seguro de vida sobre el otro. Este arreglo se conoce como:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Un Cross-Purchase Buy-Sell Agreement"
+        },
+        {
+          "label": "B",
+          "text": "Un Entity Purchase Buy-Sell Agreement"
+        },
+        {
+          "label": "C",
+          "text": "Executive Bonus Plan"
+        },
+        {
+          "label": "D",
+          "text": "Key Person Insurance"
+        }
+      ],
+      "correct_answer": "A",
+      "correct_explanation": "En un Cross-Purchase Buy-Sell Agreement, los dueños individuales del negocio compran pólizas de seguro de vida entre sí. Cuando uno muere, el sobreviviente recibe el beneficio por fallecimiento y lo usa para comprar la participación del dueño fallecido en el negocio.",
+      "wrong_explanations": {
+        "B": "En un plan Entity Purchase (o Stock Redemption), el propio negocio compra las pólizas sobre los dueños, paga las primas y compra la participación del dueño fallecido.",
+        "C": "Un Executive Bonus Plan es un beneficio adicional donde un empleador paga la prima de una póliza personal de seguro de vida propiedad de un empleado.",
+        "D": "Key Person Insurance se usa para proteger al negocio contra la pérdida financiera por la muerte de un empleado crítico, no para facilitar la transferencia de propiedad del negocio."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T15:34:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T16:30:00Z",
+          "actor": "ChatGPT"
+        }
+      ]
+    },
+    {
+      "question_id": "B05-Q011",
+      "rule_ids": [
+        "RC-MED-001"
+      ],
+      "domain": "Estatutos de Texas relacionados con vida, salud y HMO",
+      "subdomain": "Reglas de Texas sobre Medicare Supplement",
+      "difficulty": "hard",
+      "format": "direct_rule",
+      "stem": "Una persona califica para emisión garantizada de una póliza Medicare Supplement (Medigap) durante su período de inscripción abierta de Medigap. Bajo las reglas federales y de Texas, ¿exactamente cuándo comienza este período de inscripción abierta de 6 meses?",
+      "options": [
+        {
+          "label": "A",
+          "text": "En el cumpleaños número 65 de la persona, independientemente de su estado de inscripción en Medicare."
+        },
+        {
+          "label": "B",
+          "text": "El primer día del mes en que la persona tiene 65 años o más Y está inscrita en Medicare Part B."
+        },
+        {
+          "label": "C",
+          "text": "El primer día del período anual de Open Enrollment de Medicare (15 de octubre)."
+        },
+        {
+          "label": "D",
+          "text": "En la fecha en que la persona se retira oficialmente y pierde la cobertura de salud patrocinada por el empleador."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "El período de inscripción abierta de Medigap es un período único de 6 meses que comienza estrictamente el primer día del mes en que el solicitante tiene 65 años o más Y está inscrito en Medicare Part B. Durante este período, las aseguradoras no pueden negar cobertura ni cobrar primas más altas basadas en el estado de salud.",
+      "wrong_explanations": {
+        "A": "Si una persona cumple 65 años pero retrasa la inscripción en Part B (porque sigue trabajando y tiene cobertura grupal), su período de inscripción abierta de Medigap no comienza hasta que realmente se inscriba en Part B.",
+        "C": "Del 15 de octubre al 7 de diciembre es el Annual Election Period para planes Medicare Advantage y Part D, que es completamente diferente del período único de inscripción abierta de Medigap.",
+        "D": "Aunque retirarse y perder cobertura puede activar un Special Enrollment Period para Part B, la regla de inscripción abierta de Medigap está específicamente vinculada a la fecha efectiva de Part B a los 65 años o más."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T15:34:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T16:30:00Z",
+          "actor": "ChatGPT"
+        }
+      ]
+    },
+    {
+      "question_id": "B05-Q012",
+      "rule_ids": [
+        "RC-UTP-001"
+      ],
+      "domain": "Estatutos de Texas comunes a todas las líneas",
+      "subdomain": "Prácticas comerciales injustas",
+      "difficulty": "easy",
+      "format": "definition_scenario",
+      "stem": "Un agente convence a un titular de póliza para cancelar su póliza existente de seguro de vida entera y comprar una nueva con el agente. El agente logra esto haciendo comparaciones falsas y engañosas sobre los beneficios y costos de las dos pólizas. Esta práctica ilegal se conoce como:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Rebating"
+        },
+        {
+          "label": "B",
+          "text": "Defamation"
+        },
+        {
+          "label": "C",
+          "text": "Twisting"
+        },
+        {
+          "label": "D",
+          "text": "Commingling"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "Twisting es la práctica comercial injusta de hacer representaciones engañosas o comparaciones fraudulentas de pólizas de seguro para inducir a una persona a dejar vencer, perder, rescatar o cambiar su póliza actual por una nueva.",
+      "wrong_explanations": {
+        "A": "Rebating implica ofrecer algo de valor no establecido en la póliza como incentivo para comprar.",
+        "B": "Defamation implica hacer declaraciones maliciosamente críticas o despectivas sobre la condición financiera de una aseguradora.",
+        "D": "Commingling es el acto ilegal de mezclar primas cobradas con fondos personales o comerciales del agente."
+      },
+      "trap_type": "TP002-Distractor_Misdirection",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T15:34:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T16:30:00Z",
+          "actor": "ChatGPT"
+        }
+      ]
+    },
+    {
+      "question_id": "B05-Q013",
+      "rule_ids": [
+        "RC-HMO-001"
+      ],
+      "domain": "Estatutos de Texas relacionados con vida, salud y HMO",
+      "subdomain": "Regulaciones de HMO en Texas",
+      "difficulty": "medium",
+      "format": "direct_rule",
+      "stem": "Bajo las regulaciones de Texas para Health Maintenance Organizations (HMOs), ¿dentro de qué plazo máximo debe la HMO proporcionar un documento Evidence of Coverage a un nuevo suscriptor después de que se inscribe?",
+      "options": [
+        {
+          "label": "A",
+          "text": "15 días"
+        },
+        {
+          "label": "B",
+          "text": "30 días"
+        },
+        {
+          "label": "C",
+          "text": "60 días"
+        },
+        {
+          "label": "D",
+          "text": "90 días"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "El Texas Insurance Code exige que una HMO emita un documento Evidence of Coverage a cada suscriptor no más tarde de 60 días después de la inscripción. Este documento detalla los servicios cubiertos, limitaciones y derechos del inscrito.",
+      "wrong_explanations": {
+        "A": "15 días es el plazo para que una aseguradora acuse recibo de una reclamación bajo las leyes de pago puntual.",
+        "B": "30 días es un plazo común (como para notificaciones de cambio de dirección), pero el EOC debe entregarse dentro de 60 días.",
+        "D": "90 días es demasiado tiempo y viola el máximo estatutario de 60 días para la entrega del EOC."
+      },
+      "trap_type": "TP004-Timeline_Trap",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T15:34:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T16:30:00Z",
+          "actor": "ChatGPT"
+        }
+      ]
+    },
+    {
+      "question_id": "B05-Q014",
+      "rule_ids": [
+        "RC-HLTH-008"
+      ],
+      "domain": "Cláusulas adicionales, disposiciones, opciones y exclusiones de la póliza",
+      "subdomain": "Disposiciones estándar de salud",
+      "difficulty": "medium",
+      "format": "concept_application",
+      "stem": "Bajo la disposición obligatoria “Time Limit on Certain Defenses” incluida en todas las pólizas individuales de seguro de salud, ¿cuánto tiempo tiene la aseguradora para anular la póliza o negar una reclamación con base en declaraciones incorrectas hechas en la solicitud (excluyendo declaraciones fraudulentas)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "1 año"
+        },
+        {
+          "label": "B",
+          "text": "2 años"
+        },
+        {
+          "label": "C",
+          "text": "3 años"
+        },
+        {
+          "label": "D",
+          "text": "No hay límite de tiempo; las declaraciones incorrectas siempre pueden anular la póliza"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "La disposición Time Limit on Certain Defenses (similar a la cláusula de incontestabilidad en el seguro de vida) establece que después de que la póliza ha estado vigente por 2 años, ninguna declaración incorrecta en la solicitud, excepto las fraudulentas, puede usarse para anular la póliza o negar una reclamación.",
+      "wrong_explanations": {
+        "A": "1 año es el límite para iniciar acción legal contra una aseguradora después de presentar la prueba de pérdida (en algunos casos), pero el período de contestabilidad es de 2 años.",
+        "C": "3 años es el límite de tiempo para defender reclamaciones en algunas pólizas antiguas de seguro de vida de otras épocas, pero la disposición uniforme estándar de salud es estrictamente de 2 años.",
+        "D": "Aunque las declaraciones fraudulentas a menudo pueden ser impugnadas en cualquier momento en seguro de salud, las declaraciones no fraudulentas quedan protegidas después de 2 años."
+      },
+      "trap_type": "TP008-Fraud_Exception_Misdirection",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T15:34:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T16:30:00Z",
+          "actor": "ChatGPT"
+        }
+      ]
+    },
+    {
+      "question_id": "B05-Q015",
+      "rule_ids": [
+        "RC-HLTH-008"
+      ],
+      "domain": "Cláusulas adicionales, disposiciones, opciones y exclusiones de la póliza",
+      "subdomain": "Disposiciones estándar de salud",
+      "difficulty": "hard",
+      "format": "direct_rule",
+      "stem": "Un titular de póliza compra una póliza individual de seguro de salud y elige pagar las primas semanalmente. Bajo la Uniform Individual Accident and Sickness Policy Provisions Law, ¿cuál es el período de gracia obligatorio para esta póliza?",
+      "options": [
+        {
+          "label": "A",
+          "text": "7 días"
+        },
+        {
+          "label": "B",
+          "text": "10 días"
+        },
+        {
+          "label": "C",
+          "text": "30 días"
+        },
+        {
+          "label": "D",
+          "text": "31 días"
+        }
+      ],
+      "correct_answer": "A",
+      "correct_explanation": "En el seguro individual de salud, el período de gracia está ligado al modo de pago de la prima. El período de gracia obligatorio es de 7 días para pólizas con primas semanales, 10 días para pólizas con primas mensuales y 31 días para todos los demás modos (trimestral, semestral, anual).",
+      "wrong_explanations": {
+        "B": "10 días es el período de gracia requerido si las primas se pagan mensualmente.",
+        "C": "30 días es un plazo común en seguros, pero los períodos de gracia para pólizas de salud son 7, 10 o 31 días.",
+        "D": "31 días es el período de gracia para pólizas donde las primas se pagan trimestral, semestral o anualmente, así como para pólizas de seguro de vida."
+      },
+      "trap_type": "TP004-Timeline_Trap",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T15:34:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T16:30:00Z",
+          "actor": "ChatGPT"
+        }
+      ]
+    },
+    {
+      "question_id": "B05-Q016",
+      "rule_ids": [
+        "RC-UTP-001"
+      ],
+      "domain": "Estatutos de Texas comunes a todas las líneas",
+      "subdomain": "Prácticas comerciales injustas",
+      "difficulty": "medium",
+      "format": "direct_rule",
+      "stem": "Bajo el estatuto de pago puntual de reclamaciones de Texas, después de que una aseguradora recibe un aviso de reclamación de un asegurado, ¿dentro de cuántos días debe la aseguradora acusar recibo de la reclamación, iniciar cualquier investigación y solicitar todos los documentos o formularios requeridos al reclamante?",
+      "options": [
+        {
+          "label": "A",
+          "text": "10 días"
+        },
+        {
+          "label": "B",
+          "text": "15 días"
+        },
+        {
+          "label": "C",
+          "text": "20 días"
+        },
+        {
+          "label": "D",
+          "text": "30 días"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "La ley de Texas dicta que dentro de los 15 días de recibir el aviso de una reclamación, una aseguradora debe acusar recibo, iniciar cualquier investigación necesaria y solicitar todas las declaraciones, formularios y documentos necesarios al reclamante.",
+      "wrong_explanations": {
+        "A": "10 días es el período estándar de free look, no el plazo para acusar recibo de una reclamación.",
+        "C": "20 días es el tiempo que tiene el asegurado para notificar inicialmente a la aseguradora sobre una reclamación (Notice of Claim), no el tiempo de respuesta de la aseguradora.",
+        "D": "30 días es el plazo que tiene la aseguradora para pagar la reclamación después de recibir todos los documentos solicitados (proof of loss)."
+      },
+      "trap_type": "TP004-Timeline_Trap",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T15:34:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T16:30:00Z",
+          "actor": "ChatGPT"
+        }
+      ]
+    },
+    {
+      "question_id": "B05-Q017",
+      "rule_ids": [
+        "RC-LIFE-025"
+      ],
+      "domain": "Cláusulas adicionales, disposiciones, opciones y exclusiones de la póliza",
+      "subdomain": "Disposiciones estándar de vida",
+      "difficulty": "medium",
+      "format": "direct_rule",
+      "stem": "Cuando un empleado termina su empleo y pierde cobertura bajo una póliza de seguro de vida grupal, normalmente tiene el derecho de convertir la cobertura grupal a una póliza individual de vida entera sin proporcionar evidencia de asegurabilidad. Bajo la ley de Texas, ¿cuál es la duración de este período de conversión?",
+      "options": [
+        {
+          "label": "A",
+          "text": "10 días"
+        },
+        {
+          "label": "B",
+          "text": "20 días"
+        },
+        {
+          "label": "C",
+          "text": "31 días"
+        },
+        {
+          "label": "D",
+          "text": "60 días"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "El privilegio de conversión del seguro de vida grupal le da al empleado 31 días después de la terminación del empleo para convertir su cobertura grupal temporal a una póliza individual permanente (vida entera) sin demostrar asegurabilidad.",
+      "wrong_explanations": {
+        "A": "10 días es el período estándar de free look para seguro de vida.",
+        "B": "20 días es el requisito estándar de notice of claim en seguro de salud, y el período de free look para pólizas de vida de reemplazo.",
+        "D": "60 días es la ventana de conversión para algunas pólizas de seguro de salud, pero la conversión de vida grupal es estrictamente de 31 días."
+      },
+      "trap_type": "TP004-Timeline_Trap",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T15:34:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T16:30:00Z",
+          "actor": "ChatGPT"
+        }
+      ]
+    },
+    {
+      "question_id": "B05-Q018",
+      "rule_ids": [
+        "RC-PROV-001"
+      ],
+      "domain": "Estatutos de Texas relacionados con vida, salud y HMO",
+      "subdomain": "Disposiciones de pólizas de vida en Texas",
+      "difficulty": "easy",
+      "format": "direct_rule",
+      "stem": "En Texas, cuando se emite una nueva póliza de seguro de vida para reemplazar una póliza existente de seguro de vida, la aseguradora reemplazante debe proporcionar al titular de la póliza un período de “free look” de al menos cuántos días?",
+      "options": [
+        {
+          "label": "A",
+          "text": "10 días"
+        },
+        {
+          "label": "B",
+          "text": "20 días"
+        },
+        {
+          "label": "C",
+          "text": "30 días"
+        },
+        {
+          "label": "D",
+          "text": "31 días"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Aunque el período estándar de free look para una póliza de seguro de vida recién emitida en Texas es de 10 días, las regulaciones de reemplazo de Texas exigen estrictamente un período de free look de 20 días cuando se reemplaza una póliza, permitiendo al consumidor más tiempo para evaluar el cambio.",
+      "wrong_explanations": {
+        "A": "10 días es el período estándar de free look para transacciones de seguro de vida que no son de reemplazo.",
+        "C": "30 días es el período de free look requerido para pólizas Medicare Supplement y Long-Term Care.",
+        "D": "31 días es el período estándar de gracia para seguro de vida, no el período de free look."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T15:34:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T16:30:00Z",
+          "actor": "ChatGPT"
+        }
+      ]
+    },
+    {
+      "question_id": "B05-Q019",
+      "rule_ids": [
+        "RC-TAX-004"
+      ],
+      "domain": "Impuestos, jubilación y otros conceptos de seguros",
+      "subdomain": "Planes de jubilación calificados vs. no calificados",
+      "difficulty": "hard",
+      "format": "concept_application",
+      "stem": "Un empleado participa en un plan de jubilación calificado 401(k) patrocinado por el empleador. El empleador iguala las contribuciones del empleado hasta el 5%. ¿Cuándo se gravan al empleado las contribuciones del empleador y las ganancias de inversión sobre esas contribuciones?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Se gravan en el año en que se realiza la contribución."
+        },
+        {
+          "label": "B",
+          "text": "Se gravan anualmente según el crecimiento de la cuenta."
+        },
+        {
+          "label": "C",
+          "text": "Se gravan como ingreso ordinario cuando se distribuyen o retiran."
+        },
+        {
+          "label": "D",
+          "text": "Son completamente libres de impuestos para el empleado al momento de la distribución."
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "En un plan de jubilación calificado como un 401(k), las contribuciones del empleador son deducibles para el empleador y crecen con impuestos diferidos en la cuenta. No se gravan al empleado hasta que los fondos se distribuyen o retiran, momento en el cual todo el retiro (contribuciones y ganancias) se grava como ingreso ordinario.",
+      "wrong_explanations": {
+        "A": "Esto describe compensación no calificada. Las contribuciones a planes calificados se difieren y no se gravan en el año en que se hacen.",
+        "B": "Los planes calificados disfrutan crecimiento con impuestos diferidos. Las ganancias no se gravan anualmente.",
+        "D": "Las distribuciones de planes calificados tradicionales son completamente tributables como ingreso ordinario. Solo las cuentas Roth (financiadas con dólares después de impuestos) ofrecen distribuciones libres de impuestos."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T15:34:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T16:30:00Z",
+          "actor": "ChatGPT"
+        }
+      ]
+    },
+    {
+      "question_id": "B05-Q020",
+      "rule_ids": [
+        "RC-ACA-001"
+      ],
+      "domain": "Estatutos de Texas relacionados con vida, salud y HMO",
+      "subdomain": "Disposiciones de pólizas de salud en Texas",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Una empleada cubierta bajo un plan de beneficios de salud para pequeños empleadores en Texas da a luz a un niño. Bajo la ley de Texas, la cobertura inicial para el recién nacido comienza al nacer. Para continuar la cobertura más allá del período inicial garantizado, ¿para cuándo debe el emisor recibir el aviso del nacimiento y cualquier prima adicional requerida?",
+      "options": [
+        {
+          "label": "A",
+          "text": "10 días"
+        },
+        {
+          "label": "B",
+          "text": "20 días"
+        },
+        {
+          "label": "C",
+          "text": "31 días"
+        },
+        {
+          "label": "D",
+          "text": "60 días"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "Para un plan de beneficios de salud para pequeños empleadores en Texas, la cobertura de un recién nacido termina el día 32 después del nacimiento a menos que el emisor reciba el aviso del nacimiento y cualquier prima adicional requerida no más tarde del día 31 después de la fecha de nacimiento.",
+      "wrong_explanations": {
+        "A": "Los estatutos de cobertura para recién nacidos en Texas no usan 10 días para este requisito de aviso y prima.",
+        "B": "20 días no es la fecha límite de aviso de recién nacido bajo la regla de cobertura de recién nacidos para pequeños empleadores.",
+        "D": "60 días es demasiado tarde; el estatuto exige aviso y cualquier prima adicional para el día 31 después del nacimiento."
+      },
+      "trap_type": "TP004-Timeline_Trap",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T15:34:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "corrected",
+          "timestamp": "2026-03-24T16:30:00Z",
+          "actor": "ChatGPT"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T16:30:00Z",
+          "actor": "ChatGPT"
+        }
+      ]
+    },
+    {
+      "question_id": "B05-Q021",
+      "rule_ids": [
+        "RC-HMO-004"
+      ],
+      "domain": "Estatutos de Texas relacionados con vida, salud y HMO",
+      "subdomain": "Regulaciones de HMO en Texas",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Si una HMO de Texas niega un tratamiento médico propuesto con el fundamento de que no es médicamente necesario, y el inscrito ha agotado el proceso interno de apelación de la HMO, ¿cuál es el siguiente derecho de recurso disponible para el inscrito bajo la ley de Texas?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Demandar al médico de atención primaria por negligencia médica."
+        },
+        {
+          "label": "B",
+          "text": "Solicitar una revisión por una Independent Review Organization (IRO)."
+        },
+        {
+          "label": "C",
+          "text": "Volver a solicitar el tratamiento durante el próximo período anual de open enrollment."
+        },
+        {
+          "label": "D",
+          "text": "Presentar una queja directamente ante la National Association of Insurance Commissioners (NAIC)."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "En Texas, si una HMO u otra aseguradora de salud emite una “determinación adversa” (negando cobertura porque un servicio se considera no médicamente necesario o experimental), el inscrito tiene el derecho estatutario a una revisión independiente y externa por una Independent Review Organization (IRO) después de agotar las apelaciones internas.",
+      "wrong_explanations": {
+        "A": "La negación de cobertura es una decisión administrativa/contractual de la HMO, no un asunto de negligencia médica del médico que propuso el tratamiento.",
+        "C": "Los períodos de open enrollment son para cambiar planes de salud, no para apelar denegaciones clínicas de tratamientos médicos específicos.",
+        "D": "La NAIC es un organismo de establecimiento de estándares, no una agencia reguladora que revise apelaciones médicas individuales de consumidores."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T15:34:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T16:30:00Z",
+          "actor": "ChatGPT"
+        }
+      ]
+    },
+    {
+      "question_id": "B05-Q022",
+      "rule_ids": [
+        "RC-MED-001"
+      ],
+      "domain": "Tipos de pólizas",
+      "subdomain": "Medicare Supplements",
+      "difficulty": "easy",
+      "format": "direct_rule",
+      "stem": "¿Qué parte del programa Original Medicare cubre principalmente atención hospitalaria como paciente internado, atención en centro de enfermería especializada y cuidados de hospicio?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Medicare Part A"
+        },
+        {
+          "label": "B",
+          "text": "Medicare Part B"
+        },
+        {
+          "label": "C",
+          "text": "Medicare Part C"
+        },
+        {
+          "label": "D",
+          "text": "Medicare Part D"
+        }
+      ],
+      "correct_answer": "A",
+      "correct_explanation": "Medicare Part A es seguro hospitalario. Cubre atención hospitalaria como paciente internado, atención en centro de enfermería especializada, cuidados de hospicio y algunos servicios de salud en el hogar.",
+      "wrong_explanations": {
+        "B": "Medicare Part B es seguro médico, que cubre principalmente servicios médicos, atención ambulatoria, suministros médicos y servicios preventivos.",
+        "C": "Medicare Part C (Medicare Advantage) es una opción de plan privado que agrupa Part A, Part B y usualmente Part D en un solo plan.",
+        "D": "Medicare Part D es el programa de cobertura de medicamentos recetados."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T15:34:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T16:30:00Z",
+          "actor": "ChatGPT"
+        }
+      ]
+    },
+    {
+      "question_id": "B05-Q023",
+      "rule_ids": [
+        "RC-TAX-001"
+      ],
+      "domain": "Impuestos, jubilación y otros conceptos de seguros",
+      "subdomain": "Tributación del seguro de salud",
+      "difficulty": "medium",
+      "format": "concept_application",
+      "stem": "Las Health Savings Accounts (HSAs) ofrecen ventajas fiscales importantes para personas inscritas en High Deductible Health Plans (HDHPs). ¿Cuál de las siguientes opciones describe mejor el tratamiento fiscal de los retiros de una HSA usados para gastos médicos calificados?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Se gravan como ingreso ordinario, pero no están sujetos a penalidad."
+        },
+        {
+          "label": "B",
+          "text": "Se gravan como ganancias de capital."
+        },
+        {
+          "label": "C",
+          "text": "Son completamente libres de impuestos."
+        },
+        {
+          "label": "D",
+          "text": "Son libres de impuestos solo hasta el monto del deducible del plan."
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "La principal ventaja de una Health Savings Account (HSA) es su triple beneficio fiscal: las contribuciones son deducibles de impuestos, las ganancias crecen con impuestos diferidos y los retiros usados para gastos médicos calificados son completamente libres de impuestos.",
+      "wrong_explanations": {
+        "A": "Si un retiro de HSA se usa para gastos NO calificados antes de los 65 años, se grava como ingreso ordinario Y está sujeto a una penalidad del 20%.",
+        "B": "Los fondos de una HSA nunca se gravan como ganancias de capital; son libres de impuestos (para gastos médicos) o se gravan como ingreso ordinario (para gastos no médicos).",
+        "D": "Los retiros libres de impuestos no están limitados por el deducible; aplican a todos los gastos médicos calificados, incluidos copagos, coseguro y cuidado dental/de visión."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T15:34:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T16:30:00Z",
+          "actor": "ChatGPT"
+        }
+      ]
+    },
+    {
+      "question_id": "B05-Q024",
+      "rule_ids": [
+        "RC-HLTH-008"
+      ],
+      "domain": "Cláusulas adicionales, disposiciones, opciones y exclusiones de la póliza",
+      "subdomain": "Disposiciones estándar de salud",
+      "difficulty": "medium",
+      "format": "concept_application",
+      "stem": "Bajo la disposición obligatoria “Entire Contract” que se encuentra en todas las pólizas individuales de seguro de salud, el contrato completo consiste en el documento de la póliza, cualquier rider o endoso adjunto, y qué otro documento importante?",
+      "options": [
+        {
+          "label": "A",
+          "text": "La ilustración de ventas del agente"
+        },
+        {
+          "label": "B",
+          "text": "El informe del Medical Information Bureau (MIB)"
+        },
+        {
+          "label": "C",
+          "text": "Una copia de la solicitud original"
+        },
+        {
+          "label": "D",
+          "text": "La declaración del médico tratante"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "La disposición Entire Contract establece que la póliza de seguro de salud, incluyendo cualquier rider, endoso y una copia de la solicitud original, constituye el contrato completo entre las partes. Nada fuera de estos documentos adjuntos puede usarse en corte para alterar los términos.",
+      "wrong_explanations": {
+        "A": "Las ilustraciones de ventas son materiales de marketing y explícitamente no forman parte del contrato legal.",
+        "B": "El informe MIB es una herramienta de suscripción usada por la aseguradora, pero no está adjunto ni forma parte del contrato legal.",
+        "D": "Las declaraciones de médicos son evidencia de suscripción, pero salvo que se incorporen a la solicitud misma, no forman parte del contrato completo."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T15:34:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T16:30:00Z",
+          "actor": "ChatGPT"
+        }
+      ]
+    },
+    {
+      "question_id": "B05-Q025",
+      "rule_ids": [
+        "RC-UTP-001"
+      ],
+      "domain": "Estatutos de Texas comunes a todas las líneas",
+      "subdomain": "Prácticas comerciales injustas",
+      "difficulty": "medium",
+      "format": "direct_rule",
+      "stem": "Bajo la ley de seguros de Texas, está estrictamente prohibido y se considera discriminación injusta cobrar primas diferentes o negar cobertura a personas de la misma clase actuarial basándose únicamente en cuál de los siguientes factores?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Edad y género"
+        },
+        {
+          "label": "B",
+          "text": "Uso de tabaco"
+        },
+        {
+          "label": "C",
+          "text": "Ceguera o ceguera parcial"
+        },
+        {
+          "label": "D",
+          "text": "Antecedentes de enfermedad cardíaca severa"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "El Texas Insurance Code prohíbe estrictamente que las aseguradoras se nieguen a asegurar, se nieguen a continuar asegurando o limiten el monto, alcance o tipo de cobertura disponible para una persona basándose únicamente en ceguera o ceguera parcial.",
+      "wrong_explanations": {
+        "A": "La edad y el género son factores actuariales estándar y legalmente permitidos que se usan para determinar primas de seguro de vida y salud.",
+        "B": "El uso de tabaco conlleva riesgos conocidos de morbilidad y mortalidad y es un factor estándar y permitido de clasificación.",
+        "D": "La enfermedad cardíaca severa representa un riesgo actuarial distinto, y las aseguradoras están legalmente autorizadas a suscribir, clasificar o negar cobertura con base en ese historial adverso de salud."
+      },
+      "trap_type": "TP002-Distractor_Misdirection",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T15:34:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "corrected",
+          "timestamp": "2026-03-24T16:30:00Z",
+          "actor": "ChatGPT"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T16:30:00Z",
+          "actor": "ChatGPT"
+        }
+      ]
+    }
+  ]
+}

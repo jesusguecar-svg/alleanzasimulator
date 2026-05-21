@@ -1,0 +1,97 @@
+{
+  "batch_id": "03",
+  "source_file": "question_bank_raw_batch_03.json",
+  "validated_file": "question_bank_validated_batch_03.json",
+  "validated_date": "2026-03-24",
+  "validated_by": "chatgpt",
+  "overall_disposition": "APPROVED_WITH_CORRECTIONS",
+  "summary": {
+    "questions_reviewed": 25,
+    "validated_without_change": 21,
+    "corrected_and_validated": 4,
+    "flagged_unresolved": 0,
+    "rejected": 0
+  },
+  "corrections": [
+    {
+      "question_id": "B03-Q002",
+      "severity": "moderate",
+      "issue_type": "rule_overstatement",
+      "issue": "La explicación y la respuesta exageraban el alcance del tiempo para la rehabilitación de la póliza e incluían un requisito no respaldado de pago de préstamo sobre la póliza para la regla estándar de las pólizas de seguro de vida en Texas.",
+      "correction": "Se alineó el ítem con la Sección 1101.156 del Código de Seguros de Texas: ventana de rehabilitación de tres años, evidencia de asegurabilidad satisfactoria para la aseguradora y pago de las primas atrasadas con intereses, asumiendo que la póliza no ha sido rescatada y que cualquier seguro automático de no caducidad permanece en vigor.",
+      "sources": [
+        "Código de Seguros de Texas, Sección 1101.156"
+      ]
+    },
+    {
+      "question_id": "B03-Q010",
+      "severity": "minor",
+      "issue_type": "scope_precision",
+      "issue": "La redacción de la respuesta daba a entender que la Asociación de Garantía protege únicamente a residentes de Texas.",
+      "correction": "Se aclaró que el Capítulo 463 protege principalmente a residentes de Texas y, en circunstancias estatutarias limitadas, también a ciertos no residentes.",
+      "sources": [
+        "Código de Seguros de Texas, Secciones 463.002, 463.051, 463.201"
+      ]
+    },
+    {
+      "question_id": "B03-Q013",
+      "severity": "moderate",
+      "issue_type": "ambiguity",
+      "issue": "El enunciado decía solamente 'tergiversación material', mientras que la respuesta propuesta dependía de que la tergiversación no fuera fraudulenta.",
+      "correction": "Se revisó el enunciado para especificar una tergiversación material pero no fraudulenta, de modo que la respuesta sea inequívoca.",
+      "sources": [
+        "concepto estándar de límite de tiempo para ciertas defensas, según se describe en el mapeo de reglas del lote"
+      ]
+    },
+    {
+      "question_id": "B03-Q016",
+      "severity": "high",
+      "issue_type": "outdated_rule_statement",
+      "issue": "El ítem original usaba una cláusula genérica de exclusión por condición preexistente en seguro de salud individual que entra en conflicto con la prohibición actual, bajo la era de la ACA, de exclusiones por condiciones preexistentes para cobertura de seguro de salud grupal e individual.",
+      "correction": "Se reemplazó el ítem por una pregunta actual y respaldable sobre el período de espera durante la inscripción abierta de seguro suplementario de Medicare en Texas: la aseguradora debe vender la póliza, pero puede imponer un período de espera de hasta seis meses para condiciones preexistentes en ciertos casos.",
+      "sources": [
+        "42 U.S.C. 300gg-3",
+        "Guía de seguro suplementario de Medicare del Texas Department of Insurance"
+      ]
+    }
+  ],
+  "notable_passes": [
+    {
+      "question_id": "B03-Q006",
+      "note": "Respaldable bajo la ley de revisión de utilización de Texas, que exige revisión bajo un médico con licencia en Texas y remisión de denegaciones a un médico, dentista u otro proveedor apropiado para la determinación de necesidad médica."
+    },
+    {
+      "question_id": "B03-Q021",
+      "note": "Respaldable bajo los requisitos de apelación interna de HMO en Texas."
+    },
+    {
+      "question_id": "B03-Q022",
+      "note": "Coincide con la disposición de prueba de pérdida de Texas: antes del día 91 después de la fecha de la pérdida, con una extensión limitada de un año si no es razonablemente posible."
+    },
+    {
+      "question_id": "B03-Q023",
+      "note": "Respaldable bajo la regla de retrodatación de Texas que limita la retrodatación a no más de seis meses cuando se usa para obtener una edad de emisión menor."
+    },
+    {
+      "question_id": "B03-Q025",
+      "note": "Respaldable bajo las disposiciones de revisión independiente de Texas después de que se niega la apelación interna."
+    }
+  ],
+  "schema_review": {
+    "status": "pass",
+    "notes": [
+      "El lote coincide con la estructura establecida de ítems de preguntas usada en los lotes validados 01 y 02.",
+      "Las opciones permanecen como un arreglo de objetos {label, text}.",
+      "Los valores nulos de trap_type siguen siendo aceptables para preguntas sin una trampa asignada."
+    ]
+  },
+  "cross_batch_duplicate_review": {
+    "status": "limited_pass",
+    "notes": "Con base en el resumen del lote suministrado y una revisión puntual, no se detectaron duplicados obvios a nivel de ángulo con los lotes 01 y 02. En este turno no estuvo disponible una comparación automática completa de duplicados entre todos los lotes validados."
+  },
+  "recommendations": [
+    "Mover este archivo a data/questions_validated/question_bank_validated_batch_03.json",
+    "Mover este reporte a data/questions_validated/validation_report_batch_03.json",
+    "Al ingerirlo en el repositorio, mantener la app conectada únicamente a rutas de contenido validado."
+  ]
+}

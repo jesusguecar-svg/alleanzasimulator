@@ -1,0 +1,1302 @@
+{
+  "batch_id": "10",
+  "version": "1.0.0",
+  "generated_date": "2026-03-25",
+  "generated_by": "gemini",
+  "question_count": 25,
+  "difficulty_distribution": {
+    "easy": 5,
+    "medium": 14,
+    "hard": 6
+  },
+  "questions": [
+    {
+      "question_id": "B10-Q001",
+      "rule_ids": [
+        "RC-LIFE-008"
+      ],
+      "domain": "Tipos de pólizas",
+      "subdomain": "Seguro de vida juvenil",
+      "difficulty": "easy",
+      "format": "concept_application",
+      "stem": "Un padre compra una póliza de seguro de vida entera para su hijo pequeño. La póliza tiene una prima nivelada, pero aumenta automáticamente el monto nominal del beneficio por muerte, normalmente a cinco veces el monto original, cuando el menor alcanza una edad específica (generalmente 18 o 21 años). Este tipo específico de póliza se conoce como:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Póliza de vida entera modificada"
+        },
+        {
+          "label": "B",
+          "text": "Póliza Jumping Juvenile"
+        },
+        {
+          "label": "C",
+          "text": "Póliza de asegurabilidad garantizada"
+        },
+        {
+          "label": "D",
+          "text": "Póliza con devolución de prima"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Una póliza Jumping Juvenile (también conocida como Juvenile Estate Builder) es un producto especializado de seguro de vida permanente para niños. Su característica definitoria es que el beneficio por muerte aumenta automáticamente (normalmente se quintuplica) cuando el menor asegurado alcanza la mayoría de edad, sin aumento de prima ni evidencia de asegurabilidad requerida.",
+      "wrong_explanations": {
+        "A": "La vida entera modificada tiene primas que comienzan bajas y aumentan después de algunos años, pero el beneficio por muerte permanece nivelado.",
+        "C": "La asegurabilidad garantizada es una cláusula adicional que permite comprar cobertura adicional en fechas futuras a tarifas estándar, pero requiere el pago de primas adicionales por cada aumento.",
+        "D": "La devolución de prima es una característica de seguro de vida temporal que reembolsa las primas si el asegurado sobrevive al término; no multiplica el beneficio por muerte."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-25T11:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T18:10:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B10-Q002",
+      "rule_ids": [
+        "RC-LIC-009"
+      ],
+      "domain": "Estatutos del estado de Texas comunes a todas las líneas",
+      "subdomain": "Responsabilidades y mantenimiento del agente",
+      "difficulty": "medium",
+      "format": "direct_rule",
+      "stem": "Bajo el Código de Seguros de Texas §4001.252, una persona licenciada como agente debe notificar al departamento mensualmente sobre cuál de los siguientes eventos?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Un cambio en los muebles de oficina usados por la agencia"
+        },
+        {
+          "label": "B",
+          "text": "Una condena por delito grave del titular de la licencia"
+        },
+        {
+          "label": "C",
+          "text": "Un cambio rutinario en las guías de suscripción de la aseguradora"
+        },
+        {
+          "label": "D",
+          "text": "Un cambio en la tarifa de prima de una línea de producto"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "El Código de Seguros de Texas §4001.252 exige que una persona licenciada como agente notifique al departamento mensualmente cierta información, incluida una condena por delito grave del titular de la licencia, un cambio de dirección postal o una acción administrativa tomada por un regulador financiero o de seguros. Los cambios rutinarios de negocio, como muebles de oficina o precios de productos, no forman parte de este requisito de notificación.",
+      "wrong_explanations": {
+        "A": "Los cambios en la configuración de la oficina no están entre los asuntos estatutarios que deben reportarse al departamento.",
+        "C": "Los cambios en las guías de suscripción pertenecen a la administración de productos de la aseguradora, no a las obligaciones mensuales de aviso del agente individual.",
+        "D": "Los cambios de tarifas de primas son presentados por las aseguradoras ante los reguladores; no son asuntos de reporte mensual para un agente individual."
+      },
+      "trap_type": "TP002-Distractor_Misdirection",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-25T11:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T23:50:00Z",
+          "actor": "assistant",
+          "note": "Se reemplazó el ángulo duplicado de cambio de dirección por un disparador distinto de reporte bajo §4001.252."
+        }
+      ]
+    },
+    {
+      "question_id": "B10-Q003",
+      "rule_ids": [
+        "RC-TAX-001"
+      ],
+      "domain": "Impuestos, jubilación y otros conceptos de seguros",
+      "subdomain": "Tributación del seguro de vida",
+      "difficulty": "hard",
+      "format": "scenario",
+      "stem": "Un titular de póliza realiza un intercambio libre de impuestos bajo la Sección 1035, transfiriendo el valor en efectivo de una póliza de seguro de vida antigua a una nueva. La póliza antigua tenía un préstamo pendiente de $15,000, que la aseguradora condona/extingue en lugar de trasladarlo a la nueva póliza. ¿Cómo trata el IRS el préstamo extinguido de $15,000?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Está completamente libre de impuestos porque la transacción califica bajo la Sección 1035."
+        },
+        {
+          "label": "B",
+          "text": "Se trata como “boot” y es tributable como ingreso ordinario hasta el monto de cualquier ganancia en la póliza antigua."
+        },
+        {
+          "label": "C",
+          "text": "Reduce el beneficio por muerte de la nueva póliza, pero no genera consecuencias tributarias inmediatas."
+        },
+        {
+          "label": "D",
+          "text": "Tributa a la tasa de ganancias de capital a largo plazo, sin importar la base de costo de la póliza."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "En un intercambio 1035, si un préstamo pendiente se extingue (se condona) en lugar de trasladarse a la nueva póliza, el IRS trata la deuda extinguida como recepción constructiva de efectivo. Este equivalente de efectivo se conoce como “boot”. El boot es tributable como ingreso ordinario hasta el monto de la ganancia existente en la póliza entregada.",
+      "wrong_explanations": {
+        "A": "Aunque la transferencia principal del valor en efectivo es libre de impuestos, el préstamo extinguido se considera un beneficio económico recibido por el titular, lo que rompe el carácter puramente libre de impuestos.",
+        "C": "Sí genera consecuencias tributarias inmediatas porque la deuda fue eliminada.",
+        "D": "Las ganancias en seguros de vida tributan como ingreso ordinario, nunca como ganancias de capital."
+      },
+      "trap_type": "TP002-Distractor_Misdirection",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-25T11:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T18:10:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B10-Q004",
+      "rule_ids": [
+        "RC-HLTH-015"
+      ],
+      "domain": "Tipos de pólizas",
+      "subdomain": "Pólizas de salud limitadas y especializadas",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Una universidad compra una sola póliza de seguro de salud diseñada específicamente para cubrir a todos sus atletas estudiantiles contra lesiones sufridas mientras participan en deportes patrocinados por la escuela. No se emiten certificados de seguro individuales a los estudiantes, y la cobertura se actualiza automáticamente conforme cambia la lista del equipo. Esto es un ejemplo de:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Seguro de beneficios fraternales"
+        },
+        {
+          "label": "B",
+          "text": "Seguro médico mayor grupal estándar"
+        },
+        {
+          "label": "C",
+          "text": "Seguro de salud blanket"
+        },
+        {
+          "label": "D",
+          "text": "Un plan de Health Maintenance Organization (HMO)"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "El seguro de salud blanket está diseñado para grupos cuya membresía cambia con frecuencia, como estudiantes, pasajeros de un transportista común o equipos deportivos. Debido a que las personas cubiertas cambian constantemente, la aseguradora no suscribe individualmente ni emite certificados individuales de cobertura.",
+      "wrong_explanations": {
+        "A": "El seguro de beneficios fraternales es vendido por sociedades fraternales a sus miembros que pagan cuotas, no por instituciones que cubren grupos transitorios.",
+        "B": "El seguro de salud grupal estándar del empleador emite certificados individuales de cobertura a cada empleado inscrito.",
+        "D": "Una HMO proporciona atención médica integral a sus suscriptores inscritos en un área geográfica específica, no cobertura especializada contra lesiones sin certificados para grupos transitorios."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-25T11:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T18:10:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B10-Q005",
+      "rule_ids": [
+        "RC-UTP-001"
+      ],
+      "domain": "Estatutos del estado de Texas comunes a todas las líneas",
+      "subdomain": "Prácticas comerciales desleales",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Un agente distribuye artículos promocionales de marca, como calendarios y bolígrafos, a clientes potenciales durante una presentación de ventas. Bajo las leyes anti-rebating de Texas, esta práctica está permitida siempre que el valor del artículo promocional no exceda:",
+      "options": [
+        {
+          "label": "A",
+          "text": "$10"
+        },
+        {
+          "label": "B",
+          "text": "$25"
+        },
+        {
+          "label": "C",
+          "text": "$50"
+        },
+        {
+          "label": "D",
+          "text": "$100"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "La ley de Texas permite ciertos artículos promocionales de publicidad, artículos educativos o cortesías tradicionales comúnmente extendidas a consumidores si el artículo tiene un valor de $25 o menos.",
+      "wrong_explanations": {
+        "A": "$10 está por debajo del límite estatutario, pero no es el monto máximo permitido.",
+        "C": "$50 excede el monto máximo permitido para esta excepción de artículo promocional.",
+        "D": "$100 está muy por encima del límite permitido y podría convertirse en un incentivo ilegal."
+      },
+      "trap_type": "TP006-Math_Distractor",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-25T11:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T18:10:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B10-Q006",
+      "rule_ids": [
+        "RC-HMO-001"
+      ],
+      "domain": "Estatutos del estado de Texas relacionados con vida, salud y HMO",
+      "subdomain": "Regulaciones de HMO en Texas",
+      "difficulty": "hard",
+      "format": "direct_rule",
+      "stem": "Bajo el Código de Seguros de Texas §843.203, un inscrito en una Health Maintenance Organization (HMO) tiene derecho a seleccionar o cambiar un médico o proveedor de atención primaria dentro de la red. Una HMO puede limitar la solicitud del inscrito para cambiar de médico o proveedor a no más de cuántos cambios en un período de 12 meses?",
+      "options": [
+        {
+          "label": "A",
+          "text": "2 cambios"
+        },
+        {
+          "label": "B",
+          "text": "4 cambios"
+        },
+        {
+          "label": "C",
+          "text": "6 cambios"
+        },
+        {
+          "label": "D",
+          "text": "12 cambios"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "El Código de Seguros de Texas §843.203 otorga al inscrito el derecho a seleccionar o cambiar un médico o proveedor de atención primaria dentro de la red HMO, pero permite que la HMO limite esos cambios a no más de cuatro en un período de 12 meses.",
+      "wrong_explanations": {
+        "A": "La ley de Texas permite que la HMO permita hasta cuatro cambios, no solo dos.",
+        "C": "Seis cambios excederían el máximo estatutario que la HMO puede imponer.",
+        "D": "El estatuto no exige cambios mensuales ilimitados; específicamente permite un límite anual de cuatro cambios."
+      },
+      "trap_type": "TP004-Timeline_Trap",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-25T11:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T23:50:00Z",
+          "actor": "assistant",
+          "note": "Se reemplazó el ángulo duplicado del plazo de Evidence of Coverage de HMO por la regla de cambio de PCP."
+        }
+      ]
+    },
+    {
+      "question_id": "B10-Q007",
+      "rule_ids": [
+        "RC-LIFE-001"
+      ],
+      "domain": "Completar la solicitud, suscripción y entrega de la póliza",
+      "subdomain": "Proceso de suscripción",
+      "difficulty": "easy",
+      "format": "scenario",
+      "stem": "Un grupo de inversionistas se dirige a personas mayores, persuadiéndolas a contratar pólizas grandes de seguro de vida. Los inversionistas pagan todas las primas y son nombrados beneficiarios, con la intención de cobrar el beneficio por muerte con fines de lucro cuando los adultos mayores fallezcan. Debido a que los inversionistas no tienen una verdadera pérdida financiera ante la muerte de esas personas, este esquema ilegal se conoce como:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Un acuerdo viático"
+        },
+        {
+          "label": "B",
+          "text": "Stranger-Originated Life Insurance (STOLI)"
+        },
+        {
+          "label": "C",
+          "text": "Un life settlement"
+        },
+        {
+          "label": "D",
+          "text": "Fraude de beneficiario de tercero"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Stranger-Originated Life Insurance (STOLI) es un arreglo en el que una póliza se obtiene para beneficio de una parte que carece de interés asegurable, normalmente un inversionista que busca lucrarse del beneficio por muerte.",
+      "wrong_explanations": {
+        "A": "Un acuerdo viático implica la venta de una póliza existente por parte de un asegurado con enfermedad terminal.",
+        "C": "Un life settlement es la venta de una póliza existente que originalmente fue obtenida por una razón legítima.",
+        "D": "Ese no es el término reconocido en derecho de seguros para este esquema."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-25T11:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T18:10:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B10-Q008",
+      "rule_ids": [
+        "RC-MED-001"
+      ],
+      "domain": "Tipos de pólizas",
+      "subdomain": "Seguro de salud grupal",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Un empleado de 66 años continúa trabajando a tiempo completo para una corporación grande con 500 empleados. El empleado está cubierto por el plan de salud grupal de la corporación y también está inscrito en Medicare Partes A y B. Si el empleado incurre en un gasto médico, ¿cómo se coordinan los beneficios entre los dos planes?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Medicare es el pagador primario, y el plan grupal del empleador es secundario."
+        },
+        {
+          "label": "B",
+          "text": "El plan grupal del empleador es el pagador primario, y Medicare es secundario."
+        },
+        {
+          "label": "C",
+          "text": "Los dos planes dividen los costos exactamente 50/50."
+        },
+        {
+          "label": "D",
+          "text": "Medicare es el pagador exclusivo porque la ley federal anula la cobertura grupal a los 65 años."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Bajo las reglas de Medicare Secondary Payer, cuando un empleado activo de 65 años o más está cubierto por un plan de empleador grande (20 o más empleados), el plan grupal del empleador paga primero y Medicare paga segundo.",
+      "wrong_explanations": {
+        "A": "Medicare sería primario solo en situaciones de empleador pequeño o empleado retirado.",
+        "C": "Se usa coordinación primario/secundario, no una división automática 50/50.",
+        "D": "La ley federal no cancela la cobertura del empleador a los 65 años."
+      },
+      "trap_type": "TP007-Role_Reversal",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-25T11:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T18:10:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B10-Q009",
+      "rule_ids": [
+        "RC-HLTH-008"
+      ],
+      "domain": "Cláusulas adicionales, disposiciones, opciones y exclusiones de la póliza",
+      "subdomain": "Disposiciones estándar de salud",
+      "difficulty": "medium",
+      "format": "direct_rule",
+      "stem": "Bajo la disposición requerida de “Change of Beneficiary” para una póliza individual de seguro de accidente y salud, ¿quién generalmente tiene el derecho de cambiar el beneficiario cuando la designación original no es irrevocable?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Solo el beneficiario actual"
+        },
+        {
+          "label": "B",
+          "text": "El asegurado, sin necesitar el consentimiento del beneficiario"
+        },
+        {
+          "label": "C",
+          "text": "La aseguradora, cuando determine que un cambio es equitativo"
+        },
+        {
+          "label": "D",
+          "text": "Cualquier familiar que haya pagado una prima de la póliza"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "La disposición requerida de Change of Beneficiary para una póliza individual de accidente y salud reserva al asegurado el derecho de cambiar el beneficiario, salvo que el asegurado haya hecho una designación irrevocable. En el caso ordinario, no se requiere el consentimiento del beneficiario para un cambio, rescate, cesión u otros cambios de la póliza.",
+      "wrong_explanations": {
+        "A": "Un beneficiario revocable no controla la póliza y no puede vetar un cambio hecho por el asegurado.",
+        "C": "La aseguradora administra el contrato, pero no escoge beneficiarios por el titular de la póliza.",
+        "D": "Pagar una prima no crea por sí solo derechos de control sobre la póliza, salvo que la persona sea el asegurado o propietario con esos derechos reservados."
+      },
+      "trap_type": "TP007-Role_Reversal",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-25T11:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T23:50:00Z",
+          "actor": "assistant",
+          "note": "Se reemplazó el ángulo duplicado de Facility of Payment por la disposición de cambio de beneficiario."
+        }
+      ]
+    },
+    {
+      "question_id": "B10-Q010",
+      "rule_ids": [
+        "RC-LIC-008"
+      ],
+      "domain": "Estatutos del estado de Texas comunes a todas las líneas",
+      "subdomain": "Requisitos de licencia",
+      "difficulty": "hard",
+      "format": "direct_rule",
+      "stem": "El Comisionado de Seguros de Texas emite una licencia temporal de agente a un solicitante calificado mientras el solicitante está siendo considerado para nombramiento por una aseguradora. ¿Cuál es la duración máxima de esta licencia temporal bajo el Código de Seguros de Texas §4001.155?",
+      "options": [
+        {
+          "label": "A",
+          "text": "30 días"
+        },
+        {
+          "label": "B",
+          "text": "90 días"
+        },
+        {
+          "label": "C",
+          "text": "180 días"
+        },
+        {
+          "label": "D",
+          "text": "1 año"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "Bajo el Código de Seguros de Texas §4001.155, una licencia temporal de agente es válida por 180 días después de la fecha en que se emite la licencia. La licencia temporal es una autorización de corto plazo, pero dura más que 90 días.",
+      "wrong_explanations": {
+        "A": "30 días es mucho menos que el término máximo estatutario de la licencia temporal.",
+        "B": "90 días no es el término general en §4001.155 para esta licencia temporal.",
+        "D": "Una licencia temporal de agente no permanece válida por un año completo."
+      },
+      "trap_type": "TP004-Timeline_Trap",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-25T11:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T18:10:00Z",
+          "actor": "chatgpt",
+          "note": "Se corrigió el encuadre no sustentado de cónyuge sobreviviente de 90 días al término general de la licencia temporal."
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T23:50:00Z",
+          "actor": "assistant",
+          "note": "Se corrigió el término de la licencia temporal a 180 días bajo §4001.155."
+        }
+      ]
+    },
+    {
+      "question_id": "B10-Q011",
+      "rule_ids": [
+        "RC-LIFE-025"
+      ],
+      "domain": "Cláusulas adicionales, disposiciones, opciones y exclusiones de la póliza",
+      "subdomain": "Cláusulas adicionales",
+      "difficulty": "medium",
+      "format": "concept_application",
+      "stem": "¿Cuál de las siguientes afirmaciones es verdadera respecto a una cláusula adicional de Cost of Living (COL) adjunta a una póliza de seguro de vida?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Aumenta automáticamente el beneficio por muerte con base en un índice de inflación sin exigir que el asegurado pruebe asegurabilidad."
+        },
+        {
+          "label": "B",
+          "text": "Disminuye la prima cuando baja el Consumer Price Index (CPI)."
+        },
+        {
+          "label": "C",
+          "text": "Permite al asegurado comprar cobertura adicional en edades específicas, siempre que se someta a un nuevo examen médico."
+        },
+        {
+          "label": "D",
+          "text": "Exonera las primas de la póliza si los gastos de vida del asegurado exceden su ingreso por discapacidad."
+        }
+      ],
+      "correct_answer": "A",
+      "correct_explanation": "Una cláusula adicional de Cost of Living aumenta el beneficio por muerte con base en un índice de inflación, normalmente sin requerir evidencia de asegurabilidad para esos aumentos automáticos.",
+      "wrong_explanations": {
+        "B": "La cláusula está diseñada para aumentar beneficios con la inflación, no para reducir primas si la inflación baja.",
+        "C": "Eso describe una cláusula diferente de opción de compra, no una cláusula COL.",
+        "D": "Esa no es la función de una cláusula COL."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-25T11:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T18:10:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B10-Q012",
+      "rule_ids": [
+        "RC-HLTH-015"
+      ],
+      "domain": "Tipos de pólizas",
+      "subdomain": "Pólizas de salud limitadas y especializadas",
+      "difficulty": "easy",
+      "format": "concept_application",
+      "stem": "Una persona compra una póliza especializada de seguro de salud que promete pagar una suma global fija y única de $50,000 si al asegurado se le diagnostica cáncer, sin importar el costo real del tratamiento médico. ¿Qué tipo de póliza es esta?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Una póliza médica mayor integral"
+        },
+        {
+          "label": "B",
+          "text": "Una póliza de enfermedad temida / enfermedad crítica"
+        },
+        {
+          "label": "C",
+          "text": "Una póliza de indemnización hospitalaria"
+        },
+        {
+          "label": "D",
+          "text": "Una póliza médica de corto plazo"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Una póliza de enfermedad temida o enfermedad crítica paga una suma global fija al diagnóstico de una enfermedad cubierta, como cáncer, ataque cardíaco o derrame cerebral, sin vincular el pago a facturas médicas reales.",
+      "wrong_explanations": {
+        "A": "La médica mayor paga gastos cubiertos en lugar de una suma global fija activada por diagnóstico.",
+        "C": "La indemnización hospitalaria generalmente paga una cantidad fija diaria o por confinamiento, no una suma global activada por enfermedad como esta.",
+        "D": "La cobertura médica de corto plazo es una cobertura amplia temporal de salud, no un producto de suma global activado por diagnóstico."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-25T11:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T18:10:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B10-Q013",
+      "rule_ids": [
+        "RC-TAX-003"
+      ],
+      "domain": "Impuestos, jubilación y otros conceptos de seguros",
+      "subdomain": "Tributación del seguro de salud",
+      "difficulty": "hard",
+      "format": "scenario",
+      "stem": "Un contribuyente de 55 años paga de su bolsillo las primas de una póliza individual de seguro Long-Term Care (LTC) calificada para impuestos. Bajo la ley tributaria federal, ¿cómo se tratan estos pagos de primas si la persona detalla sus deducciones?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Son totalmente deducibles desde el primer dólar."
+        },
+        {
+          "label": "B",
+          "text": "Nunca son deducibles porque se consideran gastos personales."
+        },
+        {
+          "label": "C",
+          "text": "Son deducibles como gastos médicos, pero solo en la medida en que el total de gastos médicos no reembolsados exceda el 7.5% del Adjusted Gross Income (AGI)."
+        },
+        {
+          "label": "D",
+          "text": "Son deducibles solo si el contribuyente realmente recibe beneficios LTC durante el año fiscal."
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "Las primas de LTC calificadas para impuestos pueden tratarse como gastos médicos, y los gastos médicos detallados son deducibles solo en la medida en que excedan el 7.5% del AGI, sujetos a otros límites tributarios aplicables.",
+      "wrong_explanations": {
+        "A": "No son deducibles desde el primer dólar.",
+        "B": "Las primas LTC calificadas pueden calificar como gastos médicos bajo la ley federal.",
+        "D": "La deducción depende de pagar primas calificadas, no de recibir beneficios ese año."
+      },
+      "trap_type": "TP002-Distractor_Misdirection",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-25T11:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T18:10:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B10-Q014",
+      "rule_ids": [
+        "RC-LIFE-030"
+      ],
+      "domain": "Tipos de pólizas",
+      "subdomain": "Acuerdos viáticos",
+      "difficulty": "medium",
+      "format": "direct_rule",
+      "stem": "En una transacción de life settlement, un corredor licenciado de life settlement negocia la venta de una póliza entre el titular de la póliza y un proveedor de life settlement. Bajo la ley de Texas, ¿a quién le debe exclusivamente el corredor de life settlement un deber fiduciario?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Al proveedor de life settlement (el comprador)"
+        },
+        {
+          "label": "B",
+          "text": "A la compañía de seguros original que emitió la póliza"
+        },
+        {
+          "label": "C",
+          "text": "Al titular de la póliza (el viator)"
+        },
+        {
+          "label": "D",
+          "text": "Al beneficiario principal de la póliza"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "La ley de Texas establece que un corredor de life settlement representa únicamente al titular de la póliza y debe un deber fiduciario de actuar conforme a las instrucciones del titular y en el mejor interés del titular.",
+      "wrong_explanations": {
+        "A": "El corredor no representa al proveedor.",
+        "B": "El corredor no debe un deber fiduciario a la aseguradora emisora en esta transacción.",
+        "D": "El deber del corredor corre hacia el propietario actual que está vendiendo la póliza, no hacia el beneficiario."
+      },
+      "trap_type": "TP007-Role_Reversal",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-25T11:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T18:10:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B10-Q015",
+      "rule_ids": [
+        "RC-GRP-002"
+      ],
+      "domain": "Estatutos del estado de Texas relacionados con vida, salud y HMO",
+      "subdomain": "Disposiciones de pólizas de salud en Texas",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Un hijo dependiente está cubierto bajo el plan de salud grupal patrocinado por el empleador de su padre o madre. El hijo cumple 26 años y ya no es elegible para cobertura bajo el plan. Bajo las regulaciones federales de COBRA, ¿qué derechos de continuación tiene este dependiente?",
+      "options": [
+        {
+          "label": "A",
+          "text": "No tiene derechos de continuación porque cumplir 26 años no es un evento calificante."
+        },
+        {
+          "label": "B",
+          "text": "Es elegible para continuar la cobertura hasta por 18 meses."
+        },
+        {
+          "label": "C",
+          "text": "Es elegible para continuar la cobertura hasta por 29 meses."
+        },
+        {
+          "label": "D",
+          "text": "Es elegible para continuar la cobertura hasta por 36 meses."
+        }
+      ],
+      "correct_answer": "D",
+      "correct_explanation": "La pérdida de estatus de dependiente es un evento calificante de COBRA para el dependiente afectado, y el período máximo de continuación para ese evento es de 36 meses.",
+      "wrong_explanations": {
+        "A": "Dejar de calificar por edad es un evento calificante bajo COBRA.",
+        "B": "18 meses es el período estándar para terminación o reducción de horas, no para pérdida de estatus de dependiente.",
+        "C": "29 meses aplica a ciertas extensiones por discapacidad."
+      },
+      "trap_type": "TP004-Timeline_Trap",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-25T11:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T18:10:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B10-Q016",
+      "rule_ids": [
+        "RC-TAX-001"
+      ],
+      "domain": "Impuestos, jubilación y otros conceptos de seguros",
+      "subdomain": "Tributación del seguro de vida",
+      "difficulty": "medium",
+      "format": "concept_application",
+      "stem": "Cinco años después de comprar una póliza de seguro de vida universal que aprobó exitosamente la prueba inicial de 7 pagos del IRS, el titular de la póliza ejerce su derecho a aumentar significativamente el beneficio por muerte de la póliza. ¿Cómo afecta esta acción el estatus tributario de la póliza bajo las reglas del IRS?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Clasifica automáticamente la póliza como un Modified Endowment Contract (MEC)."
+        },
+        {
+          "label": "B",
+          "text": "Constituye un “cambio material”, lo que exige que la póliza pase por una nueva prueba de 7 pagos desde la fecha del cambio."
+        },
+        {
+          "label": "C",
+          "text": "No tiene efecto porque la póliza ya aprobó la prueba de 7 pagos al inicio."
+        },
+        {
+          "label": "D",
+          "text": "Convierte la póliza de una estructura tributaria FIFO a una estructura de ganancias de capital."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Un cambio material, como un aumento significativo del beneficio por muerte, activa una nueva prueba de 7 pagos bajo las reglas MEC; la póliza se vuelve a evaluar desde la fecha del cambio en lugar de convertirse automáticamente en un MEC.",
+      "wrong_explanations": {
+        "A": "La póliza debe volver a someterse a la prueba, pero no se convierte automáticamente en MEC.",
+        "C": "Aprobar la prueba original no impide que un cambio material posterior vuelva a abrir la evaluación MEC.",
+        "D": "El tratamiento de ganancias de capital no es la regla aplicable aquí."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-25T11:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T18:10:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B10-Q017",
+      "rule_ids": [
+        "RC-COMM-004"
+      ],
+      "domain": "Estatutos del estado de Texas comunes a todas las líneas",
+      "subdomain": "Comisionado de Seguros",
+      "difficulty": "easy",
+      "format": "scenario",
+      "stem": "El Comisionado de Seguros de Texas descubre que una persona sin licencia está vendiendo activamente pólizas fraudulentas de seguro de salud, lo que presenta un peligro inmediato para el bienestar público. ¿Qué acción administrativa inmediata puede tomar el Comisionado para detener esta actividad antes de que se celebre una audiencia completa?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Emitir una orden de cese y desistimiento de emergencia."
+        },
+        {
+          "label": "B",
+          "text": "Arrestar a la persona e incautar sus registros comerciales."
+        },
+        {
+          "label": "C",
+          "text": "Revocar la licencia inexistente de la persona."
+        },
+        {
+          "label": "D",
+          "text": "Imponer una sanción criminal inmediata de $25,000 sin debido proceso."
+        }
+      ],
+      "correct_answer": "A",
+      "correct_explanation": "El Capítulo 83 del Código de Seguros de Texas autoriza al comisionado a emitir una orden ex parte de cese y desistimiento de emergencia cuando se cumplen las condiciones estatutarias, incluida actividad de seguros no autorizada o conducta fraudulenta o peligrosa que presenta un peligro inmediato.",
+      "wrong_explanations": {
+        "B": "El comisionado es un regulador, no una autoridad de arresto penal.",
+        "C": "No hay licencia que revocar si la persona no tiene licencia.",
+        "D": "El comisionado no puede imponer sanciones penales sin debido proceso."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-25T11:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T18:10:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B10-Q018",
+      "rule_ids": [
+        "RC-LIFE-025"
+      ],
+      "domain": "Cláusulas adicionales, disposiciones, opciones y exclusiones de la póliza",
+      "subdomain": "Beneficiarios",
+      "difficulty": "hard",
+      "format": "scenario",
+      "stem": "Un asegurado nombra a sus dos hijos adultos, Alex y Brenda, como beneficiarios primarios iguales “per stirpes”. Alex tiene dos hijos propios. Si Alex muere antes que el asegurado, y luego el asegurado muere un año después, ¿cómo distribuirá la aseguradora los beneficios por muerte?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Brenda recibe el 100% de los beneficios."
+        },
+        {
+          "label": "B",
+          "text": "Brenda recibe el 50%, y los dos hijos de Alex reciben 25% cada uno."
+        },
+        {
+          "label": "C",
+          "text": "Brenda y los dos hijos de Alex reciben exactamente 33.3% cada uno."
+        },
+        {
+          "label": "D",
+          "text": "Brenda recibe el 50%, y el otro 50% se paga al patrimonio del asegurado."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Bajo una designación per stirpes, la rama de un beneficiario fallecido recibe la parte de ese beneficiario. Por lo tanto, Brenda conserva su 50%, y la parte de Alex del 50% pasa por partes iguales a los dos hijos de Alex.",
+      "wrong_explanations": {
+        "A": "Ese resultado se parecería más a una absorción por beneficiario sobreviviente, no a per stirpes.",
+        "C": "Per stirpes sigue la rama familiar en lugar de dividir por cabeza entre todos los sobrevivientes.",
+        "D": "La designación per stirpes dirige la parte del beneficiario fallecido a sus descendientes, no de vuelta al patrimonio del asegurado."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-25T11:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T18:10:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B10-Q019",
+      "rule_ids": [
+        "RC-MED-001"
+      ],
+      "domain": "Tipos de pólizas",
+      "subdomain": "Medicare Parte B",
+      "difficulty": "medium",
+      "format": "direct_rule",
+      "stem": "Bajo Medicare original Parte B (Medical Insurance), una vez que el beneficiario ha cumplido con el deducible anual del año calendario, ¿qué porcentaje del monto aprobado por Medicare es responsabilidad del beneficiario pagar como coseguro por servicios médicos cubiertos?",
+      "options": [
+        {
+          "label": "A",
+          "text": "0%"
+        },
+        {
+          "label": "B",
+          "text": "10%"
+        },
+        {
+          "label": "C",
+          "text": "20%"
+        },
+        {
+          "label": "D",
+          "text": "30%"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "Después de cumplir con el deducible de la Parte B, el beneficiario normalmente paga el 20% del monto aprobado por Medicare por servicios cubiertos, y Medicare paga el 80%.",
+      "wrong_explanations": {
+        "A": "La Parte B no es cobertura del 100% después del deducible.",
+        "B": "10% es menor que el coseguro estándar del paciente.",
+        "D": "30% es mayor que el coseguro estándar de la Parte B."
+      },
+      "trap_type": "TP006-Math_Distractor",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-25T11:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T18:10:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B10-Q020",
+      "rule_ids": [
+        "RC-HLTH-008"
+      ],
+      "domain": "Cláusulas adicionales, disposiciones, opciones y exclusiones de la póliza",
+      "subdomain": "Disposiciones estándar de salud",
+      "difficulty": "medium",
+      "format": "direct_rule",
+      "stem": "Bajo la disposición obligatoria de Legal Actions en una póliza individual de seguro de accidente y salud, el asegurado no puede iniciar una acción legal o en equidad para recuperar bajo la póliza antes de qué momento?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Antes del día 31 después de que se proporcione la prueba escrita de pérdida"
+        },
+        {
+          "label": "B",
+          "text": "Antes del día 45 después de que se proporcione la prueba escrita de pérdida"
+        },
+        {
+          "label": "C",
+          "text": "Antes del día 61 después de que se proporcione la prueba escrita de pérdida"
+        },
+        {
+          "label": "D",
+          "text": "Antes del día 91 después de que se proporcione la prueba escrita de pérdida"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "El Código de Seguros de Texas §1201.217 exige que una póliza individual de accidente y salud establezca que no podrá iniciarse acción legal o en equidad para recuperar bajo la póliza antes del día 61 después de que se haya proporcionado la prueba escrita de pérdida. La misma disposición también prohíbe presentar demanda después de tres años desde el momento en que se requería la prueba de pérdida.",
+      "wrong_explanations": {
+        "A": "31 días no es el período de espera en la disposición de Legal Actions.",
+        "B": "45 días no es el período estatutario de espera para demandar bajo la disposición requerida.",
+        "D": "El período de espera requerido es de 61 días, no 91 días."
+      },
+      "trap_type": "TP004-Timeline_Trap",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-25T11:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T23:50:00Z",
+          "actor": "assistant",
+          "note": "Se reemplazó el ángulo duplicado de plazo de Notice of Claim por la disposición de Legal Actions."
+        }
+      ]
+    },
+    {
+      "question_id": "B10-Q021",
+      "rule_ids": [
+        "RC-LIFE-025"
+      ],
+      "domain": "Cláusulas adicionales, disposiciones, opciones y exclusiones de la póliza",
+      "subdomain": "Cláusulas adicionales",
+      "difficulty": "easy",
+      "format": "concept_application",
+      "stem": "¿Qué cláusula adicional de discapacidad está específicamente diseñada para adjuntarse a una póliza de seguro de vida universal para cubrir los cargos internos de mortalidad y gastos deducidos del valor en efectivo si el asegurado queda totalmente discapacitado?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Cláusula adicional de Waiver of Premium"
+        },
+        {
+          "label": "B",
+          "text": "Cláusula adicional de Waiver of Monthly Deduction"
+        },
+        {
+          "label": "C",
+          "text": "Cláusula adicional de Disability Income"
+        },
+        {
+          "label": "D",
+          "text": "Cláusula adicional de Payor Benefit"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Debido a que la vida universal usa deducciones internas mensuales en lugar de una prima fija única de la misma forma que las pólizas tradicionales, la cláusula relacionada con discapacidad que se usa es la Waiver of Monthly Deduction rider.",
+      "wrong_explanations": {
+        "A": "Waiver of Premium es la cláusula tradicional usada para pólizas de prima fija.",
+        "C": "Una cláusula adicional de disability income paga beneficios en efectivo en lugar de simplemente proteger las deducciones de la póliza.",
+        "D": "Una Payor Benefit rider está asociada con protección de primas en pólizas juveniles."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-25T11:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T18:10:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B10-Q022",
+      "rule_ids": [
+        "RC-ACA-001"
+      ],
+      "domain": "Estatutos del estado de Texas relacionados con vida, salud y HMO",
+      "subdomain": "Affordable Care Act (implementaciones estatales)",
+      "difficulty": "hard",
+      "format": "direct_rule",
+      "stem": "Bajo la Affordable Care Act (ACA), todos los planes de seguro de salud individuales y de grupos pequeños que no son grandfathered deben cubrir 10 categorías centrales de Essential Health Benefits (EHBs). ¿Cuál de las siguientes está expresamente exigida como una de estas 10 EHBs?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Atención dental y de visión para adultos"
+        },
+        {
+          "label": "B",
+          "text": "Servicios pediátricos, incluida atención oral y de visión"
+        },
+        {
+          "label": "C",
+          "text": "Cuidado custodial de largo plazo en un centro de enfermería"
+        },
+        {
+          "label": "D",
+          "text": "Cirugía estética y procedimientos electivos"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Los servicios pediátricos, incluida la atención oral y de visión, están entre las categorías de beneficios esenciales de salud de la ACA para los planes aplicables.",
+      "wrong_explanations": {
+        "A": "La atención dental y de visión para adultos no está entre las categorías federales de EHB.",
+        "C": "El cuidado custodial de largo plazo no es un EHB.",
+        "D": "Los procedimientos cosméticos y electivos no son EHBs obligatorios."
+      },
+      "trap_type": "TP002-Distractor_Misdirection",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-25T11:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T18:10:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B10-Q023",
+      "rule_ids": [
+        "RC-UTP-001"
+      ],
+      "domain": "Estatutos del estado de Texas comunes a todas las líneas",
+      "subdomain": "Prácticas comerciales desleales",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Una institución depositaria le dice a un prestatario que el préstamo será aprobado solo si el prestatario compra seguro de hazard a través de la agencia afiliada del banco, aunque el prestatario ya tiene cobertura aceptable disponible en otro lugar. Bajo la ley de seguros de Texas, esta conducta es un ejemplo de:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Una práctica permitida de venta cruzada"
+        },
+        {
+          "label": "B",
+          "text": "Tying, un método desleal de competencia o práctica desleal"
+        },
+        {
+          "label": "C",
+          "text": "Un requisito legal de ilustración"
+        },
+        {
+          "label": "D",
+          "text": "Un rebate porque el prestatario recibió un descuento"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "El Código de Seguros de Texas §556.051 trata como práctica desleal que una institución depositaria condicione la extensión o renovación de crédito a la compra de seguro de la institución, su afiliada o una persona o entidad particular. Esa conducta comúnmente se describe como tying.",
+      "wrong_explanations": {
+        "A": "Condicionar el crédito a comprar seguro de una fuente específica está específicamente prohibido, no es simplemente marketing agresivo.",
+        "C": "Las reglas de ilustración se relacionan con divulgaciones de póliza, no con prácticas coercitivas de condicionar préstamos.",
+        "D": "El problema aquí es el condicionamiento coercitivo del crédito, no la oferta de un incentivo no autorizado para comprar."
+      },
+      "trap_type": "TP005-Ethical_Trap",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-25T11:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T23:50:00Z",
+          "actor": "assistant",
+          "note": "Se reemplazó el ángulo duplicado de defamation por tying de una institución depositaria."
+        }
+      ]
+    },
+    {
+      "question_id": "B10-Q024",
+      "rule_ids": [
+        "RC-LIFE-025"
+      ],
+      "domain": "Cláusulas adicionales, disposiciones, opciones y exclusiones de la póliza",
+      "subdomain": "Beneficiarios",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Un asegurado nombra a tres hijos adultos como beneficiarios iguales “per capita”. Un hijo muere antes que el asegurado, dejando dos hijos propios. Cuando el asegurado muere después, ¿cómo se distribuyen los beneficios bajo la designación per capita?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Los dos hijos del hijo fallecido dividen la parte de un tercio de su padre/madre"
+        },
+        {
+          "label": "B",
+          "text": "Los dos beneficiarios nombrados sobrevivientes reciben cada uno la mitad de los beneficios"
+        },
+        {
+          "label": "C",
+          "text": "Los beneficios se dividen por igual entre los dos hijos sobrevivientes y los dos nietos"
+        },
+        {
+          "label": "D",
+          "text": "Un tercio de los beneficios se paga al patrimonio del asegurado y los otros dos tercios a los hijos sobrevivientes"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Una designación per capita distribuye los beneficios por cabeza a los beneficiarios nombrados sobrevivientes dentro de esa clase. Si un beneficiario nombrado fallece antes que el asegurado, los descendientes de esa persona no toman automáticamente la parte. En cambio, los beneficiarios nombrados sobrevivientes dividen los beneficios por igual, por lo que los dos hijos sobrevivientes reciben cada uno la mitad.",
+      "wrong_explanations": {
+        "A": "Eso describe un resultado per stirpes, donde los descendientes heredan la parte de la rama del beneficiario fallecido.",
+        "C": "Per capita no incluye automáticamente a los nietos cuando la clase nombrada eran los hijos del asegurado y dos hijos nombrados sobrevivieron.",
+        "D": "La parte del beneficiario fallecido no pasa al patrimonio cuando aún quedan beneficiarios nombrados sobrevivientes en la clase."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-25T11:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T23:50:00Z",
+          "actor": "assistant",
+          "note": "Se reemplazó el ángulo duplicado de common disaster por distribución per capita de beneficiarios."
+        }
+      ]
+    },
+    {
+      "question_id": "B10-Q025",
+      "rule_ids": [
+        "RC-ACA-001"
+      ],
+      "domain": "Estatutos del estado de Texas relacionados con vida, salud y HMO",
+      "subdomain": "Affordable Care Act (implementaciones estatales)",
+      "difficulty": "medium",
+      "format": "direct_rule",
+      "stem": "Bajo la Affordable Care Act (ACA), si una persona compra un plan de salud a través del Marketplace, recibe advance premium tax credits (APTC) y ya ha pagado al menos un mes completo de prima, ¿cuánto dura el período de gracia obligatorio por falta de pago de primas posteriores antes de que la póliza pueda terminarse?",
+      "options": [
+        {
+          "label": "A",
+          "text": "10 días"
+        },
+        {
+          "label": "B",
+          "text": "31 días"
+        },
+        {
+          "label": "C",
+          "text": "3 meses consecutivos (90 días)"
+        },
+        {
+          "label": "D",
+          "text": "6 meses consecutivos (180 días)"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "Para inscritos en el Marketplace que reciben advance premium tax credits y que han pagado al menos un mes completo de prima, las reglas federales otorgan un período de gracia de tres meses consecutivos por falta de pago de primas posteriores.",
+      "wrong_explanations": {
+        "A": "10 días es demasiado corto y no refleja la regla especial de período de gracia de la ACA para beneficiarios de APTC.",
+        "B": "31 días es el concepto estándar de período de gracia comercial, no la regla de período de gracia APTC de la ACA.",
+        "D": "180 días excede el período de gracia federal."
+      },
+      "trap_type": "TP004-Timeline_Trap",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-25T11:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T18:10:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    }
+  ]
+}

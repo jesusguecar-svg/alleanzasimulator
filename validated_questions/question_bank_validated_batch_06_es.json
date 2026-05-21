@@ -1,0 +1,1308 @@
+{
+  "batch_id": "06",
+  "version": "1.1.0",
+  "generated_date": "2026-03-24",
+  "generated_by": "gemini+chatgpt",
+  "question_count": 25,
+  "difficulty_distribution": {
+    "easy": 5,
+    "medium": 14,
+    "hard": 6
+  },
+  "questions": [
+    {
+      "question_id": "B06-Q001",
+      "rule_ids": [
+        "RC-GRP-002"
+      ],
+      "domain": "Estatutos del Estado de Texas relativos a Vida, Salud y HMO",
+      "subdomain": "Disposiciones de pólizas de salud en Texas",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Un empleado trabaja para una pequeña firma de diseño gráfico en Texas con 12 empleados de tiempo completo. El empleado es despedido y pierde la cobertura bajo el plan de salud grupal totalmente asegurado de su empleador. ¿Cuál de las siguientes opciones describe los derechos de continuación de cobertura del empleado?",
+      "options": [
+        {
+          "label": "A",
+          "text": "El empleado es elegible para la continuación federal COBRA por hasta 18 meses."
+        },
+        {
+          "label": "B",
+          "text": "El empleado es elegible para la Continuación Estatal de Texas por hasta 9 meses."
+        },
+        {
+          "label": "C",
+          "text": "El empleado es elegible para la Continuación Estatal de Texas por hasta 18 meses."
+        },
+        {
+          "label": "D",
+          "text": "El empleado no tiene derechos de continuación porque la firma tiene menos de 20 empleados."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "COBRA federal aplica a empleadores con 20 o más empleados. Para empleadores con menos de 20 empleados, aplica la Continuación Estatal de Texas, que permite a los empleados elegibles continuar su cobertura de salud grupal por hasta 9 meses.",
+      "wrong_explanations": {
+        "A": "COBRA federal no aplica porque el empleador tiene menos de 20 empleados.",
+        "C": "La Continuación Estatal de Texas proporciona hasta 9 meses de cobertura, no 18 meses.",
+        "D": "Los empleados de firmas pequeñas están protegidos por las leyes de Continuación Estatal de Texas."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "flagged",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T16:16:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "flagged",
+          "timestamp": "2026-03-24T21:40:00Z",
+          "actor": "chatgpt",
+          "reason": "Casi duplicada del ángulo previo sobre continuación de Texas para pequeños empleadores (lotes 04/05)."
+        }
+      ]
+    },
+    {
+      "question_id": "B06-Q002",
+      "rule_ids": [
+        "RC-LIFE-020"
+      ],
+      "domain": "Cláusulas, disposiciones, opciones y exclusiones de la póliza",
+      "subdomain": "Disposiciones estándar de vida",
+      "difficulty": "hard",
+      "format": "scenario",
+      "stem": "Tres años después de emitir una póliza de seguro de vida entera, la aseguradora descubre que el asegurado ocultó intencionalmente un diagnóstico médico severo en la solicitud original. El asegurado muere poco después de este descubrimiento. ¿Cómo debe manejar la aseguradora la reclamación?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Negar la reclamación y devolver las primas, porque el ocultamiento intencional constituye fraude."
+        },
+        {
+          "label": "B",
+          "text": "Negar la reclamación pero retener las primas debido al acto fraudulento del solicitante."
+        },
+        {
+          "label": "C",
+          "text": "Pagar el beneficio completo por fallecimiento porque el período de incontestabilidad ha vencido."
+        },
+        {
+          "label": "D",
+          "text": "Pagar un beneficio reducido con base en lo que las primas habrían comprado si se hubiera conocido el verdadero historial médico."
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "La cláusula de incontestabilidad en una póliza de seguro de vida impide que la aseguradora niegue una reclamación debido a declaraciones falsas materiales en la solicitud después de que la póliza ha estado vigente por 2 años. A diferencia del seguro de salud, el seguro de vida no puede ser impugnado incluso por fraude después de que haya pasado el período de 2 años.",
+      "wrong_explanations": {
+        "A": "En el seguro de vida, incluso el fraude intencional no puede usarse para anular la póliza después del período de incontestabilidad de 2 años.",
+        "B": "La aseguradora no puede negar la reclamación después de 2 años.",
+        "D": "Esto describe la disposición de declaración incorrecta de edad o sexo, no el remedio para el ocultamiento médico general."
+      },
+      "trap_type": "TP008-Fraud_Exception_Misdirection",
+      "source_confidence": "high",
+      "review_status": "flagged",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T16:16:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "flagged",
+          "timestamp": "2026-03-24T21:40:00Z",
+          "actor": "chatgpt",
+          "reason": "Casi duplicada del ángulo previo sobre fraude después de dos años de incontestabilidad en vida (lote 04)."
+        }
+      ]
+    },
+    {
+      "question_id": "B06-Q003",
+      "rule_ids": [
+        "RC-COMM-004"
+      ],
+      "domain": "Estatutos del Estado de Texas comunes a todas las líneas",
+      "subdomain": "Comisionado de Seguros",
+      "difficulty": "hard",
+      "format": "direct_rule",
+      "stem": "El Comisionado de Seguros de Texas emite una orden final de cese y desistimiento contra un agente por participar en prácticas comerciales engañosas. Si el agente viola intencionalmente esta orden final, ¿cuál es la multa administrativa máxima que el Comisionado puede imponer por cada violación?",
+      "options": [
+        {
+          "label": "A",
+          "text": "$1,000"
+        },
+        {
+          "label": "B",
+          "text": "$5,000"
+        },
+        {
+          "label": "C",
+          "text": "$10,000"
+        },
+        {
+          "label": "D",
+          "text": "$25,000"
+        }
+      ],
+      "correct_answer": "A",
+      "correct_explanation": "Para una orden de cese y desistimiento emitida bajo el Capítulo 541 del Código de Seguros de Texas, la multa administrativa no puede exceder $1,000 por cada violación y $5,000 por todas las violaciones.",
+      "wrong_explanations": {
+        "A": "$1,000 es el límite por violación bajo el Código de Seguros de Texas §541.110.",
+        "B": "$5,000 es el límite para todas las violaciones, no el límite por cada violación.",
+        "C": "$10,000 excede el límite de multa administrativa en §541.110.",
+        "D": "$25,000 no es el límite administrativo por violación del Capítulo 541."
+      },
+      "trap_type": "TP006-Math_Distractor",
+      "source_confidence": "high",
+      "review_status": "flagged",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T16:16:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "flagged",
+          "timestamp": "2026-03-24T21:40:00Z",
+          "actor": "chatgpt",
+          "reason": "Error legal corregido, pero todavía repite el ángulo previo sobre multa por orden de cese y desistimiento del lote 04."
+        }
+      ]
+    },
+    {
+      "question_id": "B06-Q004",
+      "rule_ids": [
+        "RC-HLTH-012"
+      ],
+      "domain": "Tipos de pólizas",
+      "subdomain": "Seguro de ingresos por discapacidad",
+      "difficulty": "medium",
+      "format": "concept_application",
+      "stem": "Cuando un solicitante está comprando una póliza individual de ingresos por discapacidad, ¿cómo afecta su elección del período de eliminación a la prima de la póliza?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Un período de eliminación más largo resulta en una prima más alta."
+        },
+        {
+          "label": "B",
+          "text": "Un período de eliminación más largo resulta en una prima más baja."
+        },
+        {
+          "label": "C",
+          "text": "El período de eliminación afecta solo el monto del beneficio, no la prima."
+        },
+        {
+          "label": "D",
+          "text": "Un período de eliminación más corto reduce la prima porque la aseguradora paga menos reclamaciones a largo plazo."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "El período de eliminación (período de espera) funciona como un deducible de tiempo. Un período de eliminación más largo significa que el asegurado asume más riesgo de corto plazo, lo cual reduce la responsabilidad de la aseguradora y por lo tanto baja el costo de la prima.",
+      "wrong_explanations": {
+        "A": "Esta es una relación inversa. Esperar más tiempo hace que la póliza sea más económica, no más costosa.",
+        "C": "El período de eliminación impacta directamente el costo de la prima.",
+        "D": "Un período de eliminación más corto aumenta la prima porque la aseguradora debe comenzar a pagar beneficios antes."
+      },
+      "trap_type": "TP009-Inverse_Relationship",
+      "source_confidence": "high",
+      "review_status": "flagged",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T16:16:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "flagged",
+          "timestamp": "2026-03-24T21:40:00Z",
+          "actor": "chatgpt",
+          "reason": "Casi duplicada del ángulo previo sobre la relación entre período de eliminación y prima (lote 04)."
+        }
+      ]
+    },
+    {
+      "question_id": "B06-Q005",
+      "rule_ids": [
+        "RC-TAX-004"
+      ],
+      "domain": "Impuestos, retiro y otros conceptos de seguros",
+      "subdomain": "Planes de retiro calificados vs. no calificados",
+      "difficulty": "easy",
+      "format": "direct_rule",
+      "stem": "Para evitar una penalidad fiscal del IRS del 10% por distribuciones prematuras de un plan de retiro calificado o una IRA tradicional, una persona generalmente debe esperar hasta alcanzar qué edad para retirar fondos?",
+      "options": [
+        {
+          "label": "A",
+          "text": "55 años"
+        },
+        {
+          "label": "B",
+          "text": "59 1/2 años"
+        },
+        {
+          "label": "C",
+          "text": "62 años"
+        },
+        {
+          "label": "D",
+          "text": "65 años"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Las distribuciones de planes de retiro calificados e IRA tomadas antes de que el propietario alcance los 59 1/2 años se consideran prematuras y están sujetas a una penalidad fiscal del 10%, además de los impuestos ordinarios sobre ingresos.",
+      "wrong_explanations": {
+        "A": "La edad de 55 años está vinculada a una excepción específica para planes 401(k) al separarse del servicio, no a la regla general.",
+        "C": "La edad de 62 años es la edad más temprana para recibir beneficios estándar de jubilación del Seguro Social.",
+        "D": "La edad de 65 años es la edad de elegibilidad para Medicare, pero los fondos de retiro pueden accederse sin la penalidad del 10% a partir de los 59 1/2 años."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "flagged",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T16:16:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "flagged",
+          "timestamp": "2026-03-24T21:40:00Z",
+          "actor": "chatgpt",
+          "reason": "Casi duplicada de la regla previa sobre la penalidad por distribución temprana a los 59 1/2 años (lote 04)."
+        }
+      ]
+    },
+    {
+      "question_id": "B06-Q006",
+      "rule_ids": [
+        "RC-HMO-002"
+      ],
+      "domain": "Estatutos del Estado de Texas relativos a Vida, Salud y HMO",
+      "subdomain": "Regulaciones de HMO en Texas",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "En una Organización de Mantenimiento de la Salud (HMO) estándar de Texas, si un afiliado decide ver a un especialista fuera de la red por un asunto rutinario y no de emergencia sin obtener una referencia de su médico de atención primaria (PCP), ¿cómo se manejará normalmente la reclamación?",
+      "options": [
+        {
+          "label": "A",
+          "text": "La HMO pagará la reclamación a una tasa reducida de coseguro fuera de la red."
+        },
+        {
+          "label": "B",
+          "text": "La HMO pagará la reclamación completa porque los especialistas son proveedores esenciales de salud."
+        },
+        {
+          "label": "C",
+          "text": "La HMO negará la reclamación y el afiliado será responsable por el costo total."
+        },
+        {
+          "label": "D",
+          "text": "La HMO dejará la reclamación pendiente hasta que el afiliado obtenga una referencia retroactiva."
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "Una HMO utiliza a un médico de atención primaria (PCP) como guardián de acceso. Para atención que no sea de emergencia, el afiliado debe tener una referencia para ver a un especialista o salir fuera de la red. Si el afiliado evita este requisito, la HMO generalmente negará la reclamación y el afiliado deberá pagar toda la factura.",
+      "wrong_explanations": {
+        "A": "Esto describe una PPO (Preferred Provider Organization), que permite atención fuera de la red a un nivel reducido de beneficios sin referencia.",
+        "B": "Las HMO requieren referencias para atención especializada; no pagan reclamaciones fuera de la red que no sean de emergencia sin ellas.",
+        "D": "Las HMO normalmente no permiten referencias retroactivas para servicios ya prestados."
+      },
+      "trap_type": "TP001-Absolute_Terms",
+      "source_confidence": "high",
+      "review_status": "flagged",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T16:16:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "flagged",
+          "timestamp": "2026-03-24T21:40:00Z",
+          "actor": "chatgpt",
+          "reason": "Casi duplicada del ángulo previo sobre guardián de acceso de HMO / denegación de atención no urgente fuera de la red (lote 04)."
+        }
+      ]
+    },
+    {
+      "question_id": "B06-Q007",
+      "rule_ids": [
+        "RC-HLTH-012"
+      ],
+      "domain": "Tipos de pólizas",
+      "subdomain": "Seguro de ingresos por discapacidad",
+      "difficulty": "medium",
+      "format": "concept_application",
+      "stem": "En una póliza individual de ingresos por discapacidad, ¿qué definición de discapacidad total se considera la más favorable para el asegurado?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Cualquier ocupación"
+        },
+        {
+          "label": "B",
+          "text": "Ocupación propia"
+        },
+        {
+          "label": "C",
+          "text": "Discapacidad presuntiva"
+        },
+        {
+          "label": "D",
+          "text": "Discapacidad parcial"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "La definición de 'ocupación propia' para discapacidad total es la más favorable y normalmente la más costosa. Define la discapacidad como la incapacidad de realizar las funciones de la ocupación regular del asegurado, permitiéndole potencialmente recibir beneficios incluso si encuentra trabajo en otro campo.",
+      "wrong_explanations": {
+        "A": "La definición de 'cualquier ocupación' es más restrictiva, pagando beneficios solo si el asegurado no puede realizar las funciones de ninguna ocupación para la cual esté razonablemente preparado por educación, capacitación o experiencia.",
+        "C": "La discapacidad presuntiva especifica ciertas condiciones (como pérdida de dos extremidades o ceguera) que califican automáticamente para beneficios completos, pero es una disposición en lugar de la definición central de discapacidad total general.",
+        "D": "La discapacidad parcial paga un beneficio reducido cuando el asegurado todavía puede trabajar medio tiempo o realizar algunas, pero no todas, sus funciones."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T16:16:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T21:40:00Z",
+          "actor": "chatgpt",
+          "reason": "Validada por soporte de esquema y regla."
+        }
+      ]
+    },
+    {
+      "question_id": "B06-Q008",
+      "rule_ids": [
+        "RC-LIFE-015"
+      ],
+      "domain": "Tipos de pólizas",
+      "subdomain": "Anualidades",
+      "difficulty": "easy",
+      "format": "concept_application",
+      "stem": "Una pareja casada desea ingresos de anualidad que continúen mientras cualquiera de los cónyuges esté vivo, y que se detengan solo después de que muera el segundo cónyuge. ¿Qué opción de pago de anualidad coincide mejor con ese objetivo?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Ingreso de vida con período cierto"
+        },
+        {
+          "label": "B",
+          "text": "Vida conjunta y sobreviviente"
+        },
+        {
+          "label": "C",
+          "text": "Monto fijo"
+        },
+        {
+          "label": "D",
+          "text": "Vida con reembolso en efectivo"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Una opción de vida conjunta y sobreviviente continúa el ingreso hasta que muera el segundo rentista. Se usa comúnmente cuando los cónyuges desean protección de ingresos de por vida para ambas vidas.",
+      "wrong_explanations": {
+        "A": "El ingreso de vida con período cierto garantiza pagos de por vida, pero si el rentista muere temprano, los pagos restantes del período cierto continúan solo hasta el final de ese período, no necesariamente hasta que muera una segunda persona.",
+        "C": "Una opción de monto fijo paga una cantidad determinada hasta que los fondos se agoten, independientemente de si alguno de los cónyuges sigue vivo.",
+        "D": "Una opción de vida con reembolso en efectivo proporciona un reembolso si los pagos totales antes de la muerte son menores que la prima pagada, pero no está diseñada para continuar ingresos de por vida para un cónyuge sobreviviente."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T18:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T22:30:00Z",
+          "actor": "ChatGPT"
+        }
+      ]
+    },
+    {
+      "question_id": "B06-Q009",
+      "rule_ids": [
+        "RC-TAX-001"
+      ],
+      "domain": "Impuestos, retiro y otros conceptos de seguros",
+      "subdomain": "Tributación del seguro de vida",
+      "difficulty": "medium",
+      "format": "concept_application",
+      "stem": "Si una póliza permanente de seguro de vida se sobrefinancia y no cumple con la prueba de 7 pagos del IRS, se clasifica como un Contrato de Dotación Modificado (MEC). ¿Cómo se tratan los retiros en efectivo de un MEC para fines fiscales?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Son libres de impuestos porque se consideran devolución de capital."
+        },
+        {
+          "label": "B",
+          "text": "Se gravan bajo el método First-In, First-Out (FIFO)."
+        },
+        {
+          "label": "C",
+          "text": "Se gravan bajo el método Last-In, First-Out (LIFO), lo que significa que las ganancias se retiran y se gravan primero."
+        },
+        {
+          "label": "D",
+          "text": "Se gravan como ganancias de capital a largo plazo."
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "Una vez que una póliza se clasifica como MEC, pierde el tratamiento fiscal favorable FIFO del seguro de vida estándar. Los retiros de un MEC se gravan bajo el método Last-In, First-Out (LIFO), lo que significa que los intereses/ganancias imponibles se consideran retirados primero. Además, los retiros antes de los 59 1/2 años están sujetos a una penalidad del 10%.",
+      "wrong_explanations": {
+        "A": "Los retiros de un MEC no son libres de impuestos hasta que todas las ganancias hayan sido retiradas y gravadas.",
+        "B": "FIFO es el tratamiento fiscal favorable para pólizas de seguro de vida estándar que no son MEC.",
+        "D": "Las ganancias retiradas de un MEC se gravan como ingresos ordinarios, no como ganancias de capital."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T16:16:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T21:40:00Z",
+          "actor": "chatgpt",
+          "reason": "Validada por soporte de esquema y regla."
+        }
+      ]
+    },
+    {
+      "question_id": "B06-Q010",
+      "rule_ids": [
+        "RC-UTP-001"
+      ],
+      "domain": "Completar la solicitud, suscripción y entrega de la póliza",
+      "subdomain": "Clasificación de riesgo",
+      "difficulty": "hard",
+      "format": "concept_application",
+      "stem": "Bajo la ley de seguros de Texas, una aseguradora tiene estrictamente prohibido cobrar primas diferentes o negar cobertura a personas de la misma clase actuarial basándose únicamente en cuál de las siguientes características?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Edad"
+        },
+        {
+          "label": "B",
+          "text": "Uso de tabaco"
+        },
+        {
+          "label": "C",
+          "text": "Ceguera o ceguera parcial"
+        },
+        {
+          "label": "D",
+          "text": "Historial de enfermedad cardíaca severa"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "El Código de Seguros de Texas prohíbe estrictamente a las aseguradoras negarse a asegurar, negarse a continuar asegurando o limitar la cobertura disponible para una persona basándose únicamente en ceguera o ceguera parcial, clasificándolo como discriminación injusta.",
+      "wrong_explanations": {
+        "A": "La edad es un factor actuarial primario y legalmente permitido que se usa para determinar primas de vida y salud.",
+        "B": "El uso de tabaco implica riesgos conocidos de morbilidad y mortalidad y es un factor de tarificación legalmente permitido.",
+        "D": "La enfermedad cardíaca severa representa un riesgo actuarial distinto, y las aseguradoras pueden legalmente suscribir, clasificar o negar cobertura basándose en ese historial médico adverso."
+      },
+      "trap_type": "TP002-Distractor_Misdirection",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T16:16:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T21:40:00Z",
+          "actor": "chatgpt",
+          "reason": "Validada por soporte de esquema y regla."
+        }
+      ]
+    },
+    {
+      "question_id": "B06-Q011",
+      "rule_ids": [
+        "RC-LIFE-025"
+      ],
+      "domain": "Tipos de pólizas",
+      "subdomain": "Vida entera tradicional",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Un titular de póliza toma un préstamo contra el valor en efectivo de su seguro de vida entera. Con el tiempo, el titular de la póliza no paga el interés anual del préstamo. ¿Qué ocurre con la póliza si el interés no pagado hace que el saldo total del préstamo exceda el valor de rescate en efectivo disponible de la póliza?",
+      "options": [
+        {
+          "label": "A",
+          "text": "La póliza se convertirá en una póliza de término extendido."
+        },
+        {
+          "label": "B",
+          "text": "La aseguradora embargará el salario del titular de la póliza para pagar el préstamo."
+        },
+        {
+          "label": "C",
+          "text": "La póliza caducará y terminará, generalmente después de un período de aviso de 30 días."
+        },
+        {
+          "label": "D",
+          "text": "El beneficio por fallecimiento se reducirá, pero la póliza permanecerá vigente indefinidamente."
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "Si un préstamo de póliza no se paga, el interés no pagado se agrega al principal. Si el saldo total pendiente del préstamo (principal más interés) alguna vez iguala o excede el valor en efectivo de la póliza, la póliza caducará y terminará. Las aseguradoras deben proporcionar al menos 30 días de aviso por escrito antes de que la póliza sea anulada.",
+      "wrong_explanations": {
+        "A": "El término extendido es una opción de no caducidad usada cuando el titular de la póliza deja de pagar primas mientras todavía existe valor en efectivo, no cuando un préstamo excede el valor en efectivo.",
+        "B": "Los préstamos de póliza son esencialmente anticipos sobre los propios fondos de la póliza; no existe obligación legal de pagarlos, por lo que una aseguradora no puede embargar salarios.",
+        "D": "La póliza no puede permanecer vigente si no queda valor en efectivo para sostenerla frente al préstamo."
+      },
+      "trap_type": "TP001-Absolute_Terms",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T16:16:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T21:40:00Z",
+          "actor": "chatgpt",
+          "reason": "Validada por soporte de esquema y regla."
+        }
+      ]
+    },
+    {
+      "question_id": "B06-Q012",
+      "rule_ids": [
+        "RC-MED-001"
+      ],
+      "domain": "Tipos de pólizas",
+      "subdomain": "Suplementos de Medicare",
+      "difficulty": "hard",
+      "format": "concept_application",
+      "stem": "Un beneficiario de Medicare compra una póliza Medicare SELECT para ahorrar en primas. Para atención que no sea de emergencia bajo este tipo de póliza Medigap, ¿cuál afirmación es generalmente verdadera?",
+      "options": [
+        {
+          "label": "A",
+          "text": "La póliza paga beneficios suplementarios completos sin importar qué hospital o médico use el asegurado."
+        },
+        {
+          "label": "B",
+          "text": "El asegurado generalmente debe usar hospitales de la red y, en algunos casos, médicos de la red para recibir beneficios completos."
+        },
+        {
+          "label": "C",
+          "text": "La póliza funciona solo si el asegurado se inscribe en Medicare Advantage en lugar de Medicare Original."
+        },
+        {
+          "label": "D",
+          "text": "La póliza puede negar reclamaciones de emergencia y no emergencia siempre que los servicios se reciban fuera de la red."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Medicare SELECT es una póliza Medigap con restricciones de red. Para servicios que no sean de emergencia, el asegurado generalmente debe usar hospitales de la red y a veces médicos de la red para recibir beneficios suplementarios completos.",
+      "wrong_explanations": {
+        "A": "Eso describe más de cerca una póliza Medigap estándar que una póliza Medicare SELECT, que agrega restricciones de red.",
+        "C": "Medicare SELECT sigue siendo una forma de Medigap, que complementa Medicare Original en lugar de reemplazarlo con Medicare Advantage.",
+        "D": "Los servicios de emergencia son la excepción clave. Las restricciones de red generalmente aplican a atención que no sea de emergencia, no a emergencias reales."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "medium",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T18:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T22:30:00Z",
+          "actor": "ChatGPT"
+        }
+      ]
+    },
+    {
+      "question_id": "B06-Q013",
+      "rule_ids": [
+        "RC-LIFE-025"
+      ],
+      "domain": "Cláusulas, disposiciones, opciones y exclusiones de la póliza",
+      "subdomain": "Endosos",
+      "difficulty": "medium",
+      "format": "concept_application",
+      "stem": "El titular de una póliza de seguro de vida agrega un endoso de asegurabilidad garantizada a su póliza. ¿Cuál es el beneficio principal de este endoso?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Evita que la póliza caduque si el asegurado queda permanentemente discapacitado."
+        },
+        {
+          "label": "B",
+          "text": "Permite al titular de la póliza comprar cobertura adicional en fechas futuras específicas sin proporcionar evidencia de asegurabilidad."
+        },
+        {
+          "label": "C",
+          "text": "Garantiza que la prima nunca aumentará durante la vida de la póliza."
+        },
+        {
+          "label": "D",
+          "text": "Paga el doble del monto nominal si el asegurado muere en un accidente."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "El endoso de asegurabilidad garantizada permite al titular de la póliza comprar cantidades adicionales de seguro de vida en edades específicas o eventos de vida (como matrimonio o nacimiento de un hijo) a tarifas estándar, sin necesidad de probar asegurabilidad (sin exámenes médicos ni preguntas de salud).",
+      "wrong_explanations": {
+        "A": "Esto describe el endoso de exención de prima.",
+        "C": "Las primas de las pólizas de vida entera ya están garantizadas a nivel fijo. El endoso en sí no garantiza el costo de la cobertura *adicional*; la nueva cobertura se calcula según la edad alcanzada del asegurado.",
+        "D": "Esto describe el endoso de beneficio por muerte accidental (doble indemnización)."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T16:16:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T21:40:00Z",
+          "actor": "chatgpt",
+          "reason": "Validada por soporte de esquema y regla."
+        }
+      ]
+    },
+    {
+      "question_id": "B06-Q014",
+      "rule_ids": [
+        "RC-TAX-001"
+      ],
+      "domain": "Impuestos, retiro y otros conceptos de seguros",
+      "subdomain": "Tributación del seguro de salud",
+      "difficulty": "easy",
+      "format": "direct_rule",
+      "stem": "Un propietario de una HSA tiene 67 años y retira dinero de la Cuenta de Ahorros para la Salud para un gasto no médico. ¿Cómo se trata generalmente esa distribución para fines fiscales federales?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Es completamente libre de impuestos porque el propietario tiene más de 65 años."
+        },
+        {
+          "label": "B",
+          "text": "Es gravable como ingreso ordinario, pero no aplica la penalidad del 20%."
+        },
+        {
+          "label": "C",
+          "text": "Es gravable como ingreso ordinario y también está sujeta a una penalidad del 20%."
+        },
+        {
+          "label": "D",
+          "text": "Se grava como ganancia de capital a largo plazo."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Después de los 65 años, las distribuciones de una HSA usadas para gastos no calificados siguen siendo gravables como ingreso ordinario, pero ya no aplica la penalidad adicional del 20%.",
+      "wrong_explanations": {
+        "A": "Solo las distribuciones de HSA usadas para gastos médicos calificados son libres de impuestos.",
+        "C": "El impuesto adicional del 20% aplica a distribuciones no calificadas de HSA antes de los 65 años, no después de los 65 años.",
+        "D": "Las distribuciones no calificadas de HSA no se gravan como ganancias de capital."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T18:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T22:30:00Z",
+          "actor": "ChatGPT"
+        }
+      ]
+    },
+    {
+      "question_id": "B06-Q015",
+      "rule_ids": [
+        "RC-LIFE-025"
+      ],
+      "domain": "Cláusulas, disposiciones, opciones y exclusiones de la póliza",
+      "subdomain": "Endosos",
+      "difficulty": "medium",
+      "format": "concept_application",
+      "stem": "Un padre compra una póliza juvenil de vida entera para su hijo de 10 años y agrega un endoso de beneficio del pagador. ¿Qué protección proporciona este endoso?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Duplica el beneficio por fallecimiento si el niño muere antes de los 21 años."
+        },
+        {
+          "label": "B",
+          "text": "Exime las primas de la póliza del niño si el padre que paga las primas muere o queda discapacitado."
+        },
+        {
+          "label": "C",
+          "text": "Garantiza que el niño pueda comprar cualquier cantidad de seguro a los 18 años sin evidencia de asegurabilidad."
+        },
+        {
+          "label": "D",
+          "text": "Devuelve todas las primas si el niño sobrevive hasta los 21 años."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Un endoso de beneficio del pagador se usa comúnmente en pólizas juveniles. Si el padre que paga las primas muere o queda discapacitado, la aseguradora exime las primas futuras para que la cobertura del niño pueda permanecer vigente.",
+      "wrong_explanations": {
+        "A": "Eso describe una muerte accidental u otro beneficio especial, no un endoso de beneficio del pagador.",
+        "C": "Eso describe un concepto de asegurabilidad garantizada, no el endoso de beneficio del pagador.",
+        "D": "Eso describe una característica de devolución de prima, no el endoso de beneficio del pagador."
+      },
+      "trap_type": "TP002-Distractor_Misdirection",
+      "source_confidence": "medium",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T18:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T22:30:00Z",
+          "actor": "ChatGPT"
+        }
+      ]
+    },
+    {
+      "question_id": "B06-Q016",
+      "rule_ids": [
+        "RC-ACA-001"
+      ],
+      "domain": "Estatutos del Estado de Texas relativos a Vida, Salud y HMO",
+      "subdomain": "Affordable Care Act (implementaciones estatales)",
+      "difficulty": "medium",
+      "format": "direct_rule",
+      "stem": "Bajo la Affordable Care Act (ACA), los planes de seguro de salud que ofrecen cobertura para hijos dependientes deben permitir que los hijos adultos permanezcan en la póliza de sus padres hasta qué edad, independientemente de su estado civil o de estudiante?",
+      "options": [
+        {
+          "label": "A",
+          "text": "21 años"
+        },
+        {
+          "label": "B",
+          "text": "24 años"
+        },
+        {
+          "label": "C",
+          "text": "26 años"
+        },
+        {
+          "label": "D",
+          "text": "30 años"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "La Affordable Care Act exige que los planes de salud que ofrecen cobertura de dependientes permitan que los hijos permanezcan en el plan de sus padres hasta alcanzar los 26 años. Esto aplica sin importar si el hijo está casado, vive con los padres, asiste a la escuela o depende financieramente.",
+      "wrong_explanations": {
+        "A": "La edad de 21 años era un límite común antes de la ACA.",
+        "B": "La edad de 24 años era un límite común para estudiantes de tiempo completo antes de la ACA.",
+        "D": "La edad de 30 años es incorrecta; el mandato federal termina a los 26 años."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "flagged",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T16:16:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "flagged",
+          "timestamp": "2026-03-24T21:40:00Z",
+          "actor": "chatgpt",
+          "reason": "Casi duplicada del ángulo previo sobre hijos dependientes hasta los 26 años bajo la ACA (lote 04)."
+        }
+      ]
+    },
+    {
+      "question_id": "B06-Q017",
+      "rule_ids": [
+        "RC-HLTH-008"
+      ],
+      "domain": "Cláusulas, disposiciones, opciones y exclusiones de la póliza",
+      "subdomain": "Disposiciones estándar de salud",
+      "difficulty": "hard",
+      "format": "concept_application",
+      "stem": "Un asegurado compró una póliza individual de accidente y salud mientras trabajaba como contador. Un año después, el asegurado cambió de empleo y se convirtió en techador comercial, pero nunca notificó a la aseguradora. Bajo la disposición de Cambio de Ocupación, ¿qué puede ocurrir si el asegurado se lesiona posteriormente en el trabajo?",
+      "options": [
+        {
+          "label": "A",
+          "text": "La reclamación debe pagarse completa porque los cambios de ocupación nunca afectan los beneficios de accidente y salud después de la emisión."
+        },
+        {
+          "label": "B",
+          "text": "La aseguradora puede reducir los beneficios al monto que la prima pagada habría comprado para la ocupación más peligrosa."
+        },
+        {
+          "label": "C",
+          "text": "La aseguradora puede anular la póliza por completo por ocultamiento, incluso si aplica la disposición de cambio de ocupación."
+        },
+        {
+          "label": "D",
+          "text": "La aseguradora debe devolver todas las primas y negar la reclamación porque el asegurado cambió a una ocupación peligrosa."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Bajo la disposición de Cambio de Ocupación, si el asegurado cambia a una ocupación más peligrosa, la aseguradora puede reducir el beneficio a lo que la prima pagada habría comprado para esa clase más peligrosa.",
+      "wrong_explanations": {
+        "A": "La disposición estándar existe precisamente porque los cambios de ocupación pueden afectar los beneficios de accidente y salud.",
+        "C": "La disposición de Cambio de Ocupación proporciona un método de ajuste en lugar de anular automáticamente el contrato.",
+        "D": "El resultado estándar es el ajuste del beneficio, no la devolución automática de primas y denegación de la reclamación."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "medium",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T18:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T22:30:00Z",
+          "actor": "ChatGPT"
+        }
+      ]
+    },
+    {
+      "question_id": "B06-Q018",
+      "rule_ids": [
+        "RC-UTP-001"
+      ],
+      "domain": "Estatutos del Estado de Texas comunes a todas las líneas",
+      "subdomain": "Prácticas comerciales desleales",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Varias aseguradoras competidoras acuerdan que ya no designarán a ningún agente independiente que coloque negocios con una nueva aseguradora de descuento que está entrando al mercado. Su objetivo es presionar a los agentes para que dejen de hacer negocios con ese competidor. Bajo la ley de seguros de Texas, esta conducta se describe mejor como:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Rebating"
+        },
+        {
+          "label": "B",
+          "text": "Difamación"
+        },
+        {
+          "label": "C",
+          "text": "Boicot, coerción o intimidación"
+        },
+        {
+          "label": "D",
+          "text": "Twisting"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "Boicot, coerción o intimidación implica acción concertada o presión destinada a restringir el comercio o forzar a otros a evitar una aseguradora o participante del mercado en particular.",
+      "wrong_explanations": {
+        "A": "Rebating implica ofrecer algo de valor como incentivo para comprar seguro, no presión coordinada del mercado.",
+        "B": "Difamación implica declaraciones falsas y despectivas sobre la condición financiera o reputación comercial de una aseguradora, no una negativa colectiva a tratar.",
+        "D": "Twisting implica comparaciones engañosas de pólizas para inducir el reemplazo de una póliza existente."
+      },
+      "trap_type": "TP002-Distractor_Misdirection",
+      "source_confidence": "medium",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T18:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T22:30:00Z",
+          "actor": "ChatGPT"
+        }
+      ]
+    },
+    {
+      "question_id": "B06-Q019",
+      "rule_ids": [
+        "RC-LIFE-007"
+      ],
+      "domain": "Tipos de pólizas",
+      "subdomain": "Seguro de vida temporal",
+      "difficulty": "easy",
+      "format": "concept_application",
+      "stem": "¿Qué tipo de póliza de seguro de vida se comercializa y se usa más comúnmente para proporcionar fondos para pagar el saldo pendiente de una hipoteca en caso de muerte prematura del asegurado?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Vida temporal nivelada"
+        },
+        {
+          "label": "B",
+          "text": "Vida temporal decreciente"
+        },
+        {
+          "label": "C",
+          "text": "Vida entera variable"
+        },
+        {
+          "label": "D",
+          "text": "Vida entera de prima única"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "El seguro de vida temporal decreciente tiene un beneficio por fallecimiento que disminuye gradualmente durante el término de la póliza, mientras la prima permanece nivelada. Como el saldo de una hipoteca también disminuye con el tiempo, este producto es perfectamente adecuado para protección hipotecaria.",
+      "wrong_explanations": {
+        "A": "La vida temporal nivelada mantiene el mismo beneficio por fallecimiento durante todo el término; no sigue una deuda decreciente.",
+        "C": "La vida entera variable es una póliza permanente impulsada por inversión, no diseñada específicamente para reflejar una deuda decreciente.",
+        "D": "La vida entera de prima única requiere una gran suma inicial y proporciona cobertura permanente nivelada."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T16:16:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T21:40:00Z",
+          "actor": "chatgpt",
+          "reason": "Validada por soporte de esquema y regla."
+        }
+      ]
+    },
+    {
+      "question_id": "B06-Q020",
+      "rule_ids": [
+        "RC-LIFE-025"
+      ],
+      "domain": "Cláusulas, disposiciones, opciones y exclusiones de la póliza",
+      "subdomain": "Opciones de dividendos",
+      "difficulty": "medium",
+      "format": "concept_application",
+      "stem": "Si el titular de una póliza participante de vida entera selecciona la opción de dividendos de 'adiciones pagadas', ¿cómo se utilizan los dividendos de la póliza?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Para reducir el próximo pago anual de prima."
+        },
+        {
+          "label": "B",
+          "text": "Para comprar adiciones permanentes de prima única al monto nominal de la póliza."
+        },
+        {
+          "label": "C",
+          "text": "Para comprar un endoso de seguro de vida temporal de 1 año."
+        },
+        {
+          "label": "D",
+          "text": "Para pagar un préstamo pendiente de la póliza."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Bajo la opción de dividendos de adiciones pagadas, la aseguradora usa el dividendo anual como una prima única para comprar una pequeña cantidad adicional de seguro de vida entera completamente pagado. Esto aumenta tanto el beneficio total por fallecimiento como el valor en efectivo total de la póliza con el tiempo.",
+      "wrong_explanations": {
+        "A": "Esto describe la opción de dividendos de reducción de prima.",
+        "C": "Esto describe la opción de dividendos de término de un año.",
+        "D": "Aunque los dividendos a veces pueden aplicarse a saldos de préstamos, esa no es la definición de adiciones pagadas."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T16:16:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T21:40:00Z",
+          "actor": "chatgpt",
+          "reason": "Validada por soporte de esquema y regla."
+        }
+      ]
+    },
+    {
+      "question_id": "B06-Q021",
+      "rule_ids": [
+        "RC-UW-001"
+      ],
+      "domain": "Completar la solicitud, suscripción y entrega de la póliza",
+      "subdomain": "Entrega de la póliza",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Un solicitante aplica para una póliza de seguro de vida pero no paga la prima inicial al momento de la solicitud. Cuando el agente entrega posteriormente la póliza aprobada, ¿qué debe cobrar el agente además de la prima inicial para poner la póliza en vigor?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Un recibo condicional firmado"
+        },
+        {
+          "label": "B",
+          "text": "Una Declaración de Buena Salud firmada"
+        },
+        {
+          "label": "C",
+          "text": "Un nuevo informe de examen médico"
+        },
+        {
+          "label": "D",
+          "text": "Una tarifa de informe de inspección"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Si la prima inicial no se paga con la solicitud, la cobertura no puede entrar en vigor inmediatamente. Al entregar la póliza, el agente debe cobrar la prima y una Declaración de Buena Salud firmada por el solicitante, verificando que su salud no ha cambiado desde que se completó la solicitud.",
+      "wrong_explanations": {
+        "A": "Un recibo condicional se entrega cuando la prima SÍ se cobra al momento de la solicitud, no al momento de la entrega.",
+        "C": "No se requiere un nuevo examen médico a menos que la Declaración de Buena Salud revele un cambio en la condición.",
+        "D": "Los informes de inspección son solicitados por el suscriptor durante el proceso de solicitud, no cobrados como una tarifa al momento de la entrega."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T16:16:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T21:40:00Z",
+          "actor": "chatgpt",
+          "reason": "Validada por soporte de esquema y regla."
+        }
+      ]
+    },
+    {
+      "question_id": "B06-Q022",
+      "rule_ids": [
+        "RC-HLTH-015"
+      ],
+      "domain": "Tipos de pólizas",
+      "subdomain": "Seguro de gastos médicos",
+      "difficulty": "easy",
+      "format": "concept_application",
+      "stem": "En un plan básico hospitalario y quirúrgico combinado con una póliza suplementaria de gastos médicos mayores, ¿cuál es el propósito principal del deducible corredor?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Es el deducible anual que debe cumplirse antes de que la póliza básica pague cualquier beneficio."
+        },
+        {
+          "label": "B",
+          "text": "Cubre la brecha entre los beneficios pagados por la póliza básica y el punto en que la cobertura de gastos médicos mayores comienza a pagar."
+        },
+        {
+          "label": "C",
+          "text": "Limita los gastos de bolsillo del asegurado durante el año a un máximo fijo."
+        },
+        {
+          "label": "D",
+          "text": "Permite al asegurado usar proveedores fuera de la red con niveles de costos compartidos de la red."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Un deducible corredor se usa en arreglos suplementarios de gastos médicos mayores. Cubre la brecha entre lo que paga la póliza básica y el momento en que comienza la cobertura de gastos médicos mayores.",
+      "wrong_explanations": {
+        "A": "Eso describe el deducible ordinario bajo una póliza básica, no el deducible corredor.",
+        "C": "Eso describe una característica de stop-loss o máximo de gastos de bolsillo, no un deducible corredor.",
+        "D": "Eso describe una característica de diseño de beneficios de red, no un concepto de deducible de gastos médicos mayores suplementario."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "medium",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T18:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T22:30:00Z",
+          "actor": "ChatGPT"
+        }
+      ]
+    },
+    {
+      "question_id": "B06-Q023",
+      "rule_ids": [
+        "RC-TAX-001"
+      ],
+      "domain": "Impuestos, retiro y otros conceptos de seguros",
+      "subdomain": "Tributación del seguro de vida",
+      "difficulty": "medium",
+      "format": "direct_rule",
+      "stem": "¿Cómo se tratan generalmente para fines del impuesto federal sobre ingresos los beneficios por fallecimiento de una póliza individual de seguro de vida cuando se pagan en una suma global a un beneficiario nombrado?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Se gravan como ganancias de capital a largo plazo."
+        },
+        {
+          "label": "B",
+          "text": "Se gravan como ingreso ordinario para el beneficiario."
+        },
+        {
+          "label": "C",
+          "text": "El beneficiario los recibe completamente libres de impuesto sobre ingresos."
+        },
+        {
+          "label": "D",
+          "text": "Son libres de impuestos hasta $100,000, y cualquier exceso se grava como ingreso ordinario."
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "Como regla general bajo la ley fiscal federal, los beneficios por fallecimiento de seguro de vida pagados en una suma global a un beneficiario nombrado se reciben completamente libres de impuesto federal sobre ingresos.",
+      "wrong_explanations": {
+        "A": "Los beneficios por fallecimiento no están sujetos a impuesto sobre ganancias de capital.",
+        "B": "Solo los intereses generados sobre beneficios por fallecimiento dejados con la aseguradora bajo una opción de liquidación se gravan como ingreso ordinario; el beneficio principal por fallecimiento es libre de impuestos.",
+        "D": "No existe un límite legal sobre la cantidad de beneficio por fallecimiento que puede recibirse libre de impuesto sobre ingresos."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T16:16:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T21:40:00Z",
+          "actor": "chatgpt",
+          "reason": "Validada por soporte de esquema y regla."
+        }
+      ]
+    },
+    {
+      "question_id": "B06-Q024",
+      "rule_ids": [
+        "RC-HMO-003"
+      ],
+      "domain": "Estatutos del Estado de Texas relativos a Vida, Salud y HMO",
+      "subdomain": "Regulaciones de HMO en Texas",
+      "difficulty": "hard",
+      "format": "scenario",
+      "stem": "Un afiliado de una HMO en Texas experimenta fuertes dolores en el pecho y cree que está teniendo un ataque cardíaco. Acude de emergencia a la sala de emergencias fuera de la red más cercana. Posteriormente se determina que el dolor fue causado por indigestión severa, no por un ataque cardíaco. ¿Cómo debe tratar la HMO la reclamación bajo la ley de Texas?",
+      "options": [
+        {
+          "label": "A",
+          "text": "La HMO negará la reclamación porque el diagnóstico final no fue una emergencia real."
+        },
+        {
+          "label": "B",
+          "text": "La HMO debe cubrir la reclamación porque el afiliado cumplió con el estándar de \"persona prudente\" para una emergencia, sin exigir autorización previa."
+        },
+        {
+          "label": "C",
+          "text": "La HMO pagará la reclamación solo si el afiliado llamó a su médico de atención primaria (PCP) para obtener una referencia camino al hospital."
+        },
+        {
+          "label": "D",
+          "text": "La HMO negará la reclamación porque fue un centro fuera de la red y la condición no era potencialmente mortal."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "La ley de Texas aplica el estándar de 'persona prudente' a la atención de emergencia en HMO. Si una persona razonable con conocimiento promedio de salud y medicina creería que sus síntomas indican una emergencia severa (como un ataque cardíaco), la HMO debe cubrir la visita a la sala de emergencias, incluso si el diagnóstico final resulta no amenazante. No se requiere autorización previa para emergencias.",
+      "wrong_explanations": {
+        "A": "La HMO no puede negar la reclamación basándose únicamente en el diagnóstico final si los síntomas iniciales indicaban razonablemente una emergencia.",
+        "C": "En una emergencia real (basada en síntomas), los afiliados no tienen tiempo para obtener una referencia, y la ley prohíbe que las HMO exijan una.",
+        "D": "Las emergencias son la excepción universal a las restricciones de red de las HMO. Los centros fuera de la red deben estar cubiertos si se cumple el estándar de persona prudente."
+      },
+      "trap_type": "TP001-Absolute_Terms",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T16:16:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T21:40:00Z",
+          "actor": "chatgpt",
+          "reason": "Validada por soporte de esquema y regla."
+        }
+      ]
+    },
+    {
+      "question_id": "B06-Q025",
+      "rule_ids": [
+        "RC-LIFE-025"
+      ],
+      "domain": "Cláusulas, disposiciones, opciones y exclusiones de la póliza",
+      "subdomain": "Endosos",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Un asegurado queda totalmente discapacitado y califica para el endoso de exención de prima en su póliza de seguro de vida. El endoso tiene un período de espera estándar de 6 meses. ¿Qué ocurre con las primas que vencen durante esos primeros 6 meses de discapacidad?",
+      "options": [
+        {
+          "label": "A",
+          "text": "La aseguradora las exime automáticamente desde el primer día de discapacidad."
+        },
+        {
+          "label": "B",
+          "text": "El asegurado debe pagarlas, pero la aseguradora las reembolsará una vez que se cumpla el período de espera de 6 meses."
+        },
+        {
+          "label": "C",
+          "text": "El asegurado no tiene que pagarlas, pero el monto no pagado se deduce del beneficio por fallecimiento."
+        },
+        {
+          "label": "D",
+          "text": "El asegurado debe pagarlas, y no se reembolsan; la exención solo aplica a primas vencidas después del sexto mes."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Bajo el endoso de exención de prima, el asegurado debe continuar pagando las primas durante el período de espera (normalmente 6 meses). Si el asegurado permanece totalmente discapacitado al final de los 6 meses, la aseguradora comienza a eximir las primas futuras Y reembolsa las primas pagadas durante el período de espera.",
+      "wrong_explanations": {
+        "A": "Las primas no se eximen inmediatamente; el asegurado primero debe cumplir el período de espera.",
+        "C": "Las primas no se deducen del beneficio por fallecimiento bajo este endoso; se reembolsan.",
+        "D": "La exención es retroactiva al inicio de la discapacidad una vez que se cumple el período de espera, lo que significa que esas primas iniciales se reembolsan."
+      },
+      "trap_type": "TP004-Timeline_Trap",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T16:16:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-24T21:40:00Z",
+          "actor": "chatgpt",
+          "reason": "Validada por soporte de esquema y regla."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "batch_id": "04",
+  "source_file": "question_bank_raw_batch_04.json",
+  "validated_file": "question_bank_validated_batch_04.json",
+  "validated_date": "2026-03-24",
+  "validated_by": "chatgpt",
+  "overall_disposition": "APPROVED_WITH_CORRECTIONS",
+  "summary": {
+    "questions_reviewed": 25,
+    "validated_without_change": 21,
+    "corrected_and_validated": 4,
+    "flagged_unresolved": 0,
+    "rejected": 0
+  },
+  "corrections": [
+    {
+      "question_id": "B04-Q011",
+      "severity": "minor",
+      "issue_type": "scope_precision",
+      "issue": "El enunciado original se refería de forma genérica a un plan de salud grupal de un empleador pequeño, lo cual podía implicar planes no sujetos a las reglas de mini-COBRA de Texas.",
+      "correction": "Se especificó que el plan del empleador está totalmente asegurado para que la respuesta de continuación estatal de Texas por 9 meses sea inequívoca.",
+      "sources": [
+        "Texas Insurance Code Section 1251.255",
+        "Texas Department of Insurance 2026 Texas Health Coverage Guide"
+      ]
+    },
+    {
+      "question_id": "B04-Q013",
+      "severity": "high",
+      "issue_type": "incorrect_penalty_amount",
+      "issue": "El ítem original usaba un límite de $25,000 por violación por incumplir una orden de cese y desistimiento relacionada con prácticas comerciales engañosas, lo cual no corresponde al límite de sanción administrativa del Capítulo 541.",
+      "correction": "Se revisó la respuesta correcta a $1,000 por violación y se actualizó la explicación para seguir el Texas Insurance Code Section 541.110 ($1,000 por violación, con un límite agregado de $5,000).",
+      "sources": [
+        "Texas Insurance Code Section 541.110"
+      ]
+    },
+    {
+      "question_id": "B04-Q020",
+      "severity": "minor",
+      "issue_type": "timing_precision",
+      "issue": "La explicación original usaba una forma abreviada sobre un plazo de 30 días sin conectarlo claramente con el lenguaje estatutario de 'monthly basis'.",
+      "correction": "Se aclaró la explicación para reflejar el requisito estatutario de reportar sobre una base mensual y la guía operativa actual de TDI de 30 días para cambios de dirección.",
+      "sources": [
+        "Texas Insurance Code Section 4001.252",
+        "Texas Department of Insurance FIN533 / address-change guidance"
+      ]
+    },
+    {
+      "question_id": "B04-Q007",
+      "severity": "minor",
+      "issue_type": "overstatement_cleanup",
+      "issue": "Una explicación de una opción distractora usaba un lenguaje innecesariamente absoluto sobre el alcance de la cobertura bajo un recibo condicional.",
+      "correction": "Se suavizó la explicación para indicar que la cobertura puede entrar en vigor si se cumplen las condiciones del recibo y el solicitante es considerado asegurable, en lugar de usar un lenguaje absoluto más amplio.",
+      "sources": [
+        "mapeo de reglas del proyecto sobre recibo condicional / tratamiento estándar del examen"
+      ]
+    }
+  ],
+  "notable_passes": [
+    {
+      "question_id": "B04-Q005",
+      "note": "Sustentable bajo Texas Insurance Code Section 463.451, que prohíbe usar la protección de la asociación de garantía como incentivo de venta."
+    },
+    {
+      "question_id": "B04-Q006",
+      "note": "Aplica correctamente la reducción del período de espera de Medigap usando cobertura acreditable previa."
+    },
+    {
+      "question_id": "B04-Q021",
+      "note": "Sustentable bajo las disposiciones de atención de emergencia de HMO en Texas, que requieren cobertura sin autorización previa y obligaciones de reembolso para atención de emergencia fuera de la red."
+    },
+    {
+      "question_id": "B04-Q023",
+      "note": "Coincide con la guía de suplemento de Medicare en Texas que exige un período de revisión gratuita de 30 días."
+    },
+    {
+      "question_id": "B04-Q025",
+      "note": "El concepto de mezcla de fondos (commingling) / manejo fiduciario es sustentable y distinto de los lotes anteriores."
+    }
+  ],
+  "schema_review": {
+    "status": "pass",
+    "notes": [
+      "El lote coincide con la estructura validada establecida para ítems de preguntas usada en los lotes 01 al 03.",
+      "options sigue siendo un arreglo de objetos {label, text}.",
+      "Los valores null de trap_type siguen siendo aceptables para preguntas sin una trampa asignada."
+    ]
+  },
+  "cross_batch_duplicate_review": {
+    "status": "pass_with_note",
+    "notes": [
+      "No se identificaron duplicados exactos frente a los lotes validados 01 al 03 suministrados.",
+      "B04-Q016 retoma el concepto de difamación, pero el ítem conservado usa un enfoque de difusión mediante panfleto público que se distingue del escenario de desprestigio individual contra un competidor del lote 03."
+    ]
+  },
+  "recommendations": [
+    "Mover este archivo a data/questions_validated/question_bank_validated_batch_04.json",
+    "Mover este reporte a data/questions_validated/validation_report_batch_04.json",
+    "Mantener Codex conectado únicamente a rutas de contenido validado e ingerir el lote 04 solo después de que estos archivos validados estén en el repositorio."
+  ]
+}

@@ -1,0 +1,1331 @@
+{
+  "batch_id": "08",
+  "version": "1.0.0",
+  "generated_date": "2026-03-24",
+  "generated_by": "gemini",
+  "question_count": 25,
+  "difficulty_distribution": {
+    "easy": 5,
+    "medium": 14,
+    "hard": 6
+  },
+  "questions": [
+    {
+      "question_id": "B08-Q001",
+      "rule_ids": [
+        "RC-LIFE-007"
+      ],
+      "domain": "Tipos de pólizas",
+      "subdomain": "Seguro de vida temporal",
+      "difficulty": "easy",
+      "format": "concept_application",
+      "stem": "En una póliza de seguro de vida temporal renovable anualmente (Annually Renewable Term, ART), ¿qué sucede con la prima y el beneficio por fallecimiento cada año al renovarse?",
+      "options": [
+        {
+          "label": "A",
+          "text": "La prima permanece nivelada, pero el beneficio por fallecimiento disminuye."
+        },
+        {
+          "label": "B",
+          "text": "Tanto la prima como el beneficio por fallecimiento aumentan."
+        },
+        {
+          "label": "C",
+          "text": "La prima aumenta con base en la edad alcanzada del asegurado, mientras que el beneficio por fallecimiento permanece nivelado."
+        },
+        {
+          "label": "D",
+          "text": "La prima disminuye con base en una experiencia de mortalidad favorable, mientras que el beneficio por fallecimiento permanece nivelado."
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "El seguro temporal renovable anualmente (Annually Renewable Term, ART) proporciona un beneficio por fallecimiento nivelado por un período de un año. Cuando la póliza se renueva cada año sin evidencia de asegurabilidad, la prima aumenta porque se recalcula con base en la edad alcanzada, más avanzada, del asegurado.",
+      "wrong_explanations": {
+        "A": "Esto describe una póliza temporal decreciente con prima nivelada, usada con frecuencia para protección hipotecaria.",
+        "B": "El beneficio por fallecimiento no aumenta automáticamente en una póliza ART estándar.",
+        "D": "Las primas aumentan a medida que el asegurado envejece, reflejando el mayor riesgo estadístico de muerte; no disminuyen."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T20:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T14:30:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B08-Q002",
+      "rule_ids": [
+        "RC-LIFE-025"
+      ],
+      "domain": "Cláusulas adicionales, disposiciones, opciones y exclusiones de la póliza",
+      "subdomain": "Cláusulas adicionales",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Un padre compra una póliza de seguro de vida sobre su hijo menor de edad e incluye una cláusula adicional de beneficio del pagador (Payor Benefit rider). Si el padre muere o queda totalmente discapacitado antes de que el hijo alcance la mayoría de edad, ¿qué proporciona expresamente esta cláusula adicional?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Paga inmediatamente el beneficio por fallecimiento al hijo."
+        },
+        {
+          "label": "B",
+          "text": "Exonera el pago de las primas hasta que el hijo alcance una edad específica, usualmente 21 años."
+        },
+        {
+          "label": "C",
+          "text": "Duplica el monto nominal de la póliza."
+        },
+        {
+          "label": "D",
+          "text": "Transfiere la titularidad de la póliza a un tutor designado por la corte."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "La cláusula adicional de beneficio del pagador (Payor Benefit rider) se adjunta comúnmente a pólizas juveniles. Si el pagador adulto de la prima (usualmente un padre) muere o queda totalmente discapacitado, la aseguradora exonera las primas hasta que el hijo asegurado alcance una edad específica, como 21 años, asegurando que la póliza no caduque.",
+      "wrong_explanations": {
+        "A": "La póliza asegura al hijo, no al padre. La muerte del padre no activa el beneficio por fallecimiento.",
+        "C": "Esta cláusula adicional exonera primas; no aumenta el monto nominal.",
+        "D": "Aunque la titularidad podría transferirse legalmente, la función financiera específica de la cláusula adicional de beneficio del pagador es la exoneración de primas, no la administración de la titularidad."
+      },
+      "trap_type": "TP007-Role_Reversal",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T20:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T14:30:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B08-Q003",
+      "rule_ids": [
+        "RC-HMO-001"
+      ],
+      "domain": "Estatutos de Texas relacionados con vida, salud y HMO",
+      "subdomain": "Regulaciones de HMO en Texas",
+      "difficulty": "hard",
+      "format": "direct_rule",
+      "stem": "Bajo las leyes de pago oportuno de Texas, si un proveedor participante presenta electrónicamente una “reclamación limpia” a una Organización para el Mantenimiento de la Salud (HMO) o a una aseguradora, ¿dentro de cuántos días debe pagarse generalmente la reclamación para evitar sanciones legales?",
+      "options": [
+        {
+          "label": "A",
+          "text": "15 días"
+        },
+        {
+          "label": "B",
+          "text": "30 días"
+        },
+        {
+          "label": "C",
+          "text": "45 días"
+        },
+        {
+          "label": "D",
+          "text": "60 días"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Las leyes de pago oportuno de Texas requieren que las aseguradoras y las HMO paguen una reclamación limpia presentada electrónicamente por un proveedor preferido dentro de 30 días. Si la reclamación se presenta por medios no electrónicos (papel), el plazo es de 45 días.",
+      "wrong_explanations": {
+        "A": "15 días es el plazo para que una aseguradora acuse recibo de una reclamación, inicie la investigación y solicite formularios.",
+        "C": "45 días es el plazo para pagar una reclamación limpia presentada en formato no electrónico (papel).",
+        "D": "60 días es el plazo para emitir una Evidencia de Cobertura después de la inscripción, no el plazo de pago oportuno para reclamaciones."
+      },
+      "trap_type": "TP004-Timeline_Trap",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T20:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T14:30:00Z",
+          "actor": "chatgpt"
+        },
+        {
+          "status": "legal_checked",
+          "timestamp": "2026-03-25T14:30:00Z",
+          "actor": "chatgpt",
+          "note": "Confirmó los plazos de 30 días para reclamaciones limpias electrónicas y 45 días para reclamaciones limpias no electrónicas de proveedores preferidos."
+        }
+      ]
+    },
+    {
+      "question_id": "B08-Q004",
+      "rule_ids": [
+        "RC-TAX-001"
+      ],
+      "domain": "Impuestos, jubilación y otros conceptos de seguros",
+      "subdomain": "Tributación del seguro de vida",
+      "difficulty": "medium",
+      "format": "concept_application",
+      "stem": "Un empleador paga la totalidad de la prima de una póliza de seguro de vida temporal grupal que cubre a sus empleados. Bajo la ley fiscal federal, ¿cómo se trata el costo de esta cobertura para el empleado?",
+      "options": [
+        {
+          "label": "A",
+          "text": "La totalidad de la prima pagada por el empleador es libre de impuestos para el empleado."
+        },
+        {
+          "label": "B",
+          "text": "La totalidad de la prima pagada por el empleador se trata como ingreso ordinario tributable para el empleado."
+        },
+        {
+          "label": "C",
+          "text": "El costo de los primeros $50,000 de cobertura es libre de impuestos, pero el costo de la cobertura que excede $50,000 se trata como ingreso imputado tributable."
+        },
+        {
+          "label": "D",
+          "text": "Las primas son libres de impuestos, pero el beneficio por fallecimiento será totalmente tributable para el beneficiario del empleado."
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "Bajo la Sección 79 del Código de Rentas Internas, el costo del seguro de vida temporal grupal proporcionado por el empleador hasta $50,000 es libre de impuestos para el empleado. El costo de cualquier monto de cobertura proporcionado por encima de $50,000 se considera un beneficio marginal tributable y se trata como ingreso imputado para el empleado.",
+      "wrong_explanations": {
+        "A": "La exención está estrictamente limitada a $50,000 de cobertura. Los montos superiores generan ingreso tributable.",
+        "B": "Solo el valor de la cobertura que excede $50,000 genera ingreso tributable, no la prima completa.",
+        "D": "Los beneficios por fallecimiento de un seguro de vida temporal grupal patrocinado por el empleador generalmente se reciben libres de impuesto sobre la renta por el beneficiario, igual que en el seguro de vida individual."
+      },
+      "trap_type": "TP006-Math_Distractor",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T20:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T14:30:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B08-Q005",
+      "rule_ids": [
+        "RC-UW-001"
+      ],
+      "domain": "Completar la solicitud, suscripción y entrega de la póliza",
+      "subdomain": "Procedimientos de solicitud",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Un agente está revisando una solicitud de seguro de vida completada con un solicitante y nota un error en la sección de historial médico. ¿Cuál es el procedimiento adecuado para corregir este error?",
+      "options": [
+        {
+          "label": "A",
+          "text": "El agente debe usar corrector líquido para ocultar el error y escribir la información correcta."
+        },
+        {
+          "label": "B",
+          "text": "El agente debe tachar el error, escribir la información correcta y hacer que el solicitante coloque sus iniciales en el cambio."
+        },
+        {
+          "label": "C",
+          "text": "El agente debe presentar la solicitud tal como está y adjuntar una nota explicativa separada para el suscriptor."
+        },
+        {
+          "label": "D",
+          "text": "El agente debe borrar el error, corregirlo de manera independiente y firmar su propio nombre junto al cambio."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Si se comete un error en una solicitud de seguro, el procedimiento adecuado es tachar el error, escribir la información correcta y hacer que el solicitante coloque sus iniciales junto al cambio para verificar que reconoce y acepta la corrección.",
+      "wrong_explanations": {
+        "A": "Nunca debe usarse corrector líquido (white-out) en una solicitud, ya que implica manipulación u ocultamiento de información.",
+        "C": "Dejar un error conocido en el formulario de solicitud crea responsabilidad legal, incluso con una nota adjunta.",
+        "D": "Los agentes no pueden alterar de manera independiente las respuestas del solicitante. El solicitante debe autorizar y colocar sus iniciales en cualquier cambio."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T20:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T14:30:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B08-Q006",
+      "rule_ids": [
+        "RC-LIC-008"
+      ],
+      "domain": "Estatutos de Texas comunes a todas las líneas",
+      "subdomain": "Requisitos de licencia",
+      "difficulty": "hard",
+      "format": "scenario",
+      "stem": "La licencia de un agente de líneas generales de Texas vence el 1 de marzo. El agente se da cuenta del descuido el 15 de abril (45 días después). Bajo la ley de Texas, ¿qué debe hacer el agente para renovar exitosamente la licencia durante esta ventana específica?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Pagar solo la tarifa regular de renovación, ya que hay un período de gracia automático de 60 días."
+        },
+        {
+          "label": "B",
+          "text": "Presentar una solicitud de renovación, completar la educación continua requerida y pagar la tarifa regular de renovación más una multa por mora del 50%."
+        },
+        {
+          "label": "C",
+          "text": "Volver a tomar el examen estatal de licencia y presentar una nueva solicitud."
+        },
+        {
+          "label": "D",
+          "text": "Esperar un año completo antes de volver a solicitar una nueva licencia."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Si una licencia de seguro de Texas ha estado vencida por 90 días o menos, el agente puede renovarla presentando una solicitud de renovación, asegurándose de que la educación continua esté completa y pagando la tarifa de renovación requerida más una tarifa de penalidad equivalente a la mitad (50%) de la tarifa de renovación.",
+      "wrong_explanations": {
+        "A": "No hay un período de gracia “gratis” para una licencia vencida; la penalidad aplica inmediatamente al vencimiento.",
+        "C": "Volver a tomar el examen estatal de licencia solo se requiere si la licencia ha estado vencida por más de un año.",
+        "D": "No se requiere esperar un año. El agente puede renovar de inmediato con penalidad si está dentro de los 90 días, o volver a solicitar con una nueva solicitud y tarifa (sin examen) entre 91 y 365 días."
+      },
+      "trap_type": "TP004-Timeline_Trap",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T20:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T14:30:00Z",
+          "actor": "chatgpt"
+        },
+        {
+          "status": "legal_checked",
+          "timestamp": "2026-03-25T14:30:00Z",
+          "actor": "chatgpt",
+          "note": "Confirmó que la renovación de una licencia vencida dentro de 90 días requiere la tarifa de renovación más una tarifa adicional equivalente a la mitad de la tarifa de renovación requerida."
+        }
+      ]
+    },
+    {
+      "question_id": "B08-Q007",
+      "rule_ids": [
+        "RC-HLTH-008"
+      ],
+      "domain": "Cláusulas adicionales, disposiciones, opciones y exclusiones de la póliza",
+      "subdomain": "Disposiciones estándar de salud",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Bajo la Ley de Disposiciones Uniformes de Pólizas Individuales de Accidente y Enfermedad, una aseguradora debe proporcionar formularios de reclamación dentro de 15 días después de recibir un aviso de reclamación. Si la aseguradora no proporciona los formularios dentro de ese plazo, ¿cómo puede el asegurado cumplir legalmente con el requisito de prueba de pérdida?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Describiendo verbalmente la pérdida al agente por teléfono."
+        },
+        {
+          "label": "B",
+          "text": "Esperando indefinidamente hasta que la aseguradora eventualmente envíe los formularios oficiales."
+        },
+        {
+          "label": "C",
+          "text": "Presentando una prueba escrita que detalle la ocurrencia, el carácter y el alcance de la pérdida dentro del plazo requerido."
+        },
+        {
+          "label": "D",
+          "text": "El asegurado queda permanentemente exento de probar la pérdida y la reclamación debe pagarse automáticamente."
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "Bajo la disposición de Formularios de Reclamación, si la aseguradora no proporciona los formularios necesarios dentro de 15 días después de ser notificada, se considera que el reclamante ha cumplido con el requisito de prueba de pérdida al presentar su propia prueba escrita que detalle la naturaleza y el alcance de la pérdida dentro del plazo especificado en la póliza.",
+      "wrong_explanations": {
+        "A": "Una descripción verbal es insuficiente; el reclamante debe presentar prueba escrita.",
+        "B": "El asegurado no queda protegido si simplemente espera; aun así debe presentar prueba escrita dentro del plazo original de prueba de pérdida (típicamente 90 días).",
+        "D": "La falta de envío de formularios por parte de la aseguradora no garantiza el pago automático; el asegurado aún tiene la carga legal de proporcionar evidencia escrita de la pérdida."
+      },
+      "trap_type": "TP001-Absolute_Terms",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T20:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T14:30:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B08-Q008",
+      "rule_ids": [
+        "RC-LIFE-025"
+      ],
+      "domain": "Cláusulas adicionales, disposiciones, opciones y exclusiones de la póliza",
+      "subdomain": "Beneficiarios",
+      "difficulty": "easy",
+      "format": "definition_scenario",
+      "stem": "Un titular de póliza nombra a un beneficiario irrevocable en una póliza de seguro de vida. ¿Cuál de los siguientes derechos pierde el titular de la póliza como resultado directo de esta designación específica?",
+      "options": [
+        {
+          "label": "A",
+          "text": "El derecho a pagar las primas de la póliza."
+        },
+        {
+          "label": "B",
+          "text": "El derecho a cambiar el beneficiario, pedir prestado contra el valor en efectivo o ceder la póliza sin el consentimiento del beneficiario."
+        },
+        {
+          "label": "C",
+          "text": "El derecho a recibir dividendos de la póliza."
+        },
+        {
+          "label": "D",
+          "text": "El derecho a dejar caducar la póliza por falta de pago."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Nombrar a un beneficiario irrevocable le da a ese beneficiario un interés adquirido en la póliza. El titular de la póliza pierde el derecho de alterar unilateralmente la póliza, como cambiar el beneficiario, tomar un préstamo de la póliza o ceder el contrato, sin obtener el consentimiento escrito del beneficiario irrevocable.",
+      "wrong_explanations": {
+        "A": "El titular de la póliza conserva el derecho y la obligación de pagar las primas.",
+        "C": "Las opciones de dividendos generalmente son seleccionadas por el titular, salvo que afecten el valor en efectivo garantizado o el beneficio por fallecimiento de una manera que perjudique el interés del beneficiario irrevocable.",
+        "D": "El titular de la póliza aún puede dejar que la póliza caduque al dejar de pagar primas; el beneficiario no puede obligar al titular a pagar."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T20:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T14:30:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B08-Q009",
+      "rule_ids": [
+        "RC-PROV-001"
+      ],
+      "domain": "Estatutos de Texas relacionados con vida, salud y HMO",
+      "subdomain": "Disposiciones de pólizas de vida en Texas",
+      "difficulty": "medium",
+      "format": "direct_rule",
+      "stem": "En una transacción estándar de seguro de vida de crédito (Credit Life) usada para garantizar un préstamo, ¿quién suele ser el titular y el beneficiario nombrado de la póliza?",
+      "options": [
+        {
+          "label": "A",
+          "text": "El deudor es tanto el titular como el beneficiario."
+        },
+        {
+          "label": "B",
+          "text": "El acreedor es el titular y la sucesión del deudor es el beneficiario."
+        },
+        {
+          "label": "C",
+          "text": "El acreedor es tanto el titular como el beneficiario."
+        },
+        {
+          "label": "D",
+          "text": "El deudor es el titular y el cónyuge del deudor es el beneficiario."
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "El seguro de vida de crédito está diseñado específicamente para pagar un préstamo pendiente si el prestatario (deudor) muere. En estos arreglos, la institución prestamista (acreedor) es tanto el titular como el beneficiario de la póliza. El beneficio por fallecimiento no puede exceder el saldo pendiente del préstamo.",
+      "wrong_explanations": {
+        "A": "El deudor es el asegurado, pero no el titular ni el beneficiario. La cobertura existe para proteger al acreedor.",
+        "B": "El acreedor debe ser el beneficiario para asegurar que el préstamo sea pagado. Solo si el beneficio por fallecimiento excede brevemente el saldo decreciente de la deuda, cualquier excedente se pagaría a la sucesión.",
+        "D": "El cónyuge no es el beneficiario; el acreedor lo es. Se necesitaría un seguro de vida personal estándar para proteger directamente al cónyuge."
+      },
+      "trap_type": "TP007-Role_Reversal",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T20:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T14:30:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B08-Q010",
+      "rule_ids": [
+        "RC-TAX-001"
+      ],
+      "domain": "Impuestos, jubilación y otros conceptos de seguros",
+      "subdomain": "Tributación del seguro de vida",
+      "difficulty": "hard",
+      "format": "scenario",
+      "stem": "Una persona adinerada muere, y sus beneficios por fallecimiento de seguro de vida se incluyen en su patrimonio bruto, sujetando los ingresos a impuestos federales sobre sucesiones. ¿Cuál de los siguientes escenarios es la razón principal por la que ocurriría esta inclusión?",
+      "options": [
+        {
+          "label": "A",
+          "text": "El beneficio por fallecimiento excedió el límite anual de exclusión del impuesto sobre donaciones del IRS."
+        },
+        {
+          "label": "B",
+          "text": "El asegurado poseía “incidentes de titularidad” en la póliza al momento de su muerte."
+        },
+        {
+          "label": "C",
+          "text": "La póliza fue clasificada como un contrato de dotación modificado (Modified Endowment Contract, MEC)."
+        },
+        {
+          "label": "D",
+          "text": "El beneficiario optó por recibir el beneficio por fallecimiento en una suma global."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Los ingresos del seguro de vida se incluyen en el patrimonio bruto del fallecido para fines del impuesto federal sobre sucesiones si los ingresos son pagaderos a la sucesión, o si el fallecido poseía algún “incidente de titularidad” en la póliza al momento de su muerte (como el derecho a cambiar el beneficiario, pedir prestado contra el valor en efectivo o ceder la póliza).",
+      "wrong_explanations": {
+        "A": "El límite de exclusión del impuesto sobre donaciones aplica a donaciones en vida (como pagar primas por otra persona), no a la inclusión de beneficios por fallecimiento en una sucesión.",
+        "C": "El estatus MEC altera la tributación de beneficios en vida (préstamos/retiros), pero no causa que los beneficios por fallecimiento estén sujetos a impuestos sucesorios.",
+        "D": "Los beneficios por fallecimiento en suma global generalmente son libres de impuesto sobre la renta. La opción de liquidación no determina la inclusión en el patrimonio; la titularidad sí."
+      },
+      "trap_type": "TP002-Distractor_Misdirection",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T20:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T14:30:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B08-Q011",
+      "rule_ids": [
+        "RC-BUS-001"
+      ],
+      "domain": "Impuestos, jubilación y otros conceptos de seguros",
+      "subdomain": "Usos empresariales del seguro",
+      "difficulty": "medium",
+      "format": "calculation_scenario",
+      "stem": "Una empresa manufacturera está estructurada como una sociedad con cuatro socios iguales. Para financiar un acuerdo de compraventa de Entidad (Entity Purchase o Stock Redemption), ¿cuántas pólizas de seguro de vida deben comprarse en total?",
+      "options": [
+        {
+          "label": "A",
+          "text": "4 pólizas"
+        },
+        {
+          "label": "B",
+          "text": "8 pólizas"
+        },
+        {
+          "label": "C",
+          "text": "12 pólizas"
+        },
+        {
+          "label": "D",
+          "text": "16 pólizas"
+        }
+      ],
+      "correct_answer": "A",
+      "correct_explanation": "En un acuerdo de compraventa de Entidad (Entity Purchase o Stock Redemption), la entidad comercial compra, posee y paga las primas de una póliza por cada socio. Con cuatro socios, la empresa simplemente compra 4 pólizas. (Esto contrasta con un plan de compra cruzada, que requeriría 12 pólizas).",
+      "wrong_explanations": {
+        "B": "8 es matemáticamente incorrecto para ambos tipos de planes.",
+        "C": "12 pólizas serían requeridas bajo un plan de compra cruzada, donde cada socio compra una póliza sobre cada uno de los demás socios usando la fórmula N x (N - 1).",
+        "D": "16 es matemáticamente incorrecto y representaría N x N, lo cual incluye que los socios compren pólizas sobre sí mismos."
+      },
+      "trap_type": "TP006-Math_Distractor",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T20:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T14:30:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B08-Q012",
+      "rule_ids": [
+        "RC-LIFE-020"
+      ],
+      "domain": "Cláusulas adicionales, disposiciones, opciones y exclusiones de la póliza",
+      "subdomain": "Disposiciones estándar de vida",
+      "difficulty": "medium",
+      "format": "direct_rule",
+      "stem": "La disposición obligatoria de Contrato Completo en una póliza de seguro de vida estipula que el documento de la póliza y una copia de la solicitud original constituyen el contrato completo. Bajo esta disposición, ¿quién tiene expresamente prohibido realizar cambios a la póliza o renunciar a cualquiera de sus disposiciones?",
+      "options": [
+        {
+          "label": "A",
+          "text": "El presidente de la compañía de seguros"
+        },
+        {
+          "label": "B",
+          "text": "Un funcionario ejecutivo de la aseguradora"
+        },
+        {
+          "label": "C",
+          "text": "El agente de seguros"
+        },
+        {
+          "label": "D",
+          "text": "El beneficiario principal"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "La disposición de Contrato Completo establece que solo un funcionario ejecutivo de la compañía de seguros puede realizar cambios al contrato. Expresamente establece que un agente no tiene autoridad para alterar el contrato ni renunciar a cualquiera de sus disposiciones.",
+      "wrong_explanations": {
+        "A": "El presidente de la compañía de seguros es un funcionario ejecutivo y típicamente tiene autoridad legal para aprobar cambios.",
+        "B": "Los funcionarios ejecutivos están específicamente autorizados para aprobar enmiendas contractuales.",
+        "D": "Aunque un beneficiario no puede cambiar el contrato, la disposición existe específicamente para aclarar los límites de la autoridad del agente para obligar a la aseguradora."
+      },
+      "trap_type": "TP007-Role_Reversal",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T20:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T14:30:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B08-Q013",
+      "rule_ids": [
+        "RC-HLTH-012"
+      ],
+      "domain": "Tipos de pólizas",
+      "subdomain": "Seguro de ingresos por discapacidad",
+      "difficulty": "easy",
+      "format": "definition_scenario",
+      "stem": "En una póliza individual de ingresos por discapacidad, ¿qué representa el “período de beneficios”?",
+      "options": [
+        {
+          "label": "A",
+          "text": "El tiempo que el asegurado debe esperar antes de que comiencen los beneficios."
+        },
+        {
+          "label": "B",
+          "text": "La duración máxima durante la cual la póliza pagará beneficios por discapacidad por un período continuo de discapacidad."
+        },
+        {
+          "label": "C",
+          "text": "El período durante el cual el titular de la póliza puede renovar el contrato."
+        },
+        {
+          "label": "D",
+          "text": "El número de días que tiene un asegurado para presentar una prueba formal de pérdida."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "El período de beneficios en una póliza de ingresos por discapacidad es la cantidad máxima de tiempo (por ejemplo, 2 años, 5 años o hasta los 65 años) durante la cual la aseguradora pagará beneficios de ingresos por una discapacidad cubierta. Un período de beneficios más largo resulta en una prima más alta.",
+      "wrong_explanations": {
+        "A": "El tiempo que el asegurado debe esperar antes de que comiencen los beneficios se conoce como período de eliminación o período de espera.",
+        "C": "Esto se relaciona con disposiciones de renovabilidad (como garantizada renovable o no cancelable), no con el período de beneficios.",
+        "D": "El plazo para presentar prueba de pérdida es una disposición estándar de reclamaciones (típicamente 90 días), no el período de beneficios."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T20:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T14:30:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B08-Q014",
+      "rule_ids": [
+        "RC-PROV-001"
+      ],
+      "domain": "Estatutos de Texas relacionados con vida, salud y HMO",
+      "subdomain": "Seguro de cuidado a largo plazo",
+      "difficulty": "hard",
+      "format": "direct_rule",
+      "stem": "Bajo la guía del consumidor de Texas para seguro de cuidado a largo plazo, ¿cuánto tiempo debe permitirse al comprador revisar una póliza de cuidado a largo plazo recién entregada y devolverla para obtener un reembolso si no está satisfecho?",
+      "options": [
+        {
+          "label": "A",
+          "text": "10 días"
+        },
+        {
+          "label": "B",
+          "text": "15 días"
+        },
+        {
+          "label": "C",
+          "text": "20 días"
+        },
+        {
+          "label": "D",
+          "text": "30 días"
+        }
+      ],
+      "correct_answer": "D",
+      "correct_explanation": "La guía del consumidor de Texas indica que las compañías de seguro de cuidado a largo plazo deben dar a los compradores al menos 30 días después de recibir la póliza para revisarla y devolverla a cambio de un reembolso de cualquier prima pagada.",
+      "wrong_explanations": {
+        "A": "Diez días es común para muchas pólizas ordinarias, pero la guía de Texas para cuidado a largo plazo da a los compradores al menos 30 días.",
+        "B": "Quince días no es el estándar de período de revisión gratuito para cuidado a largo plazo en Texas.",
+        "C": "Veinte días no es el estándar de período de revisión gratuito para cuidado a largo plazo en Texas."
+      },
+      "trap_type": "TP004-Timeline_Trap",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T20:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T14:30:00Z",
+          "actor": "chatgpt"
+        },
+        {
+          "status": "corrected",
+          "timestamp": "2026-03-25T14:30:00Z",
+          "actor": "chatgpt",
+          "note": "Reemplazó el ángulo casi duplicado del período de revisión gratuito de Medigap con el ángulo del período de revisión gratuito de cuidado a largo plazo en Texas."
+        }
+      ]
+    },
+    {
+      "question_id": "B08-Q015",
+      "rule_ids": [
+        "RC-LIFE-025"
+      ],
+      "domain": "Cláusulas adicionales, disposiciones, opciones y exclusiones de la póliza",
+      "subdomain": "Opciones de no caducidad",
+      "difficulty": "medium",
+      "format": "concept_application",
+      "stem": "Un titular de póliza deja de pagar primas en una póliza de vida entera y elige la opción de no caducidad de “Seguro pagado reducido” (Reduced Paid-Up). ¿Cómo cambiará la cobertura de la póliza?",
+      "options": [
+        {
+          "label": "A",
+          "text": "El monto nominal permanece igual, pero la cobertura se convierte en seguro temporal y eventualmente expirará."
+        },
+        {
+          "label": "B",
+          "text": "El valor en efectivo actúa como una prima única para comprar una póliza de vida entera totalmente pagada con un beneficio por fallecimiento menor."
+        },
+        {
+          "label": "C",
+          "text": "La aseguradora usa el valor en efectivo para pagar automáticamente la prima existente hasta que se agote el valor en efectivo."
+        },
+        {
+          "label": "D",
+          "text": "La póliza se cancela, y el valor en efectivo se paga como una suma global única al titular."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Bajo la opción de no caducidad de seguro pagado reducido (Reduced Paid-Up), la aseguradora usa el valor en efectivo acumulado de la póliza como una prima única neta para comprar una póliza permanente (vida entera) totalmente pagada. La nueva póliza cubre al asegurado de por vida, pero con un monto nominal reducido en comparación con la póliza original.",
+      "wrong_explanations": {
+        "A": "Esto describe la opción de no caducidad de seguro temporal extendido (Extended Term).",
+        "C": "Esto describe la disposición de préstamo automático para primas (Automatic Premium Loan, APL), no una opción de no caducidad.",
+        "D": "Esto describe la opción de no caducidad de rescate en efectivo (Cash Surrender)."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T20:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T14:30:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B08-Q016",
+      "rule_ids": [
+        "RC-LIC-009"
+      ],
+      "domain": "Estatutos de Texas comunes a todas las líneas",
+      "subdomain": "Responsabilidades y mantenimiento del agente",
+      "difficulty": "medium",
+      "format": "direct_rule",
+      "stem": "Cuando un agente de seguros cobra pagos de primas de clientes en nombre de una aseguradora, el agente mantiene esos fondos en una posición de confianza financiera. Bajo la ley de Texas, esta obligación se conoce como actuar en qué capacidad?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Una capacidad ejecutiva"
+        },
+        {
+          "label": "B",
+          "text": "Una capacidad fiduciaria"
+        },
+        {
+          "label": "C",
+          "text": "Una capacidad administrativa"
+        },
+        {
+          "label": "D",
+          "text": "Una capacidad de indemnización"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Un agente que maneja primas actúa en una capacidad fiduciaria, lo que significa una posición de especial confianza financiera. El agente está legalmente obligado a manejar los fondos de manera responsable y mantenerlos separados de cuentas personales o cuentas operativas del negocio (evitando la mezcla de fondos).",
+      "wrong_explanations": {
+        "A": "La capacidad ejecutiva implica dirección sobre estrategia corporativa, no el deber legal específico de manejar fondos de clientes.",
+        "C": "La capacidad administrativa se refiere a deberes clericales, no al alto estándar legal de confianza requerido para fondos.",
+        "D": "La indemnización se refiere a hacer financieramente entero a un asegurado después de una pérdida, no al deber del agente respecto a las primas."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T20:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T14:30:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B08-Q017",
+      "rule_ids": [
+        "RC-HLTH-008"
+      ],
+      "domain": "Cláusulas adicionales, disposiciones, opciones y exclusiones de la póliza",
+      "subdomain": "Disposiciones estándar de salud",
+      "difficulty": "easy",
+      "format": "direct_rule",
+      "stem": "Bajo la Ley de Disposiciones Uniformes de Pólizas Individuales de Accidente y Enfermedad, después de que se haya presentado prueba escrita de pérdida, ¿cuánto tiempo debe esperar generalmente un asegurado antes de iniciar una acción legal contra la aseguradora?",
+      "options": [
+        {
+          "label": "A",
+          "text": "30 días"
+        },
+        {
+          "label": "B",
+          "text": "45 días"
+        },
+        {
+          "label": "C",
+          "text": "60 días"
+        },
+        {
+          "label": "D",
+          "text": "90 días"
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "La disposición de Acciones Legales generalmente prohíbe una demanda hasta 60 días después de que se haya presentado prueba escrita de pérdida y también limita la demanda a dentro de tres años después de que se requiera la prueba de pérdida.",
+      "wrong_explanations": {
+        "A": "Treinta días no es el período de espera estándar antes de demandar bajo la disposición de acciones legales.",
+        "B": "Cuarenta y cinco días se asocia con ciertos plazos de reclamaciones limpias, no con el período de espera para acciones legales.",
+        "D": "Noventa días se asocia comúnmente con la presentación de prueba de pérdida, no con el período de espera antes de presentar una demanda."
+      },
+      "trap_type": "TP004-Timeline_Trap",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T20:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T14:30:00Z",
+          "actor": "chatgpt"
+        },
+        {
+          "status": "corrected",
+          "timestamp": "2026-03-25T14:30:00Z",
+          "actor": "chatgpt",
+          "note": "Confirmado como un ángulo nuevo de acciones legales en lugar de un ángulo duplicado de período de gracia."
+        }
+      ]
+    },
+    {
+      "question_id": "B08-Q018",
+      "rule_ids": [
+        "RC-GRP-002"
+      ],
+      "domain": "Tipos de pólizas",
+      "subdomain": "Seguro de salud grupal",
+      "difficulty": "hard",
+      "format": "scenario",
+      "stem": "Un empleado agota los 18 meses estándar de cobertura de continuación COBRA después de la terminación del empleo. Poco antes de que termine el período de 18 meses, el plan notifica al beneficiario calificado que el plan ofrece una opción de conversión a un plan de salud individual. Bajo las reglas federales de COBRA, ¿qué debe hacer el plan respecto a esa opción de conversión?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Requerir que el beneficiario proporcione evidencia de asegurabilidad antes de inscribirse en el plan de conversión."
+        },
+        {
+          "label": "B",
+          "text": "Proporcionar al beneficiario la opción de inscribirse en un plan de salud de conversión durante el período de 180 días que termina con la expiración de COBRA, si tal opción de conversión está generalmente disponible bajo el plan."
+        },
+        {
+          "label": "C",
+          "text": "Extender automáticamente COBRA por otros 18 meses con la misma prima."
+        },
+        {
+          "label": "D",
+          "text": "Ofrecer una póliza Medigap independientemente de la edad o estatus de Medicare del beneficiario."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "La ley federal COBRA requiere que, si una opción de conversión a plan de salud está generalmente disponible bajo el plan, el beneficiario calificado debe recibir esa opción durante el período de 180 días que termina cuando expira el período de continuación COBRA.",
+      "wrong_explanations": {
+        "A": "La regla de opción de conversión de COBRA trata sobre hacer disponible la opción; no está planteada como un nuevo requisito de evidencia de asegurabilidad en el estatuto COBRA.",
+        "C": "COBRA estándar no se extiende automáticamente otros 18 meses después del agotamiento ordinario salvo que exista una base legal separada, como discapacidad o un segundo evento calificado.",
+        "D": "Los derechos Medigap son derechos separados relacionados con Medicare y no son el remedio estándar al agotarse COBRA."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T20:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T14:30:00Z",
+          "actor": "chatgpt"
+        },
+        {
+          "status": "corrected",
+          "timestamp": "2026-03-25T14:30:00Z",
+          "actor": "chatgpt",
+          "note": "Reemplazó lenguaje de conversión de 31 días no sustentado con la regla de opción de conversión de COBRA."
+        }
+      ]
+    },
+    {
+      "question_id": "B08-Q019",
+      "rule_ids": [
+        "RC-HLTH-008"
+      ],
+      "domain": "Cláusulas adicionales, disposiciones, opciones y exclusiones de la póliza",
+      "subdomain": "Disposiciones estándar de salud",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Una mujer casada tiene seguro de salud grupal a través de su propio empleador y también está cubierta como dependiente en el plan de salud grupal de su esposo. Si incurre en un gasto médico, ¿cómo determinará la disposición de Coordinación de Beneficios (COB) el orden de pago?",
+      "options": [
+        {
+          "label": "A",
+          "text": "El plan que ha estado vigente por más tiempo es primario."
+        },
+        {
+          "label": "B",
+          "text": "El plan de su esposo es primario porque él es el jefe del hogar."
+        },
+        {
+          "label": "C",
+          "text": "El plan de su empleador es el pagador primario, y el plan de su esposo es el pagador secundario."
+        },
+        {
+          "label": "D",
+          "text": "Los gastos se dividen por igual 50/50 entre los dos planes."
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "Bajo las reglas estándar de Coordinación de Beneficios (COB), el plan de salud que cubre a una persona como empleado (el titular principal de la póliza) siempre paga primero. El plan que cubre a la persona como dependiente paga en segundo lugar.",
+      "wrong_explanations": {
+        "A": "La cantidad de tiempo que una póliza ha estado vigente no determina el estatus primario entre un plan de empleado y un plan de dependiente.",
+        "B": "Jefe de hogar es un concepto obsoleto y no determina la coordinación de seguros.",
+        "D": "Las compañías de seguros coordinan para asegurar que se pague hasta el 100% de la reclamación, pero no dividen automáticamente las facturas 50/50; el plan primario paga primero hasta sus límites."
+      },
+      "trap_type": null,
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T20:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T14:30:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B08-Q020",
+      "rule_ids": [
+        "RC-HLTH-015"
+      ],
+      "domain": "Tipos de pólizas",
+      "subdomain": "Seguro dental",
+      "difficulty": "medium",
+      "format": "definition_scenario",
+      "stem": "Un plan de seguro dental paga beneficios con base en los cargos usuales, acostumbrados y razonables (Usual, Customary, and Reasonable, UCR) del área geográfica, y exige que el asegurado cumpla un deducible anual antes de aplicar un porcentaje de coseguro. ¿Qué tipo de plan dental es este?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Un plan dental programado (Scheduled)"
+        },
+        {
+          "label": "B",
+          "text": "Un plan dental integral (Comprehensive) o no programado (Non-Scheduled)"
+        },
+        {
+          "label": "C",
+          "text": "Una Organización para el Mantenimiento de la Salud Dental (DHMO)"
+        },
+        {
+          "label": "D",
+          "text": "Un plan dental de gastos médicos básicos"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Los planes dentales integrales (Comprehensive) o no programados (Non-Scheduled) funcionan de manera muy similar al seguro médico mayor. Los beneficios se basan en cargos usuales, acostumbrados y razonables (UCR), y utilizan deducibles y coseguro (por ejemplo, divisiones 80/20 para procedimientos básicos).",
+      "wrong_explanations": {
+        "A": "Un plan programado paga beneficios con base en una cantidad fija específica en dólares listada en una tabla para cada procedimiento, independientemente del costo UCR real.",
+        "C": "Una DHMO proporciona atención prepagada a través de una red de dentistas, típicamente usando copagos en lugar de cargos UCR, deducibles y coseguro.",
+        "D": "Los planes de gastos médicos básicos son coberturas de salud de primer dólar con límites bajos, no una clasificación para planes dentales."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T20:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T14:30:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B08-Q021",
+      "rule_ids": [
+        "RC-UW-001"
+      ],
+      "domain": "Completar la solicitud, suscripción y entrega de la póliza",
+      "subdomain": "Procedimientos de solicitud",
+      "difficulty": "easy",
+      "format": "concept_application",
+      "stem": "En los contratos de seguro, las declaraciones hechas por el solicitante en la solicitud que se creen verdaderas según su mejor conocimiento, pero que no se garantizan como absolutamente verdaderas, se conocen como:",
+      "options": [
+        {
+          "label": "A",
+          "text": "Garantías"
+        },
+        {
+          "label": "B",
+          "text": "Representaciones"
+        },
+        {
+          "label": "C",
+          "text": "Ocultamientos"
+        },
+        {
+          "label": "D",
+          "text": "Renuncias"
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Las declaraciones en una solicitud de seguro se consideran legalmente representaciones. Una representación es una declaración que se cree verdadera según el mejor conocimiento y creencia de la persona. Una aseguradora solo puede anular un contrato si se prueba que una representación fue una declaración falsa material.",
+      "wrong_explanations": {
+        "A": "Una garantía es una declaración que se garantiza como absolutamente verdadera. El incumplimiento de una garantía puede anular automáticamente un contrato.",
+        "C": "El ocultamiento es la retención intencional de hechos materiales que afectarían una decisión de suscripción.",
+        "D": "Una renuncia es la relinquishment voluntaria de un derecho legal conocido."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T20:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T14:30:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B08-Q022",
+      "rule_ids": [
+        "RC-TAX-001"
+      ],
+      "domain": "Impuestos, jubilación y otros conceptos de seguros",
+      "subdomain": "Planes de salud con ventajas fiscales",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Una persona de 66 años está inscrita en Medicare Parte A y Parte B. También está cubierta por un plan de salud con deducible alto (High Deductible Health Plan, HDHP) a través de su empleador. ¿Es elegible para abrir y contribuir a una Cuenta de Ahorros para la Salud (Health Savings Account, HSA)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Sí, porque está cubierta por un HDHP elegible."
+        },
+        {
+          "label": "B",
+          "text": "Sí, pero solo puede contribuir hasta la mitad del límite anual estándar."
+        },
+        {
+          "label": "C",
+          "text": "No, porque las personas inscritas en Medicare tienen estrictamente prohibido contribuir a una HSA."
+        },
+        {
+          "label": "D",
+          "text": "No, porque las personas mayores de 65 años no pueden trabajar y mantener beneficios de empleador."
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "Para ser elegible para contribuir a una Cuenta de Ahorros para la Salud (HSA), una persona debe estar cubierta por un plan de salud con deducible alto (HDHP) y NO debe estar cubierta por otro seguro de salud integral. La inscripción en Medicare descalifica inmediatamente a una persona para hacer contribuciones adicionales a una HSA.",
+      "wrong_explanations": {
+        "A": "Tener un HDHP es requerido, pero no es la única regla. La presencia de cobertura de Medicare la descalifica.",
+        "B": "No hay una regla de contribución parcial basada en tener 65 años o más; la inscripción en Medicare detiene por completo las contribuciones.",
+        "D": "Las personas mayores de 65 años absolutamente pueden seguir trabajando y mantener beneficios del empleador, pero no pueden contribuir a una HSA si están inscritas en Medicare."
+      },
+      "trap_type": "TP002-Distractor_Misdirection",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T20:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T14:30:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B08-Q023",
+      "rule_ids": [
+        "RC-HLTH-008"
+      ],
+      "domain": "Cláusulas adicionales, disposiciones, opciones y exclusiones de la póliza",
+      "subdomain": "Disposiciones estándar de salud",
+      "difficulty": "hard",
+      "format": "scenario",
+      "stem": "Una póliza individual de seguro de salud contiene la disposición opcional de “Declaración incorrecta de edad” (Misstatement of Age). Si la aseguradora descubre durante la investigación de una reclamación que el asegurado declaró una edad menor en la solicitud original, ¿cómo se permite que responda la aseguradora?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Anulando completamente la póliza y reembolsando las primas, citando fraude."
+        },
+        {
+          "label": "B",
+          "text": "Ajustando los beneficios de la reclamación al monto que la prima realmente pagada habría comprado a la edad correcta."
+        },
+        {
+          "label": "C",
+          "text": "Pagando la reclamación completa, siempre que haya pasado el límite de incontestabilidad de dos años."
+        },
+        {
+          "label": "D",
+          "text": "Facturando retroactivamente al asegurado la diferencia de prima no pagada antes de pagar la reclamación."
+        }
+      ],
+      "correct_answer": "B",
+      "correct_explanation": "Bajo la disposición opcional de Declaración incorrecta de edad en seguros de salud (que refleja la regla del seguro de vida), la aseguradora no anula la póliza. En cambio, ajusta equitativamente los beneficios pagaderos para que coincidan con lo que las primas pagadas habrían comprado si la edad correcta se hubiera indicado en la solicitud.",
+      "wrong_explanations": {
+        "A": "La póliza no se anula; el beneficio simplemente se ajusta para hacer justo el contrato.",
+        "C": "La cláusula de incontestabilidad (Límite de Tiempo sobre Ciertas Defensas) expresamente no protege declaraciones incorrectas de edad. La aseguradora puede ajustar por edad en cualquier momento.",
+        "D": "La aseguradora ajusta el monto del beneficio hacia afuera; no emite facturas retroactivas por primas atrasadas."
+      },
+      "trap_type": "TP008-Fraud_Exception_Misdirection",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T20:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T14:30:00Z",
+          "actor": "chatgpt"
+        }
+      ]
+    },
+    {
+      "question_id": "B08-Q024",
+      "rule_ids": [
+        "RC-UTP-001"
+      ],
+      "domain": "Estatutos de Texas comunes a todas las líneas",
+      "subdomain": "Unfair Trade Practices",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Bajo las reglas de publicidad de Texas, un anuncio de seguros debe identificar cuál de los siguientes?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Solo la imprenta que produjo el anuncio."
+        },
+        {
+          "label": "B",
+          "text": "Solo la oficina del Texas Department of Insurance que regula el producto."
+        },
+        {
+          "label": "C",
+          "text": "La persona o entidad responsable del anuncio."
+        },
+        {
+          "label": "D",
+          "text": "Solo el número de formulario de la póliza y la fecha de presentación."
+        }
+      ],
+      "correct_answer": "C",
+      "correct_explanation": "Las reglas de publicidad de Texas requieren que un anuncio identifique a la persona o entidad responsable del anuncio, como la aseguradora o el agente cuyo nombre licenciado o identificador aprobado aparece en el anuncio.",
+      "wrong_explanations": {
+        "A": "El proveedor de impresión no es la identificación requerida de la parte responsable.",
+        "B": "La regla trata de identificar al anunciante responsable, no al regulador.",
+        "D": "Un número de formulario de póliza puede aparecer en algunos contextos, pero no es el requisito central de identificación de la regla de publicidad."
+      },
+      "trap_type": "TP007-Role_Reversal",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T20:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T14:30:00Z",
+          "actor": "chatgpt"
+        },
+        {
+          "status": "corrected",
+          "timestamp": "2026-03-25T14:30:00Z",
+          "actor": "chatgpt",
+          "note": "Reemplazó el ángulo demasiado amplio de responsabilidad de la aseguradora con la regla sustentada de identificación de la entidad responsable."
+        }
+      ]
+    },
+    {
+      "question_id": "B08-Q025",
+      "rule_ids": [
+        "RC-HLTH-008"
+      ],
+      "domain": "Cláusulas adicionales, disposiciones, opciones y exclusiones de la póliza",
+      "subdomain": "Disposiciones estándar de salud",
+      "difficulty": "medium",
+      "format": "scenario",
+      "stem": "Un asegurado restablece una póliza individual de seguro de salud caducada el 1 de octubre. El 5 de octubre, el asegurado es diagnosticado con una enfermedad e incurre gastos médicos. El 8 de octubre, el asegurado se rompe un brazo en una caída. Bajo la disposición estándar de Restablecimiento, ¿cómo manejará la aseguradora estas reclamaciones?",
+      "options": [
+        {
+          "label": "A",
+          "text": "La aseguradora cubrirá tanto la enfermedad como el brazo roto porque la póliza fue restablecida antes de las pérdidas."
+        },
+        {
+          "label": "B",
+          "text": "La aseguradora denegará ambas reclamaciones debido a un período probatorio obligatorio de 15 días después del restablecimiento."
+        },
+        {
+          "label": "C",
+          "text": "La aseguradora cubrirá la enfermedad pero denegará el brazo roto."
+        },
+        {
+          "label": "D",
+          "text": "La aseguradora cubrirá el brazo roto, pero denegará la reclamación por enfermedad porque la enfermedad no está cubierta hasta 10 días después del restablecimiento."
+        }
+      ],
+      "correct_answer": "D",
+      "correct_explanation": "Para proteger contra la selección adversa, la disposición uniforme de Restablecimiento establece que una vez que una póliza de salud es restablecida, la cobertura por lesión accidental comienza inmediatamente, pero la cobertura por enfermedad está sujeta a un período de espera de 10 días. Por lo tanto, el brazo roto (lesión) está cubierto, pero la enfermedad (ocurrida en el día 5) es denegada.",
+      "wrong_explanations": {
+        "A": "Las reclamaciones por enfermedad están excluidas durante los primeros 10 días después del restablecimiento.",
+        "B": "Las lesiones accidentales están cubiertas inmediatamente al restablecimiento, no retrasadas por un período probatorio.",
+        "C": "Esto es exactamente lo opuesto de la regla; las lesiones están cubiertas inmediatamente, mientras que la enfermedad requiere una espera de 10 días."
+      },
+      "trap_type": "TP003-Confusion_Pair",
+      "source_confidence": "high",
+      "review_status": "validated",
+      "status_history": [
+        {
+          "status": "draft",
+          "timestamp": "2026-03-24T20:00:00Z",
+          "actor": "gemini"
+        },
+        {
+          "status": "validated",
+          "timestamp": "2026-03-25T14:30:00Z",
+          "actor": "chatgpt"
+        },
+        {
+          "status": "legal_checked",
+          "timestamp": "2026-03-25T14:30:00Z",
+          "actor": "chatgpt",
+          "note": "Confirmó que una póliza de salud restablecida cubre accidentes inmediatamente y enfermedad comenzando más de 10 días después del restablecimiento."
+        }
+      ]
+    }
+  ]
+}
