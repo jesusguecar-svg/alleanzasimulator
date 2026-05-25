@@ -2,7 +2,7 @@ import { normalizeQuestion } from './normalizeQuestions';
 import { validateQuestions } from './validateQuestions';
 import type { NormalizedQuestion } from '../types/question';
 
-const modules = import.meta.glob('/validated_questions/*.json', { eager: true });
+const modules = import.meta.glob('../../validated_questions/*.json', { eager: true });
 
 export function loadQuestions(): { questions: NormalizedQuestion[]; invalidCount: number } {
   const rawQuestions: unknown[] = [];
