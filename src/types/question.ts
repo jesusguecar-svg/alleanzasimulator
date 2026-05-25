@@ -7,6 +7,7 @@ export type NormalizedQuestion = {
   options: string[];
   correctAnswer: string;
   explanation?: string;
+  optionExplanations?: Record<string, string>;
   source?: string;
   citation?: string;
   tags?: string[];

@@ -46,7 +46,7 @@ export default function App() {
   const showFeedback = !showAtEnd && Boolean(selected);
 
   return <div className='max-w-3xl mx-auto p-4 space-y-3'>
-    <QuestionCard q={q} index={index} total={session.length} selected={selected} onSelect={(o)=>setAnswers((a)=>({...a,[q.id]:o}))} showFeedback={showFeedback} showAtEnd={showAtEnd} correct={selected===q.correctAnswer} />
+    <QuestionCard q={q} index={index} total={session.length} selected={selected} onSelect={(o)=>setAnswers((a)=>(a[q.id]?a:{...a,[q.id]:o}))} showFeedback={showFeedback} showAtEnd={showAtEnd} correct={selected===q.correctAnswer} />
     <div className='flex justify-between'>
       <button onClick={()=>setIndex((i)=>Math.max(0,i-1))} className='border rounded px-3 py-2'>Anterior</button>
       <button onClick={()=>{const p=getProgress(); const isCorrect=answers[q.id]===q.correctAnswer; p.answeredIds=[...new Set([...p.answeredIds,q.id])]; if (isCorrect) p.correctIds=[...new Set([...p.correctIds,q.id])]; else p.incorrectIds=[...new Set([...p.incorrectIds,q.id])]; p.attempts[q.id]=(p.attempts[q.id]||0)+1; saveProgress(p); setIndex((i)=>i+1);}} className='bg-blue-600 text-white rounded px-3 py-2'>{index===session.length-1?'Terminar sesión':'Siguiente'}</button>

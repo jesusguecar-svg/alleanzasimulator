@@ -38,6 +38,24 @@ function resolveCorrectAnswer(raw: any, options: string[]): string {
   return direct;
 }
 
+function buildOptionExplanations(raw: any): Record<string, string> | undefined {
+  const wrong = raw.wrong_explanations;
+  if (!wrong || typeof wrong !== 'object' || !Array.isArray(raw.options)) return undefined;
+
+  const explanations: Record<string, string> = {};
+
+  for (const option of raw.options as Array<{ label?: unknown; text?: unknown }>) {
+    const text = asString(option?.text);
+    const label = asString(option?.label);
+    if (!text || !label) continue;
+
+    const explanation = asString((wrong as Record<string, unknown>)[label]);
+    if (explanation) explanations[text] = explanation;
+  }
+
+  return Object.keys(explanations).length ? explanations : undefined;
+}
+
 export function normalizeQuestion(raw: any): NormalizedQuestion {
   const options = normalizeOptions(raw.options ?? raw.choices ?? raw.answers);
   const correct = resolveCorrectAnswer(raw, options);
@@ -51,6 +69,7 @@ export function normalizeQuestion(raw: any): NormalizedQuestion {
     options,
     correctAnswer: correct,
     explanation: asString(raw.explanation ?? raw.correct_explanation),
+    optionExplanations: buildOptionExplanations(raw),
     source: asString(raw.source),
     citation: asString(raw.citation),
     tags: Array.isArray(raw.tags) ? raw.tags.map((t: unknown) => String(t)) : undefined,
