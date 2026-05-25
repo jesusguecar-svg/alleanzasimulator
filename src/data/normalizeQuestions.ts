@@ -1,4 +1,5 @@
 import type { NormalizedQuestion } from '../types/question';
+import { normalizeDomainName } from './domainCatalog';
 
 function asString(value: unknown): string | undefined {
   return typeof value === 'string' && value.trim() ? value.trim() : undefined;
@@ -62,7 +63,7 @@ export function normalizeQuestion(raw: any): NormalizedQuestion {
 
   return {
     id: asString(raw.id ?? raw.question_id) ?? '',
-    domain: asString(raw.domain) ?? 'General',
+    domain: normalizeDomainName(asString(raw.domain)),
     subdomain: asString(raw.subdomain),
     difficulty: asString(raw.difficulty)?.toLowerCase() ?? 'medium',
     question: asString(raw.question ?? raw.prompt ?? raw.stem) ?? '',

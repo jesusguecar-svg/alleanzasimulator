@@ -24,6 +24,14 @@ export function loadQuestions(): { questions: NormalizedQuestion[]; invalidCount
   const normalized = rawQuestions.map(normalizeQuestion);
   const { valid, invalid } = validateQuestions(normalized);
 
+  if (import.meta.env.DEV) {
+    const domainCounts = valid.reduce<Record<string, number>>((acc, q) => {
+      acc[q.domain] = (acc[q.domain] ?? 0) + 1;
+      return acc;
+    }, {});
+    console.table(domainCounts);
+  }
+
   if (import.meta.env.DEV && invalid.length) {
     console.warn('Preguntas inválidas detectadas', invalid);
   }

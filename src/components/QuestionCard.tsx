@@ -1,10 +1,10 @@
 import type { SessionQuestion } from '../types/question';
 
-type Props = { q: SessionQuestion; index: number; total: number; selected?: string; onSelect: (o: string)=>void; showFeedback: boolean; showAtEnd: boolean; correct?: boolean };
+type Props = { q: SessionQuestion; index: number; total: number; selected?: string; onSelect: (o: string)=>void; showFeedback: boolean; correct?: boolean };
 
-export function QuestionCard({ q, index, total, selected, onSelect, showFeedback, showAtEnd }: Props) {
+export function QuestionCard({ q, index, total, selected, onSelect, showFeedback }: Props) {
   const isLocked = Boolean(selected);
-  const shouldShowPerOptionFeedback = showFeedback || showAtEnd;
+  const shouldShowPerOptionFeedback = showFeedback;
 
   return <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-4 sm:p-6 space-y-4">
     <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 font-medium">Pregunta {index + 1} de {total}</p>

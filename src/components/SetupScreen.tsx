@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import type { NormalizedQuestion } from '../types/question';
+import { CANONICAL_DOMAINS } from '../data/domainCatalog';
 
 type Props = {
   questions: NormalizedQuestion[];
@@ -20,6 +21,8 @@ type Props = {
   availableCount: number;
   onStart: () => void;
   message?: string;
+  recommendedPathMessage?: string;
+  onBackToOnboarding?: () => void;
 };
 
 export function SetupScreen(p: Props) {
@@ -30,7 +33,10 @@ export function SetupScreen(p: Props) {
       const key = clean.toLowerCase();
       if (!unique.has(key)) unique.set(key, clean);
     }
-    return Array.from(unique.values()).sort((a, b) => a.localeCompare(b));
+    const available = Array.from(unique.values());
+    const canonicalOrdered = CANONICAL_DOMAINS.filter((d) => available.includes(d));
+    const extra = available.filter((d) => !CANONICAL_DOMAINS.includes(d as (typeof CANONICAL_DOMAINS)[number])).sort((a, b) => a.localeCompare(b));
+    return [...canonicalOrdered, ...extra];
   }, [p.questions]);
 
   const diffs = ['easy', 'medium', 'hard'];
@@ -54,6 +60,16 @@ export function SetupScreen(p: Props) {
 
     <section className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-4 space-y-4">
       <h2 className="font-semibold">Filtros y opciones</h2>
+      {p.recommendedPathMessage && (
+        <div className="rounded-xl border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-950/30 p-3 space-y-1">
+          <p className="text-sm text-blue-800 dark:text-blue-200">{p.recommendedPathMessage}</p>
+          {p.onBackToOnboarding && (
+            <button onClick={p.onBackToOnboarding} className="text-xs underline text-blue-700 dark:text-blue-300">
+              Cambiar ruta
+            </button>
+          )}
+        </div>
+      )}
 
       <div><p className="text-sm mb-2">Dificultad</p><div className="flex gap-2 flex-wrap">{diffs.map((d)=><button key={d} onClick={()=>p.setSelectedDifficulties(p.selectedDifficulties.includes(d)?p.selectedDifficulties.filter(x=>x!==d):[...p.selectedDifficulties,d])} className={`px-3 py-1 rounded border ${p.selectedDifficulties.includes(d)?'bg-blue-100 dark:bg-blue-900/40 border-blue-400':'bg-slate-50 dark:bg-slate-800 border-slate-300 dark:border-slate-600'}`}>{d==='easy'?'Fácil':d==='medium'?'Medio':'Difícil'}</button>)}</div></div>
 
