@@ -6,11 +6,14 @@ import { SetupScreen } from './components/SetupScreen';
 import { QuestionCard } from './components/QuestionCard';
 import { ResultsScreen } from './components/ResultsScreen';
 import { DashboardScreen } from './components/DashboardScreen';
+import { OnboardingScreen } from './components/OnboardingScreen';
 import type { SessionQuestion } from './types/question';
 
 const loaded = loadQuestions();
 const THEME_KEY = 'theme';
 const TIMER_KEY = 'useTimer';
+type OnboardingStep = 'choice' | 'level' | 'setup';
+type RecommendedPath = 'beginner' | 'advanced' | null;
 
 const getDefaultDarkMode = () => {
   if (typeof window === 'undefined') return false;
@@ -41,6 +44,8 @@ export default function App() {
   const [startedAt, setStartedAt] = useState<number | null>(null);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [showDashboard, setShowDashboard] = useState(false);
+  const [onboardingStep, setOnboardingStep] = useState<OnboardingStep>('choice');
+  const [recommendedPath, setRecommendedPath] = useState<RecommendedPath>(null);
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', darkMode);
@@ -77,13 +82,51 @@ export default function App() {
         </div>
       );
     }
+    const recommendedPathMessage = recommendedPath === 'beginner'
+      ? 'Ruta principiante activada: empieza escogiendo un dominio después de estudiar el capítulo correspondiente.'
+      : recommendedPath === 'advanced'
+        ? 'Ruta avanzada activada: toma primero un examen completo, luego revisa tus áreas débiles.'
+        : undefined;
+
+    const goSelfGuided = () => {
+      setRecommendedPath(null);
+      setOnboardingStep('setup');
+    };
+
+    const applyRecommendedPath = (path: Exclude<RecommendedPath, null>) => {
+      setRecommendedPath(path);
+      setDomains([]);
+      setDifficulties(['easy', 'medium', 'hard']);
+      setSkipAnswered(false);
+      if (path === 'beginner') {
+        setShowAtEnd(false);
+        setUseTimer(false);
+        setCount(filtered.length >= 25 ? 25 : 10);
+      } else {
+        setShowAtEnd(true);
+        setUseTimer(true);
+        setCount(filtered.length >= 100 ? 100 : Math.max(filtered.length, 1));
+      }
+      setOnboardingStep('setup');
+    };
+
     return <div className='min-h-screen py-8 bg-slate-50 dark:bg-slate-950'>
-      <SetupScreen questions={loaded.questions} selectedDomains={domains} setSelectedDomains={setDomains} selectedDifficulties={difficulties} setSelectedDifficulties={setDifficulties} skipAnswered={skipAnswered} setSkipAnswered={setSkipAnswered} showAtEnd={showAtEnd} setShowAtEnd={setShowAtEnd} useTimer={useTimer} setUseTimer={setUseTimer} darkMode={darkMode} setDarkMode={setDarkMode} count={count} setCount={setCount} availableCount={filtered.length} message={message} onStart={() => {
-        if (filtered.length === 0) return setMessage('No hay preguntas disponibles con los filtros seleccionados.');
-        if (count > filtered.length) return setMessage(`Solo hay ${filtered.length} preguntas disponibles.`);
-        const picked = shuffleArray(filtered).slice(0, count).map((q) => ({ ...q, shuffledOptions: shuffleArray(q.options) }));
-        setSession(picked); setAnswers({}); setIndex(0); setMessage(undefined); setStartedAt(Date.now()); setElapsedSeconds(0);
-      }} />
+      {onboardingStep !== 'setup' ? (
+        <OnboardingScreen
+          step={onboardingStep}
+          onSelfGuided={goSelfGuided}
+          onRecommended={() => setOnboardingStep('level')}
+          onBackToChoice={() => setOnboardingStep('choice')}
+          onChooseLevel={applyRecommendedPath}
+        />
+      ) : (
+        <SetupScreen questions={loaded.questions} selectedDomains={domains} setSelectedDomains={setDomains} selectedDifficulties={difficulties} setSelectedDifficulties={setDifficulties} skipAnswered={skipAnswered} setSkipAnswered={setSkipAnswered} showAtEnd={showAtEnd} setShowAtEnd={setShowAtEnd} useTimer={useTimer} setUseTimer={setUseTimer} darkMode={darkMode} setDarkMode={setDarkMode} count={count} setCount={setCount} availableCount={filtered.length} message={message} recommendedPathMessage={recommendedPathMessage} onBackToOnboarding={() => setOnboardingStep('choice')} onStart={() => {
+          if (filtered.length === 0) return setMessage('No hay preguntas disponibles con los filtros seleccionados.');
+          if (count > filtered.length) return setMessage(`Solo hay ${filtered.length} preguntas disponibles.`);
+          const picked = shuffleArray(filtered).slice(0, count).map((q) => ({ ...q, shuffledOptions: shuffleArray(q.options) }));
+          setSession(picked); setAnswers({}); setIndex(0); setMessage(undefined); setStartedAt(Date.now()); setElapsedSeconds(0);
+        }} />
+      )}
       <div className='max-w-3xl mx-auto px-4 mt-2'>
         <button
           className='text-sm underline text-blue-600 dark:text-blue-400'
@@ -129,7 +172,13 @@ export default function App() {
       <QuestionCard q={q} index={index} total={session.length} selected={selected} onSelect={(o)=>setAnswers((a)=>(a[q.id]?a:{...a,[q.id]:o}))} showFeedback={showFeedback} showAtEnd={showAtEnd} correct={selected===q.correctAnswer} />
       <div className='flex justify-between gap-3'>
         <button onClick={()=>setIndex((i)=>Math.max(0,i-1))} className='border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl px-4 py-2.5 text-sm sm:text-base min-h-11'>Anterior</button>
-        <button onClick={()=>{const p=getProgress(); const isCorrect=answers[q.id]===q.correctAnswer; p.answeredIds=[...new Set([...p.answeredIds,q.id])]; if (isCorrect) p.correctIds=[...new Set([...p.correctIds,q.id])]; else p.incorrectIds=[...new Set([...p.incorrectIds,q.id])]; p.attempts[q.id]=(p.attempts[q.id]||0)+1; saveProgress(p); setIndex((i)=>i+1);}} className='bg-blue-600 hover:bg-blue-700 text-white rounded-xl px-4 py-2.5 text-sm sm:text-base min-h-11'>{index===session.length-1?'Terminar sesión':'Siguiente'}</button>
+        <button
+          disabled={!selected}
+          onClick={()=>{if(!selected) return; const p=getProgress(); const isCorrect=answers[q.id]===q.correctAnswer; p.answeredIds=[...new Set([...p.answeredIds,q.id])]; if (isCorrect) p.correctIds=[...new Set([...p.correctIds,q.id])]; else p.incorrectIds=[...new Set([...p.incorrectIds,q.id])]; p.attempts[q.id]=(p.attempts[q.id]||0)+1; saveProgress(p); setIndex((i)=>i+1);}}
+          className={`rounded-xl px-4 py-2.5 text-sm sm:text-base min-h-11 text-white ${selected ? 'bg-blue-600 hover:bg-blue-700' : 'bg-slate-300 dark:bg-slate-700 cursor-not-allowed'}`}
+        >
+          {index===session.length-1?'Terminar sesión':'Siguiente'}
+        </button>
       </div>
     </div>
   </div>;
