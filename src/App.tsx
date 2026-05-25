@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { loadQuestions } from './data/loadQuestions';
 import { shuffleArray } from './utils/shuffle';
 import { clearProgress, getProgress, saveProgress } from './utils/storage';
@@ -19,6 +19,16 @@ export default function App() {
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [message, setMessage] = useState<string>();
+  const [startedAt, setStartedAt] = useState<number | null>(null);
+  const [elapsedSeconds, setElapsedSeconds] = useState(0);
+
+  useEffect(() => {
+    if (!session || startedAt === null || index >= session.length) return;
+    const id = window.setInterval(() => {
+      setElapsedSeconds(Math.floor((Date.now() - startedAt) / 1000));
+    }, 1000);
+    return () => window.clearInterval(id);
+  }, [session, startedAt, index]);
 
   const filtered = useMemo(() => {
     const p = getProgress();
@@ -31,20 +41,22 @@ export default function App() {
         if (filtered.length === 0) return setMessage('No hay preguntas disponibles con los filtros seleccionados.');
         if (count > filtered.length) return setMessage(`Solo hay ${filtered.length} preguntas disponibles.`);
         const picked = shuffleArray(filtered).slice(0, count).map((q) => ({ ...q, shuffledOptions: shuffleArray(q.options) }));
-        setSession(picked); setAnswers({}); setIndex(0); setMessage(undefined);
+        setSession(picked); setAnswers({}); setIndex(0); setMessage(undefined); setStartedAt(Date.now()); setElapsedSeconds(0);
       }} />
       <div className='max-w-3xl mx-auto px-4'><button className='text-sm underline' onClick={()=>{ if (confirm('¿Seguro que deseas reiniciar progreso?')) clearProgress(); }}>Reiniciar progreso</button></div>
     </div>;
   }
 
   if (index >= session.length) {
-    return <ResultsScreen questions={session} answers={answers} onRetryMissed={() => { const missed = session.filter((q)=>answers[q.id]!==q.correctAnswer); setSession(missed); setAnswers({}); setIndex(0);} } onNew={() => setSession(null)} />;
+    return <ResultsScreen questions={session} answers={answers} onRetryMissed={() => { const missed = session.filter((q)=>answers[q.id]!==q.correctAnswer); setSession(missed); setAnswers({}); setIndex(0); setStartedAt(Date.now()); setElapsedSeconds(0);} } onNew={() => setSession(null)} />;
   }
 
   const q = session[index];
   const selected = answers[q.id];
   const showFeedback = !showAtEnd && Boolean(selected);
   const completion = Math.round((index / session.length) * 100);
+  const minutes = String(Math.floor(elapsedSeconds / 60)).padStart(2, '0');
+  const seconds = String(elapsedSeconds % 60).padStart(2, '0');
 
   return <div className='max-w-3xl mx-auto p-4 sm:p-6 space-y-4'>
     <div className='bg-white rounded-2xl shadow-sm border border-slate-200 p-4 sm:p-5 space-y-3'>
@@ -58,6 +70,7 @@ export default function App() {
           style={{ width: `${completion}%` }}
         />
       </div>
+      <p className='text-xs sm:text-sm text-slate-600'>Tiempo: <span className='font-semibold text-slate-800'>{minutes}:{seconds}</span></p>
     </div>
 
     <QuestionCard q={q} index={index} total={session.length} selected={selected} onSelect={(o)=>setAnswers((a)=>(a[q.id]?a:{...a,[q.id]:o}))} showFeedback={showFeedback} showAtEnd={showAtEnd} correct={selected===q.correctAnswer} />
