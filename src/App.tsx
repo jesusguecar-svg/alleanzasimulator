@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useState } from 'react';
 import { loadQuestions } from './data/loadQuestions';
 import { shuffleArray } from './utils/shuffle';
-import { clearProgress, getProgress, saveProgress } from './utils/storage';
+import { clearProgress, getDashboardStats, getProgress, saveProgress } from './utils/storage';
 import { SetupScreen } from './components/SetupScreen';
 import { QuestionCard } from './components/QuestionCard';
 import { ResultsScreen } from './components/ResultsScreen';
+import { DashboardScreen } from './components/DashboardScreen';
 import type { SessionQuestion } from './types/question';
 
 const loaded = loadQuestions();
@@ -39,6 +40,7 @@ export default function App() {
   const [message, setMessage] = useState<string>();
   const [startedAt, setStartedAt] = useState<number | null>(null);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
+  const [showDashboard, setShowDashboard] = useState(false);
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', darkMode);
@@ -57,12 +59,24 @@ export default function App() {
     return () => window.clearInterval(id);
   }, [useTimer, session, startedAt, index]);
 
+  void getDashboardStats;
+
   const filtered = useMemo(() => {
     const p = getProgress();
     return loaded.questions.filter((q) => (domains.length ? domains.includes(q.domain) : true) && difficulties.includes(q.difficulty) && (!skipAnswered || !p.answeredIds.includes(q.id)));
   }, [domains, difficulties, skipAnswered]);
 
   if (!session) {
+    if (showDashboard) {
+      return (
+        <div className='min-h-screen py-8 bg-slate-50 dark:bg-slate-950'>
+          <DashboardScreen
+            allQuestions={loaded.questions}
+            onBack={() => setShowDashboard(false)}
+          />
+        </div>
+      );
+    }
     return <div className='min-h-screen py-8 bg-slate-50 dark:bg-slate-950'>
       <SetupScreen questions={loaded.questions} selectedDomains={domains} setSelectedDomains={setDomains} selectedDifficulties={difficulties} setSelectedDifficulties={setDifficulties} skipAnswered={skipAnswered} setSkipAnswered={setSkipAnswered} showAtEnd={showAtEnd} setShowAtEnd={setShowAtEnd} useTimer={useTimer} setUseTimer={setUseTimer} darkMode={darkMode} setDarkMode={setDarkMode} count={count} setCount={setCount} availableCount={filtered.length} message={message} onStart={() => {
         if (filtered.length === 0) return setMessage('No hay preguntas disponibles con los filtros seleccionados.');
@@ -70,6 +84,14 @@ export default function App() {
         const picked = shuffleArray(filtered).slice(0, count).map((q) => ({ ...q, shuffledOptions: shuffleArray(q.options) }));
         setSession(picked); setAnswers({}); setIndex(0); setMessage(undefined); setStartedAt(Date.now()); setElapsedSeconds(0);
       }} />
+      <div className='max-w-3xl mx-auto px-4 mt-2'>
+        <button
+          className='text-sm underline text-blue-600 dark:text-blue-400'
+          onClick={() => setShowDashboard(true)}
+        >
+          Ver mis estadísticas →
+        </button>
+      </div>
       <div className='max-w-3xl mx-auto px-4'><button className='text-sm underline text-slate-700 dark:text-slate-200' onClick={()=>{ if (confirm('¿Seguro que deseas reiniciar progreso?')) clearProgress(); }}>Reiniciar progreso</button></div>
     </div>;
   }
