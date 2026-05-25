@@ -42,6 +42,25 @@ export function QuestionCard({ q, index, total, selected, onSelect, showFeedback
               <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">{optionExplanation}</p>
             </div>}
           </div>
+        const isCorrectOption = showFeedback && o === q.correctAnswer;
+        const isWrongSelected = showFeedback && selected === o && selected !== q.correctAnswer;
+
+        return (
+          <button
+            key={o}
+            disabled={isLocked}
+            onClick={() => onSelect(o)}
+            className={[
+              'block w-full text-left rounded-2xl border px-4 py-3.5 sm:px-5 sm:py-4 text-sm sm:text-base transition-all duration-200 min-h-12',
+              'focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-200',
+              selected === o ? 'border-blue-500 bg-blue-50 text-blue-900' : 'border-slate-200 bg-white text-slate-800 hover:border-blue-300 hover:bg-slate-50',
+              isCorrectOption ? 'bg-green-100 border-green-500 text-green-900' : '',
+              isWrongSelected ? 'bg-red-100 border-red-500 text-red-900' : '',
+              isLocked ? 'cursor-not-allowed opacity-95' : 'active:scale-[0.99]'
+            ].join(' ')}
+          >
+            {o}
+          </button>
         );
       })}
     </div>
