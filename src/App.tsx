@@ -78,21 +78,12 @@ export default function App() {
       );
     }
     return <div className='min-h-screen py-8 bg-slate-50 dark:bg-slate-950'>
-      <SetupScreen questions={loaded.questions} selectedDomains={domains} setSelectedDomains={setDomains} selectedDifficulties={difficulties} setSelectedDifficulties={setDifficulties} skipAnswered={skipAnswered} setSkipAnswered={setSkipAnswered} showAtEnd={showAtEnd} setShowAtEnd={setShowAtEnd} useTimer={useTimer} setUseTimer={setUseTimer} darkMode={darkMode} setDarkMode={setDarkMode} count={count} setCount={setCount} availableCount={filtered.length} message={message} onStart={() => {
+      <SetupScreen questions={loaded.questions} selectedDomains={domains} setSelectedDomains={setDomains} selectedDifficulties={difficulties} setSelectedDifficulties={setDifficulties} skipAnswered={skipAnswered} setSkipAnswered={setSkipAnswered} showAtEnd={showAtEnd} setShowAtEnd={setShowAtEnd} useTimer={useTimer} setUseTimer={setUseTimer} darkMode={darkMode} setDarkMode={setDarkMode} count={count} setCount={setCount} availableCount={filtered.length} message={message} onShowDashboard={() => setShowDashboard(true)} onResetProgress={() => { if (confirm('¿Seguro que deseas reiniciar progreso?')) clearProgress(); }} onStart={() => {
         if (filtered.length === 0) return setMessage('No hay preguntas disponibles con los filtros seleccionados.');
         if (count > filtered.length) return setMessage(`Solo hay ${filtered.length} preguntas disponibles.`);
         const picked = shuffleArray(filtered).slice(0, count).map((q) => ({ ...q, shuffledOptions: shuffleArray(q.options) }));
         setSession(picked); setAnswers({}); setIndex(0); setMessage(undefined); setStartedAt(Date.now()); setElapsedSeconds(0);
       }} />
-      <div className='max-w-3xl mx-auto px-4 mt-2'>
-        <button
-          className='text-sm underline text-blue-600 dark:text-blue-400'
-          onClick={() => setShowDashboard(true)}
-        >
-          Ver mis estadísticas →
-        </button>
-      </div>
-      <div className='max-w-3xl mx-auto px-4'><button className='text-sm underline text-slate-700 dark:text-slate-200' onClick={()=>{ if (confirm('¿Seguro que deseas reiniciar progreso?')) clearProgress(); }}>Reiniciar progreso</button></div>
     </div>;
   }
 
