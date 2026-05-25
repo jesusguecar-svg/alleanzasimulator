@@ -59,40 +59,78 @@ export function ResultsScreen({ questions, answers, onRetryMissed, onNew }: Prop
     }))
     .sort((a, b) => b.percent - a.percent);
 
-  return <div className="max-w-4xl mx-auto p-4 space-y-4">
-    <div className="bg-white rounded-lg shadow p-4 space-y-3">
-      <h2 className="text-2xl font-bold">Tu scoreboard</h2>
-      <p className="text-slate-700">{motivationalMessage(percent)}</p>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-        <div className="border rounded p-3 bg-slate-50"><p className="text-xs text-slate-600">Puntaje</p><p className="text-2xl font-bold">{percent}%</p></div>
-        <div className="border rounded p-3 bg-green-50"><p className="text-xs text-slate-600">Correctas</p><p className="text-2xl font-bold text-green-700">{correct.length}</p></div>
-        <div className="border rounded p-3 bg-red-50"><p className="text-xs text-slate-600">Incorrectas</p><p className="text-2xl font-bold text-red-700">{incorrect.length}</p></div>
-        <div className="border rounded p-3 bg-amber-50"><p className="text-xs text-slate-600">Mejor racha</p><p className="text-2xl font-bold text-amber-700">{streak}</p></div>
+  return <div className="max-w-4xl mx-auto p-4 space-y-4 text-slate-900 dark:text-slate-100">
+    <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-4 sm:p-5 space-y-4">
+      <h2 className="text-2xl font-bold">Reporte de práctica</h2>
+      <p className="text-slate-600 dark:text-slate-300">Revisa tu desempeño, identifica tus áreas débiles y decide tu próxima sesión.</p>
+      <p className="text-slate-600 dark:text-slate-300">{motivationalMessage(percent)}</p>
+      <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/70 p-4 sm:p-5">
+        <div className="grid gap-4 md:grid-cols-[1fr_2fr] md:items-center">
+          <div className="text-center md:text-left">
+            <p className="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-slate-100">{percent}%</p>
+            <p className="text-sm text-slate-600 dark:text-slate-300">Puntaje general</p>
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="rounded-xl border border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-900/30 p-3">
+              <p className="text-xs text-green-700 dark:text-green-300">Correctas</p>
+              <p className="text-2xl font-bold text-green-700 dark:text-green-300">{correct.length}</p>
+            </div>
+            <div className="rounded-xl border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900/30 p-3">
+              <p className="text-xs text-red-700 dark:text-red-300">Falladas</p>
+              <p className="text-2xl font-bold text-red-700 dark:text-red-300">{incorrect.length}</p>
+            </div>
+            <div className="rounded-xl border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-900/30 p-3">
+              <p className="text-xs text-amber-700 dark:text-amber-300">Mejor racha</p>
+              <p className="text-2xl font-bold text-amber-700 dark:text-amber-300">{streak}</p>
+            </div>
+            <div className="rounded-xl border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/30 p-3">
+              <p className="text-xs text-blue-700 dark:text-blue-300">Total</p>
+              <p className="text-2xl font-bold text-blue-700 dark:text-blue-300">{questions.length}</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="w-full bg-slate-200 h-3 rounded overflow-hidden">
-        <div className="bg-blue-600 h-3" style={{ width: `${percent}%` }} />
+      <div className="w-full bg-slate-200 dark:bg-slate-700 h-3 rounded-full overflow-hidden">
+        <div className="bg-blue-600 h-3 rounded-full" style={{ width: `${percent}%` }} />
       </div>
-      <p className="text-sm text-slate-600">{correct.length}/{questions.length} respuestas correctas.</p>
+      <p className="text-sm text-slate-600 dark:text-slate-300">{correct.length}/{questions.length} respuestas correctas.</p>
     </div>
 
-    <div className="bg-white rounded-lg shadow p-4">
-      <h3 className="font-semibold mb-2">Desempeño por dominio</h3>
+    <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-4 sm:p-5">
+      <h3 className="font-semibold mb-3 text-slate-900 dark:text-slate-100">Desempeño por dominio</h3>
       <div className="space-y-3">
-        {domainRanking.map((d) => <div key={d.domain} className="border rounded p-3">
-          <div className="flex items-center justify-between"><p className="font-medium">{d.domain}</p><p className="text-sm">{d.correct}/{d.total} ({d.percent}%)</p></div>
-          <div className="w-full bg-slate-200 h-2 rounded mt-2 overflow-hidden"><div className={`${d.percent >= 80 ? 'bg-green-600' : d.percent >= 60 ? 'bg-amber-500' : 'bg-red-500'} h-2`} style={{ width: `${d.percent}%` }} /></div>
-          <p className="text-xs text-slate-600 mt-1">Falladas: {d.wrong}</p>
+        {domainRanking.map((d) => <div key={d.domain} className="rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/70 p-3">
+          <div className="flex items-start justify-between gap-3">
+            <p className="font-medium text-slate-900 dark:text-slate-100">{d.domain}</p>
+            <p className="text-sm font-semibold text-slate-700 dark:text-slate-200">{d.percent}%</p>
+          </div>
+          <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">{d.correct} de {d.total} correctas</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400">{d.wrong} falladas</p>
+          <div className="w-full bg-slate-200 dark:bg-slate-700 h-2 rounded-full mt-2 overflow-hidden"><div className={`${d.percent >= 80 ? 'bg-green-600' : d.percent >= 60 ? 'bg-amber-500' : 'bg-red-500'} h-2 rounded-full`} style={{ width: `${d.percent}%` }} /></div>
         </div>)}
       </div>
     </div>
 
-    <div className="bg-white rounded-lg shadow p-4">
-      <h3 className="font-semibold">Siguiente misión</h3>
-      {incorrect.length === 0 ? <p>¡Sin errores! Intenta una sesión más larga o sube la dificultad para mantener el ritmo.</p> : <ul className="list-disc ml-5 text-sm space-y-1"><li>Reintenta solo las falladas para consolidar memoria activa.</li><li>Prioriza los dominios con porcentaje más bajo.</li><li>Lee explicaciones completas antes de avanzar.</li></ul>}
+    <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-4 sm:p-5">
+      <h3 className="font-semibold text-slate-900 dark:text-slate-100">Siguiente misión</h3>
+      {incorrect.length === 0 ? <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">Excelente. Puedes tomar una sesión más larga o practicar con temporizador para mantener el dominio.</p> : <div className="mt-2 space-y-2">
+        <p className="text-sm text-slate-600 dark:text-slate-300">Tu prioridad ahora es corregir patrones, no solo repetir preguntas.</p>
+        <ul className="list-disc ml-5 text-sm space-y-1 text-slate-600 dark:text-slate-300">
+          <li>Reintenta las preguntas falladas.</li>
+          <li>Refuerza los dominios con menor porcentaje.</li>
+          <li>Lee la explicación antes de avanzar.</li>
+        </ul>
+      </div>}
     </div>
 
-    <div className="bg-white rounded-lg shadow p-4"><h3 className="font-semibold">Revisar errores</h3>{incorrect.length === 0 ? <p>¡Sin errores!</p> : incorrect.map((q) => <div key={q.id} className="border-t pt-2 mt-2"><p className="font-medium">{q.question}</p><p className="text-sm">Tu respuesta: {answers[q.id] || 'Sin responder'}</p><p className="text-sm">Respuesta correcta: {q.correctAnswer}</p>{q.explanation && <p className="text-sm">Explicación: {q.explanation}</p>}{answers[q.id] && answers[q.id] !== q.correctAnswer && q.optionExplanations?.[answers[q.id]] && <p className="text-sm">Por qué fue incorrecta: {q.optionExplanations[answers[q.id]]}</p>}</div>)}</div>
+    <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-4 sm:p-5 space-y-3"><h3 className="font-semibold text-slate-900 dark:text-slate-100">Revisar errores</h3>{incorrect.length === 0 ? <p className="text-sm text-slate-600 dark:text-slate-300">¡Sin errores!</p> : incorrect.map((q) => <article key={q.id} className="rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/70 p-4 space-y-2">
+      <p className="font-semibold text-slate-900 dark:text-slate-100">{q.question}</p>
+      <p className="text-sm text-slate-600 dark:text-slate-300"><span className="font-medium text-slate-700 dark:text-slate-200">Tu respuesta:</span> {answers[q.id] || 'Sin responder'}</p>
+      <p className="text-sm text-slate-600 dark:text-slate-300"><span className="font-medium text-slate-700 dark:text-slate-200">Respuesta correcta:</span> {q.correctAnswer}</p>
+      {q.explanation && <p className="text-sm text-slate-600 dark:text-slate-300"><span className="font-medium text-slate-700 dark:text-slate-200">Explicación:</span> {q.explanation}</p>}
+      {answers[q.id] && answers[q.id] !== q.correctAnswer && q.optionExplanations?.[answers[q.id]] && <p className="text-sm text-slate-600 dark:text-slate-300"><span className="font-medium text-slate-700 dark:text-slate-200">Por qué esa opción no era correcta:</span> {q.optionExplanations[answers[q.id]]}</p>}
+    </article>)}</div>
 
-    <div className="flex gap-2"><button onClick={onRetryMissed} className="bg-amber-600 text-white rounded px-3 py-2">Reintentar preguntas falladas</button><button onClick={onNew} className="bg-blue-600 text-white rounded px-3 py-2">Nueva sesión</button></div>
+    <div className="flex flex-wrap gap-2">{incorrect.length > 0 && <button onClick={onRetryMissed} className="bg-amber-600 hover:bg-amber-700 text-white rounded-xl px-4 py-2.5 text-sm sm:text-base">Reintentar preguntas falladas</button>}<button onClick={onNew} className="bg-blue-600 hover:bg-blue-700 text-white rounded-xl px-4 py-2.5 text-sm sm:text-base">Nueva sesión</button></div>
   </div>;
 }

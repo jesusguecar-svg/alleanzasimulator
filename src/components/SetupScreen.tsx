@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import type { NormalizedQuestion } from '../types/question';
+import { CANONICAL_DOMAINS } from '../data/domainCatalog';
 
 type Props = {
   questions: NormalizedQuestion[];
@@ -32,7 +33,10 @@ export function SetupScreen(p: Props) {
       const key = clean.toLowerCase();
       if (!unique.has(key)) unique.set(key, clean);
     }
-    return Array.from(unique.values()).sort((a, b) => a.localeCompare(b));
+    const available = Array.from(unique.values());
+    const canonicalOrdered = CANONICAL_DOMAINS.filter((d) => available.includes(d));
+    const extra = available.filter((d) => !CANONICAL_DOMAINS.includes(d as (typeof CANONICAL_DOMAINS)[number])).sort((a, b) => a.localeCompare(b));
+    return [...canonicalOrdered, ...extra];
   }, [p.questions]);
 
   const diffs = ['easy', 'medium', 'hard'];
