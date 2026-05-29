@@ -38,12 +38,32 @@ La app carga automáticamente **todos** los `*.json` de esa carpeta y no requier
 - Progreso básico en `localStorage`
 - Reinicio de progreso con confirmación
 
+## Protección de acceso en Vercel
+
+La app incluye una pantalla de acceso propia antes de cargar el simulador. No usa Vercel Password Protection.
+
+- La contraseña se lee únicamente en servidor desde `APP_ACCESS_PASSWORD`.
+- No crees una variable `NEXT_PUBLIC_` ni `VITE_` para esta contraseña; esas variables pueden terminar expuestas al navegador.
+- Al iniciar sesión correctamente, el servidor crea una cookie `HttpOnly` para mantener la sesión durante 7 días.
+- Si `APP_ACCESS_PASSWORD` no está configurada, la pantalla de acceso muestra un mensaje seguro y no revela ningún secreto.
+
+### Configurar `APP_ACCESS_PASSWORD` en Vercel
+
+1. En Vercel, abre el proyecto.
+2. Ve a **Settings → Environment Variables**.
+3. Agrega una variable llamada exactamente `APP_ACCESS_PASSWORD`.
+4. Escribe una contraseña fuerte como valor.
+5. Selecciona los entornos donde debe aplicar (por ejemplo, **Production**, **Preview** y/o **Development**).
+6. Guarda la variable.
+7. Vuelve a desplegar el proyecto para que las funciones y el middleware reciban la variable.
+
 ## Despliegue (GitHub Pages / Vercel / Netlify)
 
 Recomendado: Vercel para despliegue simple desde GitHub.
 
 1. Push del repositorio a GitHub.
 2. Importar proyecto en Vercel.
-3. Build command: `npm run build`
-4. Output dir: `dist`
+3. Configurar `APP_ACCESS_PASSWORD` en Vercel antes de compartir la URL.
+4. Build command: `npm run build`
+5. Output dir: `dist`
 
