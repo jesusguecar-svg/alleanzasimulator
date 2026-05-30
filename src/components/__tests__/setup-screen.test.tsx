@@ -4,7 +4,7 @@ import { SetupScreen } from '../SetupScreen';
 
 describe('SetupScreen', () => {
   it('does not render error card when no message', () => {
-    render(<SetupScreen questions={[]} selectedDomains={[]} setSelectedDomains={vi.fn()} selectedDifficulties={['easy']} setSelectedDifficulties={vi.fn()} skipAnswered={false} setSkipAnswered={vi.fn()} showAtEnd={false} setShowAtEnd={vi.fn()} count={10} setCount={vi.fn()} availableCount={0} onStart={vi.fn()} />);
+    render(<SetupScreen questions={[]} selectedDomains={[]} setSelectedDomains={vi.fn()} selectedDifficulties={['easy']} setSelectedDifficulties={vi.fn()} skipAnswered={false} setSkipAnswered={vi.fn()} showAtEnd={false} setShowAtEnd={vi.fn()} useTimer={false} setUseTimer={vi.fn()} darkMode={false} setDarkMode={vi.fn()} count={10} setCount={vi.fn()} availableCount={0} onStart={vi.fn()} />);
     expect(screen.queryByText(/No hay preguntas/i)).toBeNull();
   });
 });
