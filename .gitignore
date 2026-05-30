@@ -5,3 +5,6 @@ dist/
 !.env.example
 .DS_Store
 .vercel/
+*.tsbuildinfo
+vite.config.d.ts
+vite.config.js
