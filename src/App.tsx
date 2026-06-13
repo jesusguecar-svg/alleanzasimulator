@@ -8,6 +8,7 @@ import { ResultsScreen } from './components/ResultsScreen';
 import { DashboardScreen } from './components/DashboardScreen';
 import { OnboardingScreen } from './components/OnboardingScreen';
 import type { SessionQuestion } from './types/question';
+import topicDomains from './data/topics.json';
 
 const loaded = loadQuestions();
 const THEME_KEY = 'theme';
@@ -66,11 +67,18 @@ export default function App() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const domainParam = params.get('domain');
-    if (domainParam) {
-      setDomains([decodeURIComponent(domainParam)]);
-      setOnboardingStep('setup');
-    }
+    const topics = topicDomains as Record<string, string[]>;
+    const topicParam = params.get('topic');
+    const selected = topicParam && topics[topicParam]
+      ? topics[topicParam]
+      : params.getAll('domain').map((d) => decodeURIComponent(d));
+    if (!selected.length) return;
+    setDomains(selected);
+    setOnboardingStep('setup');
+    // Clamp the question count to what this topic actually has, so the user
+    // isn't blocked by the default (25) on a smaller pool.
+    const available = loaded.questions.filter((q) => selected.includes(q.domain)).length;
+    if (available > 0) setCount((c) => Math.min(c, available));
   }, []);
 
   void getDashboardStats;

@@ -5,205 +5,125 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simuladores de Práctica - Módulos</title>
   <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 20px;
-      background: #f8fafc;
-      color: #1e293b;
-    }
-    h1 {
-      color: #0f172a;
-      border-bottom: 3px solid #3b82f6;
-      padding-bottom: 10px;
-    }
-    .intro {
-      background: white;
-      padding: 16px;
-      border-radius: 8px;
-      margin-bottom: 24px;
-      border: 1px solid #e2e8f0;
-    }
-    .module-container {
-      background: white;
-      border-radius: 8px;
-      padding: 20px;
-      margin-bottom: 16px;
-      border-left: 4px solid #3b82f6;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
-    .module-container h3 {
-      margin-top: 0;
-      margin-bottom: 12px;
-      color: #1e40af;
-      font-size: 16px;
-    }
-    .module-container p {
-      margin: 8px 0;
-      color: #475569;
-      font-size: 14px;
-    }
-    .module-link {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 10px 20px;
-      background-color: #3b82f6;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: 500;
-      font-size: 14px;
-      transition: background-color 0.2s;
-      cursor: pointer;
-    }
-    .module-link:hover {
-      background-color: #2563eb;
-    }
-    .code-block {
-      background: #1e293b;
-      color: #e2e8f0;
-      padding: 12px;
-      border-radius: 6px;
-      overflow-x: auto;
-      margin-top: 12px;
-      font-size: 12px;
-      font-family: 'Courier New', monospace;
-    }
-    .instructions {
-      background: #fef3c7;
-      border-left: 4px solid #f59e0b;
-      padding: 12px;
-      border-radius: 4px;
-      margin-bottom: 20px;
-    }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; background: #f8fafc; color: #1e293b; }
+    h1 { color: #0f172a; border-bottom: 3px solid #3b82f6; padding-bottom: 10px; }
+    .intro { background: white; padding: 16px; border-radius: 8px; margin-bottom: 24px; border: 1px solid #e2e8f0; }
+    .module-container { background: white; border-radius: 8px; padding: 20px; margin-bottom: 16px; border-left: 4px solid #3b82f6; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    .module-container h3 { margin-top: 0; margin-bottom: 12px; color: #1e40af; font-size: 16px; }
+    .module-container p { margin: 8px 0; color: #475569; font-size: 14px; }
+    .module-link { display: inline-block; margin-top: 12px; padding: 10px 20px; background-color: #3b82f6; color: white; text-decoration: none; border-radius: 6px; font-weight: 500; font-size: 14px; }
+    .module-link:hover { background-color: #2563eb; }
+    .code-block { background: #1e293b; color: #e2e8f0; padding: 12px; border-radius: 6px; overflow-x: auto; margin-top: 12px; font-size: 12px; font-family: 'Courier New', monospace; }
+    .instructions { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 12px; border-radius: 4px; margin-bottom: 20px; }
   </style>
 </head>
 <body>
   <h1>Simuladores de Práctica por Módulo</h1>
-
   <div class="intro">
     <p>Cada módulo tiene su propio simulador de práctica con preguntas específicas del tema.</p>
     <p><strong>Nota:</strong> Los enlaces abren el simulador en una ventana nueva.</p>
   </div>
-
   <div class="instructions">
     <strong>Para usar en Tutor LMS:</strong> Copia el código HTML de cada módulo en el editor de contenido del módulo correspondiente.
   </div>
 
-
   <div class="module-container">
     <h3>Módulo 1 — Dominio I: Tipos de pólizas de vida</h3>
     <p>Practica preguntas sobre los diferentes tipos de pólizas de vida disponibles en Texas.</p>
-    <a href="https://alleanzasimulator-texas.vercel.app/?domain=Seguro%20de%20vida" target="_blank" rel="noopener noreferrer" class="module-link">
-      → Abrir simulador de práctica
-    </a>
-    <div class="code-block">URL: https://alleanzasimulator-texas.vercel.app/?domain=Seguro%20de%20vida</div>
+    <p style="color:#0f766e;font-size:13px;margin:4px 0;">Preguntas disponibles: <strong>40</strong></p>
+    <a href="https://alleanzasimulator-texas.vercel.app/?topic=tipos-vida" target="_blank" rel="noopener noreferrer" class="module-link">→ Abrir simulador de práctica</a>
+    <div class="code-block">URL: https://alleanzasimulator-texas.vercel.app/?topic=tipos-vida</div>
   </div>
 
   <div class="module-container">
     <h3>Módulo 2 — Dominio II: Cláusulas adicionales, provisiones y opciones de póliza</h3>
     <p>Practica preguntas sobre cláusulas adicionales, provisiones y opciones de póliza.</p>
-    <a href="https://alleanzasimulator-texas.vercel.app/?domain=Cl%C3%A1usulas%2C%20disposiciones%2C%20opciones%20y%20exclusiones%20de%20la%20p%C3%B3liza" target="_blank" rel="noopener noreferrer" class="module-link">
-      → Abrir simulador de práctica
-    </a>
-    <div class="code-block">URL: https://alleanzasimulator-texas.vercel.app/?domain=Cl%C3%A1usulas%2C%20disposiciones%2C%20opciones%20y%20exclusiones%20de%20la%20p%C3%B3liza</div>
+    <p style="color:#0f766e;font-size:13px;margin:4px 0;">Preguntas disponibles: <strong>51</strong></p>
+    <a href="https://alleanzasimulator-texas.vercel.app/?topic=provisiones" target="_blank" rel="noopener noreferrer" class="module-link">→ Abrir simulador de práctica</a>
+    <div class="code-block">URL: https://alleanzasimulator-texas.vercel.app/?topic=provisiones</div>
   </div>
 
   <div class="module-container">
     <h3>Módulo 3 — Dominio III: Completar la solicitud y entregar pólizas</h3>
     <p>Practica preguntas sobre el proceso de solicitud y entrega de pólizas.</p>
-    <a href="https://alleanzasimulator-texas.vercel.app/?domain=Completar%20la%20solicitud%2C%20suscripci%C3%B3n%20y%20entrega%20de%20la%20p%C3%B3liza" target="_blank" rel="noopener noreferrer" class="module-link">
-      → Abrir simulador de práctica
-    </a>
-    <div class="code-block">URL: https://alleanzasimulator-texas.vercel.app/?domain=Completar%20la%20solicitud%2C%20suscripci%C3%B3n%20y%20entrega%20de%20la%20p%C3%B3liza</div>
+    <p style="color:#0f766e;font-size:13px;margin:4px 0;">Preguntas disponibles: <strong>14</strong></p>
+    <a href="https://alleanzasimulator-texas.vercel.app/?topic=solicitud-suscripcion" target="_blank" rel="noopener noreferrer" class="module-link">→ Abrir simulador de práctica</a>
+    <div class="code-block">URL: https://alleanzasimulator-texas.vercel.app/?topic=solicitud-suscripcion</div>
   </div>
 
   <div class="module-container">
     <h3>Módulo 4 — Dominio IV: Conceptos de retiro y anualidades</h3>
     <p>Practica preguntas sobre conceptos de retiro, anualidades e impuestos.</p>
-    <a href="https://alleanzasimulator-texas.vercel.app/?domain=Impuestos%2C%20retiro%20y%20otros%20conceptos%20de%20seguros" target="_blank" rel="noopener noreferrer" class="module-link">
-      → Abrir simulador de práctica
-    </a>
-    <div class="code-block">URL: https://alleanzasimulator-texas.vercel.app/?domain=Impuestos%2C%20retiro%20y%20otros%20conceptos%20de%20seguros</div>
+    <p style="color:#0f766e;font-size:13px;margin:4px 0;">Preguntas disponibles: <strong>28</strong></p>
+    <a href="https://alleanzasimulator-texas.vercel.app/?topic=impuestos-retiro-otros" target="_blank" rel="noopener noreferrer" class="module-link">→ Abrir simulador de práctica</a>
+    <div class="code-block">URL: https://alleanzasimulator-texas.vercel.app/?topic=impuestos-retiro-otros</div>
   </div>
 
   <div class="module-container">
     <h3>Módulo 5 — Dominio V: Tipos de pólizas de salud</h3>
     <p>Practica preguntas sobre los diferentes tipos de pólizas de salud.</p>
-    <a href="https://alleanzasimulator-texas.vercel.app/?domain=Seguro%20de%20salud" target="_blank" rel="noopener noreferrer" class="module-link">
-      → Abrir simulador de práctica
-    </a>
-    <div class="code-block">URL: https://alleanzasimulator-texas.vercel.app/?domain=Seguro%20de%20salud</div>
+    <p style="color:#0f766e;font-size:13px;margin:4px 0;">Preguntas disponibles: <strong>13</strong></p>
+    <a href="https://alleanzasimulator-texas.vercel.app/?topic=tipos-salud" target="_blank" rel="noopener noreferrer" class="module-link">→ Abrir simulador de práctica</a>
+    <div class="code-block">URL: https://alleanzasimulator-texas.vercel.app/?topic=tipos-salud</div>
   </div>
 
   <div class="module-container">
     <h3>Módulo 6 — Dominio VI: Provisiones, cláusulas y cláusulas adicionales en pólizas de salud</h3>
     <p>Practica preguntas sobre provisiones y cláusulas en pólizas de salud.</p>
-    <a href="https://alleanzasimulator-texas.vercel.app/?domain=Cl%C3%A1usulas%2C%20disposiciones%2C%20opciones%20y%20exclusiones%20de%20p%C3%B3lizas" target="_blank" rel="noopener noreferrer" class="module-link">
-      → Abrir simulador de práctica
-    </a>
-    <div class="code-block">URL: https://alleanzasimulator-texas.vercel.app/?domain=Cl%C3%A1usulas%2C%20disposiciones%2C%20opciones%20y%20exclusiones%20de%20p%C3%B3lizas</div>
+    <p style="color:#0f766e;font-size:13px;margin:4px 0;">Preguntas disponibles: <strong>51</strong></p>
+    <a href="https://alleanzasimulator-texas.vercel.app/?topic=provisiones" target="_blank" rel="noopener noreferrer" class="module-link">→ Abrir simulador de práctica</a>
+    <div class="code-block">URL: https://alleanzasimulator-texas.vercel.app/?topic=provisiones</div>
   </div>
 
   <div class="module-container">
     <h3>Módulo 7 — Dominio VII: Seguro social</h3>
-    <p>Practica preguntas sobre seguro social y obligaciones del agente.</p>
-    <a href="https://alleanzasimulator-texas.vercel.app/?domain=Pr%C3%A1cticas%20comerciales%20desleales" target="_blank" rel="noopener noreferrer" class="module-link">
-      → Abrir simulador de práctica
-    </a>
-    <div class="code-block">URL: https://alleanzasimulator-texas.vercel.app/?domain=Pr%C3%A1cticas%20comerciales%20desleales</div>
+    <p>Practica preguntas sobre seguro social y otros conceptos. Nota: el banco de preguntas aún no tiene un dominio dedicado de "Seguro social"; se usa el grupo "Impuestos, retiro y otros conceptos" como aproximación.</p>
+    <p style="color:#0f766e;font-size:13px;margin:4px 0;">Preguntas disponibles: <strong>28</strong></p>
+    <a href="https://alleanzasimulator-texas.vercel.app/?topic=impuestos-retiro-otros" target="_blank" rel="noopener noreferrer" class="module-link">→ Abrir simulador de práctica</a>
+    <div class="code-block">URL: https://alleanzasimulator-texas.vercel.app/?topic=impuestos-retiro-otros</div>
   </div>
 
   <div class="module-container">
     <h3>Módulo 8 — Dominio VIII: Otros conceptos de seguros</h3>
-    <p>Practica preguntas sobre otros conceptos de seguros.</p>
-    <a href="https://alleanzasimulator-texas.vercel.app/?domain=Impuestos%2C%20retiro%20y%20otros%20conceptos%20de%20seguros" target="_blank" rel="noopener noreferrer" class="module-link">
-      → Abrir simulador de práctica
-    </a>
-    <div class="code-block">URL: https://alleanzasimulator-texas.vercel.app/?domain=Impuestos%2C%20retiro%20y%20otros%20conceptos%20de%20seguros</div>
+    <p>Practica preguntas sobre otros conceptos de seguros, impuestos y retiro.</p>
+    <p style="color:#0f766e;font-size:13px;margin:4px 0;">Preguntas disponibles: <strong>28</strong></p>
+    <a href="https://alleanzasimulator-texas.vercel.app/?topic=impuestos-retiro-otros" target="_blank" rel="noopener noreferrer" class="module-link">→ Abrir simulador de práctica</a>
+    <div class="code-block">URL: https://alleanzasimulator-texas.vercel.app/?topic=impuestos-retiro-otros</div>
   </div>
 
   <div class="module-container">
     <h3>Módulo 9 — Dominio IX: Suscripción en campo</h3>
     <p>Practica preguntas sobre suscripción y procesos en campo.</p>
-    <a href="https://alleanzasimulator-texas.vercel.app/?domain=Completar%20la%20solicitud%2C%20suscripci%C3%B3n%20y%20entrega%20de%20la%20p%C3%B3liza" target="_blank" rel="noopener noreferrer" class="module-link">
-      → Abrir simulador de práctica
-    </a>
-    <div class="code-block">URL: https://alleanzasimulator-texas.vercel.app/?domain=Completar%20la%20solicitud%2C%20suscripci%C3%B3n%20y%20entrega%20de%20la%20p%C3%B3liza</div>
+    <p style="color:#0f766e;font-size:13px;margin:4px 0;">Preguntas disponibles: <strong>14</strong></p>
+    <a href="https://alleanzasimulator-texas.vercel.app/?topic=solicitud-suscripcion" target="_blank" rel="noopener noreferrer" class="module-link">→ Abrir simulador de práctica</a>
+    <div class="code-block">URL: https://alleanzasimulator-texas.vercel.app/?topic=solicitud-suscripcion</div>
   </div>
 
   <div class="module-container">
     <h3>Módulo 10 — Dominio I de Texas: Estatutos de Texas para seguros de vida y salud</h3>
-    <p>Practica preguntas sobre estatutos de Texas para seguros de vida y salud.</p>
-    <a href="https://alleanzasimulator-texas.vercel.app/?domain=Estatutos%20del%20estado%20de%20Texas%20relacionados%20con%20vida%2C%20salud%20y%20HMO" target="_blank" rel="noopener noreferrer" class="module-link">
-      → Abrir simulador de práctica
-    </a>
-    <div class="code-block">URL: https://alleanzasimulator-texas.vercel.app/?domain=Estatutos%20del%20estado%20de%20Texas%20relacionados%20con%20vida%2C%20salud%20y%20HMO</div>
+    <p>Practica preguntas sobre estatutos de Texas comunes a todas las líneas (licencias, prácticas desleales, deberes del agente).</p>
+    <p style="color:#0f766e;font-size:13px;margin:4px 0;">Preguntas disponibles: <strong>48</strong></p>
+    <a href="https://alleanzasimulator-texas.vercel.app/?topic=estatutos-comunes" target="_blank" rel="noopener noreferrer" class="module-link">→ Abrir simulador de práctica</a>
+    <div class="code-block">URL: https://alleanzasimulator-texas.vercel.app/?topic=estatutos-comunes</div>
   </div>
 
   <div class="module-container">
     <h3>Módulo 11 — Dominio II de Texas: Regulaciones específicas para seguros de vida</h3>
-    <p>Practica preguntas sobre regulaciones específicas para seguros de vida en Texas.</p>
-    <a href="https://alleanzasimulator-texas.vercel.app/?domain=Estatutos%20del%20estado%20de%20Texas%20comunes%20a%20todas%20las%20l%C3%ADneas" target="_blank" rel="noopener noreferrer" class="module-link">
-      → Abrir simulador de práctica
-    </a>
-    <div class="code-block">URL: https://alleanzasimulator-texas.vercel.app/?domain=Estatutos%20del%20estado%20de%20Texas%20comunes%20a%20todas%20las%20l%C3%ADneas</div>
+    <p>Practica preguntas sobre regulaciones de Texas relacionadas con vida, salud y HMO.</p>
+    <p style="color:#0f766e;font-size:13px;margin:4px 0;">Preguntas disponibles: <strong>31</strong></p>
+    <a href="https://alleanzasimulator-texas.vercel.app/?topic=estatutos-vsh" target="_blank" rel="noopener noreferrer" class="module-link">→ Abrir simulador de práctica</a>
+    <div class="code-block">URL: https://alleanzasimulator-texas.vercel.app/?topic=estatutos-vsh</div>
   </div>
 
   <div class="module-container">
     <h3>Módulo 12 — Dominio III de Texas: Regulaciones específicas para seguros de accidente y salud</h3>
-    <p>Practica preguntas sobre regulaciones para seguros de accidente y salud en Texas.</p>
-    <a href="https://alleanzasimulator-texas.vercel.app/?domain=Estatutos%20del%20estado%20de%20Texas%20relacionados%20con%20vida%2C%20salud%20y%20HMO" target="_blank" rel="noopener noreferrer" class="module-link">
-      → Abrir simulador de práctica
-    </a>
-    <div class="code-block">URL: https://alleanzasimulator-texas.vercel.app/?domain=Estatutos%20del%20estado%20de%20Texas%20relacionados%20con%20vida%2C%20salud%20y%20HMO</div>
+    <p>Practica preguntas sobre regulaciones de Texas relacionadas con vida, salud y HMO.</p>
+    <p style="color:#0f766e;font-size:13px;margin:4px 0;">Preguntas disponibles: <strong>31</strong></p>
+    <a href="https://alleanzasimulator-texas.vercel.app/?topic=estatutos-vsh" target="_blank" rel="noopener noreferrer" class="module-link">→ Abrir simulador de práctica</a>
+    <div class="code-block">URL: https://alleanzasimulator-texas.vercel.app/?topic=estatutos-vsh</div>
   </div>
 
-
   <hr style="margin-top: 40px; border: none; border-top: 2px solid #e2e8f0;">
-  <p style="color: #64748b; font-size: 12px;">
-    Generado el 13/6/2026, 16:46:35 | Base URL: https://alleanzasimulator-texas.vercel.app
-  </p>
+  <p style="color: #64748b; font-size: 12px;">Generado el 13/6/2026, 17:04:43 | Base URL: https://alleanzasimulator-texas.vercel.app</p>
 </body>
 </html>
