@@ -86,6 +86,38 @@ ${module.description}
 `;
 }
 
+/**
+ * Generate iframe embed version (keeps students on the LMS page)
+ */
+function generateIframeEmbed(module) {
+  const encodedDomain = encodeDomain(module.domain);
+  const simulatorUrl = `${config.baseUrl}/?domain=${encodedDomain}`;
+
+  return `
+<!-- Module ${module.id}: ${module.title.split('—')[1].trim()} (iframe version) -->
+<div style="margin: 20px 0; padding: 16px; background: #f0f9ff; border-left: 4px solid #3b82f6; border-radius: 4px;">
+  <h3 style="margin-top: 0; margin-bottom: 8px; color: #1e40af; font-size: 16px;">
+    ${module.title}
+  </h3>
+  <p style="margin: 8px 0; color: #475569; font-size: 14px;">
+    ${module.description}
+  </p>
+  <iframe
+    src="${simulatorUrl}"
+    style="
+      width: 100%;
+      height: 800px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      margin-top: 12px;
+    "
+    title="Simulador de práctica - ${module.title}"
+    allow="camera; microphone; geolocation"
+    sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-storage-access-by-user-activation"
+  ></iframe>
+</div>`;
+}
+
 // Generate full HTML file with all modules
 const fullHtml = `<!DOCTYPE html>
 <html lang="es">
@@ -205,15 +237,21 @@ ${config.modules.map((module) => {
 
 // Generate individual module files for easy copy-paste
 const outputDir = path.join(__dirname, '../generated-module-html');
+const outputDirIframe = path.join(__dirname, '../generated-module-iframe');
 if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir, { recursive: true });
+}
+if (!fs.existsSync(outputDirIframe)) {
+  fs.mkdirSync(outputDirIframe, { recursive: true });
 }
 
 config.modules.forEach((module) => {
   const htmlContent = generateModuleLink(module);
+  const iframeContent = generateIframeEmbed(module);
   const filename = `module-${String(module.id).padStart(2, '0')}-${module.title.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').slice(0, 40)}.html`;
-  const filepath = path.join(outputDir, filename);
-  fs.writeFileSync(filepath, htmlContent.trim());
+
+  fs.writeFileSync(path.join(outputDir, filename), htmlContent.trim());
+  fs.writeFileSync(path.join(outputDirIframe, `iframe-${filename}`), iframeContent.trim());
 });
 
 // Write full HTML
@@ -243,7 +281,8 @@ ${config.modules.map((m) => generateMarkdown(m)).join('\n')}
 fs.writeFileSync(path.join(__dirname, '../TUTOR_LMS_SETUP.md'), markdownContent);
 
 console.log('✓ Generated module-html-snippets.html');
-console.log('✓ Generated individual HTML files in generated-module-html/');
+console.log('✓ Generated button link snippets in generated-module-html/');
+console.log('✓ Generated iframe embed snippets in generated-module-iframe/');
 console.log('✓ Generated TUTOR_LMS_SETUP.md');
 console.log(`\nTotal modules: ${config.modules.length}`);
 console.log(`Base URL: ${config.baseUrl}`);
