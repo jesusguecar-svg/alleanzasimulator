@@ -8,7 +8,47 @@ import { ResultsScreen } from './components/ResultsScreen';
 import { DashboardScreen } from './components/DashboardScreen';
 import { OnboardingScreen } from './components/OnboardingScreen';
 import type { SessionQuestion } from './types/question';
-import topicDomains from './data/topics.json';
+
+const topicDomains: Record<string, string[]> = {
+  'tipos-vida': ['Tipos de pólizas', 'Seguro de vida', 'Life Insurance'],
+  'tipos-salud': ['Seguro de salud', 'Health Insurance'],
+  'provisiones': [
+    'Cláusulas adicionales, disposiciones, opciones y exclusiones de la póliza',
+    'Cláusulas, disposiciones, opciones y exclusiones de la póliza',
+    'Cláusulas, disposiciones, opciones y exclusiones de pólizas',
+    'Cláusulas, endosos, opciones y exclusiones de la póliza',
+    'Endosos, disposiciones, opciones y exclusiones de la póliza',
+    'Disposiciones de la póliza',
+    'Policy Provisions'
+  ],
+  'solicitud-suscripcion': [
+    'Completar la solicitud, suscripción y entrega de la póliza',
+    'Suscripción y entrega',
+    'Underwriting and Delivery'
+  ],
+  'impuestos-retiro-otros': [
+    'Impuestos, jubilación y otros conceptos de seguros',
+    'Impuestos, retiro y otros conceptos de seguros'
+  ],
+  'estatutos-comunes': [
+    'Estatutos del Estado de Texas comunes a todas las líneas',
+    'Estatutos del estado de Texas comunes a todas las líneas',
+    'Estatutos estatales de Texas comunes a todas las líneas',
+    'Estatutos de Texas comunes a todas las líneas',
+    'Texas Statutes',
+    'Estatutos de Texas',
+    'Prácticas comerciales desleales',
+    'Unfair Trade Practices',
+    'Deberes del agente'
+  ],
+  'estatutos-vsh': [
+    'Estatutos del Estado de Texas relacionados con vida, salud y HMO',
+    'Estatutos del estado de Texas relacionados con vida, salud y HMO',
+    'Estatutos estatales de Texas relacionados con vida, salud y HMO',
+    'Estatutos del Estado de Texas relativos a Vida, Salud y HMO',
+    'Estatutos de Texas relacionados con vida, salud y HMO'
+  ]
+};
 
 const loaded = loadQuestions();
 const THEME_KEY = 'theme';
@@ -67,16 +107,14 @@ export default function App() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const topics = topicDomains as Record<string, string[]>;
     const topicParam = params.get('topic');
-    const selected = topicParam && topics[topicParam]
-      ? topics[topicParam]
+    const selected = topicParam && topicDomains[topicParam]
+      ? topicDomains[topicParam]
       : params.getAll('domain').map((d) => decodeURIComponent(d));
     if (!selected.length) return;
     setDomains(selected);
     setOnboardingStep('setup');
-    // Clamp the question count to what this topic actually has, so the user
-    // isn't blocked by the default (25) on a smaller pool.
+    // Clamp the question count to what this topic actually has
     const available = loaded.questions.filter((q) => selected.includes(q.domain)).length;
     if (available > 0) setCount((c) => Math.min(c, available));
   }, []);
