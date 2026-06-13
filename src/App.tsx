@@ -7,8 +7,8 @@ import { QuestionCard } from './components/QuestionCard';
 import { ResultsScreen } from './components/ResultsScreen';
 import { DashboardScreen } from './components/DashboardScreen';
 import { OnboardingScreen } from './components/OnboardingScreen';
-import { AccessScreen } from './components/AccessScreen';
 import type { SessionQuestion } from './types/question';
+import topicDomains from './data/topics.json';
 
 const loaded = loadQuestions();
 const THEME_KEY = 'theme';
@@ -47,7 +47,6 @@ export default function App() {
   const [showDashboard, setShowDashboard] = useState(false);
   const [onboardingStep, setOnboardingStep] = useState<OnboardingStep>('choice');
   const [recommendedPath, setRecommendedPath] = useState<RecommendedPath>(null);
-  const isAccessScreen = typeof window !== 'undefined' && window.location.pathname === '/login';
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', darkMode);
@@ -68,11 +67,18 @@ export default function App() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const domainParam = params.get('domain');
-    if (domainParam) {
-      setDomains([decodeURIComponent(domainParam)]);
-      setOnboardingStep('setup');
-    }
+    const topics = topicDomains as Record<string, string[]>;
+    const topicParam = params.get('topic');
+    const selected = topicParam && topics[topicParam]
+      ? topics[topicParam]
+      : params.getAll('domain').map((d) => decodeURIComponent(d));
+    if (!selected.length) return;
+    setDomains(selected);
+    setOnboardingStep('setup');
+    // Clamp the question count to what this topic actually has, so the user
+    // isn't blocked by the default (25) on a smaller pool.
+    const available = loaded.questions.filter((q) => selected.includes(q.domain)).length;
+    if (available > 0) setCount((c) => Math.min(c, available));
   }, []);
 
   void getDashboardStats;
@@ -82,22 +88,10 @@ export default function App() {
     return loaded.questions.filter((q) => (domains.length ? domains.includes(q.domain) : true) && difficulties.includes(q.difficulty) && (!skipAnswered || !p.answeredIds.includes(q.id)));
   }, [domains, difficulties, skipAnswered]);
 
-  if (isAccessScreen) {
-    return <AccessScreen darkMode={darkMode} setDarkMode={setDarkMode} />;
-  }
-
-  const handleLogout = async () => {
-    await fetch('/api/logout', { method: 'POST' }).catch(() => undefined);
-    window.location.assign('/login');
-  };
-
   if (!session) {
     if (showDashboard) {
       return (
         <div className='min-h-screen py-8 bg-slate-50 dark:bg-slate-950'>
-          <div className='max-w-3xl mx-auto px-4 mb-3 flex justify-end'>
-            <button type='button' onClick={handleLogout} className='text-sm underline text-red-600 dark:text-red-300'>Cerrar sesión</button>
-          </div>
           <DashboardScreen
             allQuestions={loaded.questions}
             onBack={() => setShowDashboard(false)}
@@ -158,13 +152,12 @@ export default function App() {
           Ver mis estadísticas →
         </button>
         <button className='text-sm underline text-slate-700 dark:text-slate-200' onClick={()=>{ if (confirm('¿Seguro que deseas reiniciar progreso?')) clearProgress(); }}>Reiniciar progreso</button>
-        <button className='text-sm underline text-red-600 dark:text-red-300' onClick={handleLogout}>Cerrar sesión</button>
       </div>
     </div>;
   }
 
   if (index >= session.length) {
-    return <div className='min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100'><div className='max-w-3xl mx-auto px-4 pt-4 flex justify-end'><button type='button' onClick={handleLogout} className='text-sm underline text-red-600 dark:text-red-300'>Cerrar sesión</button></div><ResultsScreen questions={session} answers={answers} onRetryMissed={() => { const missed = session.filter((q)=>answers[q.id]!==q.correctAnswer); setSession(missed); setAnswers({}); setIndex(0); setStartedAt(Date.now()); setElapsedSeconds(0);} } onNew={() => setSession(null)} /></div>;
+    return <div className='min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100'><ResultsScreen questions={session} answers={answers} onRetryMissed={() => { const missed = session.filter((q)=>answers[q.id]!==q.correctAnswer); setSession(missed); setAnswers({}); setIndex(0); setStartedAt(Date.now()); setElapsedSeconds(0);} } onNew={() => setSession(null)} /></div>;
   }
 
   const q = session[index];
@@ -177,7 +170,6 @@ export default function App() {
   return <div className='min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100'>
     <div className='max-w-3xl mx-auto p-4 sm:p-6 space-y-4'>
       <div className='flex justify-end gap-3'>
-        <button type='button' onClick={handleLogout} className='rounded-full border border-red-200 dark:border-red-900 bg-white dark:bg-slate-800 px-3 py-1.5 text-sm text-red-600 dark:text-red-300'>Cerrar sesión</button>
         <button type='button' onClick={() => setDarkMode((v) => !v)} className='rounded-full border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-3 py-1.5 text-sm'>
           {darkMode ? '🌙 Oscuro' : '🌞 Claro'}
         </button>

@@ -1,0 +1,47 @@
+{
+  "tipos-vida": [
+    "Tipos de pólizas",
+    "Seguro de vida",
+    "Life Insurance"
+  ],
+  "tipos-salud": [
+    "Seguro de salud",
+    "Health Insurance"
+  ],
+  "provisiones": [
+    "Cláusulas adicionales, disposiciones, opciones y exclusiones de la póliza",
+    "Cláusulas, disposiciones, opciones y exclusiones de la póliza",
+    "Cláusulas, disposiciones, opciones y exclusiones de pólizas",
+    "Cláusulas, endosos, opciones y exclusiones de la póliza",
+    "Endosos, disposiciones, opciones y exclusiones de la póliza",
+    "Disposiciones de la póliza",
+    "Policy Provisions"
+  ],
+  "solicitud-suscripcion": [
+    "Completar la solicitud, suscripción y entrega de la póliza",
+    "Suscripción y entrega",
+    "Underwriting and Delivery"
+  ],
+  "impuestos-retiro-otros": [
+    "Impuestos, jubilación y otros conceptos de seguros",
+    "Impuestos, retiro y otros conceptos de seguros"
+  ],
+  "estatutos-comunes": [
+    "Estatutos del Estado de Texas comunes a todas las líneas",
+    "Estatutos del estado de Texas comunes a todas las líneas",
+    "Estatutos estatales de Texas comunes a todas las líneas",
+    "Estatutos de Texas comunes a todas las líneas",
+    "Texas Statutes",
+    "Estatutos de Texas",
+    "Prácticas comerciales desleales",
+    "Unfair Trade Practices",
+    "Deberes del agente"
+  ],
+  "estatutos-vsh": [
+    "Estatutos del Estado de Texas relacionados con vida, salud y HMO",
+    "Estatutos del estado de Texas relacionados con vida, salud y HMO",
+    "Estatutos estatales de Texas relacionados con vida, salud y HMO",
+    "Estatutos del Estado de Texas relativos a Vida, Salud y HMO",
+    "Estatutos de Texas relacionados con vida, salud y HMO"
+  ]
+}
