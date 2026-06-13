@@ -1,0 +1,79 @@
+{
+  "modules": [
+    {
+      "id": 1,
+      "title": "Módulo 1 — Dominio I: Tipos de pólizas de vida",
+      "domain": "Seguro de vida",
+      "description": "Practica preguntas sobre los diferentes tipos de pólizas de vida disponibles en Texas."
+    },
+    {
+      "id": 2,
+      "title": "Módulo 2 — Dominio II: Cláusulas adicionales, provisiones y opciones de póliza",
+      "domain": "Cláusulas, disposiciones, opciones y exclusiones de la póliza",
+      "description": "Practica preguntas sobre cláusulas adicionales, provisiones y opciones de póliza."
+    },
+    {
+      "id": 3,
+      "title": "Módulo 3 — Dominio III: Completar la solicitud y entregar pólizas",
+      "domain": "Completar la solicitud, suscripción y entrega de la póliza",
+      "description": "Practica preguntas sobre el proceso de solicitud y entrega de pólizas."
+    },
+    {
+      "id": 4,
+      "title": "Módulo 4 — Dominio IV: Conceptos de retiro y anualidades",
+      "domain": "Impuestos, retiro y otros conceptos de seguros",
+      "description": "Practica preguntas sobre conceptos de retiro, anualidades e impuestos."
+    },
+    {
+      "id": 5,
+      "title": "Módulo 5 — Dominio V: Tipos de pólizas de salud",
+      "domain": "Seguro de salud",
+      "description": "Practica preguntas sobre los diferentes tipos de pólizas de salud."
+    },
+    {
+      "id": 6,
+      "title": "Módulo 6 — Dominio VI: Provisiones, cláusulas y cláusulas adicionales en pólizas de salud",
+      "domain": "Cláusulas, disposiciones, opciones y exclusiones de pólizas",
+      "description": "Practica preguntas sobre provisiones y cláusulas en pólizas de salud."
+    },
+    {
+      "id": 7,
+      "title": "Módulo 7 — Dominio VII: Seguro social",
+      "domain": "Prácticas comerciales desleales",
+      "description": "Practica preguntas sobre seguro social y obligaciones del agente."
+    },
+    {
+      "id": 8,
+      "title": "Módulo 8 — Dominio VIII: Otros conceptos de seguros",
+      "domain": "Impuestos, retiro y otros conceptos de seguros",
+      "description": "Practica preguntas sobre otros conceptos de seguros."
+    },
+    {
+      "id": 9,
+      "title": "Módulo 9 — Dominio IX: Suscripción en campo",
+      "domain": "Completar la solicitud, suscripción y entrega de la póliza",
+      "description": "Practica preguntas sobre suscripción y procesos en campo."
+    },
+    {
+      "id": 10,
+      "title": "Módulo 10 — Dominio I de Texas: Estatutos de Texas para seguros de vida y salud",
+      "domain": "Estatutos del estado de Texas relacionados con vida, salud y HMO",
+      "description": "Practica preguntas sobre estatutos de Texas para seguros de vida y salud."
+    },
+    {
+      "id": 11,
+      "title": "Módulo 11 — Dominio II de Texas: Regulaciones específicas para seguros de vida",
+      "domain": "Estatutos del estado de Texas comunes a todas las líneas",
+      "description": "Practica preguntas sobre regulaciones específicas para seguros de vida en Texas."
+    },
+    {
+      "id": 12,
+      "title": "Módulo 12 — Dominio III de Texas: Regulaciones específicas para seguros de accidente y salud",
+      "domain": "Estatutos del estado de Texas relacionados con vida, salud y HMO",
+      "description": "Practica preguntas sobre regulaciones para seguros de accidente y salud en Texas."
+    }
+  ],
+  "baseUrl": "https://alleanzasimulator.vercel.app",
+  "notes": "IMPORTANT: Verify the 'domain' values match exactly with the domains in your question bank. See 'Checking domains' section below.",
+  "checking_domains_command": "cat validated_questions/*.json | grep '\"domain\"' | sed 's/.*\"domain\": \"\\([^\"]*\\)\".*/\\1/' | sort -u"
+}

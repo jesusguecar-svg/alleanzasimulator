@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "test": "vitest run",
     "validate:package": "node scripts/validate-package-json.mjs",
-    "validate:questions": "tsx scripts/validate-questions.ts"
+    "validate:questions": "tsx scripts/validate-questions.ts",
+    "generate:modules": "node scripts/generate-module-links.js"
   },
   "dependencies": {
     "react": "^18.3.1",
