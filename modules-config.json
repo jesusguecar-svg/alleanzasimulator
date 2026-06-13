@@ -73,7 +73,7 @@
       "description": "Practica preguntas sobre regulaciones para seguros de accidente y salud en Texas."
     }
   ],
-  "baseUrl": "https://alleanzasimulator.vercel.app",
+  "baseUrl": "https://alleanzasimulator-texas.vercel.app",
   "notes": "IMPORTANT: Verify the 'domain' values match exactly with the domains in your question bank. See 'Checking domains' section below.",
   "checking_domains_command": "cat validated_questions/*.json | grep '\"domain\"' | sed 's/.*\"domain\": \"\\([^\"]*\\)\".*/\\1/' | sort -u"
 }

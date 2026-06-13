@@ -76,7 +76,7 @@ Cada archivo HTML contiene:
 <div style="...">
   <h3>Módulo X — Dominio Y: Tema</h3>
   <p>Descripción del tema</p>
-  <a href="https://alleanzasimulator.vercel.app/?domain=Tema%20Específico" 
+  <a href="https://alleanzasimulator-texas.vercel.app/?domain=Tema%20Específico" 
      target="_blank" 
      rel="noopener noreferrer">
     → Abrir simulador de práctica
@@ -96,8 +96,8 @@ Cuando el estudiante hace clic en el botón del simulador:
 4. El estudiante practica con esas preguntas específicas
 
 **Ejemplo de URLs generadas:**
-- Módulo 1: `https://alleanzasimulator.vercel.app/?domain=Seguro%20de%20vida`
-- Módulo 2: `https://alleanzasimulator.vercel.app/?domain=Cl%C3%A1usulas%2C%20disposiciones%2C%20opciones%20y%20exclusiones%20de%20la%20p%C3%B3liza`
+- Módulo 1: `https://alleanzasimulator-texas.vercel.app/?domain=Seguro%20de%20vida`
+- Módulo 2: `https://alleanzasimulator-texas.vercel.app/?domain=Cl%C3%A1usulas%2C%20disposiciones%2C%20opciones%20y%20exclusiones%20de%20la%20p%C3%B3liza`
 
 ## Regenerar los Archivos
 
@@ -128,7 +128,7 @@ Si necesitas actualizar las descripiciones de los módulos o los URL, puedes:
 
 Para que esto funcione correctamente:
 
-1. Asegúrate de que `https://alleanzasimulator.vercel.app` esté accesible desde tu red
+1. Asegúrate de que `https://alleanzasimulator-texas.vercel.app` esté accesible desde tu red
 2. Si usas filtros de contenido, agrega el dominio a la lista de permitidos
 3. El simulador usa `localStorage` para guardar progreso de estudiantes (por navegador)
 
