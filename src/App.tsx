@@ -66,6 +66,15 @@ export default function App() {
     return () => window.clearInterval(id);
   }, [useTimer, session, startedAt, index]);
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const domainParam = params.get('domain');
+    if (domainParam) {
+      setDomains([decodeURIComponent(domainParam)]);
+      setOnboardingStep('setup');
+    }
+  }, []);
+
   void getDashboardStats;
 
   const filtered = useMemo(() => {
