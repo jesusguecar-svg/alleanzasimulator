@@ -4,10 +4,22 @@ Cada módulo tiene su propio simulador filtrado por tema. Los enlaces abren el s
 
 ## Para usar en Tutor LMS
 
+Hay dos formas de integrar el simulador en cada módulo. Elige una:
+
+**Opción A — Botón (abre el simulador en una ventana nueva)**
+
 1. Abre el módulo correspondiente en Tutor LMS
 2. Copia el código HTML del archivo `generated-module-html/module-XX-*.html`
 3. Pega el contenido en el editor de contenido del módulo (bloque HTML)
 4. Guarda los cambios
+
+**Opción B — Embed (el cuestionario se ve dentro de la lección)**
+
+1. Abre el módulo correspondiente en Tutor LMS
+2. Copia el código HTML del archivo `generated-module-embed/module-XX-*.html`
+3. Pega el contenido en un bloque **HTML / Custom HTML** del módulo
+4. Guarda los cambios. El simulador aparece incrustado (iframe) con un enlace de
+   respaldo por si el tema bloquea iframes.
 
 ## Módulos
 

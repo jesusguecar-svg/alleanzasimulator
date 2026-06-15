@@ -6,10 +6,11 @@
  * Usage: node scripts/generate-module-links.js  (or: npm run generate:modules)
  *
  * Outputs:
- *   - generated-module-html/module-XX-*.html  (button snippets to paste in Tutor LMS)
- *   - module-html-snippets.html               (preview of all modules)
- *   - TUTOR_LMS_SETUP.md                       (markdown reference)
- *   - src/data/topics.json                     (topic -> domains map consumed by the app)
+ *   - generated-module-html/module-XX-*.html   (button snippets to paste in Tutor LMS)
+ *   - generated-module-embed/module-XX-*.html  (iframe embed snippets — quiz inline)
+ *   - module-html-snippets.html                (preview of all modules)
+ *   - TUTOR_LMS_SETUP.md                        (markdown reference)
+ *   - src/data/topics.json                      (topic -> domains map consumed by the app)
  *
  * Each module links to the simulator with ?topic=<slug>. The app expands the
  * slug to every domain spelling variant via src/data/topics.json, so the filter
@@ -96,6 +97,34 @@ function generateModuleLink(module) {
 </div>`;
 }
 
+/**
+ * Iframe embed snippet for pasting into a Tutor LMS "Custom HTML" block.
+ * Renders the simulator (filtered to this module's topic) INLINE in the lesson,
+ * instead of opening a new tab. Includes a fallback link in case the host blocks
+ * iframes. The app keeps progress/theme in the iframe's own localStorage, so no
+ * extra configuration is required.
+ */
+function generateModuleEmbed(module) {
+  const url = simulatorUrl(module);
+  return `
+<!-- ${module.title} (embed) -->
+<div style="margin: 20px 0;">
+  <div style="position: relative; width: 100%; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+    <iframe
+      src="${url}"
+      title="${module.title}"
+      loading="lazy"
+      style="display: block; width: 100%; height: 900px; border: 0;"
+      allow="clipboard-write"
+    ></iframe>
+  </div>
+  <p style="margin: 8px 0 0; color: #64748b; font-size: 13px;">
+    ¿No se ve el simulador?
+    <a href="${url}" target="_blank" rel="noopener noreferrer" style="color: #2563eb;">Ábrelo en una ventana nueva</a>.
+  </p>
+</div>`;
+}
+
 function generateMarkdown(module) {
   return `## ${module.title}
 
@@ -129,6 +158,13 @@ const outputDir = path.join(root, 'generated-module-html');
 fs.mkdirSync(outputDir, { recursive: true });
 for (const module of config.modules) {
   fs.writeFileSync(path.join(outputDir, moduleFilename(module)), generateModuleLink(module).trim());
+}
+
+// --- Write individual iframe embed snippets ---
+const embedDir = path.join(root, 'generated-module-embed');
+fs.mkdirSync(embedDir, { recursive: true });
+for (const module of config.modules) {
+  fs.writeFileSync(path.join(embedDir, moduleFilename(module)), generateModuleEmbed(module).trim());
 }
 
 // --- Write the all-in-one preview page ---
@@ -169,6 +205,8 @@ ${config.modules
     <p style="color:#0f766e;font-size:13px;margin:4px 0;">Preguntas disponibles: <strong>${questionCountFor(module)}</strong></p>
     <a href="${simulatorUrl(module)}" target="_blank" rel="noopener noreferrer" class="module-link">→ Abrir simulador de práctica</a>
     <div class="code-block">URL: ${simulatorUrl(module)}</div>
+    <p style="margin:12px 0 4px;color:#475569;font-size:13px;"><strong>Código embed (iframe):</strong></p>
+    <div class="code-block">${generateModuleEmbed(module).trim().replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>
   </div>
 `,
   )
@@ -186,10 +224,22 @@ Cada módulo tiene su propio simulador filtrado por tema. Los enlaces abren el s
 
 ## Para usar en Tutor LMS
 
+Hay dos formas de integrar el simulador en cada módulo. Elige una:
+
+**Opción A — Botón (abre el simulador en una ventana nueva)**
+
 1. Abre el módulo correspondiente en Tutor LMS
 2. Copia el código HTML del archivo \`generated-module-html/module-XX-*.html\`
 3. Pega el contenido en el editor de contenido del módulo (bloque HTML)
 4. Guarda los cambios
+
+**Opción B — Embed (el cuestionario se ve dentro de la lección)**
+
+1. Abre el módulo correspondiente en Tutor LMS
+2. Copia el código HTML del archivo \`generated-module-embed/module-XX-*.html\`
+3. Pega el contenido en un bloque **HTML / Custom HTML** del módulo
+4. Guarda los cambios. El simulador aparece incrustado (iframe) con un enlace de
+   respaldo por si el tema bloquea iframes.
 
 ## Módulos
 
@@ -203,6 +253,7 @@ fs.writeFileSync(path.join(root, 'TUTOR_LMS_SETUP.md'), markdownContent);
 
 console.log('✓ Generated src/data/topics.json');
 console.log('✓ Generated button link snippets in generated-module-html/');
+console.log('✓ Generated iframe embed snippets in generated-module-embed/');
 console.log('✓ Generated module-html-snippets.html');
 console.log('✓ Generated TUTOR_LMS_SETUP.md');
 console.log(`\nTotal modules: ${config.modules.length} | Base URL: ${config.baseUrl}`);
