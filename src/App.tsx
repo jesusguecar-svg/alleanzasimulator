@@ -50,9 +50,34 @@ const topicDomains: Record<string, string[]> = {
   ]
 };
 
+const topicLabels: Record<string, string> = {
+  'tipos-vida': 'Tipos de pólizas de vida',
+  'tipos-salud': 'Tipos de pólizas de salud',
+  'provisiones': 'Cláusulas, disposiciones, opciones y exclusiones',
+  'solicitud-suscripcion': 'Solicitud, suscripción y entrega',
+  'impuestos-retiro-otros': 'Impuestos, retiro y otros conceptos de seguros',
+  'estatutos-comunes': 'Estatutos de Texas comunes a todas las líneas',
+  'estatutos-vsh': 'Estatutos de Texas relacionados con vida, salud y HMO'
+};
+
 const loaded = loadQuestions();
 const THEME_KEY = 'theme';
 const TIMER_KEY = 'useTimer';
+
+/** Resilient domain match: ignores casing/whitespace variants across the bank. */
+const domainMatches = (questionDomain: string, domains: string[]) => {
+  const norm = questionDomain.trim().toLowerCase();
+  return domains.some((d) => d.trim().toLowerCase() === norm);
+};
+
+/** Build a ready-to-play session filtered to the given domains. */
+const buildSession = (domainList: string[], desiredCount?: number): SessionQuestion[] => {
+  const pool = loaded.questions.filter((q) => domainMatches(q.domain, domainList));
+  const n = desiredCount && desiredCount > 0 ? Math.min(desiredCount, pool.length) : pool.length;
+  return shuffleArray(pool)
+    .slice(0, n)
+    .map((q) => ({ ...q, shuffledOptions: shuffleArray(q.options) }));
+};
 type OnboardingStep = 'choice' | 'level' | 'setup';
 type RecommendedPath = 'beginner' | 'advanced' | null;
 
@@ -87,6 +112,7 @@ export default function App() {
   const [showDashboard, setShowDashboard] = useState(false);
   const [onboardingStep, setOnboardingStep] = useState<OnboardingStep>('choice');
   const [recommendedPath, setRecommendedPath] = useState<RecommendedPath>(null);
+  const [activeTopicLabel, setActiveTopicLabel] = useState<string | null>(null);
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', darkMode);
@@ -108,22 +134,46 @@ export default function App() {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const topicParam = params.get('topic');
+    const wantSetup = params.get('setup') === '1';
+    const countParam = Number(params.get('count')) || undefined;
+
     const selected = topicParam && topicDomains[topicParam]
       ? topicDomains[topicParam]
       : params.getAll('domain').map((d) => decodeURIComponent(d));
     if (!selected.length) return;
+
     setDomains(selected);
-    setOnboardingStep('setup');
-    // Clamp the question count to what this topic actually has
-    const available = loaded.questions.filter((q) => selected.includes(q.domain)).length;
-    if (available > 0) setCount((c) => Math.min(c, available));
+    if (topicParam && topicLabels[topicParam]) setActiveTopicLabel(topicLabels[topicParam]);
+
+    const available = loaded.questions.filter((q) => domainMatches(q.domain, selected)).length;
+
+    // Bad slug / empty domain → fall back to setup with a message instead of an empty quiz
+    if (available === 0) {
+      setOnboardingStep('setup');
+      setMessage('No se encontraron preguntas para este módulo. Revisa el enlace.');
+      return;
+    }
+
+    // ?setup=1 keeps the configurable setup screen, pre-filtered to this module
+    if (wantSetup) {
+      setOnboardingStep('setup');
+      setCount((c) => Math.min(c, available));
+      return;
+    }
+
+    // Default: launch the filtered quiz directly, skipping onboarding + setup
+    setSession(buildSession(selected, countParam));
+    setAnswers({});
+    setIndex(0);
+    setStartedAt(Date.now());
+    setElapsedSeconds(0);
   }, []);
 
   void getDashboardStats;
 
   const filtered = useMemo(() => {
     const p = getProgress();
-    return loaded.questions.filter((q) => (domains.length ? domains.includes(q.domain) : true) && difficulties.includes(q.difficulty) && (!skipAnswered || !p.answeredIds.includes(q.id)));
+    return loaded.questions.filter((q) => (domains.length ? domainMatches(q.domain, domains) : true) && difficulties.includes(q.difficulty) && (!skipAnswered || !p.answeredIds.includes(q.id)));
   }, [domains, difficulties, skipAnswered]);
 
   if (!session) {
@@ -214,6 +264,7 @@ export default function App() {
       </div>
 
       <div className='bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-4 sm:p-5 space-y-3'>
+        {activeTopicLabel && <p className='text-xs sm:text-sm font-semibold text-blue-700 dark:text-blue-300'>Módulo: {activeTopicLabel}</p>}
         <div className='flex items-center justify-between gap-3 text-sm sm:text-base font-medium text-slate-700 dark:text-slate-200'>
           <p>Pregunta {index + 1} de {session.length}</p>
           <p>{completion}% completado</p>
