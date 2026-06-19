@@ -88,10 +88,8 @@ export function ResultsScreen({ questions, answers, onRetryMissed, onNew }: Prop
 
     <div className="bg-white rounded-lg shadow p-4">
       <h3 className="font-semibold">Siguiente misión</h3>
-      {incorrect.length === 0 ? <p>¡Sin errores! Intenta una sesión más larga o sube la dificultad para mantener el ritmo.</p> : <ul className="list-disc ml-5 text-sm space-y-1"><li>Reintenta solo las falladas para consolidar memoria activa.</li><li>Prioriza los dominios con porcentaje más bajo.</li><li>Lee explicaciones completas antes de avanzar.</li></ul>}
+      {incorrect.length === 0 ? <p>¡Sin errores! Intenta una sesión más larga o sube la dificultad para mantener el ritmo.</p> : <ul className="list-disc ml-5 text-sm space-y-1"><li>Reintenta solo las falladas para consolidar memoria activa.</li><li>Prioriza los dominios con porcentaje más bajo.</li><li>Activa "Ver la explicación después de cada respuesta" para aprender mientras practicas.</li></ul>}
     </div>
-
-    <div className="bg-white rounded-lg shadow p-4"><h3 className="font-semibold">Revisar errores</h3>{incorrect.length === 0 ? <p>¡Sin errores!</p> : incorrect.map((q) => <div key={q.id} className="border-t pt-2 mt-2"><p className="font-medium">{q.question}</p><p className="text-sm">Tu respuesta: {answers[q.id] || 'Sin responder'}</p><p className="text-sm">Respuesta correcta: {q.correctAnswer}</p>{q.explanation && <p className="text-sm">Explicación: {q.explanation}</p>}{answers[q.id] && answers[q.id] !== q.correctAnswer && q.optionExplanations?.[answers[q.id]] && <p className="text-sm">Por qué fue incorrecta: {q.optionExplanations[answers[q.id]]}</p>}</div>)}</div>
 
     <div className="flex gap-2"><button onClick={onRetryMissed} className="bg-amber-600 text-white rounded px-3 py-2">Reintentar preguntas falladas</button><button onClick={onNew} className="bg-blue-600 text-white rounded px-3 py-2">Nueva sesión</button></div>
   </div>;

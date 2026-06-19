@@ -99,7 +99,7 @@ export default function App() {
   const [domains, setDomains] = useState<string[]>([]);
   const [difficulties, setDifficulties] = useState<string[]>(['easy', 'medium', 'hard']);
   const [skipAnswered, setSkipAnswered] = useState(false);
-  const [showAtEnd, setShowAtEnd] = useState(false);
+  const [showImmediate, setShowImmediate] = useState(true);
   const [useTimer, setUseTimer] = useState(getDefaultUseTimer);
   const [darkMode, setDarkMode] = useState(getDefaultDarkMode);
   const [count, setCount] = useState(25);
@@ -204,11 +204,11 @@ export default function App() {
       setDifficulties(['easy', 'medium', 'hard']);
       setSkipAnswered(false);
       if (path === 'beginner') {
-        setShowAtEnd(false);
+        setShowImmediate(true);
         setUseTimer(false);
         setCount(filtered.length >= 25 ? 25 : 10);
       } else {
-        setShowAtEnd(true);
+        setShowImmediate(false);
         setUseTimer(true);
         setCount(filtered.length >= 100 ? 100 : Math.max(filtered.length, 1));
       }
@@ -225,7 +225,7 @@ export default function App() {
           onChooseLevel={applyRecommendedPath}
         />
       ) : (
-        <SetupScreen questions={loaded.questions} selectedDomains={domains} setSelectedDomains={setDomains} selectedDifficulties={difficulties} setSelectedDifficulties={setDifficulties} skipAnswered={skipAnswered} setSkipAnswered={setSkipAnswered} showAtEnd={showAtEnd} setShowAtEnd={setShowAtEnd} useTimer={useTimer} setUseTimer={setUseTimer} darkMode={darkMode} setDarkMode={setDarkMode} count={count} setCount={setCount} availableCount={filtered.length} message={message} recommendedPathMessage={recommendedPathMessage} onBackToOnboarding={() => setOnboardingStep('choice')} onStart={() => {
+        <SetupScreen questions={loaded.questions} selectedDomains={domains} setSelectedDomains={setDomains} selectedDifficulties={difficulties} setSelectedDifficulties={setDifficulties} skipAnswered={skipAnswered} setSkipAnswered={setSkipAnswered} showImmediate={showImmediate} setShowImmediate={setShowImmediate} useTimer={useTimer} setUseTimer={setUseTimer} darkMode={darkMode} setDarkMode={setDarkMode} count={count} setCount={setCount} availableCount={filtered.length} message={message} recommendedPathMessage={recommendedPathMessage} onBackToOnboarding={() => setOnboardingStep('choice')} onStart={() => {
           if (filtered.length === 0) return setMessage('No hay preguntas disponibles con los filtros seleccionados.');
           if (count > filtered.length) return setMessage(`Solo hay ${filtered.length} preguntas disponibles.`);
           const picked = shuffleArray(filtered).slice(0, count).map((q) => ({ ...q, shuffledOptions: shuffleArray(q.options) }));
@@ -250,7 +250,7 @@ export default function App() {
 
   const q = session[index];
   const selected = answers[q.id];
-  const showFeedback = !showAtEnd && Boolean(selected);
+  const showFeedback = showImmediate && Boolean(selected);
   const completion = Math.round((index / session.length) * 100);
   const minutes = String(Math.floor(elapsedSeconds / 60)).padStart(2, '0');
   const seconds = String(elapsedSeconds % 60).padStart(2, '0');
