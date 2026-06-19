@@ -9,8 +9,8 @@ type Props = {
   setSelectedDifficulties: (v: string[]) => void;
   skipAnswered: boolean;
   setSkipAnswered: (v: boolean) => void;
-  showAtEnd: boolean;
-  setShowAtEnd: (v: boolean) => void;
+  showImmediate: boolean;
+  setShowImmediate: (v: boolean) => void;
   useTimer: boolean;
   setUseTimer: (v: boolean) => void;
   darkMode: boolean;
@@ -72,7 +72,8 @@ export function SetupScreen(p: Props) {
       <div><div className="flex justify-between"><p className="text-sm mb-2">Dominios</p><div className="text-xs"><button onClick={()=>p.setSelectedDomains(domains)} className="underline mr-2">Todas</button><button onClick={()=>p.setSelectedDomains([])} className="underline">Ninguna</button></div></div><div className="flex flex-wrap gap-2">{domains.map((d)=><button key={d} onClick={()=>p.setSelectedDomains(p.selectedDomains.includes(d)?p.selectedDomains.filter(x=>x!==d):[...p.selectedDomains,d])} className={`px-3 py-1 rounded border ${p.selectedDomains.includes(d)?'bg-blue-100 dark:bg-blue-900/40 border-blue-400':'bg-slate-50 dark:bg-slate-800 border-slate-300 dark:border-slate-600'}`}>{d}</button>)}</div></div>
 
       <label className="block"><input type="checkbox" checked={p.skipAnswered} onChange={e=>p.setSkipAnswered(e.target.checked)} className="mr-2"/>Omitir preguntas ya contestadas</label>
-      <label className="block"><input type="checkbox" checked={p.showAtEnd} onChange={e=>p.setShowAtEnd(e.target.checked)} className="mr-2"/>Mostrar respuestas solo al final</label>
+      <label className="block"><input type="checkbox" checked={p.showImmediate} onChange={e=>p.setShowImmediate(e.target.checked)} className="mr-2"/>Ver la explicación después de cada respuesta</label>
+      <p className="text-xs text-slate-500 dark:text-slate-400 -mt-2 ml-6">Las explicaciones solo se muestran al responder cada pregunta. Al finalizar verás tu puntaje y desempeño, no el listado de preguntas.</p>
       <label className="block"><input type="checkbox" checked={p.useTimer} onChange={e=>p.setUseTimer(e.target.checked)} className="mr-2"/>Usar temporizador</label>
 
       <div><label className="block mb-1">¿Cuántas preguntas?</label><div className="flex items-center gap-2"><input type="number" min={1} value={p.count} onChange={e=>p.setCount(Number(e.target.value)||1)} className="border border-slate-300 dark:border-slate-600 dark:bg-slate-800 rounded px-2 py-1 w-24"/><span className="text-sm text-slate-600 dark:text-slate-300">de {p.availableCount}</span></div><div className="flex gap-2 mt-2">{[10,25,50,100].map((n)=><button key={n} onClick={()=>p.setCount(n)} className="px-2 py-1 rounded border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-800">{n}</button>)}</div></div>
