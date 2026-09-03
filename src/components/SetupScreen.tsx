@@ -1,5 +1,7 @@
 import { useMemo } from 'react';
+import { Check, Clock3, History, ListChecks, Play, RotateCcw, ShieldCheck } from 'lucide-react';
 import type { NormalizedQuestion } from '../types/question';
+import { AppHeader } from './AppChrome';
 
 type Props = {
   questions: NormalizedQuestion[];
@@ -22,6 +24,8 @@ type Props = {
   message?: string;
   recommendedPathMessage?: string;
   onBackToOnboarding?: () => void;
+  onViewStats?: () => void;
+  onResetProgress?: () => void;
 };
 
 export function SetupScreen(p: Props) {
@@ -35,50 +39,123 @@ export function SetupScreen(p: Props) {
     return Array.from(unique.values()).sort((a, b) => a.localeCompare(b));
   }, [p.questions]);
 
-  const diffs = ['easy', 'medium', 'hard'];
+  const diffs = [
+    { id: 'easy', label: 'Fácil' },
+    { id: 'medium', label: 'Medio' },
+    { id: 'hard', label: 'Difícil' },
+  ];
 
-  return <div className="max-w-3xl mx-auto p-4 sm:p-6 space-y-4 text-slate-900 dark:text-slate-100">
-    <div className="flex justify-end">
-      <button
-        type="button"
-        onClick={() => p.setDarkMode(!p.darkMode)}
-        className="rounded-full border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-3 py-1.5 text-sm"
-      >
-        {p.darkMode ? '🌙 Oscuro' : '🌞 Claro'}
-      </button>
-    </div>
+  const toggleDomain = (domain: string) => {
+    p.setSelectedDomains(
+      p.selectedDomains.includes(domain)
+        ? p.selectedDomains.filter((item) => item !== domain)
+        : [...p.selectedDomains, domain],
+    );
+  };
 
-    <div className="text-center space-y-1">
-      <h1 className="text-3xl font-bold">Texas General Lines Practice Exam</h1>
-      <p className="text-slate-600 dark:text-slate-300">Life, Accident, Health & HMO</p>
-      <p className="text-sm text-slate-700 dark:text-slate-200">{p.questions.length} preguntas disponibles</p>
-    </div>
+  const Toggle = ({ checked, onChange, label }: { checked: boolean; onChange: (value: boolean) => void; label: string }) => (
+    <button type="button" className={`toggle ${checked ? 'on' : ''}`} onClick={() => onChange(!checked)} aria-pressed={checked} aria-label={label}>
+      <span />
+    </button>
+  );
 
-    <section className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-4 space-y-4">
-      <h2 className="font-semibold">Filtros y opciones</h2>
-      {p.recommendedPathMessage && (
-        <div className="rounded-xl border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-950/30 p-3 space-y-1">
-          <p className="text-sm text-blue-800 dark:text-blue-200">{p.recommendedPathMessage}</p>
-          {p.onBackToOnboarding && (
-            <button onClick={p.onBackToOnboarding} className="text-xs underline text-blue-700 dark:text-blue-300">
-              Cambiar ruta
+  return (
+    <div className="app-shell setup-shell">
+      <AppHeader darkMode={p.darkMode} onToggleTheme={() => p.setDarkMode(!p.darkMode)} questionCount={p.questions.length} />
+      <main className="setup-main" id="main-content">
+        <section className="setup-intro">
+          <div>
+            <span className="eyebrow">Life, Accident, Health &amp; HMO</span>
+            <h1>Texas General Lines Practice Exam</h1>
+            <p>{p.questions.length} preguntas disponibles</p>
+          </div>
+          <div className="powered"><ShieldCheck size={18} /> Powered by <strong>Alleanza Academy</strong></div>
+        </section>
+
+        {p.recommendedPathMessage && (
+          <div className="route-note">
+            <ShieldCheck size={18} />
+            <span>{p.recommendedPathMessage}</span>
+            {p.onBackToOnboarding && <button className="text-button" onClick={p.onBackToOnboarding}>Cambiar ruta</button>}
+          </div>
+        )}
+
+        <div className="setup-grid">
+          <section className="panel domain-panel">
+            <div className="section-heading">
+              <div><span className="step">1</span><h2>Dominios</h2></div>
+              <button className="text-button" onClick={() => p.setSelectedDomains(p.selectedDomains.length === domains.length ? [] : domains)}>
+                {p.selectedDomains.length === domains.length ? 'Quitar todos' : 'Seleccionar todos'}
+              </button>
+            </div>
+            <div className="domain-list">
+              {domains.map((domain, domainIndex) => {
+                const selected = p.selectedDomains.includes(domain);
+                const domainCount = p.questions.filter((question) => question.domain.trim().toLowerCase() === domain.toLowerCase()).length;
+                return (
+                  <button key={domain} className={`domain-row ${selected ? 'selected' : ''}`} onClick={() => toggleDomain(domain)} aria-pressed={selected}>
+                    <span className="checkbox">{selected && <Check size={15} />}</span>
+                    <span className="domain-code">D{domainIndex + 1}</span>
+                    <span className="domain-name">{domain}</span>
+                    <span className="domain-count">{domainCount}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </section>
+
+          <section className="panel settings-panel">
+            <div className="section-heading"><div><span className="step">2</span><h2>Condiciones</h2></div></div>
+
+            <div className="setting-block">
+              <label>Cantidad de preguntas</label>
+              <div className="segmented count-segmented">
+                {[10, 25, 50, 75, 100].map((amount) => (
+                  <button key={amount} className={p.count === amount ? 'active' : ''} onClick={() => p.setCount(amount)}>{amount}</button>
+                ))}
+              </div>
+              <div className="range-row">
+                <input type="range" min="1" max={Math.max(1, p.availableCount)} value={Math.min(p.count, Math.max(1, p.availableCount))} onChange={(event) => p.setCount(Number(event.target.value))} />
+                <strong>{p.availableCount} disponibles</strong>
+              </div>
+            </div>
+
+            <div className="setting-block">
+              <label>Dificultad</label>
+              <div className="segmented difficulty-segmented">
+                {diffs.map((difficulty) => (
+                  <button
+                    key={difficulty.id}
+                    className={p.selectedDifficulties.includes(difficulty.id) ? 'active' : ''}
+                    onClick={() => p.setSelectedDifficulties(p.selectedDifficulties.includes(difficulty.id) ? p.selectedDifficulties.filter((item) => item !== difficulty.id) : [...p.selectedDifficulties, difficulty.id])}
+                    aria-pressed={p.selectedDifficulties.includes(difficulty.id)}
+                  >
+                    {difficulty.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="toggle-list">
+              <div><span><Clock3 size={17} /> Usar temporizador</span><Toggle checked={p.useTimer} onChange={p.setUseTimer} label="Usar temporizador" /></div>
+              <div><span><ListChecks size={17} /> Ver la explicación después de cada respuesta</span><Toggle checked={p.showImmediate} onChange={p.setShowImmediate} label="Ver explicación inmediata" /></div>
+              <div><span><History size={17} /> Omitir preguntas ya contestadas</span><Toggle checked={p.skipAnswered} onChange={p.setSkipAnswered} label="Omitir preguntas contestadas" /></div>
+            </div>
+
+            {p.message && <p className="form-message" role="alert">{p.message}</p>}
+            <button className="primary start-button" onClick={p.onStart} disabled={!p.availableCount || !p.selectedDifficulties.length}>
+              <Play size={18} fill="currentColor" /> Comenzar práctica
             </button>
-          )}
+            {p.onBackToOnboarding && <button className="secondary back-route-button" onClick={p.onBackToOnboarding}><RotateCcw size={16} /> Volver a las rutas</button>}
+          </section>
         </div>
-      )}
-
-      <div><p className="text-sm mb-2">Dificultad</p><div className="flex gap-2 flex-wrap">{diffs.map((d)=><button key={d} onClick={()=>p.setSelectedDifficulties(p.selectedDifficulties.includes(d)?p.selectedDifficulties.filter(x=>x!==d):[...p.selectedDifficulties,d])} className={`px-3 py-1 rounded border ${p.selectedDifficulties.includes(d)?'bg-blue-100 dark:bg-blue-900/40 border-blue-400':'bg-slate-50 dark:bg-slate-800 border-slate-300 dark:border-slate-600'}`}>{d==='easy'?'Fácil':d==='medium'?'Medio':'Difícil'}</button>)}</div></div>
-
-      <div><div className="flex justify-between"><p className="text-sm mb-2">Dominios</p><div className="text-xs"><button onClick={()=>p.setSelectedDomains(domains)} className="underline mr-2">Todas</button><button onClick={()=>p.setSelectedDomains([])} className="underline">Ninguna</button></div></div><div className="flex flex-wrap gap-2">{domains.map((d)=><button key={d} onClick={()=>p.setSelectedDomains(p.selectedDomains.includes(d)?p.selectedDomains.filter(x=>x!==d):[...p.selectedDomains,d])} className={`px-3 py-1 rounded border ${p.selectedDomains.includes(d)?'bg-blue-100 dark:bg-blue-900/40 border-blue-400':'bg-slate-50 dark:bg-slate-800 border-slate-300 dark:border-slate-600'}`}>{d}</button>)}</div></div>
-
-      <label className="block"><input type="checkbox" checked={p.skipAnswered} onChange={e=>p.setSkipAnswered(e.target.checked)} className="mr-2"/>Omitir preguntas ya contestadas</label>
-      <label className="block"><input type="checkbox" checked={p.showImmediate} onChange={e=>p.setShowImmediate(e.target.checked)} className="mr-2"/>Ver la explicación después de cada respuesta</label>
-      <p className="text-xs text-slate-500 dark:text-slate-400 -mt-2 ml-6">Las explicaciones solo se muestran al responder cada pregunta. Al finalizar verás tu puntaje y desempeño, no el listado de preguntas.</p>
-      <label className="block"><input type="checkbox" checked={p.useTimer} onChange={e=>p.setUseTimer(e.target.checked)} className="mr-2"/>Usar temporizador</label>
-
-      <div><label className="block mb-1">¿Cuántas preguntas?</label><div className="flex items-center gap-2"><input type="number" min={1} value={p.count} onChange={e=>p.setCount(Number(e.target.value)||1)} className="border border-slate-300 dark:border-slate-600 dark:bg-slate-800 rounded px-2 py-1 w-24"/><span className="text-sm text-slate-600 dark:text-slate-300">de {p.availableCount}</span></div><div className="flex gap-2 mt-2">{[10,25,50,100].map((n)=><button key={n} onClick={()=>p.setCount(n)} className="px-2 py-1 rounded border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-800">{n}</button>)}</div></div>
-      {p.message && <p className="text-red-600 text-sm">{p.message}</p>}
-      <button onClick={p.onStart} className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded py-2">Comenzar práctica</button>
-    </section>
-  </div>;
+        <div className="history-note">
+          <History size={17} />
+          <span>Tu progreso se guarda en este dispositivo.</span>
+          {p.onViewStats && <button onClick={p.onViewStats}>Ver mis estadísticas</button>}
+          {p.onResetProgress && <button className="muted-action" onClick={p.onResetProgress}>Reiniciar progreso</button>}
+        </div>
+      </main>
+    </div>
+  );
 }

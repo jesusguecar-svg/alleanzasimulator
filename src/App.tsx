@@ -1,85 +1,47 @@
+import { AlarmClock, ArrowLeft, ArrowRight, CheckCircle2, Flag, Highlighter, LayoutGrid, ListChecks, RotateCcw, X } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
-import { loadQuestions } from './data/loadQuestions';
-import { shuffleArray } from './utils/shuffle';
-import { clearProgress, getDashboardStats, getProgress, saveProgress } from './utils/storage';
-import { SetupScreen } from './components/SetupScreen';
-import { QuestionCard } from './components/QuestionCard';
-import { ResultsScreen } from './components/ResultsScreen';
+import { AppHeader } from './components/AppChrome';
 import { DashboardScreen } from './components/DashboardScreen';
 import { OnboardingScreen } from './components/OnboardingScreen';
+import { QuestionCard } from './components/QuestionCard';
+import { ResultsScreen } from './components/ResultsScreen';
+import { SetupScreen } from './components/SetupScreen';
+import { loadQuestions } from './data/loadQuestions';
+import topics from './data/topics.json';
 import type { SessionQuestion } from './types/question';
+import { shuffleArray } from './utils/shuffle';
+import { clearProgress, getProgress, saveProgress } from './utils/storage';
 
-const topicDomains: Record<string, string[]> = {
-  'tipos-vida': ['Tipos de pólizas', 'Seguro de vida', 'Life Insurance'],
-  'tipos-salud': ['Seguro de salud', 'Health Insurance'],
-  'provisiones': [
-    'Cláusulas adicionales, disposiciones, opciones y exclusiones de la póliza',
-    'Cláusulas, disposiciones, opciones y exclusiones de la póliza',
-    'Cláusulas, disposiciones, opciones y exclusiones de pólizas',
-    'Cláusulas, endosos, opciones y exclusiones de la póliza',
-    'Endosos, disposiciones, opciones y exclusiones de la póliza',
-    'Disposiciones de la póliza',
-    'Policy Provisions'
-  ],
-  'solicitud-suscripcion': [
-    'Completar la solicitud, suscripción y entrega de la póliza',
-    'Suscripción y entrega',
-    'Underwriting and Delivery'
-  ],
-  'impuestos-retiro-otros': [
-    'Impuestos, jubilación y otros conceptos de seguros',
-    'Impuestos, retiro y otros conceptos de seguros'
-  ],
-  'estatutos-comunes': [
-    'Estatutos del Estado de Texas comunes a todas las líneas',
-    'Estatutos del estado de Texas comunes a todas las líneas',
-    'Estatutos estatales de Texas comunes a todas las líneas',
-    'Estatutos de Texas comunes a todas las líneas',
-    'Texas Statutes',
-    'Estatutos de Texas',
-    'Prácticas comerciales desleales',
-    'Unfair Trade Practices',
-    'Deberes del agente'
-  ],
-  'estatutos-vsh': [
-    'Estatutos del Estado de Texas relacionados con vida, salud y HMO',
-    'Estatutos del estado de Texas relacionados con vida, salud y HMO',
-    'Estatutos estatales de Texas relacionados con vida, salud y HMO',
-    'Estatutos del Estado de Texas relativos a Vida, Salud y HMO',
-    'Estatutos de Texas relacionados con vida, salud y HMO'
-  ]
-};
+const topicDomains = topics as Record<string, string[]>;
 
 const topicLabels: Record<string, string> = {
   'tipos-vida': 'Tipos de pólizas de vida',
   'tipos-salud': 'Tipos de pólizas de salud',
-  'provisiones': 'Cláusulas, disposiciones, opciones y exclusiones',
+  provisiones: 'Cláusulas, disposiciones, opciones y exclusiones',
   'solicitud-suscripcion': 'Solicitud, suscripción y entrega',
   'impuestos-retiro-otros': 'Impuestos, retiro y otros conceptos de seguros',
   'estatutos-comunes': 'Estatutos de Texas comunes a todas las líneas',
-  'estatutos-vsh': 'Estatutos de Texas relacionados con vida, salud y HMO'
+  'estatutos-vsh': 'Estatutos de Texas relacionados con vida, salud y HMO',
 };
 
 const loaded = loadQuestions();
+const allDomains = Array.from(new Set(loaded.questions.map((question) => question.domain.trim()))).sort((a, b) => a.localeCompare(b));
 const THEME_KEY = 'theme';
 const TIMER_KEY = 'useTimer';
 
-/** Resilient domain match: ignores casing/whitespace variants across the bank. */
-const domainMatches = (questionDomain: string, domains: string[]) => {
-  const norm = questionDomain.trim().toLowerCase();
-  return domains.some((d) => d.trim().toLowerCase() === norm);
-};
-
-/** Build a ready-to-play session filtered to the given domains. */
-const buildSession = (domainList: string[], desiredCount?: number): SessionQuestion[] => {
-  const pool = loaded.questions.filter((q) => domainMatches(q.domain, domainList));
-  const n = desiredCount && desiredCount > 0 ? Math.min(desiredCount, pool.length) : pool.length;
-  return shuffleArray(pool)
-    .slice(0, n)
-    .map((q) => ({ ...q, shuffledOptions: shuffleArray(q.options) }));
-};
 type OnboardingStep = 'choice' | 'level' | 'setup';
 type RecommendedPath = 'beginner' | 'advanced' | null;
+
+const domainMatches = (questionDomain: string, domains: string[]) => {
+  const normalized = questionDomain.trim().toLowerCase();
+  return domains.some((domain) => domain.trim().toLowerCase() === normalized);
+};
+
+const buildSession = (domainList: string[], desiredCount?: number): SessionQuestion[] => {
+  const pool = loaded.questions.filter((question) => domainMatches(question.domain, domainList));
+  const amount = desiredCount && desiredCount > 0 ? Math.min(desiredCount, pool.length) : pool.length;
+  return shuffleArray(pool).slice(0, amount).map((question) => ({ ...question, shuffledOptions: shuffleArray(question.options) }));
+};
 
 const getDefaultDarkMode = () => {
   if (typeof window === 'undefined') return false;
@@ -95,8 +57,14 @@ const getDefaultUseTimer = () => {
   return saved === null ? true : saved === 'true';
 };
 
+const formatTime = (totalSeconds: number) => {
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+};
+
 export default function App() {
-  const [domains, setDomains] = useState<string[]>([]);
+  const [domains, setDomains] = useState<string[]>(allDomains);
   const [difficulties, setDifficulties] = useState<string[]>(['easy', 'medium', 'hard']);
   const [skipAnswered, setSkipAnswered] = useState(false);
   const [showImmediate, setShowImmediate] = useState(true);
@@ -113,6 +81,11 @@ export default function App() {
   const [onboardingStep, setOnboardingStep] = useState<OnboardingStep>('choice');
   const [recommendedPath, setRecommendedPath] = useState<RecommendedPath>(null);
   const [activeTopicLabel, setActiveTopicLabel] = useState<string | null>(null);
+  const [flaggedIds, setFlaggedIds] = useState<string[]>([]);
+  const [strikeouts, setStrikeouts] = useState<Record<string, string[]>>({});
+  const [highlights, setHighlights] = useState<Record<string, string[]>>({});
+  const [showNavigator, setShowNavigator] = useState(false);
+  const [showFinish, setShowFinish] = useState(false);
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', darkMode);
@@ -125,43 +98,35 @@ export default function App() {
 
   useEffect(() => {
     if (!useTimer || !session || startedAt === null || index >= session.length) return;
-    const id = window.setInterval(() => {
-      setElapsedSeconds(Math.floor((Date.now() - startedAt) / 1000));
-    }, 1000);
-    return () => window.clearInterval(id);
+    const timer = window.setInterval(() => setElapsedSeconds(Math.floor((Date.now() - startedAt) / 1000)), 1000);
+    return () => window.clearInterval(timer);
   }, [useTimer, session, startedAt, index]);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const topicParam = params.get('topic');
-    const wantSetup = params.get('setup') === '1';
+    const wantsSetup = params.get('setup') === '1';
     const countParam = Number(params.get('count')) || undefined;
-
     const selected = topicParam && topicDomains[topicParam]
       ? topicDomains[topicParam]
-      : params.getAll('domain').map((d) => decodeURIComponent(d));
-    if (!selected.length) return;
+      : params.getAll('domain').map((domain) => decodeURIComponent(domain));
 
+    if (!selected.length) return;
     setDomains(selected);
     if (topicParam && topicLabels[topicParam]) setActiveTopicLabel(topicLabels[topicParam]);
 
-    const available = loaded.questions.filter((q) => domainMatches(q.domain, selected)).length;
-
-    // Bad slug / empty domain → fall back to setup with a message instead of an empty quiz
+    const available = loaded.questions.filter((question) => domainMatches(question.domain, selected)).length;
     if (available === 0) {
       setOnboardingStep('setup');
       setMessage('No se encontraron preguntas para este módulo. Revisa el enlace.');
       return;
     }
-
-    // ?setup=1 keeps the configurable setup screen, pre-filtered to this module
-    if (wantSetup) {
+    if (wantsSetup) {
       setOnboardingStep('setup');
-      setCount((c) => Math.min(c, available));
+      setCount((current) => Math.min(current, available));
       return;
     }
 
-    // Default: launch the filtered quiz directly, skipping onboarding + setup
     setSession(buildSession(selected, countParam));
     setAnswers({});
     setIndex(0);
@@ -169,123 +134,232 @@ export default function App() {
     setElapsedSeconds(0);
   }, []);
 
-  void getDashboardStats;
-
   const filtered = useMemo(() => {
-    const p = getProgress();
-    return loaded.questions.filter((q) => (domains.length ? domainMatches(q.domain, domains) : true) && difficulties.includes(q.difficulty) && (!skipAnswered || !p.answeredIds.includes(q.id)));
+    const progress = getProgress();
+    return loaded.questions.filter((question) =>
+      (domains.length ? domainMatches(question.domain, domains) : false)
+      && difficulties.includes(question.difficulty)
+      && (!skipAnswered || !progress.answeredIds.includes(question.id)),
+    );
   }, [domains, difficulties, skipAnswered]);
+
+  const resetSessionTools = () => {
+    setFlaggedIds([]);
+    setStrikeouts({});
+    setHighlights({});
+    setShowNavigator(false);
+    setShowFinish(false);
+  };
+
+  const startSession = (questions: SessionQuestion[]) => {
+    setSession(questions);
+    setAnswers({});
+    setIndex(0);
+    setStartedAt(Date.now());
+    setElapsedSeconds(0);
+    resetSessionTools();
+  };
+
+  const recordAnswer = (question: SessionQuestion, option: string) => {
+    if (answers[question.id]) return;
+    setAnswers((current) => ({ ...current, [question.id]: option }));
+    const progress = getProgress();
+    const isCorrect = option === question.correctAnswer;
+    progress.answeredIds = [...new Set([...progress.answeredIds, question.id])];
+    progress.correctIds = isCorrect ? [...new Set([...progress.correctIds, question.id])] : progress.correctIds.filter((id) => id !== question.id);
+    progress.incorrectIds = isCorrect ? progress.incorrectIds.filter((id) => id !== question.id) : [...new Set([...progress.incorrectIds, question.id])];
+    progress.attempts[question.id] = (progress.attempts[question.id] || 0) + 1;
+    saveProgress(progress);
+  };
+
+  const toggleHighlight = (question: SessionQuestion) => {
+    const selectedText = window.getSelection()?.toString().trim();
+    if (!selectedText || selectedText.length < 2 || !question.question.toLowerCase().includes(selectedText.toLowerCase())) return;
+    setHighlights((current) => {
+      const existing = current[question.id] ?? [];
+      if (existing.some((item) => item.toLowerCase() === selectedText.toLowerCase())) return current;
+      return { ...current, [question.id]: [...existing, selectedText] };
+    });
+    window.getSelection()?.removeAllRanges();
+  };
 
   if (!session) {
     if (showDashboard) {
       return (
-        <div className='min-h-screen py-8 bg-slate-50 dark:bg-slate-950'>
-          <DashboardScreen
-            allQuestions={loaded.questions}
-            onBack={() => setShowDashboard(false)}
-          />
+        <div className="app-shell">
+          <AppHeader darkMode={darkMode} onToggleTheme={() => setDarkMode((value) => !value)} />
+          <DashboardScreen allQuestions={loaded.questions} onBack={() => setShowDashboard(false)} />
         </div>
       );
     }
+
     const recommendedPathMessage = recommendedPath === 'beginner'
       ? 'Ruta principiante activada: empieza escogiendo un dominio después de estudiar el capítulo correspondiente.'
       : recommendedPath === 'advanced'
         ? 'Ruta avanzada activada: toma primero un examen completo, luego revisa tus áreas débiles.'
         : undefined;
 
-    const goSelfGuided = () => {
-      setRecommendedPath(null);
-      setOnboardingStep('setup');
-    };
-
     const applyRecommendedPath = (path: Exclude<RecommendedPath, null>) => {
       setRecommendedPath(path);
-      setDomains([]);
+      setDomains(allDomains);
       setDifficulties(['easy', 'medium', 'hard']);
       setSkipAnswered(false);
-      if (path === 'beginner') {
-        setShowImmediate(true);
-        setUseTimer(false);
-        setCount(filtered.length >= 25 ? 25 : 10);
-      } else {
-        setShowImmediate(false);
-        setUseTimer(true);
-        setCount(filtered.length >= 100 ? 100 : Math.max(filtered.length, 1));
-      }
+      setShowImmediate(path === 'beginner');
+      setUseTimer(path === 'advanced');
+      setCount(path === 'beginner' ? 25 : Math.min(100, loaded.questions.length));
       setOnboardingStep('setup');
     };
 
-    return <div className='min-h-screen py-8 bg-slate-50 dark:bg-slate-950'>
-      {onboardingStep !== 'setup' ? (
-        <OnboardingScreen
-          step={onboardingStep}
-          onSelfGuided={goSelfGuided}
-          onRecommended={() => setOnboardingStep('level')}
-          onBackToChoice={() => setOnboardingStep('choice')}
-          onChooseLevel={applyRecommendedPath}
-        />
-      ) : (
-        <SetupScreen questions={loaded.questions} selectedDomains={domains} setSelectedDomains={setDomains} selectedDifficulties={difficulties} setSelectedDifficulties={setDifficulties} skipAnswered={skipAnswered} setSkipAnswered={setSkipAnswered} showImmediate={showImmediate} setShowImmediate={setShowImmediate} useTimer={useTimer} setUseTimer={setUseTimer} darkMode={darkMode} setDarkMode={setDarkMode} count={count} setCount={setCount} availableCount={filtered.length} message={message} recommendedPathMessage={recommendedPathMessage} onBackToOnboarding={() => setOnboardingStep('choice')} onStart={() => {
+    if (onboardingStep !== 'setup') {
+      return (
+        <div className="app-shell onboarding-shell">
+          <AppHeader darkMode={darkMode} onToggleTheme={() => setDarkMode((value) => !value)} questionCount={loaded.questions.length} />
+          <OnboardingScreen
+            step={onboardingStep}
+            onSelfGuided={() => { setRecommendedPath(null); setOnboardingStep('setup'); }}
+            onRecommended={() => setOnboardingStep('level')}
+            onBackToChoice={() => setOnboardingStep('choice')}
+            onChooseLevel={applyRecommendedPath}
+          />
+          <div className="utility-rail">
+            <button className="text-button" onClick={() => setShowDashboard(true)}>Ver mis estadísticas</button>
+            <button className="text-button muted-action" onClick={() => { if (confirm('¿Seguro que deseas reiniciar progreso?')) clearProgress(); }}>Reiniciar progreso</button>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <SetupScreen
+        questions={loaded.questions}
+        selectedDomains={domains}
+        setSelectedDomains={setDomains}
+        selectedDifficulties={difficulties}
+        setSelectedDifficulties={setDifficulties}
+        skipAnswered={skipAnswered}
+        setSkipAnswered={setSkipAnswered}
+        showImmediate={showImmediate}
+        setShowImmediate={setShowImmediate}
+        useTimer={useTimer}
+        setUseTimer={setUseTimer}
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
+        count={count}
+        setCount={setCount}
+        availableCount={filtered.length}
+        message={message}
+        recommendedPathMessage={recommendedPathMessage}
+        onBackToOnboarding={() => setOnboardingStep('choice')}
+        onViewStats={() => setShowDashboard(true)}
+        onResetProgress={() => { if (confirm('¿Seguro que deseas reiniciar progreso?')) clearProgress(); }}
+        onStart={() => {
           if (filtered.length === 0) return setMessage('No hay preguntas disponibles con los filtros seleccionados.');
           if (count > filtered.length) return setMessage(`Solo hay ${filtered.length} preguntas disponibles.`);
-          const picked = shuffleArray(filtered).slice(0, count).map((q) => ({ ...q, shuffledOptions: shuffleArray(q.options) }));
-          setSession(picked); setAnswers({}); setIndex(0); setMessage(undefined); setStartedAt(Date.now()); setElapsedSeconds(0);
-        }} />
-      )}
-      <div className='max-w-3xl mx-auto px-4 mt-2 flex flex-wrap gap-3'>
-        <button
-          className='text-sm underline text-blue-600 dark:text-blue-400'
-          onClick={() => setShowDashboard(true)}
-        >
-          Ver mis estadísticas →
-        </button>
-        <button className='text-sm underline text-slate-700 dark:text-slate-200' onClick={()=>{ if (confirm('¿Seguro que deseas reiniciar progreso?')) clearProgress(); }}>Reiniciar progreso</button>
-      </div>
-    </div>;
+          startSession(shuffleArray(filtered).slice(0, count).map((question) => ({ ...question, shuffledOptions: shuffleArray(question.options) })));
+          setMessage(undefined);
+        }}
+      />
+    );
   }
 
   if (index >= session.length) {
-    return <div className='min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100'><ResultsScreen questions={session} answers={answers} onRetryMissed={() => { const missed = session.filter((q)=>answers[q.id]!==q.correctAnswer); setSession(missed); setAnswers({}); setIndex(0); setStartedAt(Date.now()); setElapsedSeconds(0);} } onNew={() => setSession(null)} /></div>;
+    return (
+      <ResultsScreen
+        questions={session}
+        answers={answers}
+        elapsedSeconds={elapsedSeconds}
+        darkMode={darkMode}
+        onToggleTheme={() => setDarkMode((value) => !value)}
+        onRetryMissed={() => startSession(session.filter((question) => answers[question.id] !== question.correctAnswer))}
+        onNew={() => { setSession(null); resetSessionTools(); }}
+      />
+    );
   }
 
-  const q = session[index];
-  const selected = answers[q.id];
-  const showFeedback = showImmediate && Boolean(selected);
-  const completion = Math.round((index / session.length) * 100);
-  const minutes = String(Math.floor(elapsedSeconds / 60)).padStart(2, '0');
-  const seconds = String(elapsedSeconds % 60).padStart(2, '0');
+  const question = session[index];
+  const selectedAnswer = answers[question.id];
+  const answeredCount = Object.keys(answers).length;
+  const questionHighlights = highlights[question.id] ?? [];
+  const isFlagged = flaggedIds.includes(question.id);
+  const completion = ((index + 1) / session.length) * 100;
 
-  return <div className='min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100'>
-    <div className='max-w-3xl mx-auto p-4 sm:p-6 space-y-4'>
-      <div className='flex justify-end gap-3'>
-        <button type='button' onClick={() => setDarkMode((v) => !v)} className='rounded-full border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-3 py-1.5 text-sm'>
-          {darkMode ? '🌙 Oscuro' : '🌞 Claro'}
-        </button>
-      </div>
+  return (
+    <div className="app-shell exam-shell">
+      <AppHeader
+        compact
+        darkMode={darkMode}
+        onToggleTheme={() => setDarkMode((value) => !value)}
+        center={<div className="exam-title"><span>{activeTopicLabel ? 'Práctica por módulo' : 'Práctica personalizada'}</span><strong>{activeTopicLabel || 'Texas General Lines · Life, Accident, Health & HMO'}</strong></div>}
+      />
+      <div className="progress-strip"><span style={{ width: `${completion}%` }} /></div>
 
-      <div className='bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-4 sm:p-5 space-y-3'>
-        {activeTopicLabel && <p className='text-xs sm:text-sm font-semibold text-blue-700 dark:text-blue-300'>Módulo: {activeTopicLabel}</p>}
-        <div className='flex items-center justify-between gap-3 text-sm sm:text-base font-medium text-slate-700 dark:text-slate-200'>
-          <p>Pregunta {index + 1} de {session.length}</p>
-          <p>{completion}% completado</p>
+      <main className="exam-main" id="main-content">
+        {showNavigator && <button className="navigator-backdrop" onClick={() => setShowNavigator(false)} aria-label="Cerrar navegador" />}
+        <aside className={`navigator ${showNavigator ? 'open' : ''}`}>
+          <div className="navigator-head">
+            <div><LayoutGrid size={18} /><strong>Navegador</strong></div>
+            <button className="icon-button mobile-only" onClick={() => setShowNavigator(false)} aria-label="Cerrar navegador"><X size={18} /></button>
+          </div>
+          <div className="nav-summary"><span><strong>{answeredCount}</strong> contestadas</span><span><strong>{flaggedIds.length}</strong> marcadas</span></div>
+          <div className="question-grid">
+            {session.map((item, itemIndex) => {
+              const answered = Boolean(answers[item.id]);
+              const flagged = flaggedIds.includes(item.id);
+              return (
+                <button key={item.id} className={`${itemIndex === index ? 'current' : ''} ${answered ? 'answered' : ''} ${flagged ? 'flagged' : ''}`} onClick={() => { setIndex(itemIndex); setShowNavigator(false); }} aria-label={`Pregunta ${itemIndex + 1}, ${answered ? 'contestada' : 'sin contestar'}${flagged ? ', marcada' : ''}`}>
+                  {itemIndex + 1}{flagged && <Flag size={9} fill="currentColor" />}
+                </button>
+              );
+            })}
+          </div>
+          <div className="legend"><span><i className="dot current" /> Actual</span><span><i className="dot answered" /> Contestada</span><span><i className="dot" /> Pendiente</span></div>
+          <button className="submit-side" onClick={() => setShowFinish(true)}>Finalizar sesión</button>
+        </aside>
+
+        <section className="question-workspace">
+          <div className="question-toolbar">
+            <button className="navigator-trigger" onClick={() => setShowNavigator(true)}><LayoutGrid size={17} /> Preguntas</button>
+            <span className="question-position">Pregunta <strong>{index + 1}</strong> de {session.length}</span>
+            <div className="question-tools">
+              <button className={questionHighlights.length ? 'active' : ''} onClick={() => toggleHighlight(question)} title="Selecciona texto del enunciado y presiona para resaltar"><Highlighter size={17} /><span>Resaltar</span></button>
+              <button className={isFlagged ? 'active warning' : ''} onClick={() => setFlaggedIds((current) => isFlagged ? current.filter((id) => id !== question.id) : [...current, question.id])}><Flag size={17} fill={isFlagged ? 'currentColor' : 'none'} /><span>{isFlagged ? 'Marcada' : 'Marcar'}</span></button>
+            </div>
+          </div>
+
+          <QuestionCard
+            q={question}
+            selected={selectedAnswer}
+            onSelect={(option) => recordAnswer(question, option)}
+            showFeedback={showImmediate && Boolean(selectedAnswer)}
+            struckOptions={strikeouts[question.id] ?? []}
+            onToggleStrike={(option) => setStrikeouts((current) => {
+              const existing = current[question.id] ?? [];
+              return { ...current, [question.id]: existing.includes(option) ? existing.filter((item) => item !== option) : [...existing, option] };
+            })}
+            highlights={questionHighlights}
+          />
+
+          <footer className="exam-footer">
+            <button className="secondary" disabled={index === 0} onClick={() => setIndex((current) => current - 1)}><ArrowLeft size={18} /> Anterior</button>
+            <span>{selectedAnswer ? 'Respuesta registrada' : 'Sin respuesta'}{useTimer && <> · <AlarmClock size={12} /> {formatTime(elapsedSeconds)}</>}</span>
+            {index < session.length - 1
+              ? <button className="primary" onClick={() => setIndex((current) => current + 1)}>Siguiente <ArrowRight size={18} /></button>
+              : <button className="primary" onClick={() => setShowFinish(true)}>Revisar y finalizar</button>}
+          </footer>
+        </section>
+      </main>
+
+      {showFinish && (
+        <div className="modal-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setShowFinish(false); }}>
+          <div className="modal" role="dialog" aria-modal="true" aria-labelledby="finish-title">
+            <div className="modal-icon"><ListChecks size={23} /></div>
+            <h2 id="finish-title">¿Finalizar la sesión?</h2>
+            <p>Has contestado <strong>{answeredCount} de {session.length}</strong> preguntas. {session.length - answeredCount > 0 && `Quedan ${session.length - answeredCount} sin contestar.`}</p>
+            <div className="modal-stats"><span><CheckCircle2 size={17} /> {answeredCount} contestadas</span><span><Flag size={17} /> {flaggedIds.length} marcadas</span></div>
+            <div className="modal-actions"><button className="secondary" onClick={() => setShowFinish(false)}>Continuar revisando</button><button className="primary" onClick={() => { setShowFinish(false); setIndex(session.length); }}>Entregar respuestas</button></div>
+          </div>
         </div>
-        <div className='h-3 w-full rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden'>
-          <div className='h-full rounded-full bg-blue-600 transition-all duration-500 ease-out' style={{ width: `${completion}%` }} />
-        </div>
-        {useTimer && <p className='text-xs sm:text-sm text-slate-600 dark:text-slate-300'>Tiempo: <span className='font-semibold text-slate-800 dark:text-slate-100'>{minutes}:{seconds}</span></p>}
-      </div>
-
-      <QuestionCard q={q} index={index} total={session.length} selected={selected} onSelect={(o)=>setAnswers((a)=>(a[q.id]?a:{...a,[q.id]:o}))} showFeedback={showFeedback} correct={selected===q.correctAnswer} />
-      <div className='flex justify-between gap-3'>
-        <button onClick={()=>setIndex((i)=>Math.max(0,i-1))} className='border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl px-4 py-2.5 text-sm sm:text-base min-h-11'>Anterior</button>
-        <button
-          disabled={!selected}
-          onClick={()=>{if(!selected) return; const p=getProgress(); const isCorrect=answers[q.id]===q.correctAnswer; p.answeredIds=[...new Set([...p.answeredIds,q.id])]; if (isCorrect) p.correctIds=[...new Set([...p.correctIds,q.id])]; else p.incorrectIds=[...new Set([...p.incorrectIds,q.id])]; p.attempts[q.id]=(p.attempts[q.id]||0)+1; saveProgress(p); setIndex((i)=>i+1);}}
-          className={`rounded-xl px-4 py-2.5 text-sm sm:text-base min-h-11 text-white ${selected ? 'bg-blue-600 hover:bg-blue-700' : 'bg-slate-300 dark:bg-slate-700 cursor-not-allowed'}`}
-        >
-          {index===session.length-1?'Terminar sesión':'Siguiente'}
-        </button>
-      </div>
+      )}
     </div>
-  </div>;
+  );
 }
