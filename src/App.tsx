@@ -25,16 +25,32 @@ const topicLabels: Record<string, string> = {
 };
 
 const loaded = loadQuestions();
-const allDomains = Array.from(new Set(loaded.questions.map((question) => question.domain.trim()))).sort((a, b) => a.localeCompare(b));
 const THEME_KEY = 'theme';
 const TIMER_KEY = 'useTimer';
 
 type OnboardingStep = 'choice' | 'level' | 'setup';
 type RecommendedPath = 'beginner' | 'advanced' | null;
+type PracticeLine = 'all' | 'life' | 'health' | 'accident';
+type PracticeScope = 'general' | 'state';
 
 const domainMatches = (questionDomain: string, domains: string[]) => {
   const normalized = questionDomain.trim().toLowerCase();
   return domains.some((domain) => domain.trim().toLowerCase() === normalized);
+};
+
+const questionText = (question: { domain: string; question: string; explanation?: string; subdomain?: string }) =>
+  `${question.domain} ${question.question} ${question.explanation ?? ''} ${question.subdomain ?? ''}`.toLowerCase();
+
+const isTexasSpecific = (question: { domain: string; question: string; explanation?: string; subdomain?: string }) =>
+  questionText(question).includes('texas');
+
+const matchesPracticeLine = (question: { domain: string; question: string; explanation?: string; subdomain?: string }, line: PracticeLine) => {
+  if (line === 'all') return true;
+  const text = questionText(question);
+  if (line === 'life') return /vida|life|annuit|anualidad|retir|jubilaci/.test(text);
+  if (line === 'health') return /salud|health|hmo|disabil|enfermed/.test(text);
+  // The current bank has shared accident concepts but no standalone accident-only module.
+  return /accident|accidente|lesi[oó]n|disabil|salud|health/.test(text);
 };
 
 const buildSession = (domainList: string[], desiredCount?: number): SessionQuestion[] => {
@@ -64,13 +80,16 @@ const formatTime = (totalSeconds: number) => {
 };
 
 export default function App() {
-  const [domains, setDomains] = useState<string[]>(allDomains);
+  const [domains, setDomains] = useState<string[]>([]);
   const [difficulties, setDifficulties] = useState<string[]>(['easy', 'medium', 'hard']);
   const [skipAnswered, setSkipAnswered] = useState(false);
   const [showImmediate, setShowImmediate] = useState(true);
   const [useTimer, setUseTimer] = useState(getDefaultUseTimer);
   const [darkMode, setDarkMode] = useState(getDefaultDarkMode);
   const [count, setCount] = useState(25);
+  const [practiceLine, setPracticeLine] = useState<PracticeLine>('all');
+  const [scope, setScope] = useState<PracticeScope>('general');
+  const [stateName, setStateName] = useState('Texas');
   const [session, setSession] = useState<SessionQuestion[] | null>(null);
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
@@ -101,6 +120,17 @@ export default function App() {
     const timer = window.setInterval(() => setElapsedSeconds(Math.floor((Date.now() - startedAt) / 1000)), 1000);
     return () => window.clearInterval(timer);
   }, [useTimer, session, startedAt, index]);
+
+  const stateSpecificAvailable = scope === 'state' && stateName === 'Texas';
+
+  useEffect(() => {
+    const automaticDomains = Array.from(new Set(loaded.questions
+      .filter((question) => matchesPracticeLine(question, practiceLine))
+      .filter((question) => scope === 'general' ? !isTexasSpecific(question) : stateSpecificAvailable ? true : !isTexasSpecific(question))
+      .map((question) => question.domain.trim())));
+    setDomains(automaticDomains);
+    setCount((current) => Math.max(1, Math.min(current, automaticDomains.length ? loaded.questions.filter((question) => domainMatches(question.domain, automaticDomains)).length : 1)));
+  }, [practiceLine, scope, stateName, stateSpecificAvailable]);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -142,6 +172,15 @@ export default function App() {
       && (!skipAnswered || !progress.answeredIds.includes(question.id)),
     );
   }, [domains, difficulties, skipAnswered]);
+
+  const goHome = () => {
+    setSession(null);
+    setShowDashboard(false);
+    setOnboardingStep('choice');
+    setRecommendedPath(null);
+    setActiveTopicLabel(null);
+    resetSessionTools();
+  };
 
   const resetSessionTools = () => {
     setFlaggedIds([]);
@@ -187,7 +226,7 @@ export default function App() {
     if (showDashboard) {
       return (
         <div className="app-shell">
-          <AppHeader darkMode={darkMode} onToggleTheme={() => setDarkMode((value) => !value)} />
+          <AppHeader darkMode={darkMode} onToggleTheme={() => setDarkMode((value) => !value)} onHome={goHome} />
           <DashboardScreen allQuestions={loaded.questions} onBack={() => setShowDashboard(false)} />
         </div>
       );
@@ -201,7 +240,9 @@ export default function App() {
 
     const applyRecommendedPath = (path: Exclude<RecommendedPath, null>) => {
       setRecommendedPath(path);
-      setDomains(allDomains);
+      setPracticeLine('all');
+      setScope('general');
+      setStateName('Texas');
       setDifficulties(['easy', 'medium', 'hard']);
       setSkipAnswered(false);
       setShowImmediate(path === 'beginner');
@@ -213,7 +254,7 @@ export default function App() {
     if (onboardingStep !== 'setup') {
       return (
         <div className="app-shell onboarding-shell">
-          <AppHeader darkMode={darkMode} onToggleTheme={() => setDarkMode((value) => !value)} questionCount={loaded.questions.length} />
+          <AppHeader darkMode={darkMode} onToggleTheme={() => setDarkMode((value) => !value)} questionCount={loaded.questions.length} onHome={goHome} />
           <OnboardingScreen
             step={onboardingStep}
             onSelfGuided={() => { setRecommendedPath(null); setOnboardingStep('setup'); }}
@@ -252,6 +293,13 @@ export default function App() {
         onBackToOnboarding={() => setOnboardingStep('choice')}
         onViewStats={() => setShowDashboard(true)}
         onResetProgress={() => { if (confirm('¿Seguro que deseas reiniciar progreso?')) clearProgress(); }}
+        practiceLine={practiceLine}
+        setPracticeLine={setPracticeLine}
+        scope={scope}
+        setScope={setScope}
+        stateName={stateName}
+        setStateName={setStateName}
+        stateSpecificAvailable={stateSpecificAvailable}
         onStart={() => {
           if (filtered.length === 0) return setMessage('No hay preguntas disponibles con los filtros seleccionados.');
           if (count > filtered.length) return setMessage(`Solo hay ${filtered.length} preguntas disponibles.`);
@@ -272,6 +320,7 @@ export default function App() {
         onToggleTheme={() => setDarkMode((value) => !value)}
         onRetryMissed={() => startSession(session.filter((question) => answers[question.id] !== question.correctAnswer))}
         onNew={() => { setSession(null); resetSessionTools(); }}
+        onHome={goHome}
       />
     );
   }
@@ -289,7 +338,8 @@ export default function App() {
         compact
         darkMode={darkMode}
         onToggleTheme={() => setDarkMode((value) => !value)}
-        center={<div className="exam-title"><span>{activeTopicLabel ? 'Práctica por módulo' : 'Práctica personalizada'}</span><strong>{activeTopicLabel || 'Texas General Lines · Life, Accident, Health & HMO'}</strong></div>}
+        center={<div className="exam-title"><span>{activeTopicLabel ? 'Práctica por módulo' : 'Práctica personalizada'}</span><strong>{activeTopicLabel || (scope === 'state' && stateSpecificAvailable ? 'Texas · Life, Health & Accident' : 'Life, Health & Accident · Conceptos generales')}</strong></div>}
+        onHome={goHome}
       />
       <div className="progress-strip"><span style={{ width: `${completion}%` }} /></div>
 

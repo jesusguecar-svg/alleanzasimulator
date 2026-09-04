@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, BarChart3, BookOpenCheck, CheckCircle2, CircleHelp, Clock3, Flame, RotateCcw, XCircle } from 'lucide-react';
+import { ArrowLeft, ArrowRight, BarChart3, BookOpenCheck, CheckCircle2, CircleHelp, Clock3, Download, FileText, Flame, RotateCcw, Share2, XCircle } from 'lucide-react';
 import { useState } from 'react';
 import type { CSSProperties } from 'react';
 import type { SessionQuestion } from '../types/question';
@@ -12,6 +12,7 @@ type Props = {
   onToggleTheme: () => void;
   onRetryMissed: () => void;
   onNew: () => void;
+  onHome: () => void;
 };
 
 type DomainStats = { total: number; correct: number };
@@ -40,7 +41,7 @@ function bestStreak(questions: SessionQuestion[], answers: Record<string, string
   return best;
 }
 
-export function ResultsScreen({ questions, answers, elapsedSeconds, darkMode, onToggleTheme, onRetryMissed, onNew }: Props) {
+export function ResultsScreen({ questions, answers, elapsedSeconds, darkMode, onToggleTheme, onRetryMissed, onNew, onHome }: Props) {
   const [tab, setTab] = useState<'summary' | 'review'>('summary');
   const [reviewIndex, setReviewIndex] = useState(0);
   const correct = questions.filter((question) => answers[question.id] === question.correctAnswer);
@@ -61,9 +62,24 @@ export function ResultsScreen({ questions, answers, elapsedSeconds, darkMode, on
   const selectedQuestion = questions[reviewIndex];
   const selectedAnswer = selectedQuestion ? answers[selectedQuestion.id] : undefined;
 
+  const exportReport = (format: 'csv' | 'json') => {
+    const report = {
+      title: 'Alleanza Academy — Reporte de práctica',
+      generatedAt: new Date().toLocaleString(),
+      score: `${percent}%`, correct: correct.length, incorrect: incorrect.length, unanswered: unanswered.length, total: questions.length, elapsed: formatTime(elapsedSeconds),
+      domains: Object.entries(byDomain).map(([domain, stats]) => ({ domain, correct: stats.correct, total: stats.total, percent: Math.round((stats.correct / stats.total) * 100) || 0 })),
+      responses: questions.map((question, index) => ({ number: index + 1, domain: question.domain, question: question.question, selectedAnswer: answers[question.id] ?? 'Sin contestar', correctAnswer: question.correctAnswer, correct: answers[question.id] === question.correctAnswer })),
+    };
+    const csvEscape = (value: string | number | boolean) => `"${String(value).replace(/"/g, '""')}"`;
+    const content = format === 'json' ? JSON.stringify(report, null, 2) : ['Número,Dominio,Pregunta,Respuesta del estudiante,Respuesta correcta,Correcta', ...report.responses.map((row) => [row.number, row.domain, row.question, row.selectedAnswer, row.correctAnswer, row.correct ? 'Sí' : 'No'].map(csvEscape).join(','))].join('\n');
+    const blob = new Blob([content], { type: format === 'json' ? 'application/json' : 'text/csv;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a'); link.href = url; link.download = `alleanza-resultados-${new Date().toISOString().slice(0, 10)}.${format}`; link.click(); URL.revokeObjectURL(url);
+  };
+
   return (
     <div className="app-shell results-shell">
-      <AppHeader darkMode={darkMode} onToggleTheme={onToggleTheme} />
+      <AppHeader darkMode={darkMode} onToggleTheme={onToggleTheme} onHome={onHome} />
       <main className="results-main" id="main-content">
         <div className="results-heading">
           <div>
@@ -71,7 +87,7 @@ export function ResultsScreen({ questions, answers, elapsedSeconds, darkMode, on
             <h1>Tu scoreboard</h1>
             <p>{motivationalMessage(percent)}</p>
           </div>
-          <button className="primary" onClick={onNew}><RotateCcw size={18} /> Nueva sesión</button>
+          <div className="results-actions"><button className="secondary" onClick={() => window.print()}><FileText size={17} /> Guardar / imprimir PDF</button><button className="primary" onClick={onNew}><RotateCcw size={18} /> Nueva sesión</button></div>
         </div>
 
         <div className="tabs" role="tablist" aria-label="Resultados">
@@ -121,6 +137,10 @@ export function ResultsScreen({ questions, answers, elapsedSeconds, darkMode, on
                 </ul>
               )}
               {missed > 0 && <button className="secondary" onClick={onRetryMissed}><RotateCcw size={17} /> Reintentar falladas</button>}
+            </section>
+            <section className="export-panel panel">
+              <div><span className="eyebrow">Control de estudio</span><h2>Guarda tu resultado y compártelo con tu instructor</h2><p>Conserva una copia local para seguir tu progreso o envía el reporte a tu instructor antes de tu próxima tutoría.</p></div>
+              <div className="export-actions"><button className="secondary" onClick={() => exportReport('csv')}><Download size={17} /> Exportar CSV</button><button className="secondary" onClick={() => exportReport('json')}><Share2 size={17} /> Exportar reporte</button></div>
             </section>
           </>
         ) : selectedQuestion && (

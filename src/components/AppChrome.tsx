@@ -7,17 +7,18 @@ type HeaderProps = {
   questionCount?: number;
   compact?: boolean;
   center?: ReactNode;
+  onHome?: () => void;
 };
 
-export function Brand({ compact = false }: { compact?: boolean }) {
+export function Brand({ compact = false, onHome }: { compact?: boolean; onHome?: () => void }) {
   return (
-    <div className={`brand ${compact ? 'compact' : ''}`}>
+    <button type="button" className={`brand ${compact ? 'compact' : ''}`} onClick={onHome} aria-label="Ir al inicio">
       <div className="brand-mark" aria-hidden="true">AA</div>
       <div>
         <strong>Alleanza Academy</strong>
-        <span>Texas General Lines Simulator</span>
+        <span>Life, Health &amp; Accident Simulator</span>
       </div>
-    </div>
+    </button>
   );
 }
 
@@ -35,10 +36,10 @@ export function ThemeButton({ darkMode, onToggle }: { darkMode: boolean; onToggl
   );
 }
 
-export function AppHeader({ darkMode, onToggleTheme, questionCount, compact = false, center }: HeaderProps) {
+export function AppHeader({ darkMode, onToggleTheme, questionCount, compact = false, center, onHome }: HeaderProps) {
   return (
     <header className={`topbar ${center ? 'exam-topbar' : 'public-topbar'}`}>
-      <Brand compact={compact} />
+      <Brand compact={compact} onHome={onHome} />
       {center}
       <div className="topbar-actions">
         {typeof questionCount === 'number' && (
