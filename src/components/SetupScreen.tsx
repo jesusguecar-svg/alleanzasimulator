@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
-import { Check, Clock3, History, ListChecks, Play, RotateCcw, ShieldCheck, SlidersHorizontal } from 'lucide-react';
+import { BookOpenCheck, Check, Clock3, HeartPulse, History, Landmark, ListChecks, Play, RotateCcw, ShieldCheck, SlidersHorizontal } from 'lucide-react';
 import type { NormalizedQuestion } from '../types/question';
+import { getStudyGroupId, groupCatalog } from '../data/studyGroups';
 import { AppHeader } from './AppChrome';
 
 type Props = {
@@ -36,15 +37,14 @@ type Props = {
 };
 
 export function SetupScreen(p: Props) {
-  const domains = useMemo(() => {
-    const unique = new Map<string, string>();
-    for (const q of p.questions) {
-      const clean = q.domain.trim();
-      const key = clean.toLowerCase();
-      if (!unique.has(key)) unique.set(key, clean);
-    }
-    return Array.from(unique.values()).sort((a, b) => a.localeCompare(b));
-  }, [p.questions]);
+  const domainGroups = useMemo(() => {
+    return groupCatalog(p.scope, p.stateName).map((group) => ({
+      ...group,
+      count: p.questions.filter((question) => getStudyGroupId(question, p.scope, p.stateName) === group.id).length,
+    })).filter((group) => group.count > 0);
+  }, [p.questions, p.scope, p.stateName]);
+
+  const visibleDomains = domainGroups.map((group) => group.id);
 
   const diffs = [
     { id: 'easy', label: 'Fácil' },
@@ -52,11 +52,10 @@ export function SetupScreen(p: Props) {
     { id: 'hard', label: 'Difícil' },
   ];
 
-  const toggleDomain = (domain: string) => {
+  const toggleDomainGroup = (groupId: string) => {
+    const selected = p.selectedDomains.includes(groupId);
     p.setSelectedDomains(
-      p.selectedDomains.includes(domain)
-        ? p.selectedDomains.filter((item) => item !== domain)
-        : [...p.selectedDomains, domain],
+      selected ? p.selectedDomains.filter((domain) => domain !== groupId) : [...new Set([...p.selectedDomains, groupId])],
     );
   };
 
@@ -91,8 +90,8 @@ export function SetupScreen(p: Props) {
           <section className="panel domain-panel">
             <div className="section-heading">
               <div><span className="step">1</span><h2>Ruta y dominios</h2></div>
-              <button className="text-button" onClick={() => p.setSelectedDomains(p.selectedDomains.length === domains.length ? [] : domains)}>
-                {p.selectedDomains.length === domains.length ? 'Quitar todos' : 'Seleccionar todos'}
+              <button className="text-button" onClick={() => p.setSelectedDomains(visibleDomains.every((domain) => p.selectedDomains.includes(domain)) ? [] : visibleDomains)}>
+                {visibleDomains.every((domain) => p.selectedDomains.includes(domain)) ? 'Quitar todos' : 'Seleccionar todos'}
               </button>
             </div>
             <div className="filter-stack">
@@ -108,24 +107,28 @@ export function SetupScreen(p: Props) {
               <div className="setting-block compact-setting">
                 <label>Enfoque del examen</label>
                 <div className="segmented scope-segmented">
-                  <button className={p.scope === 'general' ? 'active' : ''} onClick={() => p.setScope('general')}>Dominios generales</button>
-                  <button className={p.scope === 'state' ? 'active' : ''} onClick={() => p.setScope('state')}>Dominio por estado</button>
+                  <button className={p.scope === 'general' ? 'active' : ''} onClick={() => p.setScope('general')}>Fundamentos</button>
+                  <button className={p.scope === 'state' ? 'active' : ''} onClick={() => p.setScope('state')}>Leyes estatales</button>
                 </div>
                 {p.scope === 'state' && <div className="state-picker"><label htmlFor="state-name">Estado</label><select id="state-name" value={p.stateName} onChange={(event) => p.setStateName(event.target.value)}><option>Texas</option><option>Florida</option><option>California</option><option>New York</option><option>Otro estado</option></select></div>}
                 {p.scope === 'state' && !p.stateSpecificAvailable && <p className="inline-note"><SlidersHorizontal size={14} /> Aún no hay preguntas específicas para {p.stateName}. Mantendremos solo los dominios generales, sin mezclar leyes de otro estado.</p>}
-                {p.scope === 'state' && p.stateSpecificAvailable && <p className="inline-note"><Check size={14} /> Incluye los dominios generales y los estatutos específicos de Texas disponibles.</p>}
+                {p.scope === 'state' && p.stateSpecificAvailable && <p className="inline-note"><Check size={14} /> Banco específico de {p.stateName}: estudia estas rutas por separado para evitar mezclar leyes estatales.</p>}
               </div>
             </div>
-            <div className="domain-list">
-              {domains.map((domain, domainIndex) => {
-                const selected = p.selectedDomains.includes(domain);
-                const domainCount = p.questions.filter((question) => question.domain.trim().toLowerCase() === domain.toLowerCase()).length;
+            <div className="domain-summary" aria-live="polite">
+              <strong>{p.scope === 'state' ? `Rutas de ${p.stateName}` : 'Rutas fundamentales'}</strong>
+              <span>{visibleDomains.filter((domain) => p.selectedDomains.includes(domain)).length} de {visibleDomains.length} áreas seleccionadas</span>
+            </div>
+            <div className="domain-grid">
+              {domainGroups.map((group) => {
+                const selected = p.selectedDomains.includes(group.id);
+                const Icon = group.icon === 'health' ? HeartPulse : group.icon === 'landmark' ? Landmark : BookOpenCheck;
                 return (
-                  <button key={domain} className={`domain-row ${selected ? 'selected' : ''}`} onClick={() => toggleDomain(domain)} aria-pressed={selected}>
-                    <span className="checkbox">{selected && <Check size={15} />}</span>
-                    <span className="domain-code">D{domainIndex + 1}</span>
-                    <span className="domain-name">{domain}</span>
-                    <span className="domain-count">{domainCount}</span>
+                  <button key={group.id} className={`domain-card ${selected ? 'selected' : ''}`} onClick={() => toggleDomainGroup(group.id)} aria-pressed={selected}>
+                    <span className="domain-card-top"><span className="domain-icon"><Icon size={19} /></span><span className="checkbox">{selected && <Check size={15} />}</span></span>
+                    <strong>{group.title}</strong>
+                    <span>{group.description}</span>
+                    <small>{group.count} preguntas</small>
                   </button>
                 );
               })}

@@ -7,6 +7,7 @@ import { QuestionCard } from './components/QuestionCard';
 import { ResultsScreen } from './components/ResultsScreen';
 import { SetupScreen } from './components/SetupScreen';
 import { loadQuestions } from './data/loadQuestions';
+import { getStudyGroupId, isAnyStateSpecific, isSpecificToState } from './data/studyGroups';
 import topics from './data/topics.json';
 import type { SessionQuestion } from './types/question';
 import { shuffleArray } from './utils/shuffle';
@@ -40,9 +41,6 @@ const domainMatches = (questionDomain: string, domains: string[]) => {
 
 const questionText = (question: { domain: string; question: string; explanation?: string; subdomain?: string }) =>
   `${question.domain} ${question.question} ${question.explanation ?? ''} ${question.subdomain ?? ''}`.toLowerCase();
-
-const isTexasSpecific = (question: { domain: string; question: string; explanation?: string; subdomain?: string }) =>
-  questionText(question).includes('texas');
 
 const matchesPracticeLine = (question: { domain: string; question: string; explanation?: string; subdomain?: string }, line: PracticeLine) => {
   if (line === 'all') return true;
@@ -121,16 +119,17 @@ export default function App() {
     return () => window.clearInterval(timer);
   }, [useTimer, session, startedAt, index]);
 
-  const stateSpecificAvailable = scope === 'state' && stateName === 'Texas';
+  const stateSpecificAvailable = scope === 'state' && loaded.questions.some((question) => isSpecificToState(question, stateName));
+
+  const scopedQuestions = useMemo(() => loaded.questions
+    .filter((question) => matchesPracticeLine(question, practiceLine))
+    .filter((question) => scope === 'general' ? !isAnyStateSpecific(question) : isSpecificToState(question, stateName)), [practiceLine, scope, stateName]);
 
   useEffect(() => {
-    const automaticDomains = Array.from(new Set(loaded.questions
-      .filter((question) => matchesPracticeLine(question, practiceLine))
-      .filter((question) => scope === 'general' ? !isTexasSpecific(question) : stateSpecificAvailable ? true : !isTexasSpecific(question))
-      .map((question) => question.domain.trim())));
+    const automaticDomains = Array.from(new Set(scopedQuestions.map((question) => getStudyGroupId(question, scope, stateName))));
     setDomains(automaticDomains);
-    setCount((current) => Math.max(1, Math.min(current, automaticDomains.length ? loaded.questions.filter((question) => domainMatches(question.domain, automaticDomains)).length : 1)));
-  }, [practiceLine, scope, stateName, stateSpecificAvailable]);
+    setCount((current) => Math.max(1, Math.min(current, scopedQuestions.length || 1)));
+  }, [scopedQuestions]);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -166,12 +165,12 @@ export default function App() {
 
   const filtered = useMemo(() => {
     const progress = getProgress();
-    return loaded.questions.filter((question) =>
-      (domains.length ? domainMatches(question.domain, domains) : false)
+    return scopedQuestions.filter((question) =>
+      (domains.length ? domains.includes(getStudyGroupId(question, scope, stateName)) : false)
       && difficulties.includes(question.difficulty)
       && (!skipAnswered || !progress.answeredIds.includes(question.id)),
     );
-  }, [domains, difficulties, skipAnswered]);
+  }, [domains, difficulties, skipAnswered, scopedQuestions, scope, stateName]);
 
   const goHome = () => {
     setSession(null);
@@ -272,7 +271,7 @@ export default function App() {
 
     return (
       <SetupScreen
-        questions={loaded.questions}
+        questions={scopedQuestions}
         selectedDomains={domains}
         setSelectedDomains={setDomains}
         selectedDifficulties={difficulties}
@@ -338,7 +337,7 @@ export default function App() {
         compact
         darkMode={darkMode}
         onToggleTheme={() => setDarkMode((value) => !value)}
-        center={<div className="exam-title"><span>{activeTopicLabel ? 'Práctica por módulo' : 'Práctica personalizada'}</span><strong>{activeTopicLabel || (scope === 'state' && stateSpecificAvailable ? 'Texas · Life, Health & Accident' : 'Life, Health & Accident · Conceptos generales')}</strong></div>}
+        center={<div className="exam-title"><span>{activeTopicLabel ? 'Práctica por módulo' : 'Práctica personalizada'}</span><strong>{activeTopicLabel || (scope === 'state' && stateSpecificAvailable ? `${stateName} · Life, Health & Accident` : 'Life, Health & Accident · Conceptos generales')}</strong></div>}
         onHome={goHome}
       />
       <div className="progress-strip"><span style={{ width: `${completion}%` }} /></div>

@@ -79,11 +79,18 @@ button:disabled { cursor: not-allowed; opacity: .45; }
 .step { width: 25px; height: 25px; display: grid; place-items: center; border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 800; }
 .text-button { border: 0; background: transparent; color: var(--brand); cursor: pointer; font-weight: 700; font-size: 12px; }
 .muted-action { color: var(--muted) !important; }
-.domain-list { border: 1px solid var(--line); }
-.domain-row { min-height: 54px; width: 100%; display: grid; grid-template-columns: 24px 42px 1fr auto; align-items: center; gap: 10px; padding: 8px 12px; border: 0; border-bottom: 1px solid var(--line); background: var(--surface); text-align: left; cursor: pointer; }
-.domain-row:last-child { border-bottom: 0; }
-.domain-row:hover { background: var(--surface-2); }
-.domain-row.selected { background: var(--brand-soft); }
+.domain-summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 3px 0 11px; color: var(--muted); font-size: 11px; }
+.domain-summary strong { color: var(--ink); font-size: 12px; }
+.domain-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.domain-card { min-height: 172px; display: flex; flex-direction: column; align-items: flex-start; padding: 14px; border: 1px solid var(--line); border-radius: 5px; background: var(--surface); color: var(--ink); text-align: left; cursor: pointer; transition: border-color .16s ease, transform .16s ease, background .16s ease; }
+.domain-card:hover { border-color: var(--brand); transform: translateY(-1px); }
+.domain-card.selected { border-color: var(--brand); background: var(--brand-soft); box-shadow: inset 0 0 0 1px var(--brand); }
+.domain-card-top { width: 100%; display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.domain-icon { width: 33px; height: 33px; display: grid; place-items: center; border-radius: 50%; background: var(--surface-2); color: var(--brand); }
+.selected .domain-icon { background: rgba(0, 122, 120, .13); }
+.domain-card strong { font-size: 13px; line-height: 1.3; }
+.domain-card > span:not(.domain-card-top) { margin-top: 6px; color: var(--muted); font-size: 11px; line-height: 1.4; }
+.domain-card small { margin-top: auto; padding-top: 10px; color: var(--brand); font-weight: 800; font-size: 11px; }
 .checkbox { width: 20px; height: 20px; display: grid; place-items: center; border: 1px solid var(--line-strong); border-radius: 3px; }
 .selected .checkbox { background: var(--brand); border-color: var(--brand); color: #fff; }
 .domain-code { font-weight: 800; color: var(--brand); font-size: 13px; }
@@ -315,7 +322,8 @@ mark { background: var(--highlight); color: inherit; padding: 1px 0; }
   .setup-intro h1, .results-heading h1, .onboarding-intro h1 { font-size: 27px; }
   .powered { white-space: normal; }
   .domain-panel, .settings-panel { padding: 15px; }
-  .domain-row { grid-template-columns: 23px 35px 1fr auto; padding-inline: 8px; }
+  .domain-grid { grid-template-columns: 1fr; }
+  .domain-card { min-height: 142px; }
   .count-segmented { grid-template-columns: repeat(5, 1fr); }
   .segmented button { min-width: 0; }
   .route-note, .history-note { align-items: flex-start; flex-wrap: wrap; }
