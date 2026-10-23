@@ -1,6 +1,7 @@
-import { ArrowLeft, ArrowRight, BarChart3, BookOpenCheck, CheckCircle2, CircleHelp, Clock3, Download, FileText, Flame, RotateCcw, Share2, XCircle } from 'lucide-react';
+import { ArrowLeft, ArrowRight, BarChart3, BookOpenCheck, CheckCircle2, CircleHelp, Clock3, Download, FileText, Flame, Lightbulb, RotateCcw, Share2, Target, TriangleAlert, XCircle } from 'lucide-react';
 import { useState } from 'react';
 import type { CSSProperties } from 'react';
+import { getPartialExamDomain } from '../data/partialExam';
 import type { SessionQuestion } from '../types/question';
 import { AppHeader } from './AppChrome';
 
@@ -13,9 +14,12 @@ type Props = {
   onRetryMissed: () => void;
   onNew: () => void;
   onHome: () => void;
+  mode?: 'practice' | 'partial-exam';
+  studentName?: string;
+  autoSubmitted?: boolean;
 };
 
-type DomainStats = { total: number; correct: number };
+type DomainStats = { total: number; correct: number; modules?: string; recommendation?: string };
 
 function formatTime(totalSeconds: number) {
   const minutes = Math.floor(totalSeconds / 60);
@@ -41,7 +45,19 @@ function bestStreak(questions: SessionQuestion[], answers: Record<string, string
   return best;
 }
 
-export function ResultsScreen({ questions, answers, elapsedSeconds, darkMode, onToggleTheme, onRetryMissed, onNew, onHome }: Props) {
+function readinessDiagnosis(percent: number) {
+  if (percent >= 85) return { title: 'Preparación sólida', detail: 'Estás listo para avanzar a un simulacro completo. Mantén frescos los dominios con menor puntuación.', tone: 'strong' };
+  if (percent >= 70) return { title: 'Buen nivel, con brechas específicas', detail: 'Tu base es funcional. Un repaso dirigido puede convertir tus áreas débiles en puntos seguros.', tone: 'developing' };
+  return { title: 'Necesitas refuerzo antes del próximo intento', detail: 'Conviene volver a los fundamentos y practicar por dominio antes de repetir el examen parcial.', tone: 'priority' };
+}
+
+function domainStatus(percent: number) {
+  if (percent >= 80) return { label: 'Fortaleza', className: 'strong' };
+  if (percent >= 70) return { label: 'En desarrollo', className: 'developing' };
+  return { label: 'Prioridad', className: 'priority' };
+}
+
+export function ResultsScreen({ questions, answers, elapsedSeconds, darkMode, onToggleTheme, onRetryMissed, onNew, onHome, mode = 'practice', studentName, autoSubmitted = false }: Props) {
   const [tab, setTab] = useState<'summary' | 'review'>('summary');
   const [reviewIndex, setReviewIndex] = useState(0);
   const correct = questions.filter((question) => answers[question.id] === question.correctAnswer);
@@ -51,23 +67,33 @@ export function ResultsScreen({ questions, answers, elapsedSeconds, darkMode, on
   const percent = Math.round((correct.length / questions.length) * 100) || 0;
   const streak = bestStreak(questions, answers);
 
+  const isPartialExam = mode === 'partial-exam';
+  const diagnosis = readinessDiagnosis(percent);
+
   const byDomain = questions.reduce<Record<string, DomainStats>>((accumulator, question) => {
-    const bucket = accumulator[question.domain] ?? { total: 0, correct: 0 };
+    const examDomain = isPartialExam ? getPartialExamDomain(question) : undefined;
+    const domainLabel = examDomain?.label ?? question.domain;
+    const bucket = accumulator[domainLabel] ?? { total: 0, correct: 0, modules: examDomain?.modules, recommendation: examDomain?.recommendation };
     bucket.total += 1;
     if (answers[question.id] === question.correctAnswer) bucket.correct += 1;
-    accumulator[question.domain] = bucket;
+    accumulator[domainLabel] = bucket;
     return accumulator;
   }, {});
+
+  const rankedDomains = Object.entries(byDomain).sort(([, left], [, right]) => (left.correct / left.total) - (right.correct / right.total));
 
   const selectedQuestion = questions[reviewIndex];
   const selectedAnswer = selectedQuestion ? answers[selectedQuestion.id] : undefined;
 
   const exportReport = (format: 'csv' | 'json') => {
     const report = {
-      title: 'Alleanza Academy — Reporte de práctica',
+      title: isPartialExam ? 'Alleanza Academy — Reporte de Examen Parcial' : 'Alleanza Academy — Reporte de práctica',
       generatedAt: new Date().toLocaleString(),
+      student: studentName || 'No indicado',
+      assessment: isPartialExam ? 'Examen Parcial — Módulos 1–9' : 'Práctica personalizada',
       score: `${percent}%`, correct: correct.length, incorrect: incorrect.length, unanswered: unanswered.length, total: questions.length, elapsed: formatTime(elapsedSeconds),
-      domains: Object.entries(byDomain).map(([domain, stats]) => ({ domain, correct: stats.correct, total: stats.total, percent: Math.round((stats.correct / stats.total) * 100) || 0 })),
+      diagnosis: isPartialExam ? diagnosis.title : motivationalMessage(percent),
+      domains: rankedDomains.map(([domain, stats]) => ({ domain, modules: stats.modules, correct: stats.correct, total: stats.total, percent: Math.round((stats.correct / stats.total) * 100) || 0, recommendation: stats.recommendation })),
       responses: questions.map((question, index) => ({ number: index + 1, domain: question.domain, question: question.question, selectedAnswer: answers[question.id] ?? 'Sin contestar', correctAnswer: question.correctAnswer, correct: answers[question.id] === question.correctAnswer })),
     };
     const csvEscape = (value: string | number | boolean) => `"${String(value).replace(/"/g, '""')}"`;
@@ -83,9 +109,9 @@ export function ResultsScreen({ questions, answers, elapsedSeconds, darkMode, on
       <main className="results-main" id="main-content">
         <div className="results-heading">
           <div>
-            <span className="eyebrow">Sesión completada</span>
-            <h1>Tu scoreboard</h1>
-            <p>{motivationalMessage(percent)}</p>
+            <span className="eyebrow">{isPartialExam ? 'Examen parcial completado' : 'Sesión completada'}</span>
+            <h1>{isPartialExam ? `Diagnóstico${studentName ? ` de ${studentName}` : ''}` : 'Tu scoreboard'}</h1>
+            <p>{autoSubmitted ? 'El tiempo terminó y tus respuestas fueron entregadas automáticamente.' : isPartialExam ? diagnosis.detail : motivationalMessage(percent)}</p>
           </div>
           <div className="results-actions"><button className="secondary" onClick={() => window.print()}><FileText size={17} /> Guardar / imprimir PDF</button><button className="primary" onClick={onNew}><RotateCcw size={18} /> Nueva sesión</button></div>
         </div>
@@ -98,11 +124,11 @@ export function ResultsScreen({ questions, answers, elapsedSeconds, darkMode, on
         {tab === 'summary' ? (
           <>
             <section className="score-grid">
-              <div className="score-hero panel">
+              <div className={`score-hero panel ${isPartialExam ? `diagnosis-${diagnosis.tone}` : ''}`}>
                 <div className="score-ring" style={{ '--score': `${percent * 3.6}deg` } as CSSProperties}>
                   <div><strong>{percent}%</strong><span>resultado</span></div>
                 </div>
-                <div><h2>{percent >= 75 ? 'Buen dominio general' : 'Hay áreas por reforzar'}</h2><p>{correct.length}/{questions.length} respuestas correctas.</p></div>
+                <div><h2>{isPartialExam ? diagnosis.title : percent >= 75 ? 'Buen dominio general' : 'Hay áreas por reforzar'}</h2><p>{correct.length}/{questions.length} respuestas correctas.</p></div>
               </div>
               <div className="metric panel"><CheckCircle2 /><strong>{correct.length}</strong><span>Correctas</span></div>
               <div className="metric panel"><XCircle /><strong>{incorrect.length}</strong><span>Incorrectas</span></div>
@@ -110,15 +136,20 @@ export function ResultsScreen({ questions, answers, elapsedSeconds, darkMode, on
               <div className="metric panel"><Clock3 /><strong>{formatTime(elapsedSeconds)}</strong><span>Tiempo utilizado</span></div>
             </section>
 
-            <section className="panel domain-results">
-              <div className="section-heading"><div><h2>Desempeño por dominio</h2></div><span className="streak"><Flame size={16} /> Mejor racha: <strong>{streak}</strong></span></div>
+            <section className={`panel domain-results ${isPartialExam ? 'diagnostic-domain-results' : ''}`}>
+              <div className="section-heading"><div><h2>{isPartialExam ? 'Análisis por dominio' : 'Desempeño por dominio'}</h2></div><span className="streak"><Flame size={16} /> Mejor racha: <strong>{streak}</strong></span></div>
               <div className="domain-results-list">
-                {Object.entries(byDomain).map(([domain, stats]) => {
+                {rankedDomains.map(([domain, stats]) => {
                   const domainPercent = Math.round((stats.correct / stats.total) * 100) || 0;
+                  const status = domainStatus(domainPercent);
                   return (
-                    <div key={domain}>
-                      <div className="domain-result-label"><span><strong>{domain}</strong></span><span>{stats.correct}/{stats.total} · <strong>{domainPercent}%</strong></span></div>
+                    <div key={domain} className="domain-diagnostic">
+                      <div className="domain-result-label">
+                        <span><strong>{domain}</strong>{stats.modules && <small>{stats.modules}</small>}</span>
+                        <span>{stats.correct}/{stats.total} · <strong>{domainPercent}%</strong>{isPartialExam && <i className={`status-pill ${status.className}`}>{status.label}</i>}</span>
+                      </div>
                       <div className="bar"><span style={{ width: `${domainPercent}%` }} /></div>
+                      {isPartialExam && stats.recommendation && domainPercent < 80 && <p><Lightbulb size={14} /> {stats.recommendation}</p>}
                     </div>
                   );
                 })}
@@ -126,9 +157,16 @@ export function ResultsScreen({ questions, answers, elapsedSeconds, darkMode, on
             </section>
 
             <section className="next-mission panel">
-              <div><h2>Siguiente misión</h2></div>
+              <div><h2>{isPartialExam ? 'Plan antes del próximo examen' : 'Siguiente misión'}</h2></div>
               {missed === 0 ? (
                 <p>¡Sin errores! Intenta una sesión más larga o sube la dificultad para mantener el ritmo.</p>
+              ) : isPartialExam ? (
+                <ul className="mission-list">
+                  <li><Target size={15} /> Empieza por el dominio marcado como <strong>Prioridad</strong> con menor puntuación.</li>
+                  <li><BookOpenCheck size={15} /> Estudia sus conceptos y completa una práctica corta con explicaciones activadas.</li>
+                  <li><TriangleAlert size={15} /> Revisa las preguntas falladas y anota por qué cada distractor era incorrecto.</li>
+                  <li><Clock3 size={15} /> Repite este examen cuando alcances al menos 80% en tus prácticas por dominio.</li>
+                </ul>
               ) : (
                 <ul className="mission-list">
                   <li>Reintenta solo las falladas para consolidar memoria activa.</li>
@@ -136,10 +174,10 @@ export function ResultsScreen({ questions, answers, elapsedSeconds, darkMode, on
                   <li>Activa &quot;Ver la explicación después de cada respuesta&quot; para aprender mientras practicas.</li>
                 </ul>
               )}
-              {missed > 0 && <button className="secondary" onClick={onRetryMissed}><RotateCcw size={17} /> Reintentar falladas</button>}
+              {missed > 0 && <button className="secondary" onClick={onRetryMissed}><RotateCcw size={17} /> {isPartialExam ? 'Practicar las falladas' : 'Reintentar falladas'}</button>}
             </section>
             <section className="export-panel panel">
-              <div><span className="eyebrow">Control de estudio</span><h2>Guarda tu resultado y compártelo con tu instructor</h2><p>Conserva una copia local para seguir tu progreso o envía el reporte a tu instructor antes de tu próxima tutoría.</p></div>
+              <div><span className="eyebrow">Control de estudio</span><h2>Guarda tu resultado y compártelo con tu instructor</h2><p>El reporte incluye tu resultado general, diagnóstico por dominio y respuestas para orientar tu próxima tutoría.</p></div>
               <div className="export-actions"><button className="secondary" onClick={() => exportReport('csv')}><Download size={17} /> Exportar CSV</button><button className="secondary" onClick={() => exportReport('json')}><Share2 size={17} /> Exportar reporte</button></div>
             </section>
           </>

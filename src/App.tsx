@@ -3,10 +3,12 @@ import { useEffect, useMemo, useState } from 'react';
 import { AppHeader } from './components/AppChrome';
 import { DashboardScreen } from './components/DashboardScreen';
 import { OnboardingScreen } from './components/OnboardingScreen';
+import { PartialExamLanding } from './components/PartialExamLanding';
 import { QuestionCard } from './components/QuestionCard';
 import { ResultsScreen } from './components/ResultsScreen';
 import { SetupScreen } from './components/SetupScreen';
 import { loadQuestions } from './data/loadQuestions';
+import { buildPartialExamSession, isPartialExamQuestion, PARTIAL_EXAM_SECONDS_PER_QUESTION } from './data/partialExam';
 import { getStudyGroupId, isAnyStateSpecific, isSpecificToState } from './data/studyGroups';
 import topics from './data/topics.json';
 import type { SessionQuestion } from './types/question';
@@ -33,6 +35,7 @@ type OnboardingStep = 'choice' | 'level' | 'setup';
 type RecommendedPath = 'beginner' | 'advanced' | null;
 type PracticeLine = 'all' | 'life' | 'health' | 'accident';
 type PracticeScope = 'general' | 'state';
+type SessionKind = 'practice' | 'partial-exam';
 
 const domainMatches = (questionDomain: string, domains: string[]) => {
   const normalized = questionDomain.trim().toLowerCase();
@@ -77,6 +80,12 @@ const formatTime = (totalSeconds: number) => {
   return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 };
 
+const isPartialExamRoute = () => {
+  if (typeof window === 'undefined') return false;
+  return window.location.pathname.replace(/\/$/, '') === '/examen-parcial'
+    || new URLSearchParams(window.location.search).get('exam') === 'parcial';
+};
+
 export default function App() {
   const [domains, setDomains] = useState<string[]>([]);
   const [difficulties, setDifficulties] = useState<string[]>(['easy', 'medium', 'hard']);
@@ -103,6 +112,14 @@ export default function App() {
   const [highlights, setHighlights] = useState<Record<string, string[]>>({});
   const [showNavigator, setShowNavigator] = useState(false);
   const [showFinish, setShowFinish] = useState(false);
+  const [sessionKind, setSessionKind] = useState<SessionKind>('practice');
+  const [partialExamRoute] = useState(isPartialExamRoute);
+  const [studentName, setStudentName] = useState('');
+  const [autoSubmitted, setAutoSubmitted] = useState(false);
+
+  const isTimedExam = sessionKind === 'partial-exam';
+  const partialExamPool = useMemo(() => loaded.questions.filter(isPartialExamQuestion), []);
+  const examDurationSeconds = (session?.length ?? 0) * PARTIAL_EXAM_SECONDS_PER_QUESTION;
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', darkMode);
@@ -119,6 +136,22 @@ export default function App() {
     return () => window.clearInterval(timer);
   }, [useTimer, session, startedAt, index]);
 
+  useEffect(() => {
+    if (!isTimedExam || !session || examDurationSeconds === 0 || elapsedSeconds < examDurationSeconds || index >= session.length) return;
+    setAutoSubmitted(true);
+    setIndex(session.length);
+  }, [elapsedSeconds, examDurationSeconds, index, isTimedExam, session]);
+
+  useEffect(() => {
+    if (!isTimedExam || !session || index >= session.length) return;
+    const warnBeforeLeaving = (event: BeforeUnloadEvent) => {
+      event.preventDefault();
+      event.returnValue = '';
+    };
+    window.addEventListener('beforeunload', warnBeforeLeaving);
+    return () => window.removeEventListener('beforeunload', warnBeforeLeaving);
+  }, [index, isTimedExam, session]);
+
   const stateSpecificAvailable = scope === 'state' && loaded.questions.some((question) => isSpecificToState(question, stateName));
 
   const scopedQuestions = useMemo(() => loaded.questions
@@ -132,6 +165,7 @@ export default function App() {
   }, [scopedQuestions]);
 
   useEffect(() => {
+    if (partialExamRoute) return;
     const params = new URLSearchParams(window.location.search);
     const topicParam = params.get('topic');
     const wantsSetup = params.get('setup') === '1';
@@ -161,7 +195,7 @@ export default function App() {
     setIndex(0);
     setStartedAt(Date.now());
     setElapsedSeconds(0);
-  }, []);
+  }, [partialExamRoute]);
 
   const filtered = useMemo(() => {
     const progress = getProgress();
@@ -174,6 +208,8 @@ export default function App() {
 
   const goHome = () => {
     setSession(null);
+    setSessionKind('practice');
+    setAutoSubmitted(false);
     setShowDashboard(false);
     setOnboardingStep('choice');
     setRecommendedPath(null);
@@ -189,17 +225,19 @@ export default function App() {
     setShowFinish(false);
   };
 
-  const startSession = (questions: SessionQuestion[]) => {
+  const startSession = (questions: SessionQuestion[], kind: SessionKind = 'practice') => {
     setSession(questions);
+    setSessionKind(kind);
     setAnswers({});
     setIndex(0);
     setStartedAt(Date.now());
     setElapsedSeconds(0);
+    setAutoSubmitted(false);
     resetSessionTools();
   };
 
   const recordAnswer = (question: SessionQuestion, option: string) => {
-    if (answers[question.id]) return;
+    if (answers[question.id] && !isTimedExam) return;
     setAnswers((current) => ({ ...current, [question.id]: option }));
     const progress = getProgress();
     const isCorrect = option === question.correctAnswer;
@@ -222,6 +260,23 @@ export default function App() {
   };
 
   if (!session) {
+    if (partialExamRoute) {
+      return (
+        <PartialExamLanding
+          darkMode={darkMode}
+          onToggleTheme={() => setDarkMode((value) => !value)}
+          availableQuestions={partialExamPool.length}
+          studentName={studentName}
+          setStudentName={setStudentName}
+          onStart={() => {
+            setShowImmediate(false);
+            setUseTimer(true);
+            startSession(buildPartialExamSession(partialExamPool), 'partial-exam');
+          }}
+        />
+      );
+    }
+
     if (showDashboard) {
       return (
         <div className="app-shell">
@@ -317,9 +372,12 @@ export default function App() {
         elapsedSeconds={elapsedSeconds}
         darkMode={darkMode}
         onToggleTheme={() => setDarkMode((value) => !value)}
-        onRetryMissed={() => startSession(session.filter((question) => answers[question.id] !== question.correctAnswer))}
-        onNew={() => { setSession(null); resetSessionTools(); }}
+        onRetryMissed={() => startSession(session.filter((question) => answers[question.id] !== question.correctAnswer), 'practice')}
+        onNew={() => { setSession(null); setSessionKind('practice'); resetSessionTools(); }}
         onHome={goHome}
+        mode={sessionKind}
+        studentName={studentName}
+        autoSubmitted={autoSubmitted}
       />
     );
   }
@@ -337,8 +395,8 @@ export default function App() {
         compact
         darkMode={darkMode}
         onToggleTheme={() => setDarkMode((value) => !value)}
-        center={<div className="exam-title"><span>{activeTopicLabel ? 'Práctica por módulo' : 'Práctica personalizada'}</span><strong>{activeTopicLabel || (scope === 'state' && stateSpecificAvailable ? `${stateName} · Life, Health & Accident` : 'Life, Health & Accident · Conceptos generales')}</strong></div>}
-        onHome={goHome}
+        center={<div className="exam-title"><span>{isTimedExam ? 'Examen Parcial' : activeTopicLabel ? 'Práctica por módulo' : 'Práctica personalizada'}</span><strong>{isTimedExam ? 'Módulos 1–9 · Vida, Salud y Accidentes' : activeTopicLabel || (scope === 'state' && stateSpecificAvailable ? `${stateName} · Life, Health & Accident` : 'Life, Health & Accident · Conceptos generales')}</strong></div>}
+        onHome={() => { if (!isTimedExam || confirm('¿Deseas salir? El intento actual se perderá.')) goHome(); }}
       />
       <div className="progress-strip"><span style={{ width: `${completion}%` }} /></div>
 
@@ -379,18 +437,19 @@ export default function App() {
             q={question}
             selected={selectedAnswer}
             onSelect={(option) => recordAnswer(question, option)}
-            showFeedback={showImmediate && Boolean(selectedAnswer)}
+            showFeedback={!isTimedExam && showImmediate && Boolean(selectedAnswer)}
             struckOptions={strikeouts[question.id] ?? []}
             onToggleStrike={(option) => setStrikeouts((current) => {
               const existing = current[question.id] ?? [];
               return { ...current, [question.id]: existing.includes(option) ? existing.filter((item) => item !== option) : [...existing, option] };
             })}
             highlights={questionHighlights}
+            lockAfterSelection={!isTimedExam}
           />
 
           <footer className="exam-footer">
             <button className="secondary" disabled={index === 0} onClick={() => setIndex((current) => current - 1)}><ArrowLeft size={18} /> Anterior</button>
-            <span>{selectedAnswer ? 'Respuesta registrada' : 'Sin respuesta'}{useTimer && <> · <AlarmClock size={12} /> {formatTime(elapsedSeconds)}</>}</span>
+            <span className={isTimedExam && examDurationSeconds - elapsedSeconds <= 300 ? 'timer-warning' : ''}>{selectedAnswer ? 'Respuesta registrada' : 'Sin respuesta'}{useTimer && <> · <AlarmClock size={12} /> {isTimedExam ? 'Tiempo restante ' : ''}{formatTime(isTimedExam ? Math.max(0, examDurationSeconds - elapsedSeconds) : elapsedSeconds)}</>}</span>
             {index < session.length - 1
               ? <button className="primary" onClick={() => setIndex((current) => current + 1)}>Siguiente <ArrowRight size={18} /></button>
               : <button className="primary" onClick={() => setShowFinish(true)}>Revisar y finalizar</button>}

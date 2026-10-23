@@ -10,6 +10,7 @@ type Props = {
   struckOptions: string[];
   onToggleStrike: (option: string) => void;
   highlights: string[];
+  lockAfterSelection?: boolean;
 };
 
 function HighlightedText({ text, highlights }: { text: string; highlights: string[] }) {
@@ -27,8 +28,8 @@ function HighlightedText({ text, highlights }: { text: string; highlights: strin
   ));
 }
 
-export function QuestionCard({ q, selected, onSelect, showFeedback, struckOptions, onToggleStrike, highlights }: Props) {
-  const isLocked = Boolean(selected);
+export function QuestionCard({ q, selected, onSelect, showFeedback, struckOptions, onToggleStrike, highlights, lockAfterSelection = true }: Props) {
+  const isLocked = lockAfterSelection && Boolean(selected);
 
   return (
     <article className="question-card">
