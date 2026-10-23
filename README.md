@@ -56,3 +56,14 @@ inscritos los ven. El simulador no requiere contraseña propia.
 3. Build command: `npm run build`
 4. Output dir: `dist`
 
+
+## Scheduled weekend exam (`/examen-programado`)
+
+Students book an hourly slot (Sat/Sun, 8 AM–8 PM CT), choose Spanish or English and Life + Health, Life only or Health only. The exam unlocks only during the first 60 minutes of their slot, shows the exam conditions, and sends every registration, start and submission to a Google Sheet.
+
+1. Create a Google Sheet → Extensions → Apps Script → paste `scripts/results-sheet-apps-script.gs`.
+2. Deploy → New deployment → Web app · Execute as **Me** · Access **Anyone** → copy the URL.
+3. In Vercel set `VITE_RESULTS_WEBHOOK_URL` to that URL and `VITE_PREVIEW_KEY` to a secret word, then redeploy.
+4. Test outside a slot with `/examen-programado?preview=<VITE_PREVIEW_KEY>` (rows are marked PREVIEW).
+
+Slot dates and hours live at the top of `src/data/scheduledExam.ts`.

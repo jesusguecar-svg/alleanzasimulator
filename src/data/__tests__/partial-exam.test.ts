@@ -34,4 +34,14 @@ describe('partial exam session', () => {
     const questions = [makeQuestion('life', 'Seguro de vida'), makeQuestion('health', 'Seguro de salud')];
     expect(buildPartialExamSession(questions)).toHaveLength(2);
   });
+
+  it('applies the packaged English question content when English is selected', () => {
+    const spanish = makeQuestion('B01-Q001', 'Seguro de vida');
+    const [english] = buildPartialExamSession([spanish], 1, 'en');
+
+    expect(english.question).toContain('life insurance policy');
+    expect(english.question).not.toContain('póliza');
+    expect(english.options).toContain('March 11');
+    expect(english.correctAnswer).toBe('March 11');
+  });
 });

@@ -1,5 +1,6 @@
 import { CheckCircle2, CircleHelp, Scissors, XCircle } from 'lucide-react';
 import { Fragment } from 'react';
+import type { ExamLanguage } from '../data/partialExam';
 import type { SessionQuestion } from '../types/question';
 
 type Props = {
@@ -11,6 +12,8 @@ type Props = {
   onToggleStrike: (option: string) => void;
   highlights: string[];
   lockAfterSelection?: boolean;
+  language?: ExamLanguage;
+  domainLabel?: string;
 };
 
 function HighlightedText({ text, highlights }: { text: string; highlights: string[] }) {
@@ -28,29 +31,30 @@ function HighlightedText({ text, highlights }: { text: string; highlights: strin
   ));
 }
 
-export function QuestionCard({ q, selected, onSelect, showFeedback, struckOptions, onToggleStrike, highlights, lockAfterSelection = true }: Props) {
+export function QuestionCard({ q, selected, onSelect, showFeedback, struckOptions, onToggleStrike, highlights, lockAfterSelection = true, language = 'es', domainLabel }: Props) {
   const isLocked = lockAfterSelection && Boolean(selected);
+  const english = language === 'en';
 
   return (
     <article className="question-card">
       <div className="question-meta">
-        <span className="domain-tag">{q.domain}</span>
+        <span className="domain-tag">{domainLabel ?? q.domain}</span>
         {q.subdomain && <span>{q.subdomain}</span>}
         <span>·</span>
-        <span>{q.difficulty === 'easy' ? 'Fácil' : q.difficulty === 'medium' ? 'Medio' : 'Difícil'}</span>
+        <span>{q.difficulty === 'easy' ? english ? 'Easy' : 'Fácil' : q.difficulty === 'medium' ? english ? 'Medium' : 'Medio' : english ? 'Hard' : 'Difícil'}</span>
       </div>
       <h1 className="question-text"><HighlightedText text={q.question} highlights={highlights} /></h1>
-      <p className="instruction">Selecciona la mejor respuesta.</p>
+      <p className="instruction">{english ? 'Select the best answer.' : 'Selecciona la mejor respuesta.'}</p>
 
-      <div className="options" role="radiogroup" aria-label="Opciones de respuesta">
+      <div className="options" role="radiogroup" aria-label={english ? 'Answer choices' : 'Opciones de respuesta'}>
         {q.shuffledOptions.map((option, index) => {
           const isSelected = selected === option;
           const isCrossed = struckOptions.includes(option);
           const isCorrect = showFeedback && option === q.correctAnswer;
           const isWrong = showFeedback && isSelected && option !== q.correctAnswer;
           const rationale = isCorrect
-            ? q.explanation || 'Esta es la respuesta correcta.'
-            : q.optionExplanations?.[option] || 'Esta opción no es correcta para esta pregunta.';
+            ? q.explanation || (english ? 'This is the correct answer.' : 'Esta es la respuesta correcta.')
+            : q.optionExplanations?.[option] || (english ? 'This choice is not correct for this question.' : 'Esta opción no es correcta para esta pregunta.');
 
           return (
             <div key={option} className={`option-wrap ${isSelected ? 'selected' : ''} ${isCrossed ? 'crossed' : ''} ${isCorrect ? 'correct' : ''} ${isWrong ? 'wrong' : ''}`}>
@@ -59,7 +63,7 @@ export function QuestionCard({ q, selected, onSelect, showFeedback, struckOption
                 <span>{option}</span>
                 {isSelected && <CheckCircle2 className="state-icon" size={20} />}
               </button>
-              <button type="button" className="strike-button" onClick={() => onToggleStrike(option)} disabled={isLocked} title={isCrossed ? 'Restaurar opción' : 'Tachar opción'} aria-label={isCrossed ? 'Restaurar opción' : 'Tachar opción'}>
+              <button type="button" className="strike-button" onClick={() => onToggleStrike(option)} disabled={isLocked} title={isCrossed ? english ? 'Restore choice' : 'Restaurar opción' : english ? 'Cross out choice' : 'Tachar opción'} aria-label={isCrossed ? english ? 'Restore choice' : 'Restaurar opción' : english ? 'Cross out choice' : 'Tachar opción'}>
                 <Scissors size={16} />
               </button>
               {showFeedback && (
@@ -75,7 +79,7 @@ export function QuestionCard({ q, selected, onSelect, showFeedback, struckOption
 
       {showFeedback && q.explanation && (
         <div className="explanation">
-          <div><CircleHelp size={19} /><strong>Explicación</strong></div>
+          <div><CircleHelp size={19} /><strong>{english ? 'Explanation' : 'Explicación'}</strong></div>
           <p>{q.explanation}</p>
           {q.citation && <small>{q.citation}</small>}
         </div>
