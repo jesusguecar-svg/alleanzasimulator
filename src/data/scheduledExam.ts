@@ -27,7 +27,7 @@ export const SCHEDULE_TIME_ZONE = 'America/Chicago';
 // Students may begin any time within this many minutes after their slot opens.
 export const SLOT_START_WINDOW_MINUTES = 60;
 
-export const EXAM_QUESTION_COUNTS: Record<ExamLines, number> = { both: 75, life: 50, health: 40 };
+export const EXAM_QUESTION_COUNTS: Record<ExamLines, number> = { both: 70, life: 70, health: 70 };
 
 const REGISTRATION_KEY = 'scheduled-exam-registration';
 const PENDING_REPORTS_KEY = 'scheduled-exam-pending-reports';
@@ -60,8 +60,11 @@ export type SlotState = 'upcoming' | 'open' | 'closed';
 
 export const getSlotState = (slot: ExamSlot, now = Date.now()): SlotState => (now < slot.startsAt ? 'upcoming' : now < slot.endsAt ? 'open' : 'closed');
 
-export const matchesExamLines = (question: Pick<SessionQuestion, 'domain' | 'question' | 'subdomain' | 'tags'>, lines: ExamLines) =>
-  lines === 'both' || getPartialExamLine(question) === lines;
+export const matchesExamLines = (question: Pick<SessionQuestion, 'domain' | 'question' | 'subdomain' | 'tags'>, lines: ExamLines) => {
+  if (lines === 'both') return true;
+  const category = getPartialExamLine(question);
+  return category === 'common' || category === lines;
+};
 
 export const examDurationMinutes = (questionCount: number) => Math.round((questionCount * PARTIAL_EXAM_SECONDS_PER_QUESTION) / 60);
 

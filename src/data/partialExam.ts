@@ -95,11 +95,12 @@ export function getPartialExamDomain(question: Pick<NormalizedQuestion, 'domain'
 
 const healthLinePattern = /salud|health|hmo|ppo|disabil|discapacidad|medicare|medicaid|m[eé]dic|hospital|enfermed|cuidado a largo|long-term care|accident/i;
 
-/** Life vs. health line. Shared domains (provisions, underwriting, retirement) are split by the question's own subject. */
-export function getPartialExamLine(question: Pick<NormalizedQuestion, 'domain' | 'question' | 'subdomain' | 'tags'>): 'life' | 'health' {
+/** Line category follows the course domain: shared domains (Modules 2–4 and 6–9) qualify for both exam lines. */
+export function getPartialExamLine(question: Pick<NormalizedQuestion, 'domain' | 'question' | 'subdomain' | 'tags'>): 'life' | 'health' | 'common' {
   const group = getPartialExamDomain(question)?.id;
   if (group === 'health') return 'health';
   if (group === 'life') return 'life';
+  if (group) return 'common';
   return healthLinePattern.test(`${question.question} ${question.subdomain ?? ''} ${question.tags?.join(' ') ?? ''}`) ? 'health' : 'life';
 }
 
