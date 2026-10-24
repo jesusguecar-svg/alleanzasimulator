@@ -8,6 +8,7 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "test": "vitest run",
+    "test:scheduled-exam": "vitest run src/data/__tests__/scheduled-exam.test.ts",
     "validate:package": "node scripts/validate-package-json.mjs",
     "validate:questions": "tsx scripts/validate-questions.ts",
     "generate:modules": "node scripts/generate-module-links.js"

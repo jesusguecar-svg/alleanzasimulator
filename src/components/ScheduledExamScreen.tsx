@@ -102,7 +102,8 @@ export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, ini
 
   const uiLanguage = registration?.language ?? language;
   const t = copy[uiLanguage];
-  const questionCountFor = (value: ExamLines) => Math.min(EXAM_QUESTION_COUNTS[value], availableByLines[value]);
+  const questionCountFor = (value: ExamLines) =>
+    availableByLines[value] >= EXAM_QUESTION_COUNTS[value] ? EXAM_QUESTION_COUNTS[value] : 0;
   const slotsByDay = useMemo(() => SCHEDULE_DAYS.map((day) => ({ day, slots: examSlots.filter((slot) => slot.id.startsWith(day)) })), []);
 
   const header = <AppHeader darkMode={darkMode} onToggleTheme={onToggleTheme} language={uiLanguage} />;

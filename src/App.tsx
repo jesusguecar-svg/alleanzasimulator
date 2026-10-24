@@ -8,10 +8,10 @@ import { QuestionCard } from './components/QuestionCard';
 import { ResultsScreen } from './components/ResultsScreen';
 import { ScheduledExamScreen } from './components/ScheduledExamScreen';
 import { SetupScreen } from './components/SetupScreen';
-import { loadQuestions } from './data/loadQuestions';
+import { loadQuestions, loadScheduledExamQuestions } from './data/loadQuestions';
 import { buildPartialExamSession, getPartialExamDomain, isPartialExamQuestion, PARTIAL_EXAM_SECONDS_PER_QUESTION } from './data/partialExam';
 import type { ExamLanguage } from './data/partialExam';
-import { buildExamReport, EXAM_QUESTION_COUNTS, flushPendingEvents, loadRegistration, matchesExamLines, newRegistrationId, saveRegistration, sendEvent } from './data/scheduledExam';
+import { buildExamReport, buildScheduledExamSession, EXAM_QUESTION_COUNTS, flushPendingEvents, loadRegistration, matchesExamLines, newRegistrationId, saveRegistration, sendEvent } from './data/scheduledExam';
 import type { ExamLines, ScheduledRegistration } from './data/scheduledExam';
 import { getStudyGroupId, isAnyStateSpecific, isSpecificToState } from './data/studyGroups';
 import topics from './data/topics.json';
@@ -32,6 +32,7 @@ const topicLabels: Record<string, string> = {
 };
 
 const loaded = loadQuestions();
+const scheduledLoaded = loadScheduledExamQuestions();
 const THEME_KEY = 'theme';
 const TIMER_KEY = 'useTimer';
 
@@ -171,10 +172,10 @@ export default function App() {
   const examDurationSeconds = (session?.length ?? 0) * PARTIAL_EXAM_SECONDS_PER_QUESTION;
   const timedExamCopy = examCopy[examLanguage];
   const scheduledPoolByLines = useMemo(() => ({
-    both: partialExamPool,
-    life: partialExamPool.filter((question) => matchesExamLines(question, 'life')),
-    health: partialExamPool.filter((question) => matchesExamLines(question, 'health')),
-  }), [partialExamPool]);
+    both: scheduledLoaded.questions.filter((question) => matchesExamLines(question, 'both')),
+    life: scheduledLoaded.questions.filter((question) => matchesExamLines(question, 'life')),
+    health: scheduledLoaded.questions.filter((question) => matchesExamLines(question, 'health')),
+  }), []);
   const isScheduledSession = scheduledRoute && isTimedExam && Boolean(registration);
 
   useEffect(() => {
@@ -366,8 +367,7 @@ export default function App() {
             setUseTimer(true);
             setTabSwitches(0);
             setReportStatus(null);
-            const pool = scheduledPoolByLines[started.lines];
-            startSession(buildPartialExamSession(pool, EXAM_QUESTION_COUNTS[started.lines], started.language), 'partial-exam');
+            startSession(buildScheduledExamSession(scheduledLoaded.questions, started.lines, started.language), 'partial-exam');
             void sendEvent({ type: 'started', registrationId: started.id, preview: scheduledPreview, attempt: started.attempts });
           }}
         />

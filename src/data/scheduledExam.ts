@@ -1,6 +1,7 @@
-import type { SessionQuestion } from '../types/question';
+import type { NormalizedQuestion, SessionQuestion } from '../types/question';
 import type { ExamLanguage } from './partialExam';
-import { getPartialExamDomain, getPartialExamLine, PARTIAL_EXAM_SECONDS_PER_QUESTION } from './partialExam';
+import { getPartialExamDomain, PARTIAL_EXAM_SECONDS_PER_QUESTION } from './partialExam';
+import { shuffleArray } from '../utils/shuffle';
 
 export type ExamLines = 'both' | 'life' | 'health';
 
@@ -28,6 +29,18 @@ export const SCHEDULE_TIME_ZONE = 'America/Chicago';
 export const SLOT_START_WINDOW_MINUTES = 60;
 
 export const EXAM_QUESTION_COUNTS: Record<ExamLines, number> = { both: 70, life: 70, health: 70 };
+
+export const SCHEDULED_EXAM_DOMAINS = {
+  common: 'Common All-Lines Florida',
+  life: 'Florida Life, Annuities and Variable Products',
+  health: 'Florida Health',
+} as const;
+
+export type ScheduledExamCategory = keyof typeof SCHEDULED_EXAM_DOMAINS;
+
+type ScheduledQuestionIdentity = Pick<NormalizedQuestion,
+  'id' | 'domain' | 'subdomain' | 'question' | 'explanation' | 'source' | 'citation' | 'options'
+>;
 
 const REGISTRATION_KEY = 'scheduled-exam-registration';
 const PENDING_REPORTS_KEY = 'scheduled-exam-pending-reports';
@@ -60,11 +73,51 @@ export type SlotState = 'upcoming' | 'open' | 'closed';
 
 export const getSlotState = (slot: ExamSlot, now = Date.now()): SlotState => (now < slot.startsAt ? 'upcoming' : now < slot.endsAt ? 'open' : 'closed');
 
-export const matchesExamLines = (question: Pick<SessionQuestion, 'domain' | 'question' | 'subdomain' | 'tags'>, lines: ExamLines) => {
-  if (lines === 'both') return true;
-  const category = getPartialExamLine(question);
-  return category === 'common' || category === lines;
+export const getScheduledExamCategory = (question: Pick<NormalizedQuestion, 'domain'>): ScheduledExamCategory | undefined =>
+  (Object.entries(SCHEDULED_EXAM_DOMAINS).find(([, domain]) => question.domain === domain)?.[0] as ScheduledExamCategory | undefined);
+
+export const hasTexasReference = (question: ScheduledQuestionIdentity) => /\btexas\b|ley de seguros de texas|hmo de texas/i.test([
+  question.domain,
+  question.subdomain,
+  question.question,
+  question.explanation,
+  question.source,
+  question.citation,
+  ...question.options,
+].filter(Boolean).join(' '));
+
+export const matchesExamLines = (question: ScheduledQuestionIdentity, lines: ExamLines) => {
+  const category = getScheduledExamCategory(question);
+  if (!category || !/^FL(?:C|L|H)-Q\d+$/.test(question.id) || hasTexasReference(question)) return false;
+  return lines === 'both' || category === 'common' || category === lines;
 };
+
+/** Builds an exact-size, ID-unique draw from the scheduled Florida bank. */
+export function buildScheduledExamSession(
+  questions: NormalizedQuestion[],
+  lines: ExamLines,
+  language: ExamLanguage,
+): SessionQuestion[] {
+  const desiredCount = EXAM_QUESTION_COUNTS[lines];
+  const unique = new Map(
+    questions
+      .filter((question) => matchesExamLines(question, lines))
+      .map((question) => [question.id, question]),
+  );
+  const pool = [...unique.values()];
+
+  if (pool.length < desiredCount) {
+    throw new Error(`Scheduled ${lines} exam requires ${desiredCount} unique questions, but only ${pool.length} are available.`);
+  }
+
+  // The current validated Florida bank is Spanish-only. English uses the same
+  // Florida source until a reviewed translation keyed by these IDs is added;
+  // the language must never switch the exam back to a legacy/Texas bank.
+  void language;
+  return shuffleArray(pool)
+    .slice(0, desiredCount)
+    .map((question) => ({ ...question, shuffledOptions: shuffleArray(question.options) }));
+}
 
 export const examDurationMinutes = (questionCount: number) => Math.round((questionCount * PARTIAL_EXAM_SECONDS_PER_QUESTION) / 60);
 
