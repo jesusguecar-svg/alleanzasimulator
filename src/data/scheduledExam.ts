@@ -19,6 +19,8 @@ export type ScheduledRegistration = {
   submittedAt?: number;
 };
 
+export const RETAKE_SLOT_ID = 'retake-anytime';
+
 // Weekend schedule. Slots are hourly start windows in Central Time (CDT, UTC-5 until Nov 1, 2026).
 export const SCHEDULE_DAYS = ['2026-10-24', '2026-10-25'];
 export const SCHEDULE_FIRST_HOUR = 8;
@@ -72,6 +74,16 @@ export const formatSlotLabel = (slot: ExamSlot, language: ExamLanguage) => `${fo
 export type SlotState = 'upcoming' | 'open' | 'closed';
 
 export const getSlotState = (slot: ExamSlot, now = Date.now()): SlotState => (now < slot.startsAt ? 'upcoming' : now < slot.endsAt ? 'open' : 'closed');
+
+export const isValidRetakeToken = (requestedToken: string | null, configuredToken: string | undefined) =>
+  Boolean(configuredToken) && requestedToken === configuredToken;
+
+/** Reopens the saved registration while preserving the ID and completed-attempt count. */
+export const prepareRetakeRegistration = (registration: ScheduledRegistration | null): ScheduledRegistration | null => {
+  if (!registration) return null;
+  const { submittedAt: _submittedAt, ...retakeRegistration } = registration;
+  return retakeRegistration;
+};
 
 export const getScheduledExamCategory = (question: Pick<NormalizedQuestion, 'domain'>): ScheduledExamCategory | undefined =>
   (Object.entries(SCHEDULED_EXAM_DOMAINS).find(([, domain]) => question.domain === domain)?.[0] as ScheduledExamCategory | undefined);

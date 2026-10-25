@@ -63,7 +63,8 @@ Students book an hourly slot (Sat/Sun, 8 AM–8 PM CT), choose Spanish or Englis
 
 1. Create a Google Sheet → Extensions → Apps Script → paste `scripts/results-sheet-apps-script.gs`.
 2. Deploy → New deployment → Web app · Execute as **Me** · Access **Anyone** → copy the URL.
-3. In Vercel set `VITE_RESULTS_WEBHOOK_URL` to that URL and `VITE_PREVIEW_KEY` to a secret word, then redeploy.
+3. In Vercel set `VITE_RESULTS_WEBHOOK_URL` to that URL, `VITE_PREVIEW_KEY` to a secret word, and `VITE_RETAKE_TOKEN` to the private retake-link token, then redeploy.
 4. Test outside a slot with `/examen-programado?preview=<VITE_PREVIEW_KEY>` (rows are marked PREVIEW).
+5. Give an authorized student `/examen-programado?retake=<VITE_RETAKE_TOKEN>` to reopen their saved registration at any time. The saved attempt count is preserved and increments when the retake starts; results are not marked as previews.
 
 Slot dates and hours live at the top of `src/data/scheduledExam.ts`.

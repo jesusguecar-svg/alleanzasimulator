@@ -2,7 +2,7 @@ import { AlarmClock, ArrowLeft, ArrowRight, BookOpenCheck, CalendarClock, CheckC
 import { useEffect, useMemo, useState } from 'react';
 import type { ExamLanguage } from '../data/partialExam';
 import type { ExamLines, ScheduledRegistration } from '../data/scheduledExam';
-import { EXAM_QUESTION_COUNTS, examDurationMinutes, examSlots, formatSlotDay, formatSlotLabel, formatSlotTime, getSlot, getSlotState, SCHEDULE_DAYS, SLOT_START_WINDOW_MINUTES } from '../data/scheduledExam';
+import { EXAM_QUESTION_COUNTS, examDurationMinutes, examSlots, formatSlotDay, formatSlotLabel, formatSlotTime, getSlot, getSlotState, RETAKE_SLOT_ID, SCHEDULE_DAYS, SLOT_START_WINDOW_MINUTES } from '../data/scheduledExam';
 import { AppHeader } from './AppChrome';
 
 type Props = {
@@ -12,6 +12,7 @@ type Props = {
   initialValues?: ScheduledRegistration | null;
   availableByLines: Record<ExamLines, number>;
   preview: boolean;
+  retake: boolean;
   onRegister: (registration: Omit<ScheduledRegistration, 'id' | 'registeredAt' | 'attempts'>) => void;
   onEdit: () => void;
   onStart: () => void;
@@ -44,6 +45,8 @@ const copy = {
     start: 'Comenzar examen ahora', back: 'Volver',
     done: 'Examen entregado', doneDetail: 'Ya entregaste este examen. Tu instructor recibió tus resultados.',
     previewNote: 'Modo de prueba: el horario no se aplica y el reporte se marca como PRUEBA.',
+    retakeNote: 'Acceso de reintento activo: puedes comenzar a cualquier hora. Este intento sí se enviará a tu instructor.',
+    retakeAvailable: 'Tu reintento está disponible ahora',
   },
   en: {
     eyebrow: 'Scheduled exam', title: 'Book your', titleAccent: 'exam',
@@ -71,6 +74,8 @@ const copy = {
     start: 'Start exam now', back: 'Back',
     done: 'Exam submitted', doneDetail: 'You have already submitted this exam. Your instructor has received your results.',
     previewNote: 'Preview mode: the slot lock is skipped and the report is marked PREVIEW.',
+    retakeNote: 'Retake access is active: you can begin at any time. This attempt will be sent to your instructor.',
+    retakeAvailable: 'Your retake is available now',
   },
 } as const;
 
@@ -84,7 +89,7 @@ const formatCountdown = (ms: number) => {
 
 const isValidEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
 
-export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, initialValues, availableByLines, preview, onRegister, onEdit, onStart }: Props) {
+export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, initialValues, availableByLines, preview, retake, onRegister, onEdit, onStart }: Props) {
   const seed = registration ?? initialValues;
   const [name, setName] = useState(seed?.name ?? '');
   const [email, setEmail] = useState(seed?.email ?? '');
@@ -108,7 +113,7 @@ export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, ini
 
   const header = <AppHeader darkMode={darkMode} onToggleTheme={onToggleTheme} language={uiLanguage} />;
 
-  if (registration?.submittedAt && !preview) {
+  if (registration?.submittedAt && !preview && !retake) {
     return (
       <div className="app-shell partial-landing-shell">
         {header}
@@ -125,7 +130,7 @@ export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, ini
 
   if (registration) {
     const slot = getSlot(registration.slotId);
-    const state = preview ? 'open' : slot ? getSlotState(slot, now) : 'closed';
+    const state = preview || retake ? 'open' : slot ? getSlotState(slot, now) : 'closed';
     const questionCount = questionCountFor(registration.lines);
     const minutes = examDurationMinutes(questionCount);
     const lineLabel = t.lineOptions[registration.lines][0];
@@ -168,7 +173,7 @@ export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, ini
           <section className="panel scheduled-status-card">
             <span className="eyebrow"><CalendarClock size={15} /> {t.reserved}</span>
             <h1>{registration.name}</h1>
-            <p>{t.reservedFor} <strong>{slot ? formatSlotLabel(slot, uiLanguage) : registration.slotId}</strong></p>
+            <p>{retake ? <strong>{t.retakeAvailable}</strong> : <>{t.reservedFor} <strong>{slot ? formatSlotLabel(slot, uiLanguage) : registration.slotId}</strong></>}</p>
             <div className="partial-facts scheduled-facts">
               <span><strong>{questionCount}</strong> {t.questions}</span>
               <span><strong>{minutes}</strong> {t.minutes}</span>
@@ -176,9 +181,10 @@ export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, ini
               <span><strong>{lineLabel}</strong></span>
             </div>
             {preview && <p className="scheduled-preview">{t.previewNote}</p>}
+            {retake && <p className="scheduled-preview">{t.retakeNote}</p>}
             <div className={`scheduled-countdown ${state}`}>
               {state === 'upcoming' && slot && <><LockKeyhole size={18} /><span>{t.opensIn}</span><strong>{formatCountdown(slot.startsAt - now)}</strong></>}
-              {state === 'open' && <><CheckCircle2 size={18} /><span>{t.openNow}</span>{slot && !preview && <small>{t.closesIn} {formatCountdown(slot.endsAt - now)}</small>}</>}
+              {state === 'open' && <><CheckCircle2 size={18} /><span>{retake ? t.retakeAvailable : t.openNow}</span>{slot && !preview && !retake && <small>{t.closesIn} {formatCountdown(slot.endsAt - now)}</small>}</>}
               {state === 'closed' && <><AlarmClock size={18} /><span>{t.closed}</span></>}
             </div>
             <div className="scheduled-actions">
@@ -192,7 +198,7 @@ export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, ini
     );
   }
 
-  const canRegister = name.trim().length > 1 && isValidEmail(email) && Boolean(slotId) && questionCountFor(lines) > 0;
+  const canRegister = name.trim().length > 1 && isValidEmail(email) && (retake || Boolean(slotId)) && questionCountFor(lines) > 0;
 
   return (
     <div className="app-shell partial-landing-shell">
@@ -212,7 +218,7 @@ export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, ini
           </div>
         </section>
 
-        <form className="scheduled-form" onSubmit={(event) => { event.preventDefault(); if (canRegister) onRegister({ name: name.trim(), email: email.trim(), slotId, language, lines }); }}>
+        <form className="scheduled-form" onSubmit={(event) => { event.preventDefault(); if (canRegister) onRegister({ name: name.trim(), email: email.trim(), slotId: retake ? slotId || RETAKE_SLOT_ID : slotId, language, lines }); }}>
           <section className="panel scheduled-section">
             <h2><span>01</span> {t.you}</h2>
             <div className="scheduled-fields">
@@ -221,7 +227,9 @@ export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, ini
             </div>
           </section>
 
-          <section className="panel scheduled-section">
+          {retake && <p className="scheduled-preview">{t.retakeNote}</p>}
+
+          {!retake && <section className="panel scheduled-section">
             <h2><span>02</span> {t.when}</h2>
             <p className="scheduled-help">{t.whenHelp}</p>
             {slotsByDay.map(({ day, slots }) => (
@@ -240,7 +248,7 @@ export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, ini
                 </div>
               </div>
             ))}
-          </section>
+          </section>}
 
           <section className="panel scheduled-section scheduled-split">
             <div>

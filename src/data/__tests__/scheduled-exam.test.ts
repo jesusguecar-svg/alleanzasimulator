@@ -9,7 +9,9 @@ import {
   getScheduledExamCategory,
   getSlotState,
   hasTexasReference,
+  isValidRetakeToken,
   matchesExamLines,
+  prepareRetakeRegistration,
   SCHEDULED_EXAM_DOMAINS,
 } from '../scheduledExam';
 
@@ -30,6 +32,32 @@ describe('scheduled exam slots', () => {
     expect(getSlotState(slot, slot.startsAt - 1)).toBe('upcoming');
     expect(getSlotState(slot, slot.startsAt)).toBe('open');
     expect(getSlotState(slot, slot.endsAt)).toBe('closed');
+  });
+});
+
+describe('scheduled exam retakes', () => {
+  it('requires the configured token', () => {
+    expect(isValidRetakeToken('luz-token', 'luz-token')).toBe(true);
+    expect(isValidRetakeToken('wrong-token', 'luz-token')).toBe(false);
+    expect(isValidRetakeToken(null, 'luz-token')).toBe(false);
+    expect(isValidRetakeToken('', undefined)).toBe(false);
+  });
+
+  it('reopens a submitted registration without losing its completed-attempt count', () => {
+    const submitted = {
+      id: 'luz-registration',
+      name: 'Luz Rivera',
+      email: 'luz@example.com',
+      slotId: examSlots[0].id,
+      language: 'es' as const,
+      lines: 'health' as const,
+      registeredAt: 1,
+      attempts: 1,
+      submittedAt: 2,
+    };
+
+    expect(prepareRetakeRegistration(submitted)).toMatchObject({ id: 'luz-registration', attempts: 1, lines: 'health' });
+    expect(prepareRetakeRegistration(submitted)).not.toHaveProperty('submittedAt');
   });
 });
 
@@ -85,10 +113,10 @@ describe('scheduled exam report', () => {
   it('summarizes score, unanswered questions and tab switches', () => {
     const questions = [makeQuestion('1', 'Seguro de vida'), makeQuestion('2', 'Seguro de salud'), makeQuestion('3', 'Seguro de salud')];
     const report = buildExamReport({
-      registration: { id: 'r1', name: 'Ana', email: 'ana@example.com', slotId: examSlots[0].id, language: 'es', lines: 'both', registeredAt: 0, attempts: 1 },
+      registration: { id: 'r1', name: 'Ana', email: 'ana@example.com', slotId: examSlots[0].id, language: 'es', lines: 'both', registeredAt: 0, attempts: 2 },
       questions, answers: { 1: 'A', 2: 'B' }, elapsedSeconds: 120, autoSubmitted: false, startedAt: 0, tabSwitches: 2, preview: false,
     });
 
-    expect(report).toMatchObject({ type: 'submitted', score: 33, correct: 1, incorrect: 1, unanswered: 1, total: 3, tabSwitches: 2 });
+    expect(report).toMatchObject({ type: 'submitted', attempt: 2, score: 33, correct: 1, incorrect: 1, unanswered: 1, total: 3, tabSwitches: 2 });
   });
 });

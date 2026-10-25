@@ -11,7 +11,7 @@ import { SetupScreen } from './components/SetupScreen';
 import { loadQuestions, loadScheduledExamQuestions } from './data/loadQuestions';
 import { buildPartialExamSession, getPartialExamDomain, isPartialExamQuestion, PARTIAL_EXAM_SECONDS_PER_QUESTION } from './data/partialExam';
 import type { ExamLanguage } from './data/partialExam';
-import { buildExamReport, buildScheduledExamSession, EXAM_QUESTION_COUNTS, flushPendingEvents, loadRegistration, matchesExamLines, newRegistrationId, saveRegistration, sendEvent } from './data/scheduledExam';
+import { buildExamReport, buildScheduledExamSession, EXAM_QUESTION_COUNTS, flushPendingEvents, isValidRetakeToken, loadRegistration, matchesExamLines, newRegistrationId, prepareRetakeRegistration, saveRegistration, sendEvent } from './data/scheduledExam';
 import type { ExamLines, ScheduledRegistration } from './data/scheduledExam';
 import { getStudyGroupId, isAnyStateSpecific, isSpecificToState } from './data/studyGroups';
 import topics from './data/topics.json';
@@ -103,6 +103,12 @@ const isScheduledPreview = () => {
   return typeof window !== 'undefined' && Boolean(key) && new URLSearchParams(window.location.search).get('preview') === key;
 };
 
+// A valid retake link reopens the saved attempt and bypasses the weekend slot window.
+const isScheduledRetake = () => {
+  const key = import.meta.env.VITE_RETAKE_TOKEN as string | undefined;
+  return typeof window !== 'undefined' && isValidRetakeToken(new URLSearchParams(window.location.search).get('retake'), key);
+};
+
 const linesSubtitle = (lines: ExamLines, language: ExamLanguage) => ({
   both: language === 'en' ? 'Life and Health' : 'Vida y Salud',
   life: language === 'en' ? 'Life only' : 'Solo Vida',
@@ -161,7 +167,12 @@ export default function App() {
   const [examLanguage, setExamLanguage] = useState<ExamLanguage>(initialExamLanguage);
   const [scheduledRoute] = useState(isScheduledExamRoute);
   const [scheduledPreview] = useState(isScheduledPreview);
-  const [registration, setRegistration] = useState<ScheduledRegistration | null>(() => (isScheduledExamRoute() ? loadRegistration() : null));
+  const [scheduledRetake] = useState(isScheduledRetake);
+  const [registration, setRegistration] = useState<ScheduledRegistration | null>(() => {
+    if (!isScheduledExamRoute()) return null;
+    const saved = loadRegistration();
+    return scheduledRetake ? prepareRetakeRegistration(saved) : saved;
+  });
   const [editingRegistration, setEditingRegistration] = useState<ScheduledRegistration | null>(null);
   const [tabSwitches, setTabSwitches] = useState(0);
   const [reportStatus, setReportStatus] = useState<'sending' | 'sent' | 'queued' | null>(null);
@@ -348,6 +359,7 @@ export default function App() {
           initialValues={editingRegistration}
           availableByLines={{ both: scheduledPoolByLines.both.length, life: scheduledPoolByLines.life.length, health: scheduledPoolByLines.health.length }}
           preview={scheduledPreview}
+          retake={scheduledRetake}
           onRegister={(details) => {
             const next: ScheduledRegistration = { ...details, id: editingRegistration?.id ?? newRegistrationId(), registeredAt: Date.now(), attempts: editingRegistration?.attempts ?? 0 };
             saveRegistration(next);
