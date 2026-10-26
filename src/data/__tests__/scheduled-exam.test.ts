@@ -49,11 +49,11 @@ describe('scheduled exam retakes', () => {
     expect(isValidRetakeToken('', undefined)).toBe(false);
   });
 
-  it('expires a named token at the exact configured instant while leaving the legacy token unexpired', () => {
+  it('expires configured tokens at the exact instant and supports an unnamed expiring token', () => {
     const configs = [
       { token: 'luz-token' },
       { token: 'miriam-token', studentName: 'Miriam Bravo', expiresAt: NEW_RETAKE_TOKENS_EXPIRE_AT },
-      { token: 'cynthia-token', studentName: 'Cynthia Villard', expiresAt: NEW_RETAKE_TOKENS_EXPIRE_AT },
+      { token: 'unnamed-token', expiresAt: NEW_RETAKE_TOKENS_EXPIRE_AT },
     ];
 
     const active = resolveRetakeAccess('miriam-token', configs, NEW_RETAKE_TOKENS_EXPIRE_AT - 1);
@@ -67,8 +67,8 @@ describe('scheduled exam retakes', () => {
     expect(resolveRetakeAccess('luz-token', configs, NEW_RETAKE_TOKENS_EXPIRE_AT + 10_000)).toEqual({
       status: 'active', studentName: undefined, expiresAt: undefined,
     });
-    expect(resolveRetakeAccess('cynthia-token', configs, NEW_RETAKE_TOKENS_EXPIRE_AT - 1)).toEqual({
-      status: 'active', studentName: 'Cynthia Villard', expiresAt: NEW_RETAKE_TOKENS_EXPIRE_AT,
+    expect(resolveRetakeAccess('unnamed-token', configs, NEW_RETAKE_TOKENS_EXPIRE_AT - 1)).toEqual({
+      status: 'active', studentName: undefined, expiresAt: NEW_RETAKE_TOKENS_EXPIRE_AT,
     });
     expect(resolveRetakeAccess('unknown-token', configs)).toBeNull();
   });

@@ -62,6 +62,39 @@ describe('ScheduledExamScreen retake access', () => {
     }));
   });
 
+  it('leaves an unnamed retake blank and editable and allows English', () => {
+    const onRegister = vi.fn();
+    render(
+      <ScheduledExamScreen
+        darkMode={false}
+        onToggleTheme={vi.fn()}
+        registration={null}
+        availableByLines={{ both: 150, life: 100, health: 100 }}
+        preview={false}
+        retakeAccess={{ status: 'active', expiresAt: Date.now() + 60_000 }}
+        onRegister={onRegister}
+        onEdit={vi.fn()}
+        onStart={vi.fn()}
+      />,
+    );
+
+    const name = screen.getByLabelText('Nombre completo');
+    const email = screen.getByLabelText('Correo electrónico');
+    expect(name).toHaveValue('');
+    expect(name).not.toHaveAttribute('readonly');
+    expect(email).toHaveValue('');
+
+    fireEvent.click(screen.getByRole('radio', { name: /English EN/i }));
+    expect(screen.getByLabelText('Full name')).toBeInTheDocument();
+    fireEvent.change(screen.getByLabelText('Full name'), { target: { value: 'Student Name' } });
+    fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'student@example.com' } });
+    fireEvent.click(screen.getByRole('button', { name: /Confirm booking/i }));
+
+    expect(onRegister).toHaveBeenCalledWith(expect.objectContaining({
+      name: 'Student Name', email: 'student@example.com', language: 'en', slotId: 'retake-anytime',
+    }));
+  });
+
   it('shows an expired message and removes every way to start', () => {
     const onStart = vi.fn();
     render(

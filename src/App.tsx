@@ -112,7 +112,8 @@ const getScheduledRetakeAccess = (): RetakeAccess | null => {
     { token: import.meta.env.VITE_MIRIAM_RETAKE_TOKEN as string | undefined, studentName: 'Miriam Bravo', expiresAt: NEW_RETAKE_TOKENS_EXPIRE_AT },
     { token: import.meta.env.VITE_BETSY_RETAKE_TOKEN as string | undefined, studentName: 'Betsy Acosta', expiresAt: NEW_RETAKE_TOKENS_EXPIRE_AT },
     { token: import.meta.env.VITE_MANOGLY_RETAKE_TOKEN as string | undefined, studentName: 'Manogly Fernandez', expiresAt: NEW_RETAKE_TOKENS_EXPIRE_AT },
-    { token: import.meta.env.VITE_CYNTHIA_RETAKE_TOKEN as string | undefined, studentName: 'Cynthia Villard', expiresAt: NEW_RETAKE_TOKENS_EXPIRE_AT },
+    // This expiring link is intentionally unnamed so the student enters their own details.
+    { token: import.meta.env.VITE_CYNTHIA_RETAKE_TOKEN as string | undefined, expiresAt: NEW_RETAKE_TOKENS_EXPIRE_AT },
   ]);
 };
 
