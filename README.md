@@ -65,6 +65,6 @@ Students book an hourly slot (Sat/Sun, 8 AM–8 PM CT), choose Spanish or Englis
 2. Deploy → New deployment → Web app · Execute as **Me** · Access **Anyone** → copy the URL.
 3. In Vercel set `VITE_RESULTS_WEBHOOK_URL` to that URL, `VITE_PREVIEW_KEY` to a secret word, and `VITE_RETAKE_TOKEN` to the private retake-link token, then redeploy.
 4. Test outside a slot with `/examen-programado?preview=<VITE_PREVIEW_KEY>` (rows are marked PREVIEW).
-5. Give an authorized student `/examen-programado?retake=<VITE_RETAKE_TOKEN>` to reopen their saved registration at any time. The saved attempt count is preserved and increments when the retake starts; results are not marked as previews.
+5. Give an authorized student `/examen-programado?retake=<token>` to reopen their saved registration at any time. The saved attempt count is preserved and increments when the retake starts; results are not marked as previews. `VITE_RETAKE_TOKEN` is the legacy non-expiring Luz link. The three named `VITE_*_RETAKE_TOKEN` links expire at `2026-10-28T03:59:00Z` and also allow a first attempt when no matching registration is saved.
 
 Slot dates and hours live at the top of `src/data/scheduledExam.ts`.

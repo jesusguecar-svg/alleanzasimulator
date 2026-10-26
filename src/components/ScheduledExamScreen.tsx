@@ -1,7 +1,7 @@
 import { AlarmClock, ArrowLeft, ArrowRight, BookOpenCheck, CalendarClock, CheckCircle2, Laptop, LockKeyhole, MonitorX, NotebookPen, ShieldAlert, Smartphone, UserX, Volume2, Wifi } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import type { ExamLanguage } from '../data/partialExam';
-import type { ExamLines, ScheduledRegistration } from '../data/scheduledExam';
+import type { ExamLines, RetakeAccess, ScheduledRegistration } from '../data/scheduledExam';
 import { EXAM_QUESTION_COUNTS, examDurationMinutes, examSlots, formatSlotDay, formatSlotLabel, formatSlotTime, getSlot, getSlotState, RETAKE_SLOT_ID, SCHEDULE_DAYS, SLOT_START_WINDOW_MINUTES } from '../data/scheduledExam';
 import { AppHeader } from './AppChrome';
 
@@ -12,7 +12,7 @@ type Props = {
   initialValues?: ScheduledRegistration | null;
   availableByLines: Record<ExamLines, number>;
   preview: boolean;
-  retake: boolean;
+  retakeAccess: RetakeAccess | null;
   onRegister: (registration: Omit<ScheduledRegistration, 'id' | 'registeredAt' | 'attempts'>) => void;
   onEdit: () => void;
   onStart: () => void;
@@ -47,6 +47,8 @@ const copy = {
     previewNote: 'Modo de prueba: el horario no se aplica y el reporte se marca como PRUEBA.',
     retakeNote: 'Acceso de reintento activo: puedes comenzar a cualquier hora. Este intento sí se enviará a tu instructor.',
     retakeAvailable: 'Tu reintento está disponible ahora',
+    retakeExpiredTitle: 'Enlace vencido',
+    retakeExpired: 'Este enlace de acceso venció. Comunícate con tu instructor para solicitar un enlace nuevo.',
   },
   en: {
     eyebrow: 'Scheduled exam', title: 'Book your', titleAccent: 'exam',
@@ -76,6 +78,8 @@ const copy = {
     previewNote: 'Preview mode: the slot lock is skipped and the report is marked PREVIEW.',
     retakeNote: 'Retake access is active: you can begin at any time. This attempt will be sent to your instructor.',
     retakeAvailable: 'Your retake is available now',
+    retakeExpiredTitle: 'Link expired',
+    retakeExpired: 'This access link has expired. Contact your instructor to request a new link.',
   },
 } as const;
 
@@ -89,9 +93,9 @@ const formatCountdown = (ms: number) => {
 
 const isValidEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
 
-export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, initialValues, availableByLines, preview, retake, onRegister, onEdit, onStart }: Props) {
+export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, initialValues, availableByLines, preview, retakeAccess, onRegister, onEdit, onStart }: Props) {
   const seed = registration ?? initialValues;
-  const [name, setName] = useState(seed?.name ?? '');
+  const [name, setName] = useState(seed?.name ?? retakeAccess?.studentName ?? '');
   const [email, setEmail] = useState(seed?.email ?? '');
   const [slotId, setSlotId] = useState(seed?.slotId ?? '');
   const [language, setLanguage] = useState<ExamLanguage>(seed?.language ?? 'es');
@@ -99,6 +103,8 @@ export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, ini
   const [showRules, setShowRules] = useState(false);
   const [agreed, setAgreed] = useState(false);
   const [now, setNow] = useState(Date.now());
+  const retake = retakeAccess?.status === 'active' && (retakeAccess.expiresAt === undefined || now < retakeAccess.expiresAt);
+  const retakeExpired = Boolean(retakeAccess) && !retake;
 
   useEffect(() => {
     const timer = window.setInterval(() => setNow(Date.now()), 1000);
@@ -112,6 +118,21 @@ export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, ini
   const slotsByDay = useMemo(() => SCHEDULE_DAYS.map((day) => ({ day, slots: examSlots.filter((slot) => slot.id.startsWith(day)) })), []);
 
   const header = <AppHeader darkMode={darkMode} onToggleTheme={onToggleTheme} language={uiLanguage} />;
+
+  if (retakeExpired) {
+    return (
+      <div className="app-shell partial-landing-shell">
+        {header}
+        <main className="partial-landing scheduled-main" id="main-content" lang={uiLanguage}>
+          <section className="panel scheduled-status-card">
+            <AlarmClock size={34} className="scheduled-status-icon" />
+            <h1>{t.retakeExpiredTitle}</h1>
+            <p>{t.retakeExpired}</p>
+          </section>
+        </main>
+      </div>
+    );
+  }
 
   if (registration?.submittedAt && !preview && !retake) {
     return (
@@ -222,7 +243,7 @@ export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, ini
           <section className="panel scheduled-section">
             <h2><span>01</span> {t.you}</h2>
             <div className="scheduled-fields">
-              <label>{t.name}<input value={name} onChange={(event) => setName(event.target.value)} placeholder={t.namePlaceholder} autoComplete="name" required /></label>
+              <label>{t.name}<input value={name} onChange={(event) => setName(event.target.value)} placeholder={t.namePlaceholder} autoComplete="name" required readOnly={Boolean(retakeAccess?.studentName)} /></label>
               <label>{t.email}<input type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder={t.emailPlaceholder} autoComplete="email" required /></label>
             </div>
           </section>

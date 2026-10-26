@@ -9,6 +9,18 @@ export type ExamLines = 'both' | 'life' | 'health';
 
 export type ExamSlot = { id: string; startsAt: number; endsAt: number };
 
+export type RetakeTokenConfig = {
+  token: string | undefined;
+  studentName?: string;
+  expiresAt?: number;
+};
+
+export type RetakeAccess = {
+  status: 'active' | 'expired';
+  studentName?: string;
+  expiresAt?: number;
+};
+
 export type ScheduledRegistration = {
   id: string;
   name: string;
@@ -22,6 +34,7 @@ export type ScheduledRegistration = {
 };
 
 export const RETAKE_SLOT_ID = 'retake-anytime';
+export const NEW_RETAKE_TOKENS_EXPIRE_AT = Date.parse('2026-10-28T03:59:00Z');
 
 // Weekend schedule. Slots are hourly start windows in Central Time (CDT, UTC-5 until Nov 1, 2026).
 export const SCHEDULE_DAYS = ['2026-10-24', '2026-10-25'];
@@ -89,9 +102,29 @@ export const getSlotState = (slot: ExamSlot, now = Date.now()): SlotState => (no
 export const isValidRetakeToken = (requestedToken: string | null, configuredToken: string | undefined) =>
   Boolean(configuredToken) && requestedToken === configuredToken;
 
+/** Finds the matching token and reports expiry without treating an expired link as a normal booking link. */
+export const resolveRetakeAccess = (
+  requestedToken: string | null,
+  configuredTokens: RetakeTokenConfig[],
+  now = Date.now(),
+): RetakeAccess | null => {
+  if (!requestedToken) return null;
+  const match = configuredTokens.find(({ token }) => isValidRetakeToken(requestedToken, token));
+  if (!match) return null;
+  return {
+    status: match.expiresAt !== undefined && now >= match.expiresAt ? 'expired' : 'active',
+    studentName: match.studentName,
+    expiresAt: match.expiresAt,
+  };
+};
+
+export const isRetakeAccessActive = (access: RetakeAccess | null, now = Date.now()) =>
+  access?.status === 'active' && (access.expiresAt === undefined || now < access.expiresAt);
+
 /** Reopens the saved registration while preserving the ID and completed-attempt count. */
-export const prepareRetakeRegistration = (registration: ScheduledRegistration | null): ScheduledRegistration | null => {
+export const prepareRetakeRegistration = (registration: ScheduledRegistration | null, studentName?: string): ScheduledRegistration | null => {
   if (!registration) return null;
+  if (studentName && registration.name.trim().toLocaleLowerCase() !== studentName.trim().toLocaleLowerCase()) return null;
   const { submittedAt: _submittedAt, ...retakeRegistration } = registration;
   return retakeRegistration;
 };

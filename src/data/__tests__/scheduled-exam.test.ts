@@ -11,9 +11,12 @@ import {
   getScheduledExamPoolSizes,
   getSlotState,
   hasStateSpecificReference,
+  isRetakeAccessActive,
   isValidRetakeToken,
   matchesExamLines,
+  NEW_RETAKE_TOKENS_EXPIRE_AT,
   prepareRetakeRegistration,
+  resolveRetakeAccess,
   SCHEDULED_EXAM_MODULES,
 } from '../scheduledExam';
 import englishTranslations from '../partialExam.en.json';
@@ -46,6 +49,26 @@ describe('scheduled exam retakes', () => {
     expect(isValidRetakeToken('', undefined)).toBe(false);
   });
 
+  it('expires a named token at the exact configured instant while leaving the legacy token unexpired', () => {
+    const configs = [
+      { token: 'luz-token' },
+      { token: 'miriam-token', studentName: 'Miriam Bravo', expiresAt: NEW_RETAKE_TOKENS_EXPIRE_AT },
+    ];
+
+    const active = resolveRetakeAccess('miriam-token', configs, NEW_RETAKE_TOKENS_EXPIRE_AT - 1);
+    expect(active).toEqual({ status: 'active', studentName: 'Miriam Bravo', expiresAt: NEW_RETAKE_TOKENS_EXPIRE_AT });
+    expect(isRetakeAccessActive(active, NEW_RETAKE_TOKENS_EXPIRE_AT - 1)).toBe(true);
+
+    const expired = resolveRetakeAccess('miriam-token', configs, NEW_RETAKE_TOKENS_EXPIRE_AT);
+    expect(expired?.status).toBe('expired');
+    expect(isRetakeAccessActive(expired, NEW_RETAKE_TOKENS_EXPIRE_AT)).toBe(false);
+
+    expect(resolveRetakeAccess('luz-token', configs, NEW_RETAKE_TOKENS_EXPIRE_AT + 10_000)).toEqual({
+      status: 'active', studentName: undefined, expiresAt: undefined,
+    });
+    expect(resolveRetakeAccess('unknown-token', configs)).toBeNull();
+  });
+
   it('reopens a submitted registration without losing its completed-attempt count', () => {
     const submitted = {
       id: 'luz-registration',
@@ -61,6 +84,7 @@ describe('scheduled exam retakes', () => {
 
     expect(prepareRetakeRegistration(submitted)).toMatchObject({ id: 'luz-registration', attempts: 1, lines: 'health' });
     expect(prepareRetakeRegistration(submitted)).not.toHaveProperty('submittedAt');
+    expect(prepareRetakeRegistration(submitted, 'Miriam Bravo')).toBeNull();
   });
 });
 

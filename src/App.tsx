@@ -11,8 +11,8 @@ import { SetupScreen } from './components/SetupScreen';
 import { loadQuestions, loadScheduledExamQuestions } from './data/loadQuestions';
 import { buildPartialExamSession, getPartialExamDomain, isPartialExamQuestion, PARTIAL_EXAM_SECONDS_PER_QUESTION } from './data/partialExam';
 import type { ExamLanguage } from './data/partialExam';
-import { buildExamReport, buildScheduledExamSession, EXAM_QUESTION_COUNTS, flushPendingEvents, isValidRetakeToken, loadRegistration, matchesExamLines, newRegistrationId, prepareRetakeRegistration, saveRegistration, sendEvent } from './data/scheduledExam';
-import type { ExamLines, ScheduledRegistration } from './data/scheduledExam';
+import { buildExamReport, buildScheduledExamSession, EXAM_QUESTION_COUNTS, flushPendingEvents, isRetakeAccessActive, loadRegistration, matchesExamLines, NEW_RETAKE_TOKENS_EXPIRE_AT, newRegistrationId, prepareRetakeRegistration, resolveRetakeAccess, saveRegistration, sendEvent } from './data/scheduledExam';
+import type { ExamLines, RetakeAccess, ScheduledRegistration } from './data/scheduledExam';
 import { getStudyGroupId, isAnyStateSpecific, isSpecificToState } from './data/studyGroups';
 import topics from './data/topics.json';
 import type { SessionQuestion } from './types/question';
@@ -103,10 +103,16 @@ const isScheduledPreview = () => {
   return typeof window !== 'undefined' && Boolean(key) && new URLSearchParams(window.location.search).get('preview') === key;
 };
 
-// A valid retake link reopens the saved attempt and bypasses the weekend slot window.
-const isScheduledRetake = () => {
-  const key = import.meta.env.VITE_RETAKE_TOKEN as string | undefined;
-  return typeof window !== 'undefined' && isValidRetakeToken(new URLSearchParams(window.location.search).get('retake'), key);
+// A valid retake link reopens the matching saved attempt and bypasses the weekend slot window.
+const getScheduledRetakeAccess = (): RetakeAccess | null => {
+  if (typeof window === 'undefined') return null;
+  return resolveRetakeAccess(new URLSearchParams(window.location.search).get('retake'), [
+    // Legacy Luz token intentionally has no expiry.
+    { token: import.meta.env.VITE_RETAKE_TOKEN as string | undefined },
+    { token: import.meta.env.VITE_MIRIAM_RETAKE_TOKEN as string | undefined, studentName: 'Miriam Bravo', expiresAt: NEW_RETAKE_TOKENS_EXPIRE_AT },
+    { token: import.meta.env.VITE_BETSY_RETAKE_TOKEN as string | undefined, studentName: 'Betsy Acosta', expiresAt: NEW_RETAKE_TOKENS_EXPIRE_AT },
+    { token: import.meta.env.VITE_MANOGLY_RETAKE_TOKEN as string | undefined, studentName: 'Manogly Fernandez', expiresAt: NEW_RETAKE_TOKENS_EXPIRE_AT },
+  ]);
 };
 
 const linesSubtitle = (lines: ExamLines, language: ExamLanguage) => ({
@@ -167,11 +173,13 @@ export default function App() {
   const [examLanguage, setExamLanguage] = useState<ExamLanguage>(initialExamLanguage);
   const [scheduledRoute] = useState(isScheduledExamRoute);
   const [scheduledPreview] = useState(isScheduledPreview);
-  const [scheduledRetake] = useState(isScheduledRetake);
+  const [scheduledRetakeAccess] = useState(getScheduledRetakeAccess);
   const [registration, setRegistration] = useState<ScheduledRegistration | null>(() => {
     if (!isScheduledExamRoute()) return null;
     const saved = loadRegistration();
-    return scheduledRetake ? prepareRetakeRegistration(saved) : saved;
+    return isRetakeAccessActive(scheduledRetakeAccess)
+      ? prepareRetakeRegistration(saved, scheduledRetakeAccess?.studentName)
+      : saved;
   });
   const [editingRegistration, setEditingRegistration] = useState<ScheduledRegistration | null>(null);
   const [tabSwitches, setTabSwitches] = useState(0);
@@ -359,8 +367,9 @@ export default function App() {
           initialValues={editingRegistration}
           availableByLines={{ both: scheduledPoolByLines.both.length, life: scheduledPoolByLines.life.length, health: scheduledPoolByLines.health.length }}
           preview={scheduledPreview}
-          retake={scheduledRetake}
+          retakeAccess={scheduledRetakeAccess}
           onRegister={(details) => {
+            if (scheduledRetakeAccess && !isRetakeAccessActive(scheduledRetakeAccess)) return;
             const next: ScheduledRegistration = { ...details, id: editingRegistration?.id ?? newRegistrationId(), registeredAt: Date.now(), attempts: editingRegistration?.attempts ?? 0 };
             saveRegistration(next);
             setRegistration(next);
@@ -369,7 +378,7 @@ export default function App() {
           }}
           onEdit={() => { setEditingRegistration(registration); setRegistration(null); }}
           onStart={() => {
-            if (!registration) return;
+            if (!registration || (scheduledRetakeAccess && !isRetakeAccessActive(scheduledRetakeAccess))) return;
             const started = { ...registration, attempts: registration.attempts + 1 };
             saveRegistration(started);
             setRegistration(started);
