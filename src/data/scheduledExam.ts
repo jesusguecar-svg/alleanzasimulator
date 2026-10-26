@@ -13,12 +13,14 @@ export type RetakeTokenConfig = {
   token: string | undefined;
   studentName?: string;
   expiresAt?: number;
+  requiresRegistrationDetails?: boolean;
 };
 
 export type RetakeAccess = {
   status: 'active' | 'expired';
   studentName?: string;
   expiresAt?: number;
+  requiresRegistrationDetails?: boolean;
 };
 
 export type ScheduledRegistration = {
@@ -115,6 +117,7 @@ export const resolveRetakeAccess = (
     status: match.expiresAt !== undefined && now >= match.expiresAt ? 'expired' : 'active',
     studentName: match.studentName,
     expiresAt: match.expiresAt,
+    ...(match.requiresRegistrationDetails ? { requiresRegistrationDetails: true } : {}),
   };
 };
 
@@ -122,7 +125,12 @@ export const isRetakeAccessActive = (access: RetakeAccess | null, now = Date.now
   access?.status === 'active' && (access.expiresAt === undefined || now < access.expiresAt);
 
 /** Reopens the saved registration while preserving the ID and completed-attempt count. */
-export const prepareRetakeRegistration = (registration: ScheduledRegistration | null, studentName?: string): ScheduledRegistration | null => {
+export const prepareRetakeRegistration = (
+  registration: ScheduledRegistration | null,
+  studentName?: string,
+  requiresRegistrationDetails = false,
+): ScheduledRegistration | null => {
+  if (requiresRegistrationDetails) return null;
   if (!registration) return null;
   if (studentName && registration.name.trim().toLocaleLowerCase() !== studentName.trim().toLocaleLowerCase()) return null;
   const { submittedAt: _submittedAt, ...retakeRegistration } = registration;

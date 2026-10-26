@@ -53,7 +53,7 @@ describe('scheduled exam retakes', () => {
     const configs = [
       { token: 'luz-token' },
       { token: 'miriam-token', studentName: 'Miriam Bravo', expiresAt: NEW_RETAKE_TOKENS_EXPIRE_AT },
-      { token: 'unnamed-token', expiresAt: NEW_RETAKE_TOKENS_EXPIRE_AT },
+      { token: 'unnamed-token', expiresAt: NEW_RETAKE_TOKENS_EXPIRE_AT, requiresRegistrationDetails: true },
     ];
 
     const active = resolveRetakeAccess('miriam-token', configs, NEW_RETAKE_TOKENS_EXPIRE_AT - 1);
@@ -68,7 +68,7 @@ describe('scheduled exam retakes', () => {
       status: 'active', studentName: undefined, expiresAt: undefined,
     });
     expect(resolveRetakeAccess('unnamed-token', configs, NEW_RETAKE_TOKENS_EXPIRE_AT - 1)).toEqual({
-      status: 'active', studentName: undefined, expiresAt: NEW_RETAKE_TOKENS_EXPIRE_AT,
+      status: 'active', studentName: undefined, expiresAt: NEW_RETAKE_TOKENS_EXPIRE_AT, requiresRegistrationDetails: true,
     });
     expect(resolveRetakeAccess('unknown-token', configs)).toBeNull();
   });
@@ -89,6 +89,7 @@ describe('scheduled exam retakes', () => {
     expect(prepareRetakeRegistration(submitted)).toMatchObject({ id: 'luz-registration', attempts: 1, lines: 'health' });
     expect(prepareRetakeRegistration(submitted)).not.toHaveProperty('submittedAt');
     expect(prepareRetakeRegistration(submitted, 'Miriam Bravo')).toBeNull();
+    expect(prepareRetakeRegistration(submitted, undefined, true)).toBeNull();
   });
 });
 

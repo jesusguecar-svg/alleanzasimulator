@@ -113,7 +113,7 @@ const getScheduledRetakeAccess = (): RetakeAccess | null => {
     { token: import.meta.env.VITE_BETSY_RETAKE_TOKEN as string | undefined, studentName: 'Betsy Acosta', expiresAt: NEW_RETAKE_TOKENS_EXPIRE_AT },
     { token: import.meta.env.VITE_MANOGLY_RETAKE_TOKEN as string | undefined, studentName: 'Manogly Fernandez', expiresAt: NEW_RETAKE_TOKENS_EXPIRE_AT },
     // This expiring link is intentionally unnamed so the student enters their own details.
-    { token: import.meta.env.VITE_CYNTHIA_RETAKE_TOKEN as string | undefined, expiresAt: NEW_RETAKE_TOKENS_EXPIRE_AT },
+    { token: import.meta.env.VITE_CYNTHIA_RETAKE_TOKEN as string | undefined, expiresAt: NEW_RETAKE_TOKENS_EXPIRE_AT, requiresRegistrationDetails: true },
   ]);
 };
 
@@ -180,7 +180,7 @@ export default function App() {
     if (!isScheduledExamRoute()) return null;
     const saved = loadRegistration();
     return isRetakeAccessActive(scheduledRetakeAccess)
-      ? prepareRetakeRegistration(saved, scheduledRetakeAccess?.studentName)
+      ? prepareRetakeRegistration(saved, scheduledRetakeAccess?.studentName, scheduledRetakeAccess?.requiresRegistrationDetails)
       : saved;
   });
   const [editingRegistration, setEditingRegistration] = useState<ScheduledRegistration | null>(null);
