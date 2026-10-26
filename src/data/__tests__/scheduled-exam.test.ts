@@ -7,13 +7,16 @@ import {
   examSlots,
   formatSlotLabel,
   getScheduledExamCategory,
+  getScheduledExamModules,
+  getScheduledExamPoolSizes,
   getSlotState,
-  hasTexasReference,
+  hasStateSpecificReference,
   isValidRetakeToken,
   matchesExamLines,
   prepareRetakeRegistration,
-  SCHEDULED_EXAM_DOMAINS,
+  SCHEDULED_EXAM_MODULES,
 } from '../scheduledExam';
+import englishTranslations from '../partialExam.en.json';
 
 const makeQuestion = (id: string, domain: string, question = 'Pregunta'): SessionQuestion => ({
   id, domain, question, difficulty: 'medium', options: ['A', 'B'], correctAnswer: 'A', shuffledOptions: ['A', 'B'],
@@ -62,15 +65,34 @@ describe('scheduled exam retakes', () => {
 });
 
 describe('scheduled exam lines', () => {
-  it('uses only the explicit Florida line categories', () => {
-    const common = makeQuestion('FLC-Q001', SCHEDULED_EXAM_DOMAINS.common);
-    const life = makeQuestion('FLL-Q001', SCHEDULED_EXAM_DOMAINS.life);
-    const health = makeQuestion('FLH-Q001', SCHEDULED_EXAM_DOMAINS.health);
-    const legacy = makeQuestion('B10-Q001', 'Seguro de salud');
+  it('maps configured module topics to Life, Health, and common lines', () => {
+    expect(SCHEDULED_EXAM_MODULES).toEqual({
+      life: [1], provisions: [2, 6], application: [3, 9], retirement: [4, 7, 8], health: [5],
+    });
 
-    expect([common, life, health, legacy].filter((q) => matchesExamLines(q, 'life')).map((q) => q.id)).toEqual(['FLC-Q001', 'FLL-Q001']);
-    expect([common, life, health, legacy].filter((q) => matchesExamLines(q, 'health')).map((q) => q.id)).toEqual(['FLC-Q001', 'FLH-Q001']);
-    expect([common, life, health, legacy].filter((q) => matchesExamLines(q, 'both')).map((q) => q.id)).toEqual(['FLC-Q001', 'FLL-Q001', 'FLH-Q001']);
+    const life = makeQuestion('B01-Q901', 'Seguro de vida');
+    const health = makeQuestion('B01-Q902', 'Seguro de salud');
+    const common = makeQuestion('B01-Q903', 'Disposiciones de la póliza');
+    const module10 = makeQuestion('B10-Q001', 'Seguro de salud');
+
+    expect([life, health, common, module10].filter((q) => matchesExamLines(q, 'life')).map((q) => q.id)).toEqual(['B01-Q901', 'B01-Q903']);
+    expect([life, health, common, module10].filter((q) => matchesExamLines(q, 'health')).map((q) => q.id)).toEqual(['B01-Q902', 'B01-Q903']);
+    expect([life, health, common, module10].filter((q) => matchesExamLines(q, 'both')).map((q) => q.id)).toEqual(['B01-Q901', 'B01-Q902', 'B01-Q903']);
+  });
+
+  it('rejects state references from every question field', () => {
+    const base = makeQuestion('B01-Q950', 'Disposiciones de la póliza');
+    const stateQuestions = [
+      { ...base, question: 'Según la ley de Texas, ¿qué aplica?' },
+      { ...base, id: 'B01-Q951', options: ['Florida', 'Ninguno'] },
+      { ...base, id: 'B01-Q952', explanation: 'La guía de TDI controla esta regla.' },
+      { ...base, id: 'B01-Q953', optionExplanations: { A: 'Consulte al DFS.' } },
+      { ...base, id: 'B01-Q954', citation: 'OIR bulletin 2026-01' },
+      { ...base, id: 'B01-Q955', domain: 'State Statutes' },
+    ];
+
+    expect(stateQuestions.every(hasStateSpecificReference)).toBe(true);
+    expect(hasStateSpecificReference({ ...base, id: 'B01-Q956', question: '¿Qué exige la ley federal COBRA?' })).toBe(false);
   });
 
   it('passes repeated 70-question draws for every line and language', () => {
@@ -79,7 +101,10 @@ describe('scheduled exam lines', () => {
     const lines = ['health', 'life', 'both'] as const;
 
     expect(invalidCount).toBe(0);
-    expect(questions).toHaveLength(150);
+    expect(questions).toHaveLength(200);
+    expect(questions.every((question) => /^B(?:0?[1-9])-Q\d+$/i.test(question.id))).toBe(true);
+    expect(getScheduledExamPoolSizes(questions, 'es')).toEqual({ both: 120, life: 112, health: 87 });
+    expect(getScheduledExamPoolSizes(questions, 'en')).toEqual({ both: 120, life: 112, health: 87 });
 
     for (const language of languages) {
       for (const line of lines) {
@@ -92,20 +117,34 @@ describe('scheduled exam lines', () => {
           expect(session, `${language}/${line} draw ${draw}`).toHaveLength(70);
           expect(new Set(ids).size, `${language}/${line} duplicate ID in draw ${draw}`).toBe(70);
           expect(new Set(stems).size, `${language}/${line} duplicate question in draw ${draw}`).toBe(70);
-          expect(ids.every((id) => /^FL(?:C|L|H)-Q\d+$/.test(id)), `${language}/${line} loaded a legacy bank`).toBe(true);
-          expect(ids.every((id) => {
-            const batch = /^B(\d+)-/i.exec(id);
-            return !batch || Number(batch[1]) <= 9;
-          }), `${language}/${line} loaded B10 or a later batch`).toBe(true);
-          expect(categories.every(Boolean), `${language}/${line} included a non-Florida domain`).toBe(true);
-          expect(session.every((question) => !hasTexasReference(question)), `${language}/${line} included Texas content`).toBe(true);
+          expect(ids.every((id) => /^B(?:0?[1-9])-Q\d+$/i.test(id)), `${language}/${line} loaded batch 10+ or a non-general bank`).toBe(true);
+          expect(categories.every(Boolean), `${language}/${line} included a domain outside modules 1–9`).toBe(true);
+          expect(session.flatMap(getScheduledExamModules).every((module) => module <= 9), `${language}/${line} included module 10+`).toBe(true);
+          expect(session.every((question) => !hasStateSpecificReference(question)), `${language}/${line} included state-specific content`).toBe(true);
 
           if (line === 'health') expect(categories).not.toContain('life');
           if (line === 'life') expect(categories).not.toContain('health');
-          if (line === 'both') expect(new Set(categories)).toEqual(new Set(['common', 'life', 'health']));
+          if (language === 'en') {
+            for (const question of session) {
+              const translation = (englishTranslations as Record<string, { question?: string }>)[question.id];
+              if (translation?.question) expect(question.question).toBe(translation.question);
+            }
+          }
         }
       }
     }
+  });
+
+  it('falls back to Spanish when an English translation is unavailable', () => {
+    const spanishOnly = Array.from({ length: 70 }, (_, index) => makeQuestion(
+      `B01-Q${String(500 + index).padStart(3, '0')}`,
+      'Disposiciones de la póliza',
+      `Pregunta solo en español ${index}`,
+    ));
+    const session = buildScheduledExamSession(spanishOnly, 'both', 'en');
+
+    expect(session).toHaveLength(70);
+    expect(session.every((question) => question.question.startsWith('Pregunta solo en español'))).toBe(true);
   });
 });
 
