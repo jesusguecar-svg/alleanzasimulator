@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { FULL_EXAM_PLAN, FULL_EXAM_PLAYER_PATH, FULL_EXAM_REGISTRATION_KEY, type FullExamState } from '../data/fullExamPlan';
-import { formatSlotLabel, getSlot, type ExamLines, type ScheduledRegistration } from '../data/scheduledExam';
+import { FULL_EXAM_PLAN, FULL_EXAM_PLAYER_PATH, FULL_EXAM_PRODUCTION_HOST, FULL_EXAM_REGISTRATION_KEY, FULL_EXAM_SCHEDULE, FULL_EXAM_TEST_SLOT, fullExamSlots, getFullExamSlot, isFullExamTestMode, type FullExamState } from '../data/fullExamPlan';
+import { formatSlotLabel, type ExamLines, type ScheduledRegistration } from '../data/scheduledExam';
 import { ScheduledExamScreen } from './ScheduledExamScreen';
 
 export type FullExamRegistration = ScheduledRegistration & {
@@ -51,9 +51,11 @@ export function FullExamBooking({ darkMode, onToggleTheme }: { darkMode: boolean
         health: { questions: plan.health.questions, minutes: plan.health.minutes },
       }}
       stateChoice={{ value: state, onChange: (value) => setState(value as FullExamState) }}
+      schedule={{ days: FULL_EXAM_SCHEDULE.days, slots: fullExamSlots }}
+      testMode={isFullExamTestMode(window.location.hostname, window.location.search)}
       onRegister={(details) => {
         const chosen = plan[details.lines as ExamLines];
-        const slot = getSlot(details.slotId);
+        const slot = getFullExamSlot(details.slotId);
         setEditing(null);
         setRegistration({
           ...details,
@@ -66,7 +68,7 @@ export function FullExamBooking({ darkMode, onToggleTheme }: { darkMode: boolean
           minutes: chosen.minutes,
           generalModules: chosen.generalModules,
           stateModules: chosen.stateModules,
-          slotLabel: slot ? formatSlotLabel(slot, details.language) : details.slotId,
+          slotLabel: details.slotId === FULL_EXAM_TEST_SLOT ? FULL_EXAM_TEST_SLOT : slot ? formatSlotLabel(slot, details.language) : details.slotId,
           ready: false,
         });
       }}

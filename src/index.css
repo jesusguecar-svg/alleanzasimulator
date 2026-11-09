@@ -460,7 +460,10 @@ mark { background: var(--highlight); color: inherit; padding: 1px 0; }
 .choice-card { min-height: 92px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 5px; padding: 12px; border: 1px solid var(--line-strong); border-radius: 4px; background: var(--surface); color: var(--ink); text-align: left; cursor: pointer; }
 .choice-card strong { font-size: 14px; }
 .choice-card small { display: flex; align-items: center; gap: 4px; color: var(--muted); font-size: 11px; line-height: 1.35; }
-.scheduled-submit { justify-self: end; min-width: 220px; }
+.scheduled-submit-row { display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 12px; }
+.scheduled-submit { min-width: 220px; }
+.scheduled-test-start { border: 0; background: transparent; color: var(--brand); font-size: 12px; font-weight: 800; cursor: pointer; }
+.scheduled-test-start:disabled { color: var(--muted); cursor: not-allowed; }
 .scheduled-status-card, .scheduled-rules { max-width: 720px; margin: 0 auto; padding: 32px; border-top: 4px solid var(--brand); }
 .scheduled-status-card h1, .scheduled-rules h1 { margin: 10px 0 8px; font-size: clamp(28px, 4vw, 40px); letter-spacing: -.035em; }
 .scheduled-status-card > p, .scheduled-lead { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }

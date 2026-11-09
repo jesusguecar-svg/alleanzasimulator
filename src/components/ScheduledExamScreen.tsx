@@ -2,7 +2,8 @@ import { AlarmClock, ArrowLeft, ArrowRight, BookOpenCheck, CalendarClock, CheckC
 import { useEffect, useMemo, useState } from 'react';
 import type { ExamLanguage } from '../data/partialExam';
 import type { ExamLines, RetakeAccess, ScheduledRegistration } from '../data/scheduledExam';
-import { EXAM_QUESTION_COUNTS, examDurationMinutes, examSlots, formatSlotDay, formatSlotLabel, formatSlotTime, getSlot, getSlotState, RETAKE_SLOT_ID, SCHEDULE_DAYS, SLOT_START_WINDOW_MINUTES } from '../data/scheduledExam';
+import { EXAM_QUESTION_COUNTS, examDurationMinutes, examSlots, formatSlotDay, formatSlotLabel, formatSlotTime, getSlot, getSlotState, RETAKE_SLOT_ID, SCHEDULE_DAYS, SLOT_START_WINDOW_MINUTES, type ExamSlot } from '../data/scheduledExam';
+import { FULL_EXAM_TEST_SLOT } from '../data/fullExamPlan';
 import { AppHeader } from './AppChrome';
 
 type LinePlan = Record<ExamLines, { questions: number; minutes: number }>;
@@ -28,6 +29,8 @@ type Props = {
   stateChoice?: StateChoice;
   fullPractice?: boolean;
   onReset?: () => void;
+  schedule?: { days: readonly string[]; slots: ExamSlot[] };
+  testMode?: boolean;
 };
 
 const copy = {
@@ -61,6 +64,7 @@ const copy = {
     fullState: 'Estado',
     states: { TX: ['Texas', 'Vida, Accidentes y Salud'], FL: ['Florida', '2-15 · 2-14 · 2-40'] },
     again: 'Nueva reserva',
+    testStart: 'Modo prueba: comenzar ahora',
     start: 'Comenzar examen ahora', back: 'Volver',
     done: 'Examen entregado', doneDetail: 'Ya entregaste este examen. Tu instructor recibió tus resultados.',
     previewNote: 'Modo de prueba: el horario no se aplica y el reporte se marca como PRUEBA.',
@@ -99,6 +103,7 @@ const copy = {
     fullState: 'State',
     states: { TX: ['Texas', 'Life, Accident & Health'], FL: ['Florida', '2-15 · 2-14 · 2-40'] },
     again: 'New booking',
+    testStart: 'Test mode: start now',
     start: 'Start exam now', back: 'Back',
     done: 'Exam submitted', doneDetail: 'You have already submitted this exam. Your instructor has received your results.',
     previewNote: 'Preview mode: the slot lock is skipped and the report is marked PREVIEW.',
@@ -119,7 +124,7 @@ const formatCountdown = (ms: number) => {
 
 const isValidEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
 
-export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, initialValues, availableByLines, preview, retakeAccess, onRegister, onEdit, onStart, linePlan, stateChoice, fullPractice = false, onReset }: Props) {
+export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, initialValues, availableByLines, preview, retakeAccess, onRegister, onEdit, onStart, linePlan, stateChoice, fullPractice = false, onReset, schedule, testMode = false }: Props) {
   const seed = registration ?? initialValues;
   const [name, setName] = useState(seed?.name ?? retakeAccess?.studentName ?? '');
   const [email, setEmail] = useState(seed?.email ?? '');
@@ -148,7 +153,10 @@ export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, ini
     const detail = index === 6 ? languageCopy.fullStay : languageCopy.fullPause;
     return [rule[0], rule[1], detail] as readonly [typeof rule[0], string, string];
   });
-  const slotsByDay = useMemo(() => SCHEDULE_DAYS.map((day) => ({ day, slots: examSlots.filter((slot) => slot.id.startsWith(day)) })), []);
+  const scheduleDays = schedule?.days ?? SCHEDULE_DAYS;
+  const scheduleSlots = schedule?.slots ?? examSlots;
+  const findSlot = (slotId: string) => scheduleSlots.find((slot) => slot.id === slotId) ?? getSlot(slotId);
+  const slotsByDay = useMemo(() => scheduleDays.map((day) => ({ day, slots: scheduleSlots.filter((slot) => slot.id.startsWith(day)) })), [scheduleDays, scheduleSlots]);
 
   const header = <AppHeader darkMode={darkMode} onToggleTheme={onToggleTheme} language={uiLanguage} />;
 
@@ -184,8 +192,9 @@ export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, ini
   }
 
   if (registration) {
-    const slot = getSlot(registration.slotId);
-    const state = preview || retake ? 'open' : slot ? getSlotState(slot, now) : 'closed';
+    const testing = registration.slotId === FULL_EXAM_TEST_SLOT;
+    const slot = testing ? undefined : findSlot(registration.slotId);
+    const state = preview || retake || testing ? 'open' : slot ? getSlotState(slot, now) : 'closed';
     const questionCount = questionCountFor(registration.lines);
     const minutes = minutesFor(registration.lines, questionCount);
     const lineLabel = t.lineOptions[registration.lines][0];
@@ -228,7 +237,7 @@ export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, ini
           <section className="panel scheduled-status-card">
             <span className="eyebrow"><CalendarClock size={15} /> {t.reserved}</span>
             <h1>{registration.name}</h1>
-            <p>{retake ? <strong>{t.retakeAvailable}</strong> : <>{t.reservedFor} <strong>{slot ? formatSlotLabel(slot, uiLanguage) : registration.slotId}</strong></>}</p>
+            <p>{retake ? <strong>{t.retakeAvailable}</strong> : <>{t.reservedFor} <strong>{testing ? FULL_EXAM_TEST_SLOT : slot ? formatSlotLabel(slot, uiLanguage) : registration.slotId}</strong></>}</p>
             <div className="partial-facts scheduled-facts">
               <span><strong>{questionCount}</strong> {t.questions}</span>
               <span><strong>{minutes}</strong> {t.minutes}</span>
@@ -254,6 +263,12 @@ export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, ini
   }
 
   const canRegister = name.trim().length > 1 && isValidEmail(email) && (retake || Boolean(slotId)) && questionCountFor(lines) > 0;
+  const canTestStart = testMode && name.trim().length > 1 && isValidEmail(email) && questionCountFor(lines) > 0;
+  const registerTest = () => {
+    if (!canTestStart) return;
+    onRegister({ name: name.trim(), email: email.trim(), slotId: FULL_EXAM_TEST_SLOT, language, lines });
+    setShowRules(true);
+  };
 
   return (
     <div className="app-shell partial-landing-shell">
@@ -344,7 +359,10 @@ export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, ini
             </section>
           )}
 
-          <button type="submit" className="primary scheduled-submit" disabled={!canRegister}>{t.register} <ArrowRight size={18} /></button>
+          <div className="scheduled-submit-row">
+            <button type="submit" className="primary scheduled-submit" disabled={!canRegister}>{t.register} <ArrowRight size={18} /></button>
+            {testMode && <button type="button" className="scheduled-test-start" disabled={!canTestStart} onClick={registerTest}>{t.testStart}</button>}
+          </div>
         </form>
       </main>
     </div>

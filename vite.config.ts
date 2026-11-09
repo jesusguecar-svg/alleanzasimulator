@@ -56,5 +56,8 @@ function fullExamStaticRoute(mode: string): Plugin {
 }
 
 export default defineConfig(({ mode }) => ({
+  define: {
+    'import.meta.env.VITE_VERCEL_ENV': JSON.stringify(process.env.VITE_VERCEL_ENV || process.env.VERCEL_ENV || ''),
+  },
   plugins: [react(), fullExamStaticRoute(mode)],
 }));

@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { FULL_EXAM_PLAN } from '../fullExamPlan';
+import { SCHEDULE_DAYS } from '../scheduledExam';
+import { FULL_EXAM_PLAN, FULL_EXAM_PRODUCTION_HOST, FULL_EXAM_SCHEDULE, fullExamSlots, isFullExamTestMode } from '../fullExamPlan';
 
 describe('full exam line plan', () => {
   it('keeps the combined exam at 100 general and 50 state questions', () => {
@@ -13,6 +14,25 @@ describe('full exam line plan', () => {
     expect(FULL_EXAM_PLAN.FL.life).toMatchObject({ questions: 85, minutes: 120, generalCount: 50, stateCount: 35 });
     expect(FULL_EXAM_PLAN.TX.health).toMatchObject({ questions: 93, minutes: 93, generalCount: 49, stateCount: 44 });
     expect(FULL_EXAM_PLAN.FL.health).toMatchObject({ questions: 84, minutes: 84, generalCount: 49, stateCount: 35 });
+  });
+
+  it('uses its own November weekend and leaves the scheduled exam dates alone', () => {
+    expect(FULL_EXAM_SCHEDULE.days).toEqual(['2026-11-14', '2026-11-15']);
+    expect(SCHEDULE_DAYS).toEqual(['2026-10-24', '2026-10-25']);
+    expect(fullExamSlots).toHaveLength(26);
+    const first = new Intl.DateTimeFormat('en-US', { timeZone: FULL_EXAM_SCHEDULE.timeZone, weekday: 'long', hour: 'numeric', minute: '2-digit', hourCycle: 'h23' }).format(fullExamSlots[0].startsAt);
+    const last = new Intl.DateTimeFormat('en-US', { timeZone: FULL_EXAM_SCHEDULE.timeZone, weekday: 'long', hour: 'numeric', minute: '2-digit', hourCycle: 'h23' }).format(fullExamSlots.at(-1)!.startsAt);
+    expect(first).toContain('Saturday');
+    expect(first).toContain('08:00');
+    expect(last).toContain('Sunday');
+    expect(last).toContain('20:00');
+    expect(fullExamSlots[0].endsAt - fullExamSlots[0].startsAt).toBe(60 * 60_000);
+  });
+
+  it('offers test mode only away from the production hostname', () => {
+    expect(isFullExamTestMode(FULL_EXAM_PRODUCTION_HOST, '?prueba=1')).toBe(false);
+    expect(isFullExamTestMode('localhost')).toBe(true);
+    expect(isFullExamTestMode('alleanzasimulator-2ppc-git-cur.vercel.app')).toBe(true);
   });
 
   it('adds the section sizes to the published question count', () => {

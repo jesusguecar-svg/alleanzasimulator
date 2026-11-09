@@ -1,4 +1,37 @@
-import type { ExamLines } from './scheduledExam';
+import type { ExamLines, ExamSlot } from './scheduledExam';
+
+/** Full-exam weekend. Change this object to move the dates. Hours are Central Time. */
+export const FULL_EXAM_SCHEDULE = {
+  days: ['2026-11-14', '2026-11-15'],
+  firstHour: 8,
+  lastHour: 20,
+  startWindowMinutes: 60,
+  timeZone: 'America/Chicago',
+  // Nov 14–15 2026 are after the DST change on Nov 1, so Central is CST (UTC−6).
+  utcOffset: '-06:00',
+} as const;
+
+export const FULL_EXAM_TEST_SLOT = 'PRUEBA';
+export const FULL_EXAM_PRODUCTION_HOST = 'alleanzasimulator-texas.vercel.app';
+
+export const fullExamSlots: ExamSlot[] = FULL_EXAM_SCHEDULE.days.flatMap((day) => {
+  const slots: ExamSlot[] = [];
+  for (let hour = FULL_EXAM_SCHEDULE.firstHour; hour <= FULL_EXAM_SCHEDULE.lastHour; hour += 1) {
+    const startsAt = Date.parse(`${day}T${String(hour).padStart(2, '0')}:00:00${FULL_EXAM_SCHEDULE.utcOffset}`);
+    slots.push({ id: `${day}T${String(hour).padStart(2, '0')}`, startsAt, endsAt: startsAt + FULL_EXAM_SCHEDULE.startWindowMinutes * 60_000 });
+  }
+  return slots;
+});
+
+export const getFullExamSlot = (slotId: string) => fullExamSlots.find((slot) => slot.id === slotId);
+
+/** Preview and local builds can skip the slot lock. The production hostname never can. */
+export function isFullExamTestMode(hostname: string, search = ''): boolean {
+  if (hostname === FULL_EXAM_PRODUCTION_HOST) return false;
+  const nonProduction = import.meta.env.VITE_VERCEL_ENV !== 'production';
+  const prueba = new URLSearchParams(search).get('prueba') === '1';
+  return nonProduction || hostname !== FULL_EXAM_PRODUCTION_HOST || prueba;
+}
 
 export type FullExamState = 'TX' | 'FL';
 
