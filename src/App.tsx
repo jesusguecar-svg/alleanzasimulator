@@ -6,6 +6,7 @@ import { OnboardingScreen } from './components/OnboardingScreen';
 import { PartialExamLanding } from './components/PartialExamLanding';
 import { QuestionCard } from './components/QuestionCard';
 import { ResultsScreen } from './components/ResultsScreen';
+import { FullExamBooking } from './components/FullExamBooking';
 import { ScheduledExamScreen } from './components/ScheduledExamScreen';
 import { SetupScreen } from './components/SetupScreen';
 import { loadQuestions, loadScheduledExamQuestions } from './data/loadQuestions';
@@ -91,6 +92,11 @@ const isPartialExamRoute = () => {
     || new URLSearchParams(window.location.search).get('exam') === 'parcial';
 };
 
+const isFullExamRoute = () => {
+  if (typeof window === 'undefined') return false;
+  return window.location.pathname.replace(/\/$/, '') === '/examen-completo';
+};
+
 const isScheduledExamRoute = () => {
   if (typeof window === 'undefined') return false;
   return window.location.pathname.replace(/\/$/, '') === '/examen-programado'
@@ -173,6 +179,7 @@ export default function App() {
   const [studentName, setStudentName] = useState('');
   const [autoSubmitted, setAutoSubmitted] = useState(false);
   const [examLanguage, setExamLanguage] = useState<ExamLanguage>(initialExamLanguage);
+  const [fullExamRoute] = useState(isFullExamRoute);
   const [scheduledRoute] = useState(isScheduledExamRoute);
   const [scheduledPreview] = useState(isScheduledPreview);
   const [scheduledRetakeAccess] = useState(getScheduledRetakeAccess);
@@ -360,6 +367,10 @@ export default function App() {
   };
 
   if (!session) {
+    if (fullExamRoute) {
+      return <FullExamBooking darkMode={darkMode} onToggleTheme={() => setDarkMode((value) => !value)} />;
+    }
+
     if (scheduledRoute) {
       return (
         <ScheduledExamScreen

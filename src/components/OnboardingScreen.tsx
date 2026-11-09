@@ -78,8 +78,8 @@ export function OnboardingScreen(p: Props) {
       <a className="full-exam-link panel" href="/examen-completo">
         <ClipboardCheck size={22} />
         <span>
-          <strong>Examen completo · 150 preguntas</strong>
-          <small>100 generales y 50 de leyes de Texas o Florida · 150 minutos, sin pausa</small>
+          <strong>Examen completo</strong>
+          <small>Reserva tu horario · Texas o Florida · Vida, Salud o ambas</small>
         </span>
         <ArrowRight size={18} />
       </a>

@@ -71,7 +71,7 @@ Slot dates and hours live at the top of `src/data/scheduledExam.ts`.
 
 ## Full practice exam (`/examen-completo`)
 
-The page asks for the student's full name and email, then runs the 150-question exam. When the student submits — or the clock hits 0:00 — the browser posts one `full-exam` event to `VITE_FULL_EXAM_WEBHOOK_URL`, or to `VITE_RESULTS_WEBHOOK_URL` when that override is empty. The request uses `text/plain` and `no-cors`, same as the scheduled exam, and retries once. The results screen stays up if the request fails.
+The booking page reuses the scheduled-exam form: name, email, Central Time slot, language, line, and state. Vida y Salud is 150 questions and 150 minutes. Single-line lengths follow the Pearson VUE handbooks where the bank is large enough (`src/data/fullExamPlan.ts`). When the student submits — or the clock hits 0:00 — the browser posts one `full-exam` event to `VITE_FULL_EXAM_WEBHOOK_URL`, or to `VITE_RESULTS_WEBHOOK_URL` when that override is empty. The request uses `text/plain` and `no-cors`, same as the scheduled exam, and retries once. The results screen stays up if the request fails. The event includes the line and the reserved slot. `Submitted at` is written in Central time.
 
 `scripts/results-sheet-apps-script.gs` writes that event to a tab named **Examen Completo** and leaves Registrations, Results, and Responses alone. The web app that is already deployed ignores unknown event types until this file is published:
 

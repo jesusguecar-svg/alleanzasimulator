@@ -22,12 +22,11 @@ function isFullExamRequest(url: string | undefined) {
   const raw = url ?? '';
   const queryIndex = raw.indexOf('?');
   const pathname = queryIndex === -1 ? raw : raw.slice(0, queryIndex);
-  return pathname === '/examen-completo' || pathname === '/examen-completo/' || pathname === '/examen-completo.html';
+  return pathname === '/examen-completo/sesion' || pathname === '/examen-completo/sesion/' || pathname === '/examen-completo.html';
 }
 
-// public/examen-completo.html is a static page. Serve it for the extensionless
-// path before Vite's static middleware and SPA fallback, and bake the results
-// webhook into that file the same way the scheduled exam reads VITE_RESULTS_WEBHOOK_URL.
+// public/full-exam-player.html is the question player. The booking page is the
+// React route /examen-completo, so this file must not be named examen-completo.html.
 function fullExamStaticRoute(mode: string): Plugin {
   const webhookUrl = fullExamWebhookUrl(mode);
   const serve = (file: string): Connect.NextHandleFunction => (req, res, next) => {
@@ -43,13 +42,13 @@ function fullExamStaticRoute(mode: string): Plugin {
   return {
     name: 'full-exam-static-route',
     configureServer(server) {
-      server.middlewares.use(serve(path.join(server.config.publicDir, 'examen-completo.html')));
+      server.middlewares.use(serve(path.join(server.config.publicDir, 'full-exam-player.html')));
     },
     configurePreviewServer(server) {
-      server.middlewares.use(serve(path.resolve(server.config.root, server.config.build.outDir, 'examen-completo.html')));
+      server.middlewares.use(serve(path.resolve(server.config.root, server.config.build.outDir, 'full-exam-player.html')));
     },
     closeBundle() {
-      const file = path.resolve(process.cwd(), 'dist/examen-completo.html');
+      const file = path.resolve(process.cwd(), 'dist/full-exam-player.html');
       if (!fs.existsSync(file)) return;
       fs.writeFileSync(file, applyFullExamWebhook(fs.readFileSync(file, 'utf8'), webhookUrl));
     },

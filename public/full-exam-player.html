@@ -146,7 +146,7 @@ var DATA=JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(document.getEl
 function key(id){var s=DATA.k[id],x=0;for(var i=0;i<id.length;i++)x=(x*31+id.charCodeAt(i))%9973;return 'ABCD'[(s-x%4+4)%4];}
 var T={
 es:{kicker:'Examen de práctica',title:'Examen completo · 150 preguntas',sel:'Selecciona la mejor respuesta.',prev:'Anterior',next:'Siguiente',flag:'Marcar',flagged:'Marcada',hl:'Resaltar',nav:'Navegador',answered:'contestadas',marked:'marcadas',cur:'Actual',ans:'Contestada',pend:'Pendiente',finish:'Finalizar examen',q:'Pregunta',of:'de',left:'Tiempo restante',noans:'Sin respuesta',hasans:'Respondida',s1:'Sección 1 · Conocimiento general (Módulos 1–9)',s2s:{TX:'Sección 2 · Leyes de Texas',FL:'Sección 2 · Leyes de Florida'},s1short:'Sección 1',s2short:'Sección 2',
- finTitle:'¿Entregar el examen?',finBody:function(a,f){return 'Has contestado '+a+' de 150 preguntas'+(f?' y tienes '+f+' marcadas para revisión':'')+'. Una vez entregado no podrás cambiar tus respuestas.';},keep:'Continuar revisando',submit:'Entregar respuestas',
+ finTitle:'¿Entregar el examen?',finBody:function(a,f){return 'Has contestado '+a+' de '+(S&&S.order?S.order.length:150)+' preguntas'+(f?' y tienes '+f+' marcadas para revisión':'')+'. Una vez entregado no podrás cambiar tus respuestas.';},keep:'Continuar revisando',submit:'Entregar respuestas',
  toS2:'Fin de la Sección 1',toS2b:'Has llegado a la última pregunta de la Sección 1. El reloj sigue corriendo. Puedes continuar a la Sección 2 (leyes estatales) o revisar la Sección 1.',goS2:'Ir a la Sección 2',stay:'Revisar Sección 1',
  timeup:'Se acabó el tiempo',timeupb:'El examen se entregó automáticamente al llegar a 00:00. Tus respuestas fueron calificadas.',ok:'Ver resultados',
  results:'Resultados',passed:'APROBADO',failed:'NO APROBADO',overall:'Puntuación general',need:'Se requiere 70% para aprobar',correct:'correctas',sec:'Sección',mod:'Módulo',score:'Puntuación',time:'Tiempo usado',auto:'Entregado automáticamente por tiempo',review:'Revisión completa',all:'Todas',wrong:'Incorrectas',blank:'Sin contestar',flg:'Marcadas',yours:'Tu respuesta',right:'Respuesta correcta',why:'Explicación',whyNot:'Por qué no',again:'Nuevo intento',print:'Imprimir',notAns:'No contestada',ref:'Referencia',
@@ -156,7 +156,7 @@ es:{kicker:'Examen de práctica',title:'Examen completo · 150 preguntas',sel:'S
  agree:'Entiendo las condiciones. El tiempo empezará a correr inmediatamente.',begin:'Comenzar examen',you:'3. Tus datos',name:'Nombre completo',namePh:'Escribe tu nombre completo',email:'Correo electrónico',emailPh:'tu@correo.com',emailBad:'Escribe un correo válido.',needId:'Escribe tu nombre completo y un correo válido para comenzar.',sent:'Tu resultado fue enviado a tu instructor.',sendFail:'No pudimos enviar tu resultado. Tus respuestas siguen en esta pantalla. Recarga la página para reintentar.',sending:'Enviando tu resultado…',resume:'Tienes un examen en curso',resumeB:'El reloj sigue corriendo.',cont:'Continuar examen',
  txd:'Texas · Life, Accident & Health (LAH)',fld:'Florida · 2-15 Health & Life',mins:'minutos',qs:'preguntas',pass:'aprobatoria',sections:'secciones',navBtn:'Preguntas',warnLeave:'El examen está en curso. El reloj seguirá corriendo.',min5:'Quedan 5 minutos'},
 en:{kicker:'Practice exam',title:'Full exam · 150 questions',sel:'Select the best answer.',prev:'Previous',next:'Next',flag:'Flag',flagged:'Flagged',hl:'Highlight',nav:'Navigator',answered:'answered',marked:'flagged',cur:'Current',ans:'Answered',pend:'Pending',finish:'Finish exam',q:'Question',of:'of',left:'Time remaining',noans:'No answer',hasans:'Answered',s1:'Section 1 · General Knowledge (Modules 1–9)',s2s:{TX:'Section 2 · Texas Law',FL:'Section 2 · Florida Law'},s1short:'Section 1',s2short:'Section 2',
- finTitle:'Submit the exam?',finBody:function(a,f){return 'You have answered '+a+' of 150 questions'+(f?' and have '+f+' flagged for review':'')+'. Once submitted you cannot change your answers.';},keep:'Keep reviewing',submit:'Submit answers',
+ finTitle:'Submit the exam?',finBody:function(a,f){return 'You have answered '+a+' of '+(S&&S.order?S.order.length:150)+' questions'+(f?' and have '+f+' flagged for review':'')+'. Once submitted you cannot change your answers.';},keep:'Keep reviewing',submit:'Submit answers',
  toS2:'End of Section 1',toS2b:'You reached the last question of Section 1. The clock keeps running. You can continue to Section 2 (state law) or review Section 1.',goS2:'Go to Section 2',stay:'Review Section 1',
  timeup:'Time is up',timeupb:'The exam was submitted automatically at 00:00. Your answers have been scored.',ok:'See results',
  results:'Results',passed:'PASS',failed:'FAIL',overall:'Overall score',need:'70% required to pass',correct:'correct',sec:'Section',mod:'Module',score:'Score',time:'Time used',auto:'Auto-submitted when time ran out',review:'Full review',all:'All',wrong:'Incorrect',blank:'Unanswered',flg:'Flagged',yours:'Your answer',right:'Correct answer',why:'Explanation',whyNot:'Why not',again:'New attempt',print:'Print',notAns:'Not answered',ref:'Reference',
@@ -179,13 +179,24 @@ function fmt(ms){var s=Math.ceil(ms/1000),h=Math.floor(s/3600),m=Math.floor(s%36
 // dark mode
 var dk=localStorage.getItem('alleanza_full_exam_dark')==='1';document.documentElement.classList.toggle('dark',dk);
 document.getElementById('darkBtn').onclick=function(){dk=!dk;localStorage.setItem('alleanza_full_exam_dark',dk?'1':'0');document.documentElement.classList.toggle('dark',dk);};
-function header(){var tt=t();document.documentElement.lang=S?S.lang:ui.startLang;document.getElementById('tKicker').textContent=tt.kicker+(S?' · '+(S.state==='TX'?'Texas':'Florida'):'');document.getElementById('tTitle').textContent=tt.title;}
+function header(){var tt=t();document.documentElement.lang=S?S.lang:ui.startLang;document.getElementById('tKicker').textContent=tt.kicker+(S?' · '+(S.state==='TX'?'Texas':'Florida'):'');document.getElementById('tTitle').textContent=tt.title.replace('150', String(S&&S.order?S.order.length:150));}
 
 function emailOk(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);}
 function canBegin(){return !!(ui.agree && (ui.name||'').trim().length>1 && emailOk((ui.email||'').trim()));}
 function captureIdentity(){var n=document.getElementById('stuName'),e=document.getElementById('stuEmail');if(n)ui.name=n.value;if(e)ui.email=e.value;}
 function refreshBegin(){captureIdentity();var btn=document.getElementById('beginBtn');if(btn)btn.disabled=!canBegin();var err=document.getElementById('emailErr');if(err)err.textContent=(ui.email||'').trim()&&!emailOk((ui.email||'').trim())?t().emailBad:'';var need=document.getElementById('startErr');if(need)need.textContent=ui.agree&&!canBegin()?t().needId:'';}
 function newResultId(){return (window.crypto&&crypto.randomUUID)?crypto.randomUUID():(Date.now().toString(36)+Math.random().toString(36).slice(2));}
+function pool(ids, mods){return mods?ids.filter(function(id){return mods.indexOf(Q(id).m)>=0;}):ids.slice();}
+function startFromBooking(b){
+ var seed=(Math.random()*2**31)|0, r=rng(seed);
+ var gen=shuffle(pool(DATA.general, b.generalModules), r).slice(0, b.generalCount);
+ var sta=shuffle(pool((DATA.state[b.state]||[]), b.stateModules), r).slice(0, b.stateCount);
+ var order=gen.concat(sta), opt={};
+ order.forEach(function(id){opt[id]=shuffle([0,1,2,3],r);});
+ var t0=now(), minutes=b.minutes||DURATION_MIN;
+ S={v:1,state:b.state,lang:b.language||b.lang||'es',lines:b.lines||'both',slotId:b.slotId||'',slotLabel:b.slotLabel||'',name:b.name||'',email:b.email||'',resultId:newResultId(),seed:seed,order:order,opt:opt,ans:{},flag:{},strike:{},hl:{},cur:0,startedAt:t0,endsAt:t0+minutes*60000,submitted:false,s2seen:false,reported:false,generalCount:gen.length};
+ save();render();
+}
 function start(){
  captureIdentity();
  if(!canBegin()){refreshBegin();return;}
@@ -193,12 +204,13 @@ function start(){
  var gen=shuffle(DATA.general,r), sta=shuffle(DATA.state[st],r);
  var opt={};gen.concat(sta).forEach(function(id){opt[id]=shuffle([0,1,2,3],r);});
  var t0=now();
- S={v:1,state:st,lang:lang,name:ui.name.trim(),email:ui.email.trim(),resultId:newResultId(),seed:seed,order:gen.concat(sta),opt:opt,ans:{},flag:{},strike:{},hl:{},cur:0,startedAt:t0,endsAt:t0+DURATION_MIN*60000,submitted:false,s2seen:false,reported:false};
+ S={v:1,state:st,lang:lang,lines:'both',slotLabel:'',name:ui.name.trim(),email:ui.email.trim(),resultId:newResultId(),seed:seed,order:gen.concat(sta),opt:opt,ans:{},flag:{},strike:{},hl:{},cur:0,startedAt:t0,endsAt:t0+DURATION_MIN*60000,submitted:false,s2seen:false,reported:false,generalCount:gen.length};
  save();render();
 }
+function markRegistrationSubmitted(){try{var key='alleanza-full-exam-registration',raw=localStorage.getItem(key);if(!raw)return;var reg=JSON.parse(raw);reg.submittedAt=Date.now();reg.ready=false;localStorage.setItem(key,JSON.stringify(reg));}catch(e){}}
 function submit(auto){
  if(!S||S.submitted)return;
- S.submitted=true;S.auto=!!auto;S.submittedAt=Math.min(now(),S.endsAt);save();
+ S.submitted=true;S.auto=!!auto;S.submittedAt=Math.min(now(),S.endsAt);save();markRegistrationSubmitted();
  window.removeEventListener('beforeunload',warn);
  if(auto){render();modal(t().timeup,'<p>'+esc(t().timeupb)+'</p>',[{l:t().ok,p:1,f:function(){}}]);}else render();
 }
@@ -242,23 +254,22 @@ function renderStart(){
  refreshBegin();
  document.getElementById('beginBtn').onclick=start;
 }
-function secOf(i){return i<100?1:2;}
+function secOf(i){return i<(S.generalCount||100)?1:2;}
 function renderExam(){
  var tt=t(),i=S.cur,id=S.order[i],q=Q(id),L=q[S.lang],perm=S.opt[id],a=S.ans[id],answered=Object.keys(S.ans).length,flagged=Object.keys(S.flag).filter(function(k){return S.flag[k];}).length;
  var nb=function(from,to){var h='';for(var k=from;k<to;k++){var qid=S.order[k];h+='<button class="qn'+(S.ans[qid]!=null?' ans':'')+(S.flag[qid]?' flag':'')+(k===i?' cur':'')+'" data-go="'+k+'" aria-label="'+tt.q+' '+(k+1)+'">'+(k+1)+'</button>';}return h;};
  var stem=S.hl[id]||esc(L.stem);
  root.innerHTML='<div class="exam"><aside class="side'+(ui.navOpen?' open':'')+'" id="side"><h3><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>'+tt.nav+'</h3>'+
  '<div class="counts"><div><b id="cntA">'+answered+'</b>'+tt.answered+'</div><div><b>'+flagged+'</b>'+tt.marked+'</div></div>'+
- '<div class="navscroll"><div class="sechead">'+tt.s1short+' · 1–100</div><div class="qgrid">'+nb(0,100)+'</div><div class="sechead">'+tt.s2short+' · 101–150</div><div class="qgrid">'+nb(100,150)+'</div></div>'+
+ '<div class="navscroll"><div class="sechead">'+tt.s1short+' · 1–'+S.generalCount+'</div><div class="qgrid">'+nb(0,S.generalCount)+'</div><div class="sechead">'+tt.s2short+' · '+(S.generalCount+1)+'–'+S.order.length+'</div><div class="qgrid">'+nb(S.generalCount,S.order.length)+'</div></div>'+
  '<div class="legend"><span><i style="outline:2px solid var(--brand)"></i>'+tt.cur+'</span><span><i style="background:var(--brand-soft);border-color:var(--brand)"></i>'+tt.ans+'</span><span><i></i>'+tt.pend+'</span><span><i style="border-top:5px solid var(--danger)"></i>'+tt.flagged+'</span></div>'+
  '<button class="btn danger fin" id="finBtn">'+tt.finish+'</button></aside>'+
- '<section class="main"><div class="qbar"><button class="btn sm mobnav" id="navT">☰ '+tt.navBtn+'</button><div class="pos">'+tt.q+' <b>'+(i+1)+'</b> '+tt.of+' 150</div><div class="row" style="gap:6px"><button class="btn sm'+(ui.hl?' on':'')+'" id="hlBtn"><svg viewBox="0 0 24 24"><path d="M9 11l-6 6v3h9l3-3"/><path d="M22 12l-4.6 4.6a2 2 0 0 1-2.8 0l-5.2-5.2a2 2 0 0 1 0-2.8L14 4"/></svg><span class="lbl">'+tt.hl+'</span></button><button class="btn sm'+(S.flag[id]?' on':'')+'" id="flagBtn"><svg viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22v-7"/></svg><span class="lbl">'+(S.flag[id]?tt.flagged:tt.flag)+'</span></button></div></div>'+
- '<div class="qbody" id="qbody"><div class="qinner"><div class="meta"><span class="secpill">'+(secOf(i)===1?tt.s1:tt.s2s[S.state])+'</span><span class="pill">'+esc(q[S.lang==='es'?'mes':'men'])+'</span>'+(L.sub?'<span>'+esc(L.sub)+'</span>':'')+'</div>'+
- '<p class="stem" id="stem">'+stem+'</p><div class="hint">'+tt.sel+'</div><div id="opts">'+
+ '<section class="main"><div class="qbar"><button class="btn sm mobnav" id="navT">☰ '+tt.navBtn+'</button><div class="pos">'+tt.q+' <b>'+(i+1)+'</b> '+tt.of+' '+S.order.length+'</div><div class="row" style="gap:6px"><button class="btn sm'+(ui.hl?' on':'')+'" id="hlBtn"><svg viewBox="0 0 24 24"><path d="M9 11l-6 6v3h9l3-3"/><path d="M22 12l-4.6 4.6a2 2 0 0 1-2.8 0l-5.2-5.2a2 2 0 0 1 0-2.8L14 4"/></svg><span class="lbl">'+tt.hl+'</span></button><button class="btn sm'+(S.flag[id]?' on':'')+'" id="flagBtn"><svg viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22v-7"/></svg><span class="lbl">'+(S.flag[id]?tt.flagged:tt.flag)+'</span></button></div></div>'+
+ '<div class="qbody" id="qbody"><div class="qinner"><p class="stem" id="stem">'+stem+'</p><div class="hint">'+tt.sel+'</div><div id="opts">'+
  perm.map(function(o,k){var letter='ABCD'[k],st=(S.strike[id]||{})[o];return '<div class="opt'+(a===o?' sel':'')+(st?' struck':'')+'"><button class="pick" data-o="'+o+'" aria-pressed="'+(a===o)+'"><span class="let">'+letter+'</span><span class="txt">'+esc(L.o[o])+'</span></button><button class="cut" data-x="'+o+'" title="Tachar"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.1 15.9M14.5 14.5L20 20M8.1 8.1L12 12"/></svg></button></div>';}).join('')+
  '</div></div></div>'+
  '<div class="bottom"><button class="btn" id="prevBtn"'+(i===0?' disabled':'')+'>← '+tt.prev+'</button><div class="status">'+(a!=null?tt.hasans:tt.noans)+' · '+tt.left+' <b id="stTime">'+fmt(remaining())+'</b></div>'+
- (i===149?'<button class="btn primary" id="nextBtn">'+tt.finish+'</button>':'<button class="btn primary" id="nextBtn">'+tt.next+' →</button>')+'</div></section></div>';
+ (i===S.order.length-1?'<button class="btn primary" id="nextBtn">'+tt.finish+'</button>':'<button class="btn primary" id="nextBtn">'+tt.next+' →</button>')+'</div></section></div>';
  root.querySelectorAll('[data-go]').forEach(function(b){b.onclick=function(){go(+b.dataset.go);ui.navOpen=false;renderExam();};});
  root.querySelectorAll('[data-o]').forEach(function(b){b.onclick=function(){var o=+b.dataset.o;if(S.ans[id]===o)delete S.ans[id];else{S.ans[id]=o;if(S.strike[id])delete S.strike[id][o];}save();renderExam();};});
  root.querySelectorAll('[data-x]').forEach(function(b){b.onclick=function(){var o=+b.dataset.x;S.strike[id]=S.strike[id]||{};S.strike[id][o]=!S.strike[id][o];if(S.strike[id][o]&&S.ans[id]===o)delete S.ans[id];save();renderExam();};});
@@ -267,12 +278,12 @@ function renderExam(){
   if(S.hl[id]&&!ui.hl){delete S.hl[id];save();renderExam();return;}ui.hl=!ui.hl;renderExam();};
  document.getElementById('stem').onmouseup=function(){if(!ui.hl)return;var sel=window.getSelection(),stemEl=this;if(sel&&!sel.isCollapsed&&stemEl.contains(sel.anchorNode)&&stemEl.contains(sel.focusNode)){try{var r=sel.getRangeAt(0),m=document.createElement('mark');m.appendChild(r.extractContents());r.insertNode(m);S.hl[id]=stemEl.innerHTML;save();sel.removeAllRanges();}catch(e){}}};
  document.getElementById('prevBtn').onclick=function(){go(i-1);renderExam();};
- document.getElementById('nextBtn').onclick=function(){if(i===149)return confirmFinish();if(i===99&&!S.s2seen){S.s2seen=true;save();return modal(tt.toS2,'<p>'+esc(tt.toS2b)+'</p>',[{l:tt.stay,f:function(){}},{l:tt.goS2,p:1,id:'goS2',f:function(){go(100);renderExam();}}]);}go(i+1);renderExam();};
+ document.getElementById('nextBtn').onclick=function(){if(i===S.order.length-1)return confirmFinish();if(i===S.generalCount-1&&!S.s2seen){S.s2seen=true;save();return modal(tt.toS2,'<p>'+esc(tt.toS2b)+'</p>',[{l:tt.stay,f:function(){}},{l:tt.goS2,p:1,id:'goS2',f:function(){go(S.generalCount);renderExam();}}]);}go(i+1);renderExam();};
  document.getElementById('finBtn').onclick=confirmFinish;
  document.getElementById('navT').onclick=function(){ui.navOpen=!ui.navOpen;document.getElementById('side').classList.toggle('open',ui.navOpen);};
  document.getElementById('qbody').scrollTop=0;
 }
-function go(k){S.cur=Math.max(0,Math.min(149,k));save();}
+function go(k){S.cur=Math.max(0,Math.min(S.order.length-1,k));save();}
 function confirmFinish(){var tt=t(),a=Object.keys(S.ans).length,f=Object.keys(S.flag).length;modal(tt.finTitle,'<p>'+esc(tt.finBody(a,f))+'</p>',[{l:tt.keep,f:function(){}},{l:tt.submit,p:1,id:'confirmSubmit',f:function(){submit(false);}}]);}
 document.addEventListener('keydown',function(e){if(!S||S.submitted||document.querySelector('.modal')||e.target.tagName==='INPUT')return;var k=e.key.toUpperCase();
  if('ABCD'.indexOf(k)>=0&&k.length===1){var id=S.order[S.cur];S.ans[id]=S.opt[id]['ABCD'.indexOf(k)];save();renderExam();}
@@ -280,7 +291,7 @@ document.addEventListener('keydown',function(e){if(!S||S.submitted||document.que
 var reportAttempted=false;
 function postReport(body){return fetch(webhookUrl(),{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:body}).then(function(){return true;},function(){return false;});}
 function buildReport(){var g=grade(),used=Math.min(S.submittedAt,S.endsAt)-S.startedAt,p=pct(g.correct,g.total),mods=Object.keys(g.mod).sort(function(a,b){var A=g.mod[a],B=g.mod[b];return A.sec-B.sec||(a<b?-1:1);});
- return {type:'full-exam',resultId:S.resultId||newResultId(),name:S.name||'',email:S.email||'',state:S.state,language:S.lang,score:p,correct:g.correct,total:g.total,correctLabel:g.correct+'/'+g.total,passed:p>=PASS,section1:g.sec[1].c+'/'+g.sec[1].n,section2:g.sec[2].c+'/'+g.sec[2].n,timeUsed:fmt(used),elapsedSeconds:Math.round(used/1000),autoSubmitted:!!S.auto,submittedAt:new Date(S.submittedAt).toISOString(),modules:mods.map(function(k){var m=g.mod[k],pp=pct(m.c,m.n);return {id:k,label:m[S.lang]||k,correct:m.c,total:m.n,percent:pp};})};}
+ return {type:'full-exam',resultId:S.resultId||newResultId(),name:S.name||'',email:S.email||'',state:S.state,language:S.lang,lines:S.lines||'both',slot:S.slotLabel||'',score:p,correct:g.correct,total:g.total,correctLabel:g.correct+'/'+g.total,passed:p>=PASS,section1:g.sec[1].c+'/'+g.sec[1].n,section2:g.sec[2].c+'/'+g.sec[2].n,timeUsed:fmt(used),elapsedSeconds:Math.round(used/1000),autoSubmitted:!!S.auto,submittedAt:new Date(S.submittedAt).toISOString(),modules:mods.map(function(k){var m=g.mod[k],pp=pct(m.c,m.n);return {id:k,label:m[S.lang]||k,correct:m.c,total:m.n,percent:pp};})};}
 function sendReport(){if(reportAttempted||!webhookUrl()||!S||!S.submitted||S.reported)return;reportAttempted=true;if(!S.resultId){S.resultId=newResultId();save();}var body=JSON.stringify(buildReport());
  postReport(body).then(function(ok){if(ok)return true;return new Promise(function(resolve){setTimeout(resolve,800);}).then(function(){return postReport(body);});}).then(function(ok){if(!S)return;S.reported=!!ok;S.reportError=!ok;save();var note=document.getElementById('reportNote');if(note){note.textContent=ok?t().sent:t().sendFail;note.style.color=ok?'':'var(--danger)';}});}
 function grade(){
@@ -296,7 +307,7 @@ function renderResults(){
  var tt=t(),g=grade(),p=pct(g.correct,g.total),pass=p>=PASS,used=Math.min(S.submittedAt,S.endsAt)-S.startedAt;
  var secRow=function(s){var x=g.sec[s],pp=pct(x.c,x.n);return '<tr><td>'+(s===1?tt.s1:tt.s2s[S.state])+'</td><td class="num">'+x.c+'/'+x.n+'</td><td class="num"><b class="'+(pp>=PASS?'pass':'fail')+'">'+pp+'%</b></td><td><div class="bar"><i class="'+(pp<PASS?'lo':'')+'" style="width:'+pp+'%"></i></div></td></tr>';};
  var mods=Object.keys(g.mod).sort(function(a,b){var A=g.mod[a],B=g.mod[b];return A.sec-B.sec||(a<b?-1:1);});
- root.innerHTML='<div class="wrap"><div class="card"><div class="score"><div class="big '+(pass?'pass':'fail')+'" id="pct">'+p+'%</div><div><div class="'+(pass?'pass':'fail')+'" style="font-weight:800;letter-spacing:.05em" id="verdict">'+(pass?tt.passed:tt.failed)+'</div><h1 style="margin:4px 0">'+tt.overall+': '+g.correct+'/150 '+tt.correct+'</h1><div class="muted" id="studentLine"><b>'+esc(S.name||'')+'</b>'+(S.email?' · '+esc(S.email):'')+'</div><div class="muted">'+tt.need+' · '+(S.state==='TX'?'Texas':'Florida')+' · '+(S.lang==='es'?'Español':'English')+' · '+tt.time+': '+fmt(used)+(S.auto?' · <b>'+tt.auto+'</b>':'')+'</div><div class="row mt"><button class="btn primary" id="again">'+tt.again+'</button><button class="btn" onclick="window.print()">'+tt.print+'</button></div><p class="muted" id="reportNote" style="margin:10px 0 0">'+(webhookUrl()?(S.reported?tt.sent:(S.reportError?tt.sendFail:tt.sending)):'')+'</p></div></div></div></div>'+
+ root.innerHTML='<div class="wrap"><div class="card"><div class="score"><div class="big '+(pass?'pass':'fail')+'" id="pct">'+p+'%</div><div><div class="'+(pass?'pass':'fail')+'" style="font-weight:800;letter-spacing:.05em" id="verdict">'+(pass?tt.passed:tt.failed)+'</div><h1 style="margin:4px 0">'+tt.overall+': '+g.correct+'/'+g.total+' '+tt.correct+'</h1><div class="muted" id="studentLine"><b>'+esc(S.name||'')+'</b>'+(S.email?' · '+esc(S.email):'')+'</div><div class="muted">'+tt.need+' · '+(S.state==='TX'?'Texas':'Florida')+' · '+(S.lang==='es'?'Español':'English')+' · '+tt.time+': '+fmt(used)+(S.auto?' · <b>'+tt.auto+'</b>':'')+'</div><div class="row mt"><button class="btn primary" id="again">'+tt.again+'</button><button class="btn" onclick="window.print()">'+tt.print+'</button></div><p class="muted" id="reportNote" style="margin:10px 0 0">'+(webhookUrl()?(S.reported?tt.sent:(S.reportError?tt.sendFail:tt.sending)):'')+'</p></div></div></div></div>'+
  '<div class="card mt"><h2>'+tt.bysec+'</h2><table><thead><tr><th>'+tt.sec+'</th><th class="num">'+tt.correct+'</th><th class="num">%</th><th></th></tr></thead><tbody id="secTbl">'+secRow(1)+secRow(2)+'</tbody></table><p class="muted" style="font-size:12px;margin:10px 0 0">'+tt.note+'</p></div>'+
  '<div class="card mt"><h2>'+tt.bymod+'</h2><table><thead><tr><th>'+tt.mod+'</th><th class="num">'+tt.correct+'</th><th class="num">%</th><th></th></tr></thead><tbody id="modTbl">'+mods.map(function(k){var m=g.mod[k],pp=pct(m.c,m.n);return '<tr><td>'+esc(m[S.lang])+'</td><td class="num">'+m.c+'/'+m.n+'</td><td class="num">'+pp+'%</td><td><div class="bar"><i class="'+(pp<PASS?'lo':'')+'" style="width:'+pp+'%"></i></div></td></tr>';}).join('')+'</tbody></table></div>'+
  '<div class="card mt"><h2>'+tt.review+'</h2><div class="filters">'+[['all',tt.all],['wrong',tt.wrong],['blank',tt.blank],['flag',tt.flg]].map(function(f){return '<button class="btn sm'+(ui.filter===f[0]?' on':'')+'" data-f="'+f[0]+'">'+f[1]+'</button>';}).join('')+'</div><div id="rvList"></div></div></div>';
@@ -308,11 +319,14 @@ function renderResults(){
   '<div class="muted" style="font-size:12px;margin-top:6px">'+tt.yours+': <b>'+(it.a==null?tt.notAns:'ABCD'[perm.indexOf(it.a)])+'</b> · '+tt.right+': <b>'+'ABCD'[perm.indexOf(it.ck)]+'</b></div>'+
   '<div class="ex"><b>'+tt.why+':</b> '+esc(L.ex)+(q.ref?'<br><span class="muted" style="font-size:12px">'+tt.ref+': '+esc(q.ref)+'</span>':'')+'</div>'+wx+'</div>';}).join('');
  root.querySelectorAll('[data-f]').forEach(function(b){b.onclick=function(){ui.filter=b.dataset.f;renderResults();};});
- document.getElementById('again').onclick=function(){ui.name=(S&&S.name)||ui.name||'';ui.email=(S&&S.email)||ui.email||'';localStorage.removeItem(STORE);S=null;ui.filter='all';ui.agree=false;reportAttempted=false;window.scrollTo(0,0);render();};
+ document.getElementById('again').onclick=function(){localStorage.removeItem(STORE);localStorage.removeItem('alleanza-full-exam-registration');S=null;location.assign('/examen-completo');};
  sendReport();
 }
 load();
-if(S&&!S.submitted&&remaining()>0){render();}else render();
+var booking=null;try{booking=JSON.parse(localStorage.getItem('alleanza-full-exam-registration')||'null');}catch(e){booking=null;}
+if(S){render();}
+else if(booking&&booking.ready&&booking.generalCount){booking.ready=false;try{localStorage.setItem('alleanza-full-exam-registration',JSON.stringify(booking));}catch(e){}startFromBooking(booking);}
+else{location.replace('/examen-completo');}
 window.addEventListener('storage',function(e){if(e.key===STORE){load();render();}});
 })();
 </script>

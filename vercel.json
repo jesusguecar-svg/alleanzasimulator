@@ -2,12 +2,12 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
     {
-      "source": "/examen-completo",
-      "destination": "/examen-completo.html"
+      "source": "/examen-completo/sesion",
+      "destination": "/full-exam-player.html"
     },
     {
-      "source": "/examen-completo/",
-      "destination": "/examen-completo.html"
+      "source": "/examen-completo/sesion/",
+      "destination": "/full-exam-player.html"
     },
     {
       "source": "/(.*)",
