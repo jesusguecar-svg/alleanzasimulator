@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, BookOpenCheck, GraduationCap, Route, Settings2, Sparkles } from 'lucide-react';
+import { ArrowLeft, ArrowRight, BookOpenCheck, ClipboardCheck, GraduationCap, Route, Settings2, Sparkles } from 'lucide-react';
 
 type PathType = 'beginner' | 'advanced';
 
@@ -74,6 +74,15 @@ export function OnboardingScreen(p: Props) {
           <button className="secondary onboarding-back" onClick={p.onBackToChoice}><ArrowLeft size={17} /> Volver</button>
         </>
       )}
+
+      <a className="full-exam-link panel" href="/examen-completo">
+        <ClipboardCheck size={22} />
+        <span>
+          <strong>Examen completo · 150 preguntas</strong>
+          <small>100 generales y 50 de leyes de Texas o Florida · 150 minutos, sin pausa</small>
+        </span>
+        <ArrowRight size={18} />
+      </a>
     </main>
   );
 }

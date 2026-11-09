@@ -184,6 +184,7 @@ export function SetupScreen(p: Props) {
         <div className="history-note">
           <History size={17} />
           <span>Tu progreso se guarda en este dispositivo.</span>
+          <a href="/examen-completo">Examen completo (150)</a>
           {p.onViewStats && <button onClick={p.onViewStats}>Ver mis estadísticas</button>}
           {p.onResetProgress && <button className="muted-action" onClick={p.onResetProgress}>Reiniciar progreso</button>}
         </div>
