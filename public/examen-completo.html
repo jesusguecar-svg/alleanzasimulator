@@ -42,6 +42,7 @@ ul.cond{margin:8px 0 0;padding-left:18px;line-height:1.6;font-size:14px}
 .btn{border:1px solid var(--line);background:var(--surface);border-radius:4px;padding:10px 16px;font-weight:600;display:inline-flex;gap:8px;align-items:center;justify-content:center}
 .btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}.btn.primary:hover{background:var(--brand-strong)}
 .btn.primary:disabled{opacity:.45;cursor:not-allowed}
+.field{display:flex;flex-direction:column;gap:6px}.field>span{font-weight:700;font-size:14px}.field input{width:100%;border:1.5px solid var(--line);border-radius:6px;padding:10px 12px;font:inherit;background:var(--surface);color:var(--ink)}.field input:focus{outline:2px solid var(--brand);border-color:var(--brand)}.err{min-height:16px;color:var(--danger);font-size:12px}
 .btn.danger{color:var(--danger);border-color:var(--danger);background:transparent}
 .btn.sm{padding:6px 10px;font-size:12px;font-weight:500}
 .btn.on{background:var(--highlight);border-color:#d9c25a;color:#172126}
@@ -137,6 +138,9 @@ td.num{text-align:right;font-variant-numeric:tabular-nums}
 (function(){
 'use strict';
 var STORE='alleanza_full_exam_v1', DURATION_MIN=150, PASS=70;
+// Replaced at dev/build time from VITE_FULL_EXAM_WEBHOOK_URL, otherwise VITE_RESULTS_WEBHOOK_URL.
+var WEBHOOK_URL='__FULL_EXAM_WEBHOOK__';
+function webhookUrl(){return /^https?:\/\/\S+$/.test(WEBHOOK_URL)?WEBHOOK_URL:'';}
 var DATA=JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(document.getElementById('payload').textContent.trim()),function(c){return c.charCodeAt(0)})));
 // answer key is stored scrambled; decoded only when scoring
 function key(id){var s=DATA.k[id],x=0;for(var i=0;i<id.length;i++)x=(x*31+id.charCodeAt(i))%9973;return 'ABCD'[(s-x%4+4)%4];}
@@ -149,7 +153,7 @@ es:{kicker:'Examen de práctica',title:'Examen completo · 150 preguntas',sel:'S
  bymod:'Desempeño por módulo',bysec:'Desempeño por sección',note:'En el examen real de Pearson VUE la puntuación es escalada (0–100, aprobatoria 70) y se califica el examen completo, no cada parte por separado. Aquí mostramos el porcentaje de respuestas correctas como aproximación.',
  startH:'Examen de práctica completo',startP:'Simulación cronometrada del examen estatal de Life, Accident & Health: 100 preguntas de conocimiento general (Módulos 1–9) y 50 preguntas de leyes estatales.',state:'1. Elige tu estado',lang:'2. Idioma del examen',cond:'Condiciones del examen',
  c:['150 preguntas de opción múltiple, una a la vez.','Tiempo bloqueado de 150 minutos. El reloj no se puede pausar y sigue corriendo aunque cierres o recargues la página (igual que en Pearson VUE, el reloj no se detiene durante descansos).','Sección 1: 100 preguntas generales. Sección 2: 50 preguntas de leyes del estado. Puedes navegar, marcar y cambiar respuestas hasta entregar.','No se muestran respuestas correctas ni explicaciones hasta entregar el examen.','Al llegar a 00:00 el examen se entrega automáticamente. Las preguntas sin contestar cuentan como incorrectas.','Orden de preguntas y opciones aleatorio en cada intento. Aprobatoria: 70%.'],
- agree:'Entiendo las condiciones. El tiempo empezará a correr inmediatamente.',begin:'Comenzar examen',resume:'Tienes un examen en curso',resumeB:'El reloj sigue corriendo.',cont:'Continuar examen',
+ agree:'Entiendo las condiciones. El tiempo empezará a correr inmediatamente.',begin:'Comenzar examen',you:'3. Tus datos',name:'Nombre completo',namePh:'Escribe tu nombre completo',email:'Correo electrónico',emailPh:'tu@correo.com',emailBad:'Escribe un correo válido.',needId:'Escribe tu nombre completo y un correo válido para comenzar.',sent:'Tu resultado fue enviado a tu instructor.',sendFail:'No pudimos enviar tu resultado. Tus respuestas siguen en esta pantalla. Recarga la página para reintentar.',sending:'Enviando tu resultado…',resume:'Tienes un examen en curso',resumeB:'El reloj sigue corriendo.',cont:'Continuar examen',
  txd:'Texas · Life, Accident & Health (LAH)',fld:'Florida · 2-15 Health & Life',mins:'minutos',qs:'preguntas',pass:'aprobatoria',sections:'secciones',navBtn:'Preguntas',warnLeave:'El examen está en curso. El reloj seguirá corriendo.',min5:'Quedan 5 minutos'},
 en:{kicker:'Practice exam',title:'Full exam · 150 questions',sel:'Select the best answer.',prev:'Previous',next:'Next',flag:'Flag',flagged:'Flagged',hl:'Highlight',nav:'Navigator',answered:'answered',marked:'flagged',cur:'Current',ans:'Answered',pend:'Pending',finish:'Finish exam',q:'Question',of:'of',left:'Time remaining',noans:'No answer',hasans:'Answered',s1:'Section 1 · General Knowledge (Modules 1–9)',s2s:{TX:'Section 2 · Texas Law',FL:'Section 2 · Florida Law'},s1short:'Section 1',s2short:'Section 2',
  finTitle:'Submit the exam?',finBody:function(a,f){return 'You have answered '+a+' of 150 questions'+(f?' and have '+f+' flagged for review':'')+'. Once submitted you cannot change your answers.';},keep:'Keep reviewing',submit:'Submit answers',
@@ -159,9 +163,9 @@ en:{kicker:'Practice exam',title:'Full exam · 150 questions',sel:'Select the be
  bymod:'Performance by module',bysec:'Performance by section',note:'On the real Pearson VUE exam the score is scaled (0–100, passing 70) and the exam is scored as a whole, not each part separately. Here we show percent correct as an approximation.',
  startH:'Full practice exam',startP:'Timed simulation of the state Life, Accident & Health exam: 100 general knowledge questions (Modules 1–9) and 50 state law questions.',state:'1. Choose your state',lang:'2. Exam language',cond:'Exam conditions',
  c:['150 multiple-choice questions, one at a time.','Locked 150-minute clock. It cannot be paused and keeps running even if you close or reload the page (as at Pearson VUE, the clock does not stop for breaks).','Section 1: 100 general questions. Section 2: 50 state law questions. You can navigate, flag and change answers until you submit.','Correct answers and explanations are hidden until you submit.','At 00:00 the exam is submitted automatically. Unanswered questions count as incorrect.','Question and answer order is randomized every attempt. Passing: 70%.'],
- agree:'I understand the conditions. The clock starts immediately.',begin:'Start exam',resume:'You have an exam in progress',resumeB:'The clock is still running.',cont:'Continue exam',
+ agree:'I understand the conditions. The clock starts immediately.',begin:'Start exam',you:'3. Your details',name:'Full name',namePh:'Enter your full name',email:'Email',emailPh:'you@email.com',emailBad:'Enter a valid email address.',needId:'Enter your full name and a valid email to start.',sent:'Your result was sent to your instructor.',sendFail:'We could not send your result. Your answers are still on this screen. Reload the page to try again.',sending:'Sending your result…',resume:'You have an exam in progress',resumeB:'The clock is still running.',cont:'Continue exam',
  txd:'Texas · Life, Accident & Health (LAH)',fld:'Florida · 2-15 Health & Life',mins:'minutes',qs:'questions',pass:'passing',sections:'sections',navBtn:'Questions',warnLeave:'The exam is in progress. The clock will keep running.',min5:'5 minutes left'}};
-var S=null, root=document.getElementById('root'), tick=null, ui={hl:false,navOpen:false,filter:'all',startState:'TX',startLang:'es',agree:false};
+var S=null, root=document.getElementById('root'), tick=null, ui={hl:false,navOpen:false,filter:'all',startState:'TX',startLang:'es',agree:false,name:'',email:''};
 function load(){try{S=JSON.parse(localStorage.getItem(STORE)||'null');}catch(e){S=null;}}
 function save(){localStorage.setItem(STORE,JSON.stringify(S));}
 function Q(id){return DATA.q[id];}
@@ -177,12 +181,19 @@ var dk=localStorage.getItem('alleanza_full_exam_dark')==='1';document.documentEl
 document.getElementById('darkBtn').onclick=function(){dk=!dk;localStorage.setItem('alleanza_full_exam_dark',dk?'1':'0');document.documentElement.classList.toggle('dark',dk);};
 function header(){var tt=t();document.documentElement.lang=S?S.lang:ui.startLang;document.getElementById('tKicker').textContent=tt.kicker+(S?' · '+(S.state==='TX'?'Texas':'Florida'):'');document.getElementById('tTitle').textContent=tt.title;}
 
+function emailOk(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);}
+function canBegin(){return !!(ui.agree && (ui.name||'').trim().length>1 && emailOk((ui.email||'').trim()));}
+function captureIdentity(){var n=document.getElementById('stuName'),e=document.getElementById('stuEmail');if(n)ui.name=n.value;if(e)ui.email=e.value;}
+function refreshBegin(){captureIdentity();var btn=document.getElementById('beginBtn');if(btn)btn.disabled=!canBegin();var err=document.getElementById('emailErr');if(err)err.textContent=(ui.email||'').trim()&&!emailOk((ui.email||'').trim())?t().emailBad:'';var need=document.getElementById('startErr');if(need)need.textContent=ui.agree&&!canBegin()?t().needId:'';}
+function newResultId(){return (window.crypto&&crypto.randomUUID)?crypto.randomUUID():(Date.now().toString(36)+Math.random().toString(36).slice(2));}
 function start(){
+ captureIdentity();
+ if(!canBegin()){refreshBegin();return;}
  var st=ui.startState, lang=ui.startLang, seed=(Math.random()*2**31)|0, r=rng(seed);
  var gen=shuffle(DATA.general,r), sta=shuffle(DATA.state[st],r);
  var opt={};gen.concat(sta).forEach(function(id){opt[id]=shuffle([0,1,2,3],r);});
  var t0=now();
- S={v:1,state:st,lang:lang,seed:seed,order:gen.concat(sta),opt:opt,ans:{},flag:{},strike:{},hl:{},cur:0,startedAt:t0,endsAt:t0+DURATION_MIN*60000,submitted:false,s2seen:false};
+ S={v:1,state:st,lang:lang,name:ui.name.trim(),email:ui.email.trim(),resultId:newResultId(),seed:seed,order:gen.concat(sta),opt:opt,ans:{},flag:{},strike:{},hl:{},cur:0,startedAt:t0,endsAt:t0+DURATION_MIN*60000,submitted:false,s2seen:false,reported:false};
  save();render();
 }
 function submit(auto){
@@ -219,13 +230,16 @@ function renderStart(){
  ['TX','FL'].map(function(s){return '<button class="choice'+(ui.startState===s?' on':'')+'" data-st="'+s+'"><div class="badge">'+s+'</div><div><b>'+(s==='TX'?'Texas':'Florida')+'</b><span>'+(s==='TX'?tt.txd:tt.fld)+'</span></div></button>';}).join('')+'</div>'+
  '<h2 class="mt">'+tt.lang+'</h2><div class="grid2">'+
  [['es','ES','Español','Examen en español'],['en','EN','English','Exam in English']].map(function(l){return '<button class="choice'+(ui.startLang===l[0]?' on':'')+'" data-lang="'+l[0]+'"><div class="badge">'+l[1]+'</div><div><b>'+l[2]+'</b><span>'+l[3]+'</span></div></button>';}).join('')+'</div>'+
- '<h2 class="mt">'+tt.cond+'</h2><div class="rules"><div class="stat"><b>150</b><span>'+tt.qs+'</span></div><div class="stat"><b>150</b><span>'+tt.mins+'</span></div><div class="stat"><b>2</b><span>'+tt.sections+' (100 + 50)</span></div><div class="stat"><b>70%</b><span>'+tt.pass+'</span></div></div>'+
+ '<h2 class="mt">'+tt.you+'</h2><div class="grid2"><div class="field"><span>'+tt.name+'</span><input id="stuName" name="name" autocomplete="name" required value="'+esc(ui.name||'')+'" placeholder="'+esc(tt.namePh)+'"></div><div class="field"><span>'+tt.email+'</span><input id="stuEmail" name="email" type="email" autocomplete="email" required value="'+esc(ui.email||'')+'" placeholder="'+esc(tt.emailPh)+'"><div class="err" id="emailErr"></div></div></div>'+
+'<h2 class="mt">'+tt.cond+'</h2><div class="rules"><div class="stat"><b>150</b><span>'+tt.qs+'</span></div><div class="stat"><b>150</b><span>'+tt.mins+'</span></div><div class="stat"><b>2</b><span>'+tt.sections+' (100 + 50)</span></div><div class="stat"><b>70%</b><span>'+tt.pass+'</span></div></div>'+
  '<ul class="cond">'+tt.c.map(function(x){return '<li>'+esc(x)+'</li>';}).join('')+'</ul>'+
  '<label class="chk"><input type="checkbox" id="agree"'+(ui.agree?' checked':'')+'> <span>'+tt.agree+'</span></label>'+
- '<div class="row mt"><button class="btn primary" id="beginBtn"'+(ui.agree?'':' disabled')+'>'+tt.begin+' →</button></div></div></div>';
- root.querySelectorAll('[data-st]').forEach(function(b){b.onclick=function(){ui.startState=b.dataset.st;renderStart();};});
- root.querySelectorAll('[data-lang]').forEach(function(b){b.onclick=function(){ui.startLang=b.dataset.lang;header();renderStart();};});
- document.getElementById('agree').onchange=function(e){ui.agree=e.target.checked;document.getElementById('beginBtn').disabled=!ui.agree;};
+ '<div class="err" id="startErr"></div><div class="row mt"><button class="btn primary" id="beginBtn"'+(canBegin()?'':' disabled')+'>'+tt.begin+' →</button></div></div></div>';
+ root.querySelectorAll('[data-st]').forEach(function(b){b.onclick=function(){captureIdentity();ui.startState=b.dataset.st;renderStart();};});
+ root.querySelectorAll('[data-lang]').forEach(function(b){b.onclick=function(){captureIdentity();ui.startLang=b.dataset.lang;header();renderStart();};});
+ document.getElementById('agree').onchange=function(e){ui.agree=e.target.checked;refreshBegin();};
+ ['stuName','stuEmail'].forEach(function(id){document.getElementById(id).addEventListener('input',refreshBegin);});
+ refreshBegin();
  document.getElementById('beginBtn').onclick=start;
 }
 function secOf(i){return i<100?1:2;}
@@ -263,6 +277,12 @@ function confirmFinish(){var tt=t(),a=Object.keys(S.ans).length,f=Object.keys(S.
 document.addEventListener('keydown',function(e){if(!S||S.submitted||document.querySelector('.modal')||e.target.tagName==='INPUT')return;var k=e.key.toUpperCase();
  if('ABCD'.indexOf(k)>=0&&k.length===1){var id=S.order[S.cur];S.ans[id]=S.opt[id]['ABCD'.indexOf(k)];save();renderExam();}
  else if(e.key==='ArrowRight'){document.getElementById('nextBtn').click();}else if(e.key==='ArrowLeft'&&S.cur>0){go(S.cur-1);renderExam();}});
+var reportAttempted=false;
+function postReport(body){return fetch(webhookUrl(),{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:body}).then(function(){return true;},function(){return false;});}
+function buildReport(){var g=grade(),used=Math.min(S.submittedAt,S.endsAt)-S.startedAt,p=pct(g.correct,g.total),mods=Object.keys(g.mod).sort(function(a,b){var A=g.mod[a],B=g.mod[b];return A.sec-B.sec||(a<b?-1:1);});
+ return {type:'full-exam',resultId:S.resultId||newResultId(),name:S.name||'',email:S.email||'',state:S.state,language:S.lang,score:p,correct:g.correct,total:g.total,correctLabel:g.correct+'/'+g.total,passed:p>=PASS,section1:g.sec[1].c+'/'+g.sec[1].n,section2:g.sec[2].c+'/'+g.sec[2].n,timeUsed:fmt(used),elapsedSeconds:Math.round(used/1000),autoSubmitted:!!S.auto,submittedAt:new Date(S.submittedAt).toISOString(),modules:mods.map(function(k){var m=g.mod[k],pp=pct(m.c,m.n);return {id:k,label:m[S.lang]||k,correct:m.c,total:m.n,percent:pp};})};}
+function sendReport(){if(reportAttempted||!webhookUrl()||!S||!S.submitted||S.reported)return;reportAttempted=true;if(!S.resultId){S.resultId=newResultId();save();}var body=JSON.stringify(buildReport());
+ postReport(body).then(function(ok){if(ok)return true;return new Promise(function(resolve){setTimeout(resolve,800);}).then(function(){return postReport(body);});}).then(function(ok){if(!S)return;S.reported=!!ok;S.reportError=!ok;save();var note=document.getElementById('reportNote');if(note){note.textContent=ok?t().sent:t().sendFail;note.style.color=ok?'':'var(--danger)';}});}
 function grade(){
  var res={total:0,correct:0,sec:{1:{n:0,c:0},2:{n:0,c:0}},mod:{},items:[]};
  S.order.forEach(function(id,i){var q=Q(id),ck='ABCD'.indexOf(key(id)),a=S.ans[id],ok=a===ck,sec=secOf(i);
@@ -276,7 +296,7 @@ function renderResults(){
  var tt=t(),g=grade(),p=pct(g.correct,g.total),pass=p>=PASS,used=Math.min(S.submittedAt,S.endsAt)-S.startedAt;
  var secRow=function(s){var x=g.sec[s],pp=pct(x.c,x.n);return '<tr><td>'+(s===1?tt.s1:tt.s2s[S.state])+'</td><td class="num">'+x.c+'/'+x.n+'</td><td class="num"><b class="'+(pp>=PASS?'pass':'fail')+'">'+pp+'%</b></td><td><div class="bar"><i class="'+(pp<PASS?'lo':'')+'" style="width:'+pp+'%"></i></div></td></tr>';};
  var mods=Object.keys(g.mod).sort(function(a,b){var A=g.mod[a],B=g.mod[b];return A.sec-B.sec||(a<b?-1:1);});
- root.innerHTML='<div class="wrap"><div class="card"><div class="score"><div class="big '+(pass?'pass':'fail')+'" id="pct">'+p+'%</div><div><div class="'+(pass?'pass':'fail')+'" style="font-weight:800;letter-spacing:.05em" id="verdict">'+(pass?tt.passed:tt.failed)+'</div><h1 style="margin:4px 0">'+tt.overall+': '+g.correct+'/150 '+tt.correct+'</h1><div class="muted">'+tt.need+' · '+(S.state==='TX'?'Texas':'Florida')+' · '+(S.lang==='es'?'Español':'English')+' · '+tt.time+': '+fmt(used)+(S.auto?' · <b>'+tt.auto+'</b>':'')+'</div><div class="row mt"><button class="btn primary" id="again">'+tt.again+'</button><button class="btn" onclick="window.print()">'+tt.print+'</button></div></div></div></div>'+
+ root.innerHTML='<div class="wrap"><div class="card"><div class="score"><div class="big '+(pass?'pass':'fail')+'" id="pct">'+p+'%</div><div><div class="'+(pass?'pass':'fail')+'" style="font-weight:800;letter-spacing:.05em" id="verdict">'+(pass?tt.passed:tt.failed)+'</div><h1 style="margin:4px 0">'+tt.overall+': '+g.correct+'/150 '+tt.correct+'</h1><div class="muted" id="studentLine"><b>'+esc(S.name||'')+'</b>'+(S.email?' · '+esc(S.email):'')+'</div><div class="muted">'+tt.need+' · '+(S.state==='TX'?'Texas':'Florida')+' · '+(S.lang==='es'?'Español':'English')+' · '+tt.time+': '+fmt(used)+(S.auto?' · <b>'+tt.auto+'</b>':'')+'</div><div class="row mt"><button class="btn primary" id="again">'+tt.again+'</button><button class="btn" onclick="window.print()">'+tt.print+'</button></div><p class="muted" id="reportNote" style="margin:10px 0 0">'+(webhookUrl()?(S.reported?tt.sent:(S.reportError?tt.sendFail:tt.sending)):'')+'</p></div></div></div></div>'+
  '<div class="card mt"><h2>'+tt.bysec+'</h2><table><thead><tr><th>'+tt.sec+'</th><th class="num">'+tt.correct+'</th><th class="num">%</th><th></th></tr></thead><tbody id="secTbl">'+secRow(1)+secRow(2)+'</tbody></table><p class="muted" style="font-size:12px;margin:10px 0 0">'+tt.note+'</p></div>'+
  '<div class="card mt"><h2>'+tt.bymod+'</h2><table><thead><tr><th>'+tt.mod+'</th><th class="num">'+tt.correct+'</th><th class="num">%</th><th></th></tr></thead><tbody id="modTbl">'+mods.map(function(k){var m=g.mod[k],pp=pct(m.c,m.n);return '<tr><td>'+esc(m[S.lang])+'</td><td class="num">'+m.c+'/'+m.n+'</td><td class="num">'+pp+'%</td><td><div class="bar"><i class="'+(pp<PASS?'lo':'')+'" style="width:'+pp+'%"></i></div></td></tr>';}).join('')+'</tbody></table></div>'+
  '<div class="card mt"><h2>'+tt.review+'</h2><div class="filters">'+[['all',tt.all],['wrong',tt.wrong],['blank',tt.blank],['flag',tt.flg]].map(function(f){return '<button class="btn sm'+(ui.filter===f[0]?' on':'')+'" data-f="'+f[0]+'">'+f[1]+'</button>';}).join('')+'</div><div id="rvList"></div></div></div>';
@@ -288,7 +308,8 @@ function renderResults(){
   '<div class="muted" style="font-size:12px;margin-top:6px">'+tt.yours+': <b>'+(it.a==null?tt.notAns:'ABCD'[perm.indexOf(it.a)])+'</b> · '+tt.right+': <b>'+'ABCD'[perm.indexOf(it.ck)]+'</b></div>'+
   '<div class="ex"><b>'+tt.why+':</b> '+esc(L.ex)+(q.ref?'<br><span class="muted" style="font-size:12px">'+tt.ref+': '+esc(q.ref)+'</span>':'')+'</div>'+wx+'</div>';}).join('');
  root.querySelectorAll('[data-f]').forEach(function(b){b.onclick=function(){ui.filter=b.dataset.f;renderResults();};});
- document.getElementById('again').onclick=function(){localStorage.removeItem(STORE);S=null;ui.filter='all';ui.agree=false;window.scrollTo(0,0);render();};
+ document.getElementById('again').onclick=function(){ui.name=(S&&S.name)||ui.name||'';ui.email=(S&&S.email)||ui.email||'';localStorage.removeItem(STORE);S=null;ui.filter='all';ui.agree=false;reportAttempted=false;window.scrollTo(0,0);render();};
+ sendReport();
 }
 load();
 if(S&&!S.submitted&&remaining()>0){render();}else render();

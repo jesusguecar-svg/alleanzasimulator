@@ -68,3 +68,15 @@ Students book an hourly slot (Sat/Sun, 8 AM–8 PM CT), choose Spanish or Englis
 5. Give an authorized student `/examen-programado?retake=<token>` to reopen their saved registration at any time. The saved attempt count is preserved and increments when the retake starts; results are not marked as previews. `VITE_RETAKE_TOKEN` is the legacy non-expiring Luz link. The four named `VITE_*_RETAKE_TOKEN` links expire at `2026-10-28T03:59:00Z` and also allow a first attempt when no matching registration is saved.
 
 Slot dates and hours live at the top of `src/data/scheduledExam.ts`.
+
+## Full practice exam (`/examen-completo`)
+
+The page asks for the student's full name and email, then runs the 150-question exam. When the student submits — or the clock hits 0:00 — the browser posts one `full-exam` event to `VITE_FULL_EXAM_WEBHOOK_URL`, or to `VITE_RESULTS_WEBHOOK_URL` when that override is empty. The request uses `text/plain` and `no-cors`, same as the scheduled exam, and retries once. The results screen stays up if the request fails.
+
+`scripts/results-sheet-apps-script.gs` writes that event to a tab named **Examen Completo** and leaves Registrations, Results, and Responses alone. The web app that is already deployed ignores unknown event types until this file is published:
+
+1. Open the same Google Sheet → Extensions → Apps Script.
+2. Replace the project source with `scripts/results-sheet-apps-script.gs`.
+3. Deploy → Manage deployments → Edit → Version: New version → Deploy.
+
+That keeps the current web app URL. Create a new deployment only if you intend to change `VITE_RESULTS_WEBHOOK_URL` (or set `VITE_FULL_EXAM_WEBHOOK_URL` and redeploy the site).

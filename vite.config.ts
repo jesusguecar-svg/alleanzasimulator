@@ -1,33 +1,61 @@
-import type { Connect, Plugin } from 'vite';
-import { defineConfig } from 'vite';
+import fs from 'node:fs';
+import path from 'node:path';
+import { loadEnv, type Connect, type Plugin, defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// public/examen-completo.html is a static page. Rewrite the extensionless
-// path before Vite's static middleware and SPA fallback so dev and preview
-// match the vercel.json rewrite.
-const rewriteFullExam: Connect.NextHandleFunction = (req, _res, next) => {
-  const raw = req.url ?? '';
-  const queryIndex = raw.indexOf('?');
-  const path = queryIndex === -1 ? raw : raw.slice(0, queryIndex);
-  const search = queryIndex === -1 ? '' : raw.slice(queryIndex);
-  if (path === '/examen-completo' || path === '/examen-completo/') {
-    req.url = `/examen-completo.html${search}`;
-  }
-  next();
-};
+const WEBHOOK_TOKEN = '__FULL_EXAM_WEBHOOK__';
 
-function fullExamStaticRoute(): Plugin {
+function fullExamWebhookUrl(mode: string) {
+  const fileEnv = loadEnv(mode, process.cwd(), 'VITE_');
+  return process.env.VITE_FULL_EXAM_WEBHOOK_URL
+    || fileEnv.VITE_FULL_EXAM_WEBHOOK_URL
+    || process.env.VITE_RESULTS_WEBHOOK_URL
+    || fileEnv.VITE_RESULTS_WEBHOOK_URL
+    || '';
+}
+
+function applyFullExamWebhook(html: string, url: string) {
+  return html.split(WEBHOOK_TOKEN).join(url);
+}
+
+function isFullExamRequest(url: string | undefined) {
+  const raw = url ?? '';
+  const queryIndex = raw.indexOf('?');
+  const pathname = queryIndex === -1 ? raw : raw.slice(0, queryIndex);
+  return pathname === '/examen-completo' || pathname === '/examen-completo/' || pathname === '/examen-completo.html';
+}
+
+// public/examen-completo.html is a static page. Serve it for the extensionless
+// path before Vite's static middleware and SPA fallback, and bake the results
+// webhook into that file the same way the scheduled exam reads VITE_RESULTS_WEBHOOK_URL.
+function fullExamStaticRoute(mode: string): Plugin {
+  const webhookUrl = fullExamWebhookUrl(mode);
+  const serve = (file: string): Connect.NextHandleFunction => (req, res, next) => {
+    if (!isFullExamRequest(req.url)) return next();
+    const html = applyFullExamWebhook(fs.readFileSync(file, 'utf8'), webhookUrl);
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.setHeader('Cache-Control', 'no-cache');
+    res.end(html);
+    return;
+  };
+
   return {
     name: 'full-exam-static-route',
     configureServer(server) {
-      server.middlewares.use(rewriteFullExam);
+      server.middlewares.use(serve(path.join(server.config.publicDir, 'examen-completo.html')));
     },
     configurePreviewServer(server) {
-      server.middlewares.use(rewriteFullExam);
+      server.middlewares.use(serve(path.resolve(server.config.root, server.config.build.outDir, 'examen-completo.html')));
+    },
+    closeBundle() {
+      const file = path.resolve(process.cwd(), 'dist/examen-completo.html');
+      if (!fs.existsSync(file)) return;
+      fs.writeFileSync(file, applyFullExamWebhook(fs.readFileSync(file, 'utf8'), webhookUrl));
     },
   };
 }
 
-export default defineConfig({
-  plugins: [react(), fullExamStaticRoute()],
-});
+export default defineConfig(({ mode }) => ({
+  plugins: [react(), fullExamStaticRoute(mode)],
+}));

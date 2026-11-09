@@ -9,6 +9,11 @@
  *   Registrations — one row per student, status goes registered → started → submitted.
  *   Results       — one summary row per submitted attempt.
  *   Responses     — one row per question of every submitted attempt.
+ *   Examen Completo — one row per /examen-completo submission (event type "full-exam").
+ *
+ * Redeploying this file onto the existing web app (Deploy → Manage deployments →
+ * Edit → New version → Deploy) keeps VITE_RESULTS_WEBHOOK_URL unchanged. A brand-new
+ * deployment creates a different URL and would require updating that env var.
  */
 
 const REGISTRATION_HEADERS = ['Registration ID', 'Name', 'Email', 'Slot', 'Language', 'Lines', 'Status', 'Attempts', 'Score %', 'Registered at', 'Last update', 'Preview'];
@@ -23,6 +28,7 @@ function doPost(e) {
     if (event.type === 'registered') upsertRegistration_(event, { status: 'registered' });
     if (event.type === 'started') upsertRegistration_(event, { status: 'started', attempts: event.attempt });
     if (event.type === 'submitted') recordSubmission_(event);
+    if (event.type === 'full-exam') recordFullExam_(event);
     return ContentService.createTextOutput(JSON.stringify({ ok: true })).setMimeType(ContentService.MimeType.JSON);
   } finally {
     lock.releaseLock();
@@ -84,4 +90,39 @@ function recordSubmission_(event) {
   }
 
   upsertRegistration_(event, { status: 'submitted', attempts: event.attempt, score: event.score });
+}
+
+const FULL_EXAM_HEADERS = ['Submitted at', 'Name', 'Email', 'State', 'Language', 'Score %', 'Correct', 'Pass/Fail', 'Section 1', 'Section 2', 'Time used', 'Auto-submitted', 'Modules', 'Result ID'];
+
+function scoreLabel_(value) {
+  if (value && typeof value === 'object') return (value.correct == null ? '' : value.correct) + '/' + (value.total == null ? '' : value.total);
+  return value == null ? '' : String(value);
+}
+
+// Separate tab so full-exam rows never mix with scheduled-exam Results / Registrations.
+function recordFullExam_(event) {
+  const sheet = sheet_('Examen Completo', FULL_EXAM_HEADERS);
+  const resultId = event.resultId || '';
+  if (resultId && sheet.getLastRow() > 1) {
+    const found = sheet.getRange(2, FULL_EXAM_HEADERS.indexOf('Result ID') + 1, sheet.getLastRow() - 1, 1).getValues();
+    for (let i = 0; i < found.length; i++) if (found[i][0] === resultId) return;
+  }
+  const modules = (event.modules || []).map((item) => `${item.label}: ${item.correct}/${item.total} (${item.percent}%)`).join('\n');
+  const submittedAt = event.submittedAt ? new Date(event.submittedAt) : new Date();
+  sheet.appendRow([
+    isNaN(submittedAt.getTime()) ? new Date() : submittedAt,
+    event.name || '',
+    event.email || '',
+    event.state || '',
+    event.language || '',
+    event.score,
+    scoreLabel_(event.correctLabel || ((event.correct == null ? '' : event.correct) + '/' + (event.total == null ? 150 : event.total))),
+    event.passed ? 'Pass' : 'Fail',
+    scoreLabel_(event.section1),
+    scoreLabel_(event.section2),
+    event.timeUsed || '',
+    event.autoSubmitted ? 'Yes' : 'No',
+    modules,
+    resultId,
+  ]);
 }
