@@ -16,16 +16,15 @@ describe('full exam line plan', () => {
     expect(FULL_EXAM_PLAN.FL.health).toMatchObject({ questions: 84, minutes: 84, generalCount: 49, stateCount: 35 });
   });
 
-  it('uses its own November weekend and leaves the scheduled exam dates alone', () => {
-    expect(FULL_EXAM_SCHEDULE.days).toEqual(['2026-11-14', '2026-11-15']);
+  it('offers every hour Monday through Sunday and leaves the scheduled exam dates alone', () => {
+    expect(FULL_EXAM_SCHEDULE.days).toEqual(['2026-11-09', '2026-11-10', '2026-11-11', '2026-11-12', '2026-11-13', '2026-11-14', '2026-11-15']);
     expect(SCHEDULE_DAYS).toEqual(['2026-10-24', '2026-10-25']);
-    expect(fullExamSlots).toHaveLength(26);
-    const first = new Intl.DateTimeFormat('en-US', { timeZone: FULL_EXAM_SCHEDULE.timeZone, weekday: 'long', hour: 'numeric', minute: '2-digit', hourCycle: 'h23' }).format(fullExamSlots[0].startsAt);
-    const last = new Intl.DateTimeFormat('en-US', { timeZone: FULL_EXAM_SCHEDULE.timeZone, weekday: 'long', hour: 'numeric', minute: '2-digit', hourCycle: 'h23' }).format(fullExamSlots.at(-1)!.startsAt);
-    expect(first).toContain('Saturday');
-    expect(first).toContain('08:00');
-    expect(last).toContain('Sunday');
-    expect(last).toContain('20:00');
+    expect(fullExamSlots).toHaveLength(168);
+    const format = (time: number) => new Intl.DateTimeFormat('en-US', { timeZone: FULL_EXAM_SCHEDULE.timeZone, weekday: 'long', hour: 'numeric', minute: '2-digit', hourCycle: 'h23' }).format(time);
+    expect(format(fullExamSlots[0].startsAt)).toContain('Monday');
+    expect(format(fullExamSlots[0].startsAt)).toContain('00:00');
+    expect(format(fullExamSlots.at(-1)!.startsAt)).toContain('Sunday');
+    expect(format(fullExamSlots.at(-1)!.startsAt)).toContain('23:00');
     expect(fullExamSlots[0].endsAt - fullExamSlots[0].startsAt).toBe(60 * 60_000);
   });
 

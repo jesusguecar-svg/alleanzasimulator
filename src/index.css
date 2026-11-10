@@ -449,6 +449,8 @@ mark { background: var(--highlight); color: inherit; padding: 1px 0; }
 .scheduled-fields label { display: grid; gap: 7px; font-size: 12px; font-weight: 800; }
 .scheduled-fields input { width: 100%; min-height: 44px; padding: 0 12px; border: 1px solid var(--line-strong); border-radius: 4px; background: var(--surface); color: var(--ink); font-weight: 400; }
 .slot-day + .slot-day { margin-top: 18px; }
+.slot-day-picker { margin-bottom: 16px; }
+.slot-button.open:not(:disabled) { border-color: var(--brand); }
 .slot-day h3 { margin: 0 0 9px; font-size: 13px; }
 .slot-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 8px; }
 .slot-button { min-height: 42px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; border: 1px solid var(--line-strong); border-radius: 4px; background: var(--surface); color: var(--ink); font-size: 13px; font-weight: 800; cursor: pointer; }

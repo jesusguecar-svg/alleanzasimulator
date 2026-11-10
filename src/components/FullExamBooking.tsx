@@ -52,6 +52,7 @@ export function FullExamBooking({ darkMode, onToggleTheme }: { darkMode: boolean
       }}
       stateChoice={{ value: state, onChange: (value) => setState(value as FullExamState) }}
       schedule={{ days: FULL_EXAM_SCHEDULE.days, slots: fullExamSlots }}
+      groupSlotsByDay
       testMode={isFullExamTestMode(window.location.hostname, window.location.search)}
       onRegister={(details) => {
         const chosen = plan[details.lines as ExamLines];

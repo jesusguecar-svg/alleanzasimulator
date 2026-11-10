@@ -1,13 +1,13 @@
 import type { ExamLines, ExamSlot } from './scheduledExam';
 
-/** Full-exam weekend. Change this object to move the dates. Hours are Central Time. */
+/** Full-exam week. Change this object to move the dates. Hours are Central Time. */
 export const FULL_EXAM_SCHEDULE = {
-  days: ['2026-11-14', '2026-11-15'],
-  firstHour: 8,
-  lastHour: 20,
+  days: ['2026-11-09', '2026-11-10', '2026-11-11', '2026-11-12', '2026-11-13', '2026-11-14', '2026-11-15'],
+  firstHour: 0,
+  lastHour: 23,
   startWindowMinutes: 60,
   timeZone: 'America/Chicago',
-  // Nov 14–15 2026 are after the DST change on Nov 1, so Central is CST (UTC−6).
+  // Nov 9–15 2026 are after the DST change on Nov 1, so Central is CST (UTC−6).
   utcOffset: '-06:00',
 } as const;
 

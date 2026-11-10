@@ -31,6 +31,7 @@ type Props = {
   onReset?: () => void;
   schedule?: { days: readonly string[]; slots: ExamSlot[] };
   testMode?: boolean;
+  groupSlotsByDay?: boolean;
 };
 
 const copy = {
@@ -58,7 +59,8 @@ const copy = {
     ],
     agree: 'He leído y acepto todas las condiciones. Entiendo que mis resultados se enviarán a mi instructor.',
     fullEyebrow: 'Examen completo', fullTitle: 'Reserva tu', fullTitleAccent: 'examen completo',
-    fullIntro: 'Elige el horario, el estado, el idioma y las líneas. El calendario y las reglas de horario son los mismos del examen programado.',
+    fullIntro: 'Puedes tomar el examen en cualquier momento de esta semana, las 24 horas, en horario del centro (CT). Elige la hora, el estado, el idioma y las líneas.',
+    fullWhenHelp: `Horario del centro (CT), las 24 horas de esta semana. Puedes comenzar en cualquier momento dentro de los ${SLOT_START_WINDOW_MINUTES} minutos después de la hora que elijas.`,
     fullStay: 'No cambies de pestaña ni de ventana hasta entregar el examen.',
     fullPause: 'No podrás pausar. Si recargas la página, el reloj sigue corriendo y el examen se entrega solo al llegar a cero. Ve al baño antes de comenzar.',
     fullState: 'Estado',
@@ -97,7 +99,8 @@ const copy = {
     ],
     agree: 'I have read and accept all of the conditions. I understand my results will be sent to my instructor.',
     fullEyebrow: 'Full exam', fullTitle: 'Book your', fullTitleAccent: 'full exam',
-    fullIntro: 'Choose the time, state, language, and lines. The calendar and slot rules are the same as the scheduled exam.',
+    fullIntro: 'You can take the exam any time this week, 24 hours a day, Central time. Choose the hour, the state, the language, and the lines.',
+    fullWhenHelp: `Central Time (CT), 24 hours a day this week. You can begin any time within ${SLOT_START_WINDOW_MINUTES} minutes after the hour you choose.`,
     fullStay: 'Do not switch tabs or windows until you submit the exam.',
     fullPause: 'You cannot pause. If you reload the page, the clock keeps running and the exam submits itself at zero. Use the restroom before you begin.',
     fullState: 'State',
@@ -124,7 +127,7 @@ const formatCountdown = (ms: number) => {
 
 const isValidEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
 
-export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, initialValues, availableByLines, preview, retakeAccess, onRegister, onEdit, onStart, linePlan, stateChoice, fullPractice = false, onReset, schedule, testMode = false }: Props) {
+export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, initialValues, availableByLines, preview, retakeAccess, onRegister, onEdit, onStart, linePlan, stateChoice, fullPractice = false, onReset, schedule, testMode = false, groupSlotsByDay = false }: Props) {
   const seed = registration ?? initialValues;
   const [name, setName] = useState(seed?.name ?? retakeAccess?.studentName ?? '');
   const [email, setEmail] = useState(seed?.email ?? '');
@@ -134,6 +137,7 @@ export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, ini
   const [showRules, setShowRules] = useState(false);
   const [agreed, setAgreed] = useState(false);
   const [now, setNow] = useState(Date.now());
+  const [pickedDay, setPickedDay] = useState<string | null>(null);
   const retake = retakeAccess?.status === 'active' && (retakeAccess.expiresAt === undefined || now < retakeAccess.expiresAt);
   const retakeExpired = Boolean(retakeAccess) && !retake;
 
@@ -157,6 +161,9 @@ export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, ini
   const scheduleSlots = schedule?.slots ?? examSlots;
   const findSlot = (slotId: string) => scheduleSlots.find((slot) => slot.id === slotId) ?? getSlot(slotId);
   const slotsByDay = useMemo(() => scheduleDays.map((day) => ({ day, slots: scheduleSlots.filter((slot) => slot.id.startsWith(day)) })), [scheduleDays, scheduleSlots]);
+  const activeDay = pickedDay && scheduleDays.includes(pickedDay)
+    ? pickedDay
+    : scheduleSlots.find((slot) => getSlotState(slot, now) !== 'closed')?.id.slice(0, 10) ?? scheduleDays[0];
 
   const header = <AppHeader darkMode={darkMode} onToggleTheme={onToggleTheme} language={uiLanguage} />;
 
@@ -301,8 +308,18 @@ export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, ini
 
           {!retake && <section className="panel scheduled-section">
             <h2><span>02</span> {t.when}</h2>
-            <p className="scheduled-help">{t.whenHelp}</p>
-            {slotsByDay.map(({ day, slots }) => (
+            <p className="scheduled-help">{fullPractice ? t.fullWhenHelp : t.whenHelp}</p>
+            {groupSlotsByDay && (
+              <div className="slot-grid slot-day-picker" role="tablist" aria-label={t.when}>
+                {slotsByDay.map(({ day, slots }) => (
+                  <button type="button" key={day} role="tab" aria-selected={activeDay === day} className={`slot-button ${activeDay === day ? 'active' : ''}`} onClick={() => setPickedDay(day)}>
+                    {slots[0] && formatSlotDay(slots[0], language).split(',')[0]}
+                    <small>{slots[0] && new Intl.DateTimeFormat(language === 'en' ? 'en-US' : 'es-US', { timeZone: 'America/Chicago', day: 'numeric', month: 'short' }).format(slots[0].startsAt)}</small>
+                  </button>
+                ))}
+              </div>
+            )}
+            {(groupSlotsByDay ? slotsByDay.filter(({ day }) => day === activeDay) : slotsByDay).map(({ day, slots }) => (
               <div key={day} className="slot-day">
                 <h3>{slots[0] && formatSlotDay(slots[0], language)}</h3>
                 <div className="slot-grid" role="radiogroup" aria-label={slots[0] && formatSlotDay(slots[0], language)}>
@@ -310,7 +327,7 @@ export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, ini
                     const closed = getSlotState(slot, now) === 'closed' && !preview;
                     return (
                       <button type="button" key={slot.id} role="radio" aria-checked={slotId === slot.id} disabled={closed}
-                        className={`slot-button ${slotId === slot.id ? 'active' : ''}`} onClick={() => setSlotId(slot.id)}>
+                        className={`slot-button ${slotId === slot.id ? 'active' : ''} ${groupSlotsByDay && getSlotState(slot, now) === 'open' ? 'open' : ''}`} onClick={() => setSlotId(slot.id)}>
                         {formatSlotTime(slot, language)}{closed && <small>{t.full}</small>}
                       </button>
                     );
