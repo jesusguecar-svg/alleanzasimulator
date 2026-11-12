@@ -208,8 +208,10 @@ function start(){
  save();render();
 }
 function markRegistrationSubmitted(){try{var key='alleanza-full-exam-registration',raw=localStorage.getItem(key);if(!raw)return;var reg=JSON.parse(raw);reg.submittedAt=Date.now();reg.ready=false;localStorage.setItem(key,JSON.stringify(reg));}catch(e){}}
+function closeModals(){document.querySelectorAll('.modal').forEach(function(el){el.remove();});}
 function submit(auto){
  if(!S||S.submitted)return;
+ closeModals();
  S.submitted=true;S.auto=!!auto;S.submittedAt=Math.min(now(),S.endsAt);save();markRegistrationSubmitted();
  window.removeEventListener('beforeunload',warn);
  if(auto){render();modal(t().timeup,'<p>'+esc(t().timeupb)+'</p>',[{l:t().ok,p:1,f:function(){}}]);}else render();
@@ -224,7 +226,7 @@ function startTick(){
 }
 function modal(title,body,btns){
  var m=document.createElement('div');m.className='modal';m.innerHTML='<div class="card" role="dialog" aria-modal="true"><h2>'+esc(title)+'</h2><div class="muted" style="font-size:14px;line-height:1.5">'+body+'</div><div class="row mt" style="justify-content:flex-end"></div></div>';
- var row=m.querySelector('.row');btns.forEach(function(b){var x=document.createElement('button');x.className='btn'+(b.p?' primary':'');x.textContent=b.l;if(b.id)x.id=b.id;x.onclick=function(){m.remove();b.f();};row.appendChild(x);});
+ var row=m.querySelector('.row');btns.forEach(function(b){var x=document.createElement('button');x.className='btn'+(b.p?' primary':'');x.textContent=b.l;if(b.id)x.id=b.id;x.onclick=function(){m.remove();if(S&&S.submitted)return;b.f();};row.appendChild(x);});
  document.body.appendChild(m);return m;
 }
 function render(){
@@ -256,6 +258,7 @@ function renderStart(){
 }
 function secOf(i){return i<(S.generalCount||100)?1:2;}
 function renderExam(){
+ if(!S||S.submitted)return;
  var tt=t(),i=S.cur,id=S.order[i],q=Q(id),L=q[S.lang],perm=S.opt[id],a=S.ans[id],answered=Object.keys(S.ans).length,flagged=Object.keys(S.flag).filter(function(k){return S.flag[k];}).length;
  var nb=function(from,to){var h='';for(var k=from;k<to;k++){var qid=S.order[k];h+='<button class="qn'+(S.ans[qid]!=null?' ans':'')+(S.flag[qid]?' flag':'')+(k===i?' cur':'')+'" data-go="'+k+'" aria-label="'+tt.q+' '+(k+1)+'">'+(k+1)+'</button>';}return h;};
  var stem=S.hl[id]||esc(L.stem);
