@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 import type { ExamLanguage } from '../data/partialExam';
 import type { ExamLines, RetakeAccess, ScheduledRegistration } from '../data/scheduledExam';
 import { EXAM_QUESTION_COUNTS, examDurationMinutes, examSlots, formatSlotDay, formatSlotLabel, formatSlotTime, getSlot, getSlotState, RETAKE_SLOT_ID, SCHEDULE_DAYS, SLOT_START_WINDOW_MINUTES, type ExamSlot } from '../data/scheduledExam';
-import { FULL_EXAM_TEST_SLOT } from '../data/fullExamPlan';
+import { FULL_EXAM_OPEN_SLOT, FULL_EXAM_TEST_SLOT } from '../data/fullExamPlan';
 import { AppHeader } from './AppChrome';
 
 type LinePlan = Record<ExamLines, { questions: number; minutes: number }>;
@@ -58,9 +58,10 @@ const copy = {
       [Wifi, 'Sin pausas', 'No podrás pausar. Si cierras o recargas la página, el intento se pierde y queda registrado. Ve al baño antes de comenzar.'],
     ],
     agree: 'He leído y acepto todas las condiciones. Entiendo que mis resultados se enviarán a mi instructor.',
-    fullEyebrow: 'Examen completo', fullTitle: 'Reserva tu', fullTitleAccent: 'examen completo',
-    fullIntro: 'Puedes tomar el examen en cualquier momento de esta semana, las 24 horas, en horario del centro (CT). Elige la hora, el estado, el idioma y las líneas.',
-    fullWhenHelp: `Horario del centro (CT), las 24 horas de esta semana. Puedes comenzar en cualquier momento dentro de los ${SLOT_START_WINDOW_MINUTES} minutos después de la hora que elijas.`,
+    fullEyebrow: 'Examen completo', fullTitle: 'Comienza tu', fullTitleAccent: 'examen completo',
+    fullIntro: 'Puedes empezar ahora, cualquier día y a cualquier hora. Elige el estado, el idioma y las líneas. Puedes repetir el examen cuando quieras.',
+    fullAvailable: 'Puedes comenzar ahora. No necesitas reservar un horario.',
+    fullReady: 'Listo para comenzar', fullContinue: 'Continuar', fullAgain: 'Tomar de nuevo', fullChange: 'Cambiar datos',
     fullStay: 'No cambies de pestaña ni de ventana hasta entregar el examen.',
     fullPause: 'No podrás pausar. Si recargas la página, el reloj sigue corriendo y el examen se entrega solo al llegar a cero. Ve al baño antes de comenzar.',
     fullState: 'Estado',
@@ -98,9 +99,10 @@ const copy = {
       [Wifi, 'No pauses', 'You cannot pause. If you close or reload the page, the attempt is lost and recorded. Use the restroom before you begin.'],
     ],
     agree: 'I have read and accept all of the conditions. I understand my results will be sent to my instructor.',
-    fullEyebrow: 'Full exam', fullTitle: 'Book your', fullTitleAccent: 'full exam',
-    fullIntro: 'You can take the exam any time this week, 24 hours a day, Central time. Choose the hour, the state, the language, and the lines.',
-    fullWhenHelp: `Central Time (CT), 24 hours a day this week. You can begin any time within ${SLOT_START_WINDOW_MINUTES} minutes after the hour you choose.`,
+    fullEyebrow: 'Full exam', fullTitle: 'Start your', fullTitleAccent: 'full exam',
+    fullIntro: 'You can start now, any day and any time. Choose the state, the language, and the lines. You can retake the exam whenever you want.',
+    fullAvailable: 'You can start now. No reservation is required.',
+    fullReady: 'Ready to start', fullContinue: 'Continue', fullAgain: 'Take it again', fullChange: 'Change details',
     fullStay: 'Do not switch tabs or windows until you submit the exam.',
     fullPause: 'You cannot pause. If you reload the page, the clock keeps running and the exam submits itself at zero. Use the restroom before you begin.',
     fullState: 'State',
@@ -191,7 +193,8 @@ export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, ini
             <CheckCircle2 size={34} className="scheduled-status-icon" />
             <h1>{t.done}</h1>
             <p>{t.doneDetail}</p>
-            {onReset && <button className="primary" onClick={onReset}>{t.again}</button>}
+            {fullPractice && <p>{t.fullAvailable}</p>}
+            {onReset && <button className="primary" onClick={onReset}>{fullPractice ? t.fullAgain : t.again}</button>}
           </section>
         </main>
       </div>
@@ -200,8 +203,8 @@ export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, ini
 
   if (registration) {
     const testing = registration.slotId === FULL_EXAM_TEST_SLOT;
-    const slot = testing ? undefined : findSlot(registration.slotId);
-    const state = preview || retake || testing ? 'open' : slot ? getSlotState(slot, now) : 'closed';
+    const slot = fullPractice || testing ? undefined : findSlot(registration.slotId);
+    const state = fullPractice || preview || retake || testing ? 'open' : slot ? getSlotState(slot, now) : 'closed';
     const questionCount = questionCountFor(registration.lines);
     const minutes = minutesFor(registration.lines, questionCount);
     const lineLabel = t.lineOptions[registration.lines][0];
@@ -242,9 +245,9 @@ export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, ini
         {header}
         <main className="partial-landing scheduled-main" id="main-content" lang={uiLanguage}>
           <section className="panel scheduled-status-card">
-            <span className="eyebrow"><CalendarClock size={15} /> {t.reserved}</span>
+            <span className="eyebrow"><CalendarClock size={15} /> {fullPractice ? t.fullReady : t.reserved}</span>
             <h1>{registration.name}</h1>
-            <p>{retake ? <strong>{t.retakeAvailable}</strong> : <>{t.reservedFor} <strong>{testing ? FULL_EXAM_TEST_SLOT : slot ? formatSlotLabel(slot, uiLanguage) : registration.slotId}</strong></>}</p>
+            <p>{fullPractice ? <strong>{t.fullAvailable}</strong> : retake ? <strong>{t.retakeAvailable}</strong> : <>{t.reservedFor} <strong>{testing ? FULL_EXAM_TEST_SLOT : slot ? formatSlotLabel(slot, uiLanguage) : registration.slotId}</strong></>}</p>
             <div className="partial-facts scheduled-facts">
               <span><strong>{questionCount}</strong> {t.questions}</span>
               <span><strong>{minutes}</strong> {t.minutes}</span>
@@ -253,13 +256,13 @@ export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, ini
             </div>
             {preview && <p className="scheduled-preview">{t.previewNote}</p>}
             {retake && <p className="scheduled-preview">{t.retakeNote}</p>}
-            <div className={`scheduled-countdown ${state}`}>
+            {!fullPractice && <div className={`scheduled-countdown ${state}`}>
               {state === 'upcoming' && slot && <><LockKeyhole size={18} /><span>{t.opensIn}</span><strong>{formatCountdown(slot.startsAt - now)}</strong></>}
               {state === 'open' && <><CheckCircle2 size={18} /><span>{retake ? t.retakeAvailable : t.openNow}</span>{slot && !preview && !retake && <small>{t.closesIn} {formatCountdown(slot.endsAt - now)}</small>}</>}
               {state === 'closed' && <><AlarmClock size={18} /><span>{t.closed}</span></>}
-            </div>
+            </div>}
             <div className="scheduled-actions">
-              <button className="secondary" onClick={onEdit}>{t.change}</button>
+              <button className="secondary" onClick={onEdit}>{fullPractice ? t.fullChange : t.change}</button>
               <button className="primary" disabled={state !== 'open'} onClick={() => { setAgreed(false); setShowRules(true); }}>{t.continue} <ArrowRight size={18} /></button>
             </div>
             {state === 'upcoming' && <p className="privacy-note">{t.keepOpen}</p>}
@@ -269,7 +272,10 @@ export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, ini
     );
   }
 
-  const canRegister = name.trim().length > 1 && isValidEmail(email) && (retake || Boolean(slotId)) && questionCountFor(lines) > 0;
+  const canRegister = name.trim().length > 1 && isValidEmail(email) && (retake || fullPractice || Boolean(slotId)) && questionCountFor(lines) > 0;
+  const languageStep = fullPractice ? '02' : '03';
+  const linesStep = fullPractice ? '03' : '04';
+  const stateStep = fullPractice ? '04' : '05';
   const canTestStart = testMode && name.trim().length > 1 && isValidEmail(email) && questionCountFor(lines) > 0;
   const registerTest = () => {
     if (!canTestStart) return;
@@ -295,7 +301,7 @@ export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, ini
           </div>
         </section>
 
-        <form className="scheduled-form" onSubmit={(event) => { event.preventDefault(); if (canRegister) onRegister({ name: name.trim(), email: email.trim(), slotId: retake ? slotId || RETAKE_SLOT_ID : slotId, language, lines }); }}>
+        <form className="scheduled-form" onSubmit={(event) => { event.preventDefault(); if (!canRegister) return; onRegister({ name: name.trim(), email: email.trim(), slotId: fullPractice ? FULL_EXAM_OPEN_SLOT : (retake ? slotId || RETAKE_SLOT_ID : slotId), language, lines }); if (fullPractice) setShowRules(true); }}>
           <section className="panel scheduled-section">
             <h2><span>01</span> {t.you}</h2>
             <div className="scheduled-fields">
@@ -306,9 +312,9 @@ export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, ini
 
           {retake && <p className="scheduled-preview">{t.retakeNote}</p>}
 
-          {!retake && <section className="panel scheduled-section">
+          {!retake && !fullPractice && <section className="panel scheduled-section">
             <h2><span>02</span> {t.when}</h2>
-            <p className="scheduled-help">{fullPractice ? t.fullWhenHelp : t.whenHelp}</p>
+            <p className="scheduled-help">{t.whenHelp}</p>
             {groupSlotsByDay && (
               <div className="slot-grid slot-day-picker" role="tablist" aria-label={t.when}>
                 {slotsByDay.map(({ day, slots }) => (
@@ -339,7 +345,7 @@ export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, ini
 
           <section className="panel scheduled-section scheduled-split">
             <div>
-              <h2><span>03</span> {t.language}</h2>
+              <h2><span>{languageStep}</span> {t.language}</h2>
               <div className="choice-row" role="radiogroup" aria-label={t.language}>
                 {(['es', 'en'] as const).map((value) => (
                   <button type="button" key={value} role="radio" aria-checked={language === value} className={`choice-card ${language === value ? 'active' : ''}`} onClick={() => setLanguage(value)}>
@@ -349,7 +355,7 @@ export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, ini
               </div>
             </div>
             <div>
-              <h2><span>04</span> {t.lines}</h2>
+              <h2><span>{linesStep}</span> {t.lines}</h2>
               <div className="choice-row" role="radiogroup" aria-label={t.lines}>
                 {(['both', 'life', 'health'] as const).map((value) => (
                   <button type="button" key={value} role="radio" aria-checked={lines === value} className={`choice-card ${lines === value ? 'active' : ''}`} onClick={() => setLines(value)}>
@@ -364,7 +370,7 @@ export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, ini
 
           {stateChoice && (
             <section className="panel scheduled-section">
-              <h2><span>05</span> {t.fullState}</h2>
+              <h2><span>{stateStep}</span> {t.fullState}</h2>
               <div className="choice-row" role="radiogroup" aria-label={t.fullState}>
                 {(['TX', 'FL'] as const).map((value) => (
                   <button type="button" key={value} role="radio" aria-checked={stateChoice.value === value} className={`choice-card ${stateChoice.value === value ? 'active' : ''}`} onClick={() => stateChoice.onChange(value)}>
@@ -377,7 +383,7 @@ export function ScheduledExamScreen({ darkMode, onToggleTheme, registration, ini
           )}
 
           <div className="scheduled-submit-row">
-            <button type="submit" className="primary scheduled-submit" disabled={!canRegister}>{t.register} <ArrowRight size={18} /></button>
+            <button type="submit" className="primary scheduled-submit" disabled={!canRegister}>{fullPractice ? t.fullContinue : t.register} <ArrowRight size={18} /></button>
             {testMode && <button type="button" className="scheduled-test-start" disabled={!canTestStart} onClick={registerTest}>{t.testStart}</button>}
           </div>
         </form>
