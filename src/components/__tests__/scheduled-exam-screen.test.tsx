@@ -115,4 +115,32 @@ describe('ScheduledExamScreen retake access', () => {
     expect(screen.queryByRole('button', { name: /Comenzar|Continuar|Confirmar/i })).not.toBeInTheDocument();
     expect(onStart).not.toHaveBeenCalled();
   });
+
+  it('keeps a past scheduled slot closed and still requires a reservation', () => {
+    render(
+      <ScheduledExamScreen
+        darkMode={false}
+        onToggleTheme={vi.fn()}
+        registration={{
+          id: 'weekend',
+          name: 'Ana López',
+          email: 'ana@example.com',
+          slotId: '2026-10-24T08',
+          language: 'es',
+          lines: 'both',
+          registeredAt: 1,
+          attempts: 0,
+        }}
+        availableByLines={{ both: 70, life: 70, health: 70 }}
+        preview={false}
+        retakeAccess={null}
+        onRegister={vi.fn()}
+        onEdit={vi.fn()}
+        onStart={vi.fn()}
+      />,
+    );
+
+    expect(screen.getByText(/Tu horario ya cerró/i)).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Continuar a las instrucciones/i })).toBeDisabled();
+  });
 });
